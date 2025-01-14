@@ -7,16 +7,19 @@
 1.  **Install Node.js:**
 
     - Download and install Node.js from the official website: [Node.js](https://nodejs.org/)
-    - bashCopy codenode -vnpm -v
+    - node -v
+    - npm -v
 
 2.  **Initialize Next.js Application with TypeScript, ESLint, Tailwind CSS, and App Routing:**
 
-    - bashCopy codenpx create-next-app@latest synergy-classroom --typescript --eslint --tailwind --experimental-appcd synergy-classroomnpm run dev
+    - npx create-next-app@latest synergy-classroom --typescript --eslint --tailwind
+    - cd synergy-classroom
+    - npm run dev
     - The development server should be running at [http://localhost:3000](http://localhost:3000).
 
 3.  **Install Redux Toolkit:**
 
-    - bashCopy codenpm install @reduxjs/toolkit react-redux
+    - npm install @reduxjs/toolkit react-redux
 
 4.  **Configure Visual Studio Code:**
 
@@ -40,8 +43,8 @@
 
 7.  **Git Repository Setup:**
 
-    - bashCopy codegit initgit add .git commit -m "Initial commit: Setup project environment"
-    - bashCopy codegit remote add origin git push -u origin main
+    - git initgit add .git commit -m "Initial commit: Setup project environment"
+    - git remote add origin git push -u origin main
 
 8.  **Verify Setup:**
 
