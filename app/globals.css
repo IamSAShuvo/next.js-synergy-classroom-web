@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --headingTextColorPrimary: #383839; /* Example blue primary color */
+}
