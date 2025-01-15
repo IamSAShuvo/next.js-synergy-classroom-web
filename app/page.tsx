@@ -7,6 +7,7 @@ export default function Home() {
       <p>Welcome to the Synergy Classroom</p>
       <LogInSignUpHeadingText text="Login" />
       <LogInSignUpHeadingText text="Sign Up" />
+      <LogInSignUpHeadingText text="Sign Up" />
     </>
   );
 }
