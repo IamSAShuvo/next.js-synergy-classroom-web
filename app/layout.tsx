@@ -11,7 +11,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Synergy Classroom",
-  description: "Synergy Classroom",
+  description:
+    "Synergy Classroom is a platform for learning and teaching. It is a place where students and teachers can interact with each other.",
 };
 
 export default function RootLayout({
