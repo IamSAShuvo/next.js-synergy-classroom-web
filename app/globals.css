@@ -3,5 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --headingTextColorPrimary: #383839; /* Example blue primary color */
+  --headingColor: #383839;
+  --subHeadingColor: #858597;
+  --buttonColor: #5177ff;
 }

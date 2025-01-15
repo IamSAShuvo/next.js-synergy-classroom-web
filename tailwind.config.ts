@@ -11,7 +11,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        headingTextColorPrimary: "var(--headingTextColorPrimary)",
+        headingColor: "var(--headingPrimaryColor)",
+        descriptionColor: "var(--subHeadingColor)",
+        buttonColor: "var(--buttonColor)",
       },
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
