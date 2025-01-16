@@ -1,6 +1,6 @@
 import React from "react";
 
-const EnrolledCount = ({ count }: { count: number }) => {
+const NumberBadge = ({ count }: { count: number }) => {
   return (
     <span className="font-poppins font-medium text-xs leading-[1.125rem] text-enrolledCountColor">
       {count} person Enrolled
@@ -8,4 +8,4 @@ const EnrolledCount = ({ count }: { count: number }) => {
   );
 };
 
-export default EnrolledCount;
+export default NumberBadge;

@@ -2,7 +2,7 @@ import TextDescriptionWithChildren from "./components/typography/TextDescription
 import AuthHeadingText from "./components/typography/AuthHeadingText";
 import SectionDescription from "./components/typography/SectionDescription";
 import SectionTitle from "./components/typography/SectionTitle";
-import EnrolledCount from "./components/typography/EnrolledCount";
+import NumberBadge from "./components/typography/NumberBadge";
 import { TextLink } from "./components/links/TextLink";
 import ItemList from "./components/typography/itemsList/ItemList";
 import CreateCourseTitle from "./components/typography/CreateCourseTitle";
@@ -72,7 +72,7 @@ export default function Home() {
           </div>
         </div>
         <hr />
-        <EnrolledCount count={value} />
+        <NumberBadge count={value} />
       </div>
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
