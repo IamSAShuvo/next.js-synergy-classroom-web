@@ -4,7 +4,8 @@
 
 :root {
   --headingColor: #383839;
-  --subHeadingColor: #858597;
+  --subHeadingColor: #1f1f39;
+  --descriptionColor: #858597;
   --buttonColor: #5177ff;
   --enrolledCountColor: #6bd65a;
 }
