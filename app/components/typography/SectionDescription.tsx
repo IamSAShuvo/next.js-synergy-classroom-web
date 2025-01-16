@@ -1,6 +1,6 @@
 import React from "react";
 
-const CourseCardDescription = ({
+const SectionDescription = ({
   text,
   color,
   fontSize,
@@ -18,4 +18,4 @@ const CourseCardDescription = ({
   );
 };
 
-export default CourseCardDescription;
+export default SectionDescription;

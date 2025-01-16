@@ -1,7 +1,7 @@
 import AuthDescriptionText from "./components/typography/AuthDescriptionText";
 import AuthHeadingText from "./components/typography/AuthHeadingText";
-import CourseCardDescription from "./components/typography/CourseCardDescription";
-import CourseCardTitle from "./components/typography/CourseCardTitle";
+import SectionDescription from "./components/typography/SectionDescription";
+import SectionTitle from "./components/typography/SectionTitle";
 import EnrolledCount from "./components/typography/EnrolledCount";
 import { TextLink } from "./components/links/TextLink";
 import BookList from "./components/typography/bookList/BookList";
@@ -27,13 +27,13 @@ export default function Home() {
       </AuthDescriptionText>
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>
-          <CourseCardTitle text="Electrical Circuit 01" fontSize="text-2xl" />
-          <CourseCardDescription
+          <SectionTitle text="Electrical Circuit 01" fontSize="text-2xl" />
+          <SectionDescription
             text={`Section - ${section}`}
             color="text-white"
             fontSize="text-sm"
           />
-          <CourseCardDescription
+          <SectionDescription
             text={`Course Teacher - ${teacherName}`}
             color="text-white"
             fontSize="text-sm"
@@ -41,12 +41,12 @@ export default function Home() {
         </div>
         <div className="bg-white ">
           <div className="flex justify-between mt-4">
-            <CourseCardDescription
+            <SectionDescription
               text={`Book List`}
               color="text-headingColor"
               fontSize="text-sm"
             />
-            <CourseCardDescription
+            <SectionDescription
               text={`Author`}
               color="text-headingColor"
               fontSize="text-sm"
@@ -75,18 +75,15 @@ export default function Home() {
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
-          <CourseCardTitle
-            text="Electrical Circuit 01"
-            fontSize="text-[40px]"
-          />
-          <CourseCardDescription
+          <SectionTitle text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionDescription
             text={`Course Teacher - ${teacherName}`}
             fontSize="text-2xl"
             color="text-white"
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <CourseCardDescription
+          <SectionDescription
             text="Book List"
             color="text-subHeadingColor"
             fontSize="text-xl"
@@ -100,7 +97,7 @@ export default function Home() {
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <CourseCardDescription
+          <SectionDescription
             text="Uploaded file"
             color="text-subHeadingColor"
             fontSize="text-xl"

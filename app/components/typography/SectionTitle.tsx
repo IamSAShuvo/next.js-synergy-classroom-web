@@ -1,5 +1,5 @@
 import React from "react";
-const DashboardCardTitle = ({
+const SectionTitle = ({
   text,
   fontSize,
 }: {
@@ -15,4 +15,4 @@ const DashboardCardTitle = ({
   );
 };
 
-export default DashboardCardTitle;
+export default SectionTitle;
