@@ -9,11 +9,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        headingColor: "var(--headingPrimaryColor)",
+        headingColor: "var(--headingColor)",
         descriptionColor: "var(--subHeadingColor)",
         buttonColor: "var(--buttonColor)",
+        enrolledCountColor: "var(--enrolledCountColor)",
       },
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
