@@ -1,12 +1,24 @@
 import React from "react";
 
-const BookList = ({ lists, color }: { lists: string[]; color: string }) => {
+const BookList = ({
+  lists,
+  color,
+  fontWeight,
+  fontSize,
+  lineHeight,
+}: {
+  lists: string[];
+  color: string;
+  fontWeight: string;
+  fontSize: string;
+  lineHeight: string;
+}) => {
   return (
     <ul>
       {lists.map((list, index) => (
         <li
           key={index}
-          className={`${color} font-poppins font-normal text-[10px] leading-[15px]`}
+          className={`${color} font-poppins ${fontWeight} ${fontSize} ${lineHeight}`}
         >
           <span className="mr-2 ">
             {list.includes("Book") && `${index + 1}.`}
