@@ -5,6 +5,7 @@ import SectionTitle from "./components/typography/SectionTitle";
 import EnrolledCount from "./components/typography/EnrolledCount";
 import { TextLink } from "./components/links/TextLink";
 import BookList from "./components/typography/bookList/BookList";
+import CreateCourseTitle from "./components/typography/CreateCourseTitle";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -25,6 +26,7 @@ export default function Home() {
       <AuthDescriptionText text="Don't have an account?">
         <TextLink url="/login" text="Login" />
       </AuthDescriptionText>
+
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>
           <SectionTitle text="Electrical Circuit 01" fontSize="text-2xl" />
@@ -102,6 +104,33 @@ export default function Home() {
             color="text-subHeadingColor"
             fontSize="text-xl"
           />
+        </div>
+      </div>
+      <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
+        <div className="space-y-3">
+          <SectionTitle text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionDescription
+            text={`Course Teacher - ${teacherName}`}
+            fontSize="text-2xl"
+            color="text-white"
+          />
+        </div>
+        <div className="mt-8 bg-white space-y-5">
+          <SectionDescription
+            text="Book List"
+            color="text-subHeadingColor"
+            fontSize="text-xl"
+          />
+          <BookList
+            lists={bookList}
+            color="text-descriptionColor"
+            fontWeight="font-normal"
+            fontSize="text-base"
+            lineHeight=" leading-[18px]"
+          />
+        </div>
+        <div className="mt-8 bg-white space-y-5">
+          <CreateCourseTitle />
         </div>
       </div>
     </div>
