@@ -1,13 +1,13 @@
 import React from "react";
 
-const BookList = ({
-  lists,
+const ItemList = ({
+  items,
   color,
   fontWeight,
   fontSize,
   lineHeight,
 }: {
-  lists: string[];
+  items: string[];
   color: string;
   fontWeight: string;
   fontSize: string;
@@ -15,19 +15,19 @@ const BookList = ({
 }) => {
   return (
     <ul>
-      {lists.map((list, index) => (
+      {items.map((item, index) => (
         <li
           key={index}
           className={`${color} font-poppins ${fontWeight} ${fontSize} ${lineHeight}`}
         >
           <span className="mr-2 ">
-            {list.includes("Book") && `${index + 1}.`}
+            {item.includes("Book") && `${index + 1}.`}
           </span>{" "}
-          {list}
+          {item}
         </li>
       ))}
     </ul>
   );
 };
 
-export default BookList;
+export default ItemList;

@@ -4,7 +4,7 @@ import SectionDescription from "./components/typography/SectionDescription";
 import SectionTitle from "./components/typography/SectionTitle";
 import EnrolledCount from "./components/typography/EnrolledCount";
 import { TextLink } from "./components/links/TextLink";
-import BookList from "./components/typography/bookList/BookList";
+import ItemList from "./components/typography/itemsList/ItemList";
 import CreateCourseTitle from "./components/typography/CreateCourseTitle";
 
 export default function Home() {
@@ -55,15 +55,15 @@ export default function Home() {
             />
           </div>
           <div className="flex justify-between mt-2 mb-4">
-            <BookList
-              lists={bookList}
+            <ItemList
+              items={bookList}
               color="text-headingColor"
               fontWeight="font-medium"
               fontSize="text-[10px]"
               lineHeight="leading-[15px]"
             />
-            <BookList
-              lists={authorList}
+            <ItemList
+              items={authorList}
               color="text-descriptionColor"
               fontWeight="font-normal"
               fontSize="text-[10px]"
@@ -90,8 +90,8 @@ export default function Home() {
             color="text-subHeadingColor"
             fontSize="text-xl"
           />
-          <BookList
-            lists={bookList}
+          <ItemList
+            items={bookList}
             color="text-descriptionColor"
             fontWeight="font-normal"
             fontSize="text-base"
@@ -121,8 +121,8 @@ export default function Home() {
             color="text-subHeadingColor"
             fontSize="text-xl"
           />
-          <BookList
-            lists={bookList}
+          <ItemList
+            items={bookList}
             color="text-descriptionColor"
             fontWeight="font-normal"
             fontSize="text-base"
