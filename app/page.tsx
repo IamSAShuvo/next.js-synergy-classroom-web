@@ -17,16 +17,32 @@ export default function Home() {
     <div className="mx-10 my-5">
       <h1>Home</h1>
       <p>Welcome to the Synergy Classroom</p>
+      {/* Login and Sign up page */}
       <AuthHeadingText text="Login" />
       <AuthHeadingText text="Sign Up" />
-      <TextDescriptionWithChildren text="Enter your details below & free sign up" />
-      <TextDescriptionWithChildren text="Don't have an account?">
+      <TextDescriptionWithChildren
+        text="Enter your details below & free sign up"
+        lineHeight="leading-[21.59px]"
+      />
+      <TextDescriptionWithChildren
+        text="Forgot PassWord?"
+        lineHeight="leading-[19.19px]"
+        letterSpacing="tracking-[0.48px]"
+      />
+      <TextDescriptionWithChildren
+        text="Don't have an account?"
+        lineHeight="leading-[21.59px]"
+      >
         <TextLink url="/signup" text="Sign Up" />
       </TextDescriptionWithChildren>
-      <TextDescriptionWithChildren text="Don't have an account?">
+      <TextDescriptionWithChildren
+        text="Don't have an account?"
+        lineHeight="leading-[1.3494rem]"
+      >
         <TextLink url="/login" text="Login" />
       </TextDescriptionWithChildren>
 
+      {/* dashboard card page */}
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>
           <SectionTitle text="Electrical Circuit 01" fontSize="text-2xl" />

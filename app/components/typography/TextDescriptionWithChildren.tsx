@@ -3,12 +3,18 @@ import React from "react";
 const TextDescriptionWithChildren = ({
   text,
   children,
+  lineHeight,
+  letterSpacing,
 }: {
   text: string;
+  lineHeight: string;
+  letterSpacing?: string;
   children?: React.ReactNode;
 }) => {
   return (
-    <h1 className="font-poppins font-normal text-[14.39px] leading-[21.59px] text-descriptionColor">
+    <h1
+      className={`font-poppins font-normal text-[14.39px] ${lineHeight} ${letterSpacing} text-descriptionColor`}
+    >
       {text} {children}
     </h1>
   );
