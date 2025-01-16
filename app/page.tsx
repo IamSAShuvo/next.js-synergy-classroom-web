@@ -1,9 +1,9 @@
-import AuthDescriptionText from "./components/textComponents/AuthDescriptionText";
-import AuthHeadingText from "./components/textComponents/AuthHeadingText";
-import DashboardCardDescription from "./components/textComponents/DashboardCardDescription";
-import DashboardCardTitle from "./components/textComponents/DashboardCardTitle";
-import EnrolledCount from "./components/textComponents/EnrolledCount";
-import { TextLink } from "./components/textComponents/TextLink";
+import AuthDescriptionText from "./components/typography/AuthDescriptionText";
+import AuthHeadingText from "./components/typography/AuthHeadingText";
+import DashboardCardDescription from "./components/typography/DashboardCardDescription";
+import DashboardCardTitle from "./components/typography/DashboardCardTitle";
+import EnrolledCount from "./components/typography/EnrolledCount";
+import { TextLink } from "./components/typography/TextLink";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
