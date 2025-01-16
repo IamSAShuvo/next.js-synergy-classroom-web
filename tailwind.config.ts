@@ -10,7 +10,8 @@ export default {
     extend: {
       colors: {
         headingColor: "var(--headingColor)",
-        descriptionColor: "var(--subHeadingColor)",
+        subHeadingColor: "var(--subHeadingColor)",
+        descriptionColor: "var(--descriptionColor)",
         buttonColor: "var(--buttonColor)",
         enrolledCountColor: "var(--enrolledCountColor)",
       },
