@@ -1,4 +1,4 @@
-import AuthDescriptionText from "./components/typography/AuthDescriptionText";
+import TextDescriptionWithChildren from "./components/typography/TextDescriptionWithChildren";
 import AuthHeadingText from "./components/typography/AuthHeadingText";
 import SectionDescription from "./components/typography/SectionDescription";
 import SectionTitle from "./components/typography/SectionTitle";
@@ -19,13 +19,13 @@ export default function Home() {
       <p>Welcome to the Synergy Classroom</p>
       <AuthHeadingText text="Login" />
       <AuthHeadingText text="Sign Up" />
-      <AuthDescriptionText text="Enter your details below & free sign up" />
-      <AuthDescriptionText text="Don't have an account?">
+      <TextDescriptionWithChildren text="Enter your details below & free sign up" />
+      <TextDescriptionWithChildren text="Don't have an account?">
         <TextLink url="/signup" text="Sign Up" />
-      </AuthDescriptionText>
-      <AuthDescriptionText text="Don't have an account?">
+      </TextDescriptionWithChildren>
+      <TextDescriptionWithChildren text="Don't have an account?">
         <TextLink url="/login" text="Login" />
-      </AuthDescriptionText>
+      </TextDescriptionWithChildren>
 
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>

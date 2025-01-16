@@ -1,6 +1,6 @@
 import React from "react";
 
-const AuthDescriptionText = ({
+const TextDescriptionWithChildren = ({
   text,
   children,
 }: {
@@ -14,4 +14,4 @@ const AuthDescriptionText = ({
   );
 };
 
-export default AuthDescriptionText;
+export default TextDescriptionWithChildren;
