@@ -33,6 +33,7 @@
     - Add Material UI and necessary dependencies for component development:
 
       - npm install @mui/material @emotion/react @emotion/styled
+      - npm install @emotion/react @emotion/styled
 
 5.  **Configure Visual Studio Code:**
 
