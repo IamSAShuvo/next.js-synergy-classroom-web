@@ -6,6 +6,10 @@ import NumberBadge from "./components/typography/NumberBadge";
 import { TextLink } from "./components/links/TextLink";
 import ItemList from "./components/typography/itemsList/ItemList";
 import CreateCourseTitle from "./components/typography/CreateCourseTitle";
+import TextInputField from "./components/inputFields/TextInputField";
+import PasswordInputField from "./components/inputFields/PasswordInputField";
+import SelectTextFields from "./components/inputFields/SelectTextFields";
+import TextFieldWithFilled from "./components/inputFields/TextFieldWithFilled";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -148,6 +152,12 @@ export default function Home() {
         <div className="mt-8 bg-white space-y-5">
           <CreateCourseTitle />
         </div>
+      </div>
+      <div className="mt-8 flex flex-col items-center space-y-5">
+        <TextInputField />
+        <TextFieldWithFilled />
+        <PasswordInputField />
+        <SelectTextFields />
       </div>
     </div>
   );
