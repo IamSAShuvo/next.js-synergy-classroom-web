@@ -16,6 +16,29 @@ const SelectTextFields = () => {
   return (
     <TextField
       className="w-[420px] mx-auto"
+      slotProps={{
+        inputLabel: {
+          sx: {
+            fontFamily: "Poppins, sans-serif",
+            color: 'theme("colors.headingColor")',
+          },
+        },
+        input: {
+          sx: {
+            fontFamily: "Poppins, sans-serif",
+            "&::placeholder": {
+              fontFamily: "Poppins, sans-serif",
+              color: "var(--headingColor)",
+            },
+          },
+        },
+        formHelperText: {
+          sx: {
+            fontFamily: "Poppins, sans-serif",
+            color: "var(--headingColor)",
+          },
+        },
+      }}
       id="outlined-select-currency"
       select
       label="Profession"

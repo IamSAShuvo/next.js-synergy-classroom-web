@@ -10,6 +10,7 @@ import TextInputField from "./components/inputFields/TextInputField";
 import PasswordInputField from "./components/inputFields/PasswordInputField";
 import SelectTextFields from "./components/inputFields/SelectTextFields";
 import TextFieldWithFilled from "./components/inputFields/TextFieldWithFilled";
+import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -152,6 +153,9 @@ export default function Home() {
         <div className="mt-8 bg-white space-y-5">
           <CreateCourseTitle />
         </div>
+      </div>
+      <div>
+        <RowRadioButtonsGroup />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
         <TextInputField />
