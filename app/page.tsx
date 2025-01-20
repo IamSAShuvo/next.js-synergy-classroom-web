@@ -169,9 +169,25 @@ export default function Home() {
         <FullWidthButton text="Log In" />
         <FullWidthButton text="Sign Up" />
         <EnrollButton text="Click to Enroll" />
-        <ActionButton text="Create" hoverColor="hover:bg-indigo-600" />
-        <ActionButton text="Save" hoverColor="hover:bg-indigo-600" />
-        <ActionButton text="Cancel" hoverColor="hover:bg-indigo-600" />
+        <ActionButton
+          text="Create"
+          textColor="text-white"
+          hoverColor="hover:bg-indigo-600"
+          bgColor="bg-buttonColor"
+        />
+        <ActionButton
+          text="Save"
+          textColor="text-white"
+          hoverColor="hover:bg-indigo-600"
+          bgColor="bg-buttonColor"
+        />
+        <ActionButton
+          text="Cancel"
+          textColor="text-[#B1B1B1]"
+          hoverColor="hover:bg-gray-100"
+          bgColor="bg-white/[0.12]"
+          borderColor="border-[#B1B1B1]"
+        />
         <ButtonWithIcons
           icon={HomeIcon}
           text="Home"
