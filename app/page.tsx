@@ -11,6 +11,9 @@ import PasswordInputField from "./components/inputFields/PasswordInputField";
 import SelectTextFields from "./components/inputFields/SelectTextFields";
 import TextFieldWithFilled from "./components/inputFields/TextFieldWithFilled";
 import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
+import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
+import ActionButton from "./components/Buttons&Icons/ActionButton";
+import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -154,8 +157,14 @@ export default function Home() {
           <CreateCourseTitle />
         </div>
       </div>
-      <div>
+      <div className="mt-8">
         <RowRadioButtonsGroup />
+      </div>
+      <div className="mt-6 mb-6 flex flex-col gap-4">
+        <FullWidthButton text="Log In" />
+        <FullWidthButton text="Sign Up" />
+        <ActionButton text="Click to Enroll" />
+        <ButtonWithIcons />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
         <TextInputField />
