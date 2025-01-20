@@ -18,6 +18,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import ActionButton from "./components/Buttons&Icons/ActionButton";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -168,7 +169,9 @@ export default function Home() {
         <FullWidthButton text="Log In" />
         <FullWidthButton text="Sign Up" />
         <EnrollButton text="Click to Enroll" />
-        {/* <ButtonWithIcons /> */}
+        <ActionButton text="Create" hoverColor="hover:bg-indigo-600" />
+        <ActionButton text="Save" hoverColor="hover:bg-indigo-600" />
+        <ActionButton text="Cancel" hoverColor="hover:bg-indigo-600" />
         <ButtonWithIcons
           icon={HomeIcon}
           text="Home"
