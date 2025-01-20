@@ -1,15 +1,23 @@
-import HomeIcon from "@mui/icons-material/Home";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import React from "react";
-const ButtonWithIcons = () => {
+import { SvgIconProps } from "@mui/material/SvgIcon";
+
+const ButtonWithIcons = ({
+  icon: Icon,
+  text,
+  trailingIcon: TrailingIcon,
+}: {
+  icon: React.ComponentType<SvgIconProps>;
+  text: string;
+  trailingIcon?: React.ComponentType<SvgIconProps>;
+}) => {
   return (
-    <div className="w-1/5 py-5 px-4 mx-auto active:bg-buttonColor font-poppins active:text-white text-[#030D25]">
-      <button className="flex justify-end items-center">
-        <HomeIcon />
-        <span>Home</span>
-        <ChevronRightIcon />
-      </button>
-    </div>
+    <button className="w-1/6 mx-auto bg-buttonColor hover:bg-indigo-600 font-poppins text-white px-7 py-5 rounded-full font-medium text-sm leading-[14px] flex justify-between">
+      <div className="flex items-center gap-5">
+        {Icon && <Icon />}
+        <span className="justify-self-start">{text}</span>
+      </div>
+      {TrailingIcon && <TrailingIcon />}
+    </button>
   );
 };
 

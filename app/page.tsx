@@ -14,6 +14,10 @@ import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
 import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
 import ActionButton from "./components/Buttons&Icons/ActionButton";
 import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
+import HomeIcon from "@mui/icons-material/Home";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -164,7 +168,18 @@ export default function Home() {
         <FullWidthButton text="Log In" />
         <FullWidthButton text="Sign Up" />
         <ActionButton text="Click to Enroll" />
-        <ButtonWithIcons />
+        {/* <ButtonWithIcons /> */}
+        <ButtonWithIcons
+          icon={HomeIcon}
+          text="Home"
+          trailingIcon={ChevronRightIcon}
+        />
+        <ButtonWithIcons
+          icon={LocalLibraryRoundedIcon}
+          text="ClassWork"
+          trailingIcon={ChevronRightIcon}
+        />
+        <ButtonWithIcons icon={LogoutRoundedIcon} text="Log out" />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
         <TextInputField />
