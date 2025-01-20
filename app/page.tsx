@@ -19,6 +19,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import ActionButton from "./components/Buttons&Icons/ActionButton";
+import NavProfile from "./components/UserProfile/NavProfile";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -54,6 +55,9 @@ export default function Home() {
       >
         <TextLink url="/login" text="Login" />
       </TextDescriptionWithChildren>
+
+      {/* Profile Avatars */}
+      <NavProfile />
 
       {/* dashboard card page */}
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
