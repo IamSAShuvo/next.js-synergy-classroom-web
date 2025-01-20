@@ -12,7 +12,7 @@ import SelectTextFields from "./components/inputFields/SelectTextFields";
 import TextFieldWithFilled from "./components/inputFields/TextFieldWithFilled";
 import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
 import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
-import ActionButton from "./components/Buttons&Icons/ActionButton";
+import EnrollButton from "./components/Buttons&Icons/EnrollButton";
 import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
 import HomeIcon from "@mui/icons-material/Home";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -167,7 +167,7 @@ export default function Home() {
       <div className="mt-6 mb-6 flex flex-col gap-4">
         <FullWidthButton text="Log In" />
         <FullWidthButton text="Sign Up" />
-        <ActionButton text="Click to Enroll" />
+        <EnrollButton text="Click to Enroll" />
         {/* <ButtonWithIcons /> */}
         <ButtonWithIcons
           icon={HomeIcon}
