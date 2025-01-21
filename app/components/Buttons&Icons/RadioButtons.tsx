@@ -13,7 +13,7 @@ export default function RowRadioButtonsGroup() {
     setValue((event.target as HTMLInputElement).value);
   };
   return (
-    <div className="text-headingColor font-poppins">
+    <div className="text-headingColor">
       <FormControl>
         <FormLabel
           id="demo-row-radio-buttons-group-label"
@@ -45,7 +45,17 @@ export default function RowRadioButtonsGroup() {
             control={<Radio />}
             label="Student"
           />
-          <FormControlLabel value="male" control={<Radio />} label="Teacher" />
+          <FormControlLabel
+            sx={{
+              fontFamily: "Poppins, sans-serif",
+              "& .MuiFormControlLabel-label": {
+                fontFamily: "Poppins, sans-serif",
+              },
+            }}
+            value="male"
+            control={<Radio />}
+            label="Teacher"
+          />
         </RadioGroup>
       </FormControl>
     </div>

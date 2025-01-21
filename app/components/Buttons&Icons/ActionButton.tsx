@@ -17,7 +17,7 @@ const ActionButton = ({
     <button
       className={`mx-auto ${hoverColor} ${bgColor} ${
         borderColor ? `${borderColor} border-[3px]` : ""
-      } px-6 py-[10px] rounded ${textColor} font-poppins font-medium text-xl leading-5`}
+      } px-6 py-[10px] rounded ${textColor} font-medium text-xl leading-5`}
     >
       {text}
     </button>

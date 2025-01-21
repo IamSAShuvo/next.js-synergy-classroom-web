@@ -13,7 +13,7 @@ const TextDescriptionWithChildren = ({
 }) => {
   return (
     <h1
-      className={`font-poppins font-normal text-[14.39px] ${lineHeight} ${letterSpacing} text-descriptionColor`}
+      className={`font-normal text-[14.39px] ${lineHeight} ${letterSpacing} text-descriptionColor`}
     >
       {text} {children}
     </h1>

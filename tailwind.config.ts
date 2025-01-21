@@ -15,9 +15,9 @@ export default {
         buttonColor: "var(--buttonColor)",
         enrolledCountColor: "var(--enrolledCountColor)",
       },
-      fontFamily: {
-        poppins: ["var(--font-poppins)", "sans-serif"],
-      },
+      // fontFamily: {
+      //   poppins: ["var(--font-poppins)", "sans-serif"],
+      // },
     },
   },
   plugins: [],
