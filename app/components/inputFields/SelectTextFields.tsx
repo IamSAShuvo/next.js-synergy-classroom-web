@@ -20,7 +20,7 @@ const SelectTextFields = () => {
         inputLabel: {
           sx: {
             fontFamily: "Poppins, sans-serif",
-            color: 'theme("colors.headingColor")',
+            color: 'theme("colors.primaryColor")',
           },
         },
         input: {
@@ -28,14 +28,14 @@ const SelectTextFields = () => {
             fontFamily: "Poppins, sans-serif",
             "&::placeholder": {
               fontFamily: "Poppins, sans-serif",
-              color: "var(--headingColor)",
+              color: "var(--primaryColor)",
             },
           },
         },
         formHelperText: {
           sx: {
             fontFamily: "Poppins, sans-serif",
-            color: "var(--headingColor)",
+            color: "var(--primaryColor)",
           },
         },
       }}

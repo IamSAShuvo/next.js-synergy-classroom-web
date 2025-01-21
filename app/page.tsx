@@ -19,7 +19,8 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import ActionButton from "./components/Buttons&Icons/ActionButton";
-import NavProfile from "./components/UserProfile/NavProfile";
+import NavBarProfile from "./components/UserProfile/NavBarProfile";
+import CourseCardProfile from "./components/UserProfile/CourseCardProfile";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -57,7 +58,11 @@ export default function Home() {
       </TextDescriptionWithChildren>
 
       {/* Profile Avatars */}
-      <NavProfile />
+      <div className="border-2 border-black w-1/3 p-4 rounded-lg mt-7">
+        <NavBarProfile />
+        <hr className="w-full border-2 border-black my-5" />
+        <CourseCardProfile />
+      </div>
 
       {/* dashboard card page */}
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
@@ -78,26 +83,26 @@ export default function Home() {
           <div className="flex justify-between mt-4">
             <SectionDescription
               text={`Book List`}
-              color="text-headingColor"
+              color="text-primaryColor"
               fontSize="text-sm"
             />
             <SectionDescription
               text={`Author`}
-              color="text-headingColor"
+              color="text-primaryColor"
               fontSize="text-sm"
             />
           </div>
           <div className="flex justify-between mt-2 mb-4">
             <ItemList
               items={bookList}
-              color="text-headingColor"
+              color="text-primaryColor"
               fontWeight="font-medium"
               fontSize="text-[10px]"
               lineHeight="leading-[15px]"
             />
             <ItemList
               items={authorList}
-              color="text-descriptionColor"
+              color="text-secondaryColor"
               fontWeight="font-normal"
               fontSize="text-[10px]"
               lineHeight="leading-[15px]"
@@ -120,12 +125,12 @@ export default function Home() {
         <div className="mt-8 bg-white space-y-5">
           <SectionDescription
             text="Book List"
-            color="text-subHeadingColor"
+            color="text-steelBlue"
             fontSize="text-xl"
           />
           <ItemList
             items={bookList}
-            color="text-descriptionColor"
+            color="text-secondaryColor"
             fontWeight="font-normal"
             fontSize="text-base"
             lineHeight=" leading-[18px]"
@@ -134,7 +139,7 @@ export default function Home() {
         <div className="mt-8 bg-white space-y-5">
           <SectionDescription
             text="Uploaded file"
-            color="text-subHeadingColor"
+            color="text-steelBlue"
             fontSize="text-xl"
           />
         </div>
@@ -151,12 +156,12 @@ export default function Home() {
         <div className="mt-8 bg-white space-y-5">
           <SectionDescription
             text="Book List"
-            color="text-subHeadingColor"
+            color="text-steelBlue"
             fontSize="text-xl"
           />
           <ItemList
             items={bookList}
-            color="text-descriptionColor"
+            color="text-secondaryColor"
             fontWeight="font-normal"
             fontSize="text-base"
             lineHeight=" leading-[18px]"
@@ -177,13 +182,13 @@ export default function Home() {
           text="Create"
           textColor="text-white"
           hoverColor="hover:bg-indigo-600"
-          bgColor="bg-buttonColor"
+          bgColor="bg-skyBlue"
         />
         <ActionButton
           text="Save"
           textColor="text-white"
           hoverColor="hover:bg-indigo-600"
-          bgColor="bg-buttonColor"
+          bgColor="bg-skyBlue"
         />
         <ActionButton
           text="Cancel"

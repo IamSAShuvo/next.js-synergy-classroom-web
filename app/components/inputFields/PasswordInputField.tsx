@@ -28,9 +28,9 @@ const PasswordInputField = () => {
         <InputLabel
           sx={{
             fontFamily: "Poppins, sans-serif",
-            color: "var(--headingColor)",
+            color: "var(--primaryColor)",
             "&.Mui-focused": {
-              color: "var(--headingColor)",
+              color: "var(--primaryColor)",
             },
           }}
           htmlFor="outlined-adornment-password1"
@@ -40,9 +40,9 @@ const PasswordInputField = () => {
         <OutlinedInput
           sx={{
             fontFamily: "Poppins, sans-serif",
-            color: "var(--headingColor)",
+            color: "var(--primaryColor)",
             "&.Mui-focused": {
-              color: "var(--headingColor)",
+              color: "var(--primaryColor)",
             },
           }}
           id="outlined-adornment-password1"

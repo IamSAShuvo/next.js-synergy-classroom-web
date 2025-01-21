@@ -13,15 +13,15 @@ export default function RowRadioButtonsGroup() {
     setValue((event.target as HTMLInputElement).value);
   };
   return (
-    <div className="text-headingColor">
+    <div className="text-primaryColor">
       <FormControl>
         <FormLabel
           id="demo-row-radio-buttons-group-label"
           sx={{
             fontFamily: "Poppins, sans-serif",
-            color: "var(--headingColor)",
+            color: "var(--primaryColor)",
             "&.Mui-focused": {
-              color: "var(--headingColor)",
+              color: "var(--primaryColor)",
             },
           }}
         >

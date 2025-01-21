@@ -9,15 +9,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        headingColor: "var(--headingColor)",
-        subHeadingColor: "var(--subHeadingColor)",
-        descriptionColor: "var(--descriptionColor)",
-        buttonColor: "var(--buttonColor)",
-        enrolledCountColor: "var(--enrolledCountColor)",
+        primaryColor: "var(--primaryColor)",
+        secondaryColor: "var(--secondaryColor)",
+        steelBlue: "var(--steelBlue)",
+        skyBlue: "var(--skyBlue)",
+        leafGreen: "var(--leafGreen)",
+        midnightBlack: "var(--midnightBlack)",
       },
-      // fontFamily: {
-      //   poppins: ["var(--font-poppins)", "sans-serif"],
-      // },
     },
   },
   plugins: [],
