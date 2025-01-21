@@ -7,7 +7,7 @@ const TextFieldWithFilled = () => {
       <TextField
         id="filled-basic"
         label="Create Course"
-        variant="filled"
+        variant="standard"
         className="w-[420px] mx-auto"
         slotProps={{
           inputLabel: {
