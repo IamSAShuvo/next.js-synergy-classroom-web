@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --headingColor: #383839;
-  --subHeadingColor: #1f1f39;
-  --descriptionColor: #858597;
-  --buttonColor: #5177ff;
-  --enrolledCountColor: #6bd65a;
+  --primaryColor: #383839;
+  --secondaryColor: #858597;
+  --steelBlue: #1f1f39;
+  --skyBlue: #5177ff;
+  --leafGreen: #6bd65a;
+  --midnightBlack: #171717;
 }
