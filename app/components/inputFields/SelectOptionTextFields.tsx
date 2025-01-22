@@ -12,7 +12,7 @@ const roles = [
   },
 ];
 
-const SelectTextFields = () => {
+const SelectOptionTextFields = () => {
   return (
     <TextField
       className="w-[420px] mx-auto"
@@ -54,4 +54,4 @@ const SelectTextFields = () => {
   );
 };
 
-export default SelectTextFields;
+export default SelectOptionTextFields;

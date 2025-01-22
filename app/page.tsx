@@ -1,3 +1,4 @@
+// export default function Home() {}
 import DescriptionWithChildren from "./components/typography/DescriptionWithChildren";
 import PrimaryHeading from "./components/typography/PrimaryHeading";
 import SectionDescription from "./components/typography/SectionDescription";
@@ -5,10 +6,9 @@ import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
-import TextInputField from "./components/inputFields/TextInputField";
-import PasswordInputField from "./components/inputFields/PasswordInputField";
-import SelectTextFields from "./components/inputFields/SelectTextFields";
-import TextFieldWithFilled from "./components/inputFields/TextFieldWithFilled";
+import InputPasswordField from "./components/inputFields/InputPasswordField";
+import SelectOptionTextFields from "./components/inputFields/SelectOptionTextFields";
+import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
 import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
 import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
 import EnrollButton from "./components/Buttons&Icons/EnrollButton";
@@ -18,9 +18,8 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import ActionButton from "./components/Buttons&Icons/ActionButton";
-import NavBarProfile from "./components/UserProfile/NavBarProfile";
-import CourseCardProfile from "./components/UserProfile/CourseCardProfile";
 import LinkText from "./components/links/LinkText";
+import InputTextFieldWithExpandable from "./components/inputFields/InputTextFieldWithExpandable";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -56,13 +55,6 @@ export default function Home() {
       >
         <LinkText url="/login" text="Login" />
       </DescriptionWithChildren>
-
-      {/* Profile Avatars */}
-      <div className="border-2 border-black w-1/3 p-4 rounded-lg mt-7">
-        <NavBarProfile />
-        <hr className="w-full border-2 border-black my-5" />
-        <CourseCardProfile />
-      </div>
 
       {/* dashboard card page */}
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
@@ -210,10 +202,19 @@ export default function Home() {
         <ButtonWithIcons icon={LogoutRoundedIcon} text="Log out" />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
-        <TextInputField />
-        <TextFieldWithFilled />
-        <PasswordInputField />
-        <SelectTextFields />
+        <InputTextFieldWithVariant
+          label="Username"
+          placeholder="Enter Your UserName"
+          variant="outlined"
+        />
+        <InputTextFieldWithVariant
+          label="Course Name"
+          placeholder="Enter Your Course Name"
+          variant="filled"
+        />
+        <InputTextFieldWithExpandable />
+        <InputPasswordField />
+        <SelectOptionTextFields />
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 
-const PasswordInputField = () => {
+const InputPasswordField = () => {
   const [showPassword1, setShowPassword1] = useState(false);
 
   const handleClickShowPassword =
@@ -69,4 +69,4 @@ const PasswordInputField = () => {
   );
 };
 
-export default PasswordInputField;
+export default InputPasswordField;
