@@ -10,9 +10,7 @@ const SectionDescription = ({
   fontSize: string;
 }) => {
   return (
-    <h1
-      className={`font-poppins font-normal ${fontSize} leading-[1.3125rem] ${color}`}
-    >
+    <h1 className={`font-normal ${fontSize} leading-[1.3125rem] ${color}`}>
       {text}
     </h1>
   );

@@ -5,7 +5,7 @@ export const TextLink = ({ url, text }: { url: string; text: string }) => {
   return (
     <Link
       href={url}
-      className="font-poppins font-normal text-[14.39px] leading-[21.59px] text-buttonColor"
+      className="font-normal text-[14.39px] leading-[21.59px] text-skyBlue"
     >
       {text}
     </Link>

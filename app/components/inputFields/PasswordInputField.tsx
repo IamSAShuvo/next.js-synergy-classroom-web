@@ -25,8 +25,26 @@ const PasswordInputField = () => {
   return (
     <div>
       <FormControl variant="outlined" className="w-[420px] mx-auto">
-        <InputLabel htmlFor="outlined-adornment-password1">Password</InputLabel>
+        <InputLabel
+          sx={{
+            fontFamily: "Poppins, sans-serif",
+            color: "var(--headingColor)",
+            "&.Mui-focused": {
+              color: "var(--headingColor)",
+            },
+          }}
+          htmlFor="outlined-adornment-password1"
+        >
+          Password
+        </InputLabel>
         <OutlinedInput
+          sx={{
+            fontFamily: "Poppins, sans-serif",
+            color: "var(--headingColor)",
+            "&.Mui-focused": {
+              color: "var(--headingColor)",
+            },
+          }}
           id="outlined-adornment-password1"
           type={showPassword1 ? "text" : "password"}
           endAdornment={
