@@ -175,12 +175,14 @@ export default function Home() {
           textColor="text-white"
           hoverColor="hover:bg-indigo-600"
           bgColor="bg-skyBlue"
+          fontSize="text-xl"
         />
         <ActionButton
           text="Save"
           textColor="text-white"
           hoverColor="hover:bg-indigo-600"
           bgColor="bg-skyBlue"
+          fontSize="text-xl"
         />
         <ActionButton
           text="Cancel"
@@ -188,6 +190,7 @@ export default function Home() {
           hoverColor="hover:bg-gray-100"
           bgColor="bg-white/[0.12]"
           borderColor="border-[#B1B1B1]"
+          fontSize="text-xl"
         />
         <ButtonWithIcons
           icon={HomeIcon}
