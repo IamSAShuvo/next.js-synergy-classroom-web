@@ -1,13 +1,13 @@
-import { TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import React from "react";
 
-const TextFieldWithFilled = () => {
+const InputTextFieldWithBorder = () => {
   return (
     <div>
       <TextField
-        id="filled-basic"
-        label="Create Course"
-        variant="filled"
+        id="outlined-basic"
+        label="Username"
+        variant="outlined"
         className="w-[420px] mx-auto"
         slotProps={{
           inputLabel: {
@@ -31,4 +31,4 @@ const TextFieldWithFilled = () => {
   );
 };
 
-export default TextFieldWithFilled;
+export default InputTextFieldWithBorder;
