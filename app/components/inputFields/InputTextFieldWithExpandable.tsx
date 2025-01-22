@@ -1,33 +1,55 @@
 "use client";
+import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import {
+  FormControl,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  TextFieldProps,
+} from "@mui/material";
 import React, { useState } from "react";
+import InputTextFieldWithVariant from "./InputTextFieldWithVariant";
 
 interface InputTextFieldWithExpandableProps {
-  label?: string;
-  value?: string;
-  //   onChange?: (value: string) => void;
+  placeholder?: string;
+  variant?: TextFieldProps["variant"];
 }
 
 const InputTextFieldWithExpandable: React.FC<
   InputTextFieldWithExpandableProps
-> = ({ label, value }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleExpandClick = () => {
-    setIsExpanded(!isExpanded);
+> = ({ variant }) => {
+  const [expand, setExpand] = useState<boolean>(false);
+  const handleIconClick = () => {
+    setExpand((prev) => !prev);
   };
 
   return (
-    <div>
-      <label>{label}</label>
-      <input
-        type="text"
-        value={value}
-        // onChange={(e) => onChange(e.target.value)}
-      />
-      <button onClick={handleExpandClick}>
-        {isExpanded ? "Collapse" : "Expand"}
-      </button>
-      {isExpanded && <div>Expanded content</div>}
+    <div className="flex flex-col gap-4">
+      <FormControl variant={variant || "standard"} className="w-[420px]">
+        <InputLabel htmlFor="standard-adornment-password">Book Name</InputLabel>
+        <Input
+          placeholder="Add Book"
+          id="standard-adornment-password"
+          type="text"
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label={expand ? "hide the field" : "show the field"}
+                onClick={handleIconClick}
+              >
+                <AddBoxOutlinedIcon />
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+      {expand && (
+        <>
+          <InputTextFieldWithVariant label="Author Name" />
+          <InputTextFieldWithExpandable />
+        </>
+      )}
     </div>
   );
 };
