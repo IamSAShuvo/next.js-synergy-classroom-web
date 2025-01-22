@@ -18,7 +18,7 @@ const ItemList = ({
       {items.map((item, index) => (
         <li
           key={index}
-          className={`${color} font-poppins ${fontWeight} ${fontSize} ${lineHeight}`}
+          className={`${color} ${fontWeight} ${fontSize} ${lineHeight}`}
         >
           <span className="mr-2 ">
             {item.includes("Book") && `${index + 1}.`}
