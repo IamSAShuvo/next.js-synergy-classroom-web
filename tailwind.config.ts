@@ -16,6 +16,13 @@ export default {
         leafGreen: "var(--leafGreen)",
         midnightBlack: "var(--midnightBlack)",
       },
+      fontSize: {
+        ex_sm: "10px",
+        "xl-plus": "40px",
+      },
+      lineHeight: {
+        "extra-loose": "57.58px",
+      },
     },
   },
   plugins: [],

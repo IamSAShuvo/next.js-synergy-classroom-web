@@ -1,10 +1,10 @@
-import TextDescriptionWithChildren from "./components/typography/TextDescriptionWithChildren";
-import AuthHeadingText from "./components/typography/AuthHeadingText";
+import DescriptionWithChildren from "./components/typography/DescriptionWithChildren";
+import PrimaryHeading from "./components/typography/PrimaryHeading";
 import SectionDescription from "./components/typography/SectionDescription";
-import SectionTitle from "./components/typography/SectionTitle";
+import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
-import CreateCourseTitle from "./components/typography/CreateCourseTitle";
+import SecondaryHeading from "./components/typography/SecondaryHeading";
 import LinkText from "./components/links/LinkText";
 
 export default function Home() {
@@ -14,38 +14,38 @@ export default function Home() {
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
   return (
-    <div className="mx-10 my-5">
+    <div className="mx-10 my-5 ">
       <h1>Home</h1>
       <p>Welcome to the Synergy Classroom</p>
       {/* Login and Sign up page */}
-      <AuthHeadingText text="Login" />
-      <AuthHeadingText text="Sign Up" />
-      <TextDescriptionWithChildren
+      <PrimaryHeading text="Login" />
+      <PrimaryHeading text="Sign Up" />
+      <DescriptionWithChildren
         text="Enter your details below & free sign up"
-        lineHeight="leading-[21.59px]"
+        lineHeight="leading-5"
       />
-      <TextDescriptionWithChildren
+      <DescriptionWithChildren
         text="Forgot PassWord?"
-        lineHeight="leading-[19.19px]"
-        letterSpacing="tracking-[0.48px]"
+        lineHeight="leading-5"
+        letterSpacing="tracking-wider"
       />
-      <TextDescriptionWithChildren
+      <DescriptionWithChildren
         text="Don't have an account?"
-        lineHeight="leading-[21.59px]"
+        lineHeight="leading-leading-5"
       >
         <LinkText url="/signup" text="Sign Up" />
-      </TextDescriptionWithChildren>
-      <TextDescriptionWithChildren
+      </DescriptionWithChildren>
+      <DescriptionWithChildren
         text="Don't have an account?"
-        lineHeight="leading-[1.3494rem]"
+        lineHeight="leading-5"
       >
         <LinkText url="/login" text="Login" />
-      </TextDescriptionWithChildren>
+      </DescriptionWithChildren>
 
       {/* dashboard card page */}
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>
-          <SectionTitle text="Electrical Circuit 01" fontSize="text-2xl" />
+          <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
           <SectionDescription
             text={`Section - ${section}`}
             color="text-white"
@@ -75,15 +75,15 @@ export default function Home() {
               items={bookList}
               color="text-primaryColor"
               fontWeight="font-medium"
-              fontSize="text-[10px]"
-              lineHeight="leading-[15px]"
+              fontSize="text-ex_sm"
+              lineHeight="leading-4"
             />
             <ItemList
               items={authorList}
               color="text-secondaryColor"
               fontWeight="font-normal"
-              fontSize="text-[10px]"
-              lineHeight="leading-[15px]"
+              fontSize="text-ex_sm"
+              lineHeight="leading-4"
             />
           </div>
         </div>
@@ -93,7 +93,10 @@ export default function Home() {
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
-          <SectionTitle text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionHeading
+            text="Electrical Circuit 01"
+            fontSize="text-xl-plus"
+          />
           <SectionDescription
             text={`Course Teacher - ${teacherName}`}
             fontSize="text-2xl"
@@ -124,7 +127,7 @@ export default function Home() {
       </div>
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
-          <SectionTitle text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <SectionDescription
             text={`Course Teacher - ${teacherName}`}
             fontSize="text-2xl"
@@ -146,7 +149,7 @@ export default function Home() {
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <CreateCourseTitle />
+          <SecondaryHeading />
         </div>
       </div>
     </div>

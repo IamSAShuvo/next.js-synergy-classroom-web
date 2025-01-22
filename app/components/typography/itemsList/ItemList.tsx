@@ -1,17 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 
-const ItemList = ({
-  items,
-  color,
-  fontWeight,
-  fontSize,
-  lineHeight,
-}: {
+interface ItemListProps {
   items: string[];
   color: string;
   fontWeight: string;
   fontSize: string;
   lineHeight: string;
+}
+
+const ItemList: FC<ItemListProps> = ({
+  items,
+  color,
+  fontWeight,
+  fontSize,
+  lineHeight,
 }) => {
   return (
     <ul>
