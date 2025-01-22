@@ -1,5 +1,6 @@
 "use client";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import IndeterminateCheckBoxOutlinedIcon from "@mui/icons-material/IndeterminateCheckBoxOutlined";
 import {
   FormControl,
   IconButton,
@@ -38,7 +39,11 @@ const InputTextFieldWithExpandable: React.FC<
                 aria-label={expand ? "hide the field" : "show the field"}
                 onClick={handleIconClick}
               >
-                <AddBoxOutlinedIcon />
+                {expand ? (
+                  <IndeterminateCheckBoxOutlinedIcon />
+                ) : (
+                  <AddBoxOutlinedIcon />
+                )}
               </IconButton>
             </InputAdornment>
           }
