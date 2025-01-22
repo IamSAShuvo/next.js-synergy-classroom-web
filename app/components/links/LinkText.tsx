@@ -1,7 +1,12 @@
 import Link from "next/link";
 import React from "react";
 
-export const TextLink = ({ url, text }: { url: string; text: string }) => {
+interface LinkTextProps {
+  url: string;
+  text: string;
+}
+
+const LinkText: React.FC<LinkTextProps> = ({ url, text }) => {
   return (
     <Link
       href={url}
@@ -11,3 +16,5 @@ export const TextLink = ({ url, text }: { url: string; text: string }) => {
     </Link>
   );
 };
+
+export default LinkText;
