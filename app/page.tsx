@@ -1,11 +1,10 @@
-import TextDescriptionWithChildren from "./components/typography/TextDescriptionWithChildren";
-import AuthHeadingText from "./components/typography/AuthHeadingText";
+import DescriptionWithChildren from "./components/typography/DescriptionWithChildren";
+import PrimaryHeading from "./components/typography/PrimaryHeading";
 import SectionDescription from "./components/typography/SectionDescription";
-import SectionTitle from "./components/typography/SectionTitle";
+import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
-import { TextLink } from "./components/links/TextLink";
 import ItemList from "./components/typography/itemsList/ItemList";
-import CreateCourseTitle from "./components/typography/CreateCourseTitle";
+import SecondaryHeading from "./components/typography/SecondaryHeading";
 import TextInputField from "./components/inputFields/TextInputField";
 import PasswordInputField from "./components/inputFields/PasswordInputField";
 import SelectTextFields from "./components/inputFields/SelectTextFields";
@@ -21,6 +20,7 @@ import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import ActionButton from "./components/Buttons&Icons/ActionButton";
 import NavBarProfile from "./components/UserProfile/NavBarProfile";
 import CourseCardProfile from "./components/UserProfile/CourseCardProfile";
+import LinkText from "./components/links/LinkText";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -33,29 +33,29 @@ export default function Home() {
       <h1>Home</h1>
       <p>Welcome to the Synergy Classroom</p>
       {/* Login and Sign up page */}
-      <AuthHeadingText text="Login" />
-      <AuthHeadingText text="Sign Up" />
-      <TextDescriptionWithChildren
+      <PrimaryHeading text="Login" />
+      <PrimaryHeading text="Sign Up" />
+      <DescriptionWithChildren
         text="Enter your details below & free sign up"
         lineHeight="leading-[21.59px]"
       />
-      <TextDescriptionWithChildren
+      <DescriptionWithChildren
         text="Forgot PassWord?"
         lineHeight="leading-[19.19px]"
         letterSpacing="tracking-[0.48px]"
       />
-      <TextDescriptionWithChildren
+      <DescriptionWithChildren
         text="Don't have an account?"
         lineHeight="leading-[21.59px]"
       >
-        <TextLink url="/signup" text="Sign Up" />
-      </TextDescriptionWithChildren>
-      <TextDescriptionWithChildren
+        <LinkText url="/signup" text="Sign Up" />
+      </DescriptionWithChildren>
+      <DescriptionWithChildren
         text="Don't have an account?"
         lineHeight="leading-[1.3494rem]"
       >
-        <TextLink url="/login" text="Login" />
-      </TextDescriptionWithChildren>
+        <LinkText url="/login" text="Login" />
+      </DescriptionWithChildren>
 
       {/* Profile Avatars */}
       <div className="border-2 border-black w-1/3 p-4 rounded-lg mt-7">
@@ -67,7 +67,7 @@ export default function Home() {
       {/* dashboard card page */}
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>
-          <SectionTitle text="Electrical Circuit 01" fontSize="text-2xl" />
+          <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
           <SectionDescription
             text={`Section - ${section}`}
             color="text-white"
@@ -115,7 +115,7 @@ export default function Home() {
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
-          <SectionTitle text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <SectionDescription
             text={`Course Teacher - ${teacherName}`}
             fontSize="text-2xl"
@@ -146,7 +146,7 @@ export default function Home() {
       </div>
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
-          <SectionTitle text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <SectionDescription
             text={`Course Teacher - ${teacherName}`}
             fontSize="text-2xl"
@@ -168,7 +168,7 @@ export default function Home() {
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <CreateCourseTitle />
+          <SecondaryHeading />
         </div>
       </div>
       <div className="mt-8">
