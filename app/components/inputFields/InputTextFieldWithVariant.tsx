@@ -5,15 +5,17 @@ import React from "react";
 
 import { TextFieldProps } from "@mui/material";
 
-interface InputTextFieldWithBottomBorderProps {
+interface InputTextFieldWithVariantProps {
   label: string;
-  placeholder: string;
+  placeholder?: string;
   variant?: TextFieldProps["variant"];
 }
 
-const InputTextFieldWithBottomBorder: React.FC<
-  InputTextFieldWithBottomBorderProps
-> = ({ label, placeholder, variant }) => {
+const InputTextFieldWithVariant: React.FC<InputTextFieldWithVariantProps> = ({
+  label,
+  placeholder,
+  variant,
+}) => {
   return (
     <div className="flex flex-col">
       <TextField
@@ -44,7 +46,7 @@ const InputTextFieldWithBottomBorder: React.FC<
   );
 };
 
-export default InputTextFieldWithBottomBorder;
+export default InputTextFieldWithVariant;
 
 // import React, { useState } from "react";
 // import {

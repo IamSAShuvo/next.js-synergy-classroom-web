@@ -6,10 +6,9 @@ import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
-import InputTextFieldWithBorder from "./components/inputFields/InputTextFieldWithBorder";
 import InputPasswordField from "./components/inputFields/InputPasswordField";
 import SelectOptionTextFields from "./components/inputFields/SelectOptionTextFields";
-import InputTextFieldWithBottomBorder from "./components/inputFields/InputTextFieldWithBottomBorder";
+import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
 import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
 import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
 import EnrollButton from "./components/Buttons&Icons/EnrollButton";
@@ -20,6 +19,7 @@ import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import ActionButton from "./components/Buttons&Icons/ActionButton";
 import LinkText from "./components/links/LinkText";
+import InputTextFieldWithExpandable from "./components/inputFields/InputTextFieldWithExpandable";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -202,11 +202,17 @@ export default function Home() {
         <ButtonWithIcons icon={LogoutRoundedIcon} text="Log out" />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
-        <InputTextFieldWithBorder />
-        <InputTextFieldWithBottomBorder
+        <InputTextFieldWithVariant
+          label="Username"
+          placeholder="Enter Your UserName"
+          variant="outlined"
+        />
+        <InputTextFieldWithVariant
           label="Course Name"
           placeholder="Enter Your Course Name"
+          variant="filled"
         />
+        <InputTextFieldWithExpandable />
         <InputPasswordField />
         <SelectOptionTextFields />
       </div>
