@@ -1,8 +1,12 @@
 import React from "react";
 
-const NumberBadge = ({ count }: { count: number }) => {
+interface NumberBadgeProps {
+  count: number;
+}
+
+const NumberBadge: React.FC<NumberBadgeProps> = ({ count }) => {
   return (
-    <span className="font-medium text-xs leading-[1.125rem] text-leafGreen">
+    <span className="font-medium text-xs leading-5 text-leafGreen">
       {count} person Enrolled
     </span>
   );

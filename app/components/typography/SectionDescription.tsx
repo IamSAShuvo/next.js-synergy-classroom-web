@@ -1,18 +1,18 @@
 import React from "react";
 
-const SectionDescription = ({
-  text,
-  color,
-  fontSize,
-}: {
+interface SectionDescriptionProps {
   text: string;
   color: string;
   fontSize: string;
+}
+
+const SectionDescription: React.FC<SectionDescriptionProps> = ({
+  text,
+  color,
+  fontSize,
 }) => {
   return (
-    <h1 className={`font-normal ${fontSize} leading-[1.3125rem] ${color}`}>
-      {text}
-    </h1>
+    <h1 className={`font-normal ${fontSize} leading-5 ${color}`}>{text}</h1>
   );
 };
 
