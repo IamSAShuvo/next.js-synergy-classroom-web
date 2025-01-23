@@ -16,19 +16,19 @@ const RowRadioButtonsGroup: React.FC<RowRadioButtonsGroupProps> = ({
   const [value, setValue] = React.useState(initialValue);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+    setValue(event.target.value);
   };
 
   return (
-    <div className="text-headingColor font-poppins">
+    <div>
       <FormControl>
         <FormLabel
           id="demo-row-radio-buttons-group-label"
           sx={{
             fontFamily: "Poppins, sans-serif",
-            color: "var(--headingColor)",
+            color: "var(--primaryColor)",
             "&.Mui-focused": {
-              color: "var(--headingColor)",
+              color: "var(--primaryColor)",
             },
           }}
         >
@@ -42,17 +42,29 @@ const RowRadioButtonsGroup: React.FC<RowRadioButtonsGroupProps> = ({
           onChange={handleChange}
         >
           <FormControlLabel
+            value="female"
+            control={<Radio sx={{ color: "var(--primaryColor)" }} />}
+            label="Student"
             sx={{
               fontFamily: "Poppins, sans-serif",
               "& .MuiFormControlLabel-label": {
                 fontFamily: "Poppins, sans-serif",
+                color: "var(--primaryColor)",
               },
             }}
-            value="female"
-            control={<Radio />}
-            label="Student"
           />
-          <FormControlLabel value="male" control={<Radio />} label="Teacher" />
+          <FormControlLabel
+            value="male"
+            control={<Radio sx={{ color: "var(--primaryColor)" }} />}
+            label="Teacher"
+            sx={{
+              fontFamily: "Poppins, sans-serif",
+              "& .MuiFormControlLabel-label": {
+                fontFamily: "Poppins, sans-serif",
+                color: "var(--primaryColor)",
+              },
+            }}
+          />
         </RadioGroup>
       </FormControl>
     </div>
