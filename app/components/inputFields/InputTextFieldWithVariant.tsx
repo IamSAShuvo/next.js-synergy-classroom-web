@@ -27,7 +27,7 @@ const InputTextFieldWithVariant: React.FC<InputTextFieldWithVariantProps> = ({
         inputLabel: {
           sx: {
             fontFamily: "Poppins, sans-serif",
-            color: "theme('colors.headingColor')",
+            color: "var(--primaryColor)",
           },
         },
         input: {
@@ -35,7 +35,7 @@ const InputTextFieldWithVariant: React.FC<InputTextFieldWithVariantProps> = ({
             fontFamily: "Poppins, sans-serif",
             "&::placeholder": {
               fontFamily: "Poppins, sans-serif",
-              color: "var(--headingColor)",
+              color: "var(--primaryColor)",
             },
           },
         },
