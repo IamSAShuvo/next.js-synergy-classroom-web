@@ -8,6 +8,12 @@ interface ActionButtonProps {
   bgColor: string;
   borderColor?: string;
 }
+// ActionButton.defaultProps = {
+//   fontSize: "text-xl",
+//   textColor: "text-white",
+//   hoverColor: "hover:bg-indigo-600",
+//   bgColor: "bg-skyBlue",
+// };
 
 const ActionButton: React.FC<ActionButtonProps> = ({
   fontSize,
