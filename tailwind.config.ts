@@ -15,6 +15,8 @@ export default {
         skyBlue: "var(--skyBlue)",
         leafGreen: "var(--leafGreen)",
         midnightBlack: "var(--midnightBlack)",
+        deepNavy: "var(--deepNavy)",
+        shadowSteel: "var(--shadowSteel)",
       },
       fontSize: {
         ex_sm: "10px",
