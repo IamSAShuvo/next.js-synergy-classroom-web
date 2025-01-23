@@ -6,12 +6,19 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
-export default function RowRadioButtonsGroup() {
-  const [value, setValue] = React.useState("female");
+interface RowRadioButtonsGroupProps {
+  initialValue?: string;
+}
+
+const RowRadioButtonsGroup: React.FC<RowRadioButtonsGroupProps> = ({
+  initialValue = "female",
+}) => {
+  const [value, setValue] = React.useState(initialValue);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
+
   return (
     <div className="text-headingColor font-poppins">
       <FormControl>
@@ -50,4 +57,6 @@ export default function RowRadioButtonsGroup() {
       </FormControl>
     </div>
   );
-}
+};
+
+export default RowRadioButtonsGroup;

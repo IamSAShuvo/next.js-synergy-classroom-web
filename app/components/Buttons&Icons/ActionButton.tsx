@@ -1,19 +1,21 @@
 import React from "react";
 
-const ActionButton = ({
-  fontSize,
-  text,
-  textColor,
-  hoverColor,
-  bgColor,
-  borderColor,
-}: {
+interface ActionButtonProps {
   fontSize: string;
   text: string;
   textColor: string;
   hoverColor: string;
   bgColor: string;
   borderColor?: string;
+}
+
+const ActionButton: React.FC<ActionButtonProps> = ({
+  fontSize,
+  text,
+  textColor,
+  hoverColor,
+  bgColor,
+  borderColor,
 }) => {
   return (
     <button
