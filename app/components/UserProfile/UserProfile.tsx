@@ -4,16 +4,16 @@ import React from "react";
 type UserProfileProps = {
   name: string;
   role: string;
-  imgSrc: string;
+  avatarSrc: string;
 };
 
-const UserProfile: React.FC<UserProfileProps> = ({ name, role, imgSrc }) => {
+const UserProfile: React.FC<UserProfileProps> = ({ name, role, avatarSrc }) => {
   return (
     <div className="flex flex-col items-center gap-7">
       <Avatar
         className=""
         alt="Salman Aziz"
-        src={imgSrc}
+        src={avatarSrc}
         sx={{
           height: 150,
           width: 150,

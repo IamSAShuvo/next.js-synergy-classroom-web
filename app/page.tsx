@@ -61,14 +61,28 @@ export default function Home() {
 
       {/* User Profile */}
       <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5">
-        <CardProfile />
+        <CardProfile
+          name="Salman Aziz"
+          avatarSrc="/profile_avatar.png"
+          avatarHeight={60}
+          avatarWidth={60}
+          fontSize="text-xl"
+          fontWeight="font-normal"
+        />
+        <hr className="border-slate-800" />
+        <CardProfile
+          name="Random Name"
+          avatarSrc="/femaleAvatar.png"
+          fontSize="text-base"
+          fontWeight="font-medium"
+        />
         <hr className="border-slate-800" />
         <NavBarProfile />
         <hr className="border-slate-800" />
         <UserProfile
           name="Salman Aziz"
           role={role[1]}
-          imgSrc="/profile_picture.png"
+          avatarSrc="/profile_picture.png"
         />
       </div>
       {/* dashboard card page */}

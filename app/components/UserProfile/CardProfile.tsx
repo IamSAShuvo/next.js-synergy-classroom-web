@@ -1,18 +1,36 @@
 import { Avatar } from "@mui/material";
 import React from "react";
 
-const CourseCardProfile: React.FC = () => {
+interface CardProfileProps {
+  name: string;
+  avatarSrc: string;
+  fontSize: string;
+  fontWeight: string;
+  avatarHeight?: number;
+  avatarWidth?: number;
+}
+
+const CardProfile: React.FC<CardProfileProps> = ({
+  name,
+  avatarSrc,
+  fontSize,
+  fontWeight,
+  avatarHeight,
+  avatarWidth,
+}) => {
   return (
-    <div className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack">
+    <div
+      className={`flex items-center gap-3 ${fontSize} ${fontWeight} leading-5 text-midnightBlack`}
+    >
       <Avatar
         className=""
-        alt="Salman Aziz"
-        src="/profile_avatar.jpeg"
-        sx={{ height: 60, width: 60 }}
+        alt={name}
+        src={avatarSrc}
+        sx={{ height: avatarHeight, width: avatarWidth }}
       />
-      <h1>Salman Aziz</h1>
+      <h1>{name}</h1>
     </div>
   );
 };
 
-export default CourseCardProfile;
+export default CardProfile;
