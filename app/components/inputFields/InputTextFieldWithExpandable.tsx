@@ -28,8 +28,26 @@ const InputTextFieldWithExpandable: React.FC<
   return (
     <div className="flex flex-col gap-4">
       <FormControl variant={variant || "standard"} className="w-[420px]">
-        <InputLabel htmlFor="standard-adornment-password">Book Name</InputLabel>
+        <InputLabel
+          sx={{
+            fontFamily: "Poppins, sans-serif",
+            color: "var(--primaryColor)",
+            "&.Mui-focused": {
+              color: "var(--primaryColor)",
+            },
+          }}
+          htmlFor="standard-adornment-password"
+        >
+          Book Name
+        </InputLabel>
         <Input
+          sx={{
+            fontFamily: "Poppins, sans-serif",
+            color: "var(--primaryColor)",
+            "&.Mui-focused": {
+              color: "var(--primaryColor)",
+            },
+          }}
           placeholder="Add Book"
           id="standard-adornment-password"
           type="text"

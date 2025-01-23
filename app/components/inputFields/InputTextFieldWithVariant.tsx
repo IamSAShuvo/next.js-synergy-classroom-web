@@ -23,20 +23,18 @@ const InputTextFieldWithVariant: React.FC<InputTextFieldWithVariantProps> = ({
       variant={variant || "standard"}
       placeholder={placeholder}
       className="w-[420px]"
-      slotProps={{
-        inputLabel: {
-          sx: {
-            fontFamily: "Poppins, sans-serif",
-            color: "theme('colors.headingColor')",
-          },
+      sx={{
+        "& .MuiInputLabel-root": {
+          fontFamily: "Poppins, sans-serif",
+          color: "var(--primaryColor)",
         },
-        input: {
-          sx: {
+        "& .MuiInputBase-input": {
+          fontFamily: "Poppins, sans-serif",
+          color: "var(--primaryColor)",
+          "&::placeholder": {
             fontFamily: "Poppins, sans-serif",
-            "&::placeholder": {
-              fontFamily: "Poppins, sans-serif",
-              color: "var(--headingColor)",
-            },
+            color: "var(--primaryColor)",
+            opacity: 1,
           },
         },
       }}
