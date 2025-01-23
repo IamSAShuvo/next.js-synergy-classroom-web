@@ -16,27 +16,26 @@ const SelectOptionTextField = () => {
   return (
     <TextField
       className="w-[420px] mx-auto"
-      slotProps={{
-        inputLabel: {
-          sx: {
-            fontFamily: "Poppins, sans-serif",
-            color: "var(--primaryColor)",
+      sx={{
+        "& .MuiInputLabel-root": {
+          fontFamily: "Poppins, sans-serif",
+          color: "var(--primaryColor)",
+        },
+        "& .MuiOutlinedInput-root": {
+          fontFamily: "Poppins, sans-serif",
+          "& fieldset": {
+            borderColor: "var(--primaryColor)",
+          },
+          "&:hover fieldset": {
+            borderColor: "var(--primaryColor)",
+          },
+          "&.Mui-focused fieldset": {
+            borderColor: "var(--primaryColor)",
           },
         },
-        input: {
-          sx: {
-            fontFamily: "Poppins, sans-serif",
-            "&::placeholder": {
-              fontFamily: "Poppins, sans-serif",
-              color: "var(--primaryColor)",
-            },
-          },
-        },
-        formHelperText: {
-          sx: {
-            fontFamily: "Poppins, sans-serif",
-            color: "var(--primaryColor)",
-          },
+        "& .MuiFormHelperText-root": {
+          fontFamily: "Poppins, sans-serif",
+          color: "var(--primaryColor)",
         },
       }}
       id="outlined-select-currency"
