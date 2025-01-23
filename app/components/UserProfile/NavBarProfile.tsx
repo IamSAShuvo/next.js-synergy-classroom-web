@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import React, { FC } from "react";
 
-const NavBarProfile = () => {
+const NavBarProfile: FC = () => {
   return (
     <div className="flex items-center gap-8 text-lg font-medium leading-5 text-midnightBlack">
       <h1>Salman Aziz</h1>

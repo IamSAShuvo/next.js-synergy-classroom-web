@@ -19,6 +19,9 @@ import LinkText from "./components/links/LinkText";
 import InputTextFieldWithExpandable from "./components/inputFields/InputTextFieldWithExpandable";
 import InputPasswordField from "./components/inputFields/InputPasswordField";
 import SelectOptionTextField from "./components/inputFields/SelectOptionTextField";
+import CardProfile from "./components/UserProfile/CardProfile";
+import NavBarProfile from "./components/UserProfile/NavBarProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -26,6 +29,7 @@ export default function Home() {
   const value = 235;
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
+  const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
   return (
     <div className="mx-10 my-5">
       <h1>Home</h1>
@@ -55,6 +59,18 @@ export default function Home() {
         <LinkText url="/login" text="Login" />
       </DescriptionWithChildren>
 
+      {/* User Profile */}
+      <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5">
+        <CardProfile />
+        <hr className="border-slate-800" />
+        <NavBarProfile />
+        <hr className="border-slate-800" />
+        <UserProfile
+          name="Salman Aziz"
+          role={role[1]}
+          imgSrc="/profile_picture.png"
+        />
+      </div>
       {/* dashboard card page */}
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>

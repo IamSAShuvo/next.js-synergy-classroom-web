@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import React from "react";
 
-const CourseCardProfile = () => {
+const CourseCardProfile: React.FC = () => {
   return (
     <div className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack">
       <Avatar
