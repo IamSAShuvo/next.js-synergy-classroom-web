@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 interface ActionButtonProps {
   fontSize: string;
@@ -9,7 +9,7 @@ interface ActionButtonProps {
   borderColor?: string;
 }
 
-const ActionButton: React.FC<ActionButtonProps> = ({
+const ActionButton: FC<ActionButtonProps> = ({
   fontSize,
   text,
   textColor,

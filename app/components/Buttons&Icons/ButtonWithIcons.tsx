@@ -1,13 +1,13 @@
-import React from "react";
+import React, { ComponentType, FC } from "react";
 import { SvgIconProps } from "@mui/material/SvgIcon";
 
 interface ButtonWithIconsProps {
-  icon: React.ComponentType<SvgIconProps>;
+  icon: ComponentType<SvgIconProps>;
   text: string;
-  trailingIcon?: React.ComponentType<SvgIconProps>;
+  trailingIcon?: ComponentType<SvgIconProps>;
 }
 
-const ButtonWithIcons: React.FC<ButtonWithIconsProps> = ({
+const ButtonWithIcons: FC<ButtonWithIconsProps> = ({
   icon: Icon,
   text,
   trailingIcon: TrailingIcon,
