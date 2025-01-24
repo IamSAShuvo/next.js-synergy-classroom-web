@@ -54,7 +54,6 @@ export default function Home() {
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>
           <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
-          {/* <h1 className={`font-normal ${fontSize} leading-5 ${color}`}>{text}</h1> */}
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
@@ -87,10 +86,12 @@ export default function Home() {
             <ItemList
               items={bookList}
               className="text-primaryColor font-medium text-ex_sm leading-4"
+              useNumber={true}
             />
             <ItemList
               items={authorList}
               className="text-secondaryColor font-normal text-ex_sm leading-4"
+              useNumber={false}
             />
           </div>
         </div>
@@ -118,6 +119,7 @@ export default function Home() {
           <ItemList
             items={bookList}
             className="text-secondaryColor font-normal text-base leading-5"
+            useNumber={true}
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
@@ -149,6 +151,7 @@ export default function Home() {
           <ItemList
             items={bookList}
             className="text-secondaryColor font-normal text-base leading-5"
+            useNumber={true}
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
