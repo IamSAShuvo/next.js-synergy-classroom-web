@@ -86,17 +86,11 @@ export default function Home() {
           <div className="flex justify-between mt-2 mb-4">
             <ItemList
               items={bookList}
-              color="text-primaryColor"
-              fontWeight="font-medium"
-              fontSize="text-[10px]"
-              lineHeight="leading-[15px]"
+              className="text-primaryColor font-medium text-ex_sm leading-4"
             />
             <ItemList
               items={authorList}
-              color="text-secondaryColor"
-              fontWeight="font-normal"
-              fontSize="text-[10px]"
-              lineHeight="leading-[15px]"
+              className="text-secondaryColor font-normal text-ex_sm leading-4"
             />
           </div>
         </div>
@@ -123,10 +117,7 @@ export default function Home() {
           />
           <ItemList
             items={bookList}
-            color="text-secondaryColor"
-            fontWeight="font-normal"
-            fontSize="text-base"
-            lineHeight=" leading-[18px]"
+            className="text-secondaryColor font-normal text-base leading-5"
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
@@ -157,10 +148,7 @@ export default function Home() {
           />
           <ItemList
             items={bookList}
-            color="text-secondaryColor"
-            fontWeight="font-normal"
-            fontSize="text-base"
-            lineHeight=" leading-[18px]"
+            className="text-secondaryColor font-normal text-base leading-5"
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
