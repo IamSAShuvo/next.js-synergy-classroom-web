@@ -1,18 +1,17 @@
 // export default function Home() {}
-import DescriptionWithChildren from "./components/typography/DescriptionWithChildren";
+import DescriptionText from "./components/typography/DescriptionText";
 import PrimaryHeading from "./components/typography/PrimaryHeading";
-import SectionDescription from "./components/typography/SectionDescription";
 import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
-import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
 import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
 import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
 import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
-import HomeIcon from "@mui/icons-material/Home";
+import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
+import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import ActionButton from "./components/Buttons&Icons/ActionButton";
 import LinkText from "./components/links/LinkText";
@@ -32,32 +31,40 @@ export default function Home() {
   const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
   return (
     <div className="mx-10 my-5">
-      <h1>Home</h1>
+      <h1 className="tracking-normal leading-5">Home</h1>
       <p>Welcome to the Synergy Classroom</p>
       {/* Login and Sign up page */}
       <PrimaryHeading text="Login" />
       <PrimaryHeading text="Sign Up" />
-      <DescriptionWithChildren
+      <DescriptionText
         text="Enter your details below & free sign up"
-        lineHeight="leading-[21.59px]"
+        color="text-secondaryColor"
+        fontSize="text-sm"
+        lineHeight="leading-6"
       />
-      <DescriptionWithChildren
+      <DescriptionText
         text="Forgot PassWord?"
-        lineHeight="leading-[19.19px]"
+        color="text-secondaryColor"
+        fontSize="text-sm"
+        lineHeight="leading-5"
         letterSpacing="tracking-[0.48px]"
       />
-      <DescriptionWithChildren
+      <DescriptionText
         text="Don't have an account?"
-        lineHeight="leading-[21.59px]"
+        color="text-secondaryColor"
+        fontSize="text-sm"
+        lineHeight="leading-6"
       >
         <LinkText url="/signup" text="Sign Up" />
-      </DescriptionWithChildren>
-      <DescriptionWithChildren
+      </DescriptionText>
+      <DescriptionText
         text="Don't have an account?"
-        lineHeight="leading-[1.3494rem]"
+        color="text-secondaryColor"
+        fontSize="text-sm"
+        lineHeight="leading-5"
       >
         <LinkText url="/login" text="Login" />
-      </DescriptionWithChildren>
+      </DescriptionText>
 
       {/* User Profile */}
       <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5">
@@ -89,44 +96,44 @@ export default function Home() {
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>
           <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
-          <SectionDescription
+          <DescriptionText
+            color="text-white"
+            fontSize="text-sm"
             text={`Section - ${section}`}
-            color="text-white"
-            fontSize="text-sm"
+            lineHeight="leading-5"
           />
-          <SectionDescription
-            text={`Course Teacher - ${teacherName}`}
+          <DescriptionText
             color="text-white"
             fontSize="text-sm"
+            text={`Course Teacher - ${teacherName}`}
+            lineHeight="leading-5"
           />
         </div>
         <div className="bg-white ">
           <div className="flex justify-between mt-4">
-            <SectionDescription
+            <DescriptionText
               text={`Book List`}
               color="text-primaryColor"
               fontSize="text-sm"
+              lineHeight="leading-5"
             />
-            <SectionDescription
+            <DescriptionText
               text={`Author`}
               color="text-primaryColor"
               fontSize="text-sm"
+              lineHeight="leading-5"
             />
           </div>
           <div className="flex justify-between mt-2 mb-4">
             <ItemList
               items={bookList}
-              color="text-primaryColor"
-              fontWeight="font-medium"
-              fontSize="text-[10px]"
-              lineHeight="leading-[15px]"
+              className="text-primaryColor font-medium text-ex_sm leading-4"
+              useNumber={true}
             />
             <ItemList
               items={authorList}
-              color="text-secondaryColor"
-              fontWeight="font-normal"
-              fontSize="text-[10px]"
-              lineHeight="leading-[15px]"
+              className="text-secondaryColor font-normal text-ex_sm leading-4"
+              useNumber={false}
             />
           </div>
         </div>
@@ -137,59 +144,60 @@ export default function Home() {
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
-          <SectionDescription
+          <DescriptionText
             text={`Course Teacher - ${teacherName}`}
             fontSize="text-2xl"
             color="text-white"
+            lineHeight="leading-5"
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <SectionDescription
+          <DescriptionText
             text="Book List"
             color="text-steelBlue"
             fontSize="text-xl"
+            lineHeight="leading-5"
           />
           <ItemList
             items={bookList}
-            color="text-secondaryColor"
-            fontWeight="font-normal"
-            fontSize="text-base"
-            lineHeight=" leading-[18px]"
+            className="text-secondaryColor font-normal text-base leading-5"
+            useNumber={true}
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <SectionDescription
+          <DescriptionText
             text="Uploaded file"
             color="text-steelBlue"
             fontSize="text-xl"
+            lineHeight="leading-5"
           />
         </div>
       </div>
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
-          <SectionDescription
+          <DescriptionText
             text={`Course Teacher - ${teacherName}`}
             fontSize="text-2xl"
             color="text-white"
+            lineHeight="leading-5"
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <SectionDescription
+          <DescriptionText
             text="Book List"
             color="text-steelBlue"
             fontSize="text-xl"
+            lineHeight="leading-5"
           />
           <ItemList
             items={bookList}
-            color="text-secondaryColor"
-            fontWeight="font-normal"
-            fontSize="text-base"
-            lineHeight=" leading-[18px]"
+            className="text-secondaryColor font-normal text-base leading-5"
+            useNumber={true}
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <SecondaryHeading />
+          <SecondaryHeading text="Create Course" />
         </div>
       </div>
       <div className="mt-8">

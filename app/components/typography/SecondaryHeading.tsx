@@ -1,11 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 
-const CreateCourseTitle: React.FC = () => {
+interface SecondaryHeadingProps {
+  text: string;
+}
+
+const SecondaryHeading: FC<SecondaryHeadingProps> = ({ text }) => {
   return (
     <h1 className="font-normal text-3xl leading-10 text-primaryColor">
-      Create Course
+      {text}
     </h1>
   );
 };
 
-export default CreateCourseTitle;
+export default SecondaryHeading;
