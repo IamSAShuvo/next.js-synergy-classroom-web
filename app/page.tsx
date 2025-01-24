@@ -164,7 +164,7 @@ export default function Home() {
           />
         </div>
         <div className="mt-8 bg-white space-y-5">
-          <SecondaryHeading />
+          <SecondaryHeading text="Create Course" />
         </div>
       </div>
     </div>
