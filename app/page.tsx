@@ -1,4 +1,5 @@
 // export default function Home() {}
+"use client";
 import DescriptionText from "./components/typography/DescriptionText";
 import PrimaryHeading from "./components/typography/PrimaryHeading";
 import SectionHeading from "./components/typography/SectionHeading";
@@ -170,8 +171,14 @@ export default function Home() {
         <RowRadioButtonsGroup />
       </div>
       <div className="mt-6 mb-6 flex flex-col gap-4">
-        <FullWidthButton text="Log In" />
-        <FullWidthButton text="Sign Up" />
+        <FullWidthButton
+          onClick={() => console.log("Button Clicked")}
+          text="Log In"
+        />
+        <FullWidthButton
+          onClick={() => console.log("Button Clicked")}
+          text="Sign Up"
+        />
         <ActionButton
           text="Create"
           textColor="text-white"
