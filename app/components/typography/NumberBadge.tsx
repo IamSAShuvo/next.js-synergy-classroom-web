@@ -4,10 +4,10 @@ interface NumberBadgeProps {
   count: number;
 }
 
-const NumberBadge: React.FC<NumberBadgeProps> = ({ count }) => {
+const NumberBadge: React.FC<NumberBadgeProps> = ({ count = 0 }) => {
   return (
     <span className="font-medium text-xs leading-5 text-leafGreen">
-      {count} person Enrolled
+      {count} {count === 1 ? "person Enrolled" : "people Enrolled"}
     </span>
   );
 };

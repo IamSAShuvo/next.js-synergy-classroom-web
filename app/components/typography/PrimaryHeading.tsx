@@ -1,10 +1,10 @@
 import React from "react";
 
-interface AuthHeadingTextProps {
+interface PrimaryHeadingProps {
   text: string;
 }
 
-const AuthHeadingText: React.FC<AuthHeadingTextProps> = ({ text }) => {
+const PrimaryHeading: React.FC<PrimaryHeadingProps> = ({ text }) => {
   return (
     <h1 className="font-bold text-xl-plus leading-extra-loose text-primaryColor">
       {text}
@@ -12,4 +12,4 @@ const AuthHeadingText: React.FC<AuthHeadingTextProps> = ({ text }) => {
   );
 };
 
-export default AuthHeadingText;
+export default PrimaryHeading;

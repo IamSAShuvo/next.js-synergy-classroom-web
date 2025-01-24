@@ -26,16 +26,14 @@ const DescriptionWithChildren: FC<DescriptionWithChildrenProps> = ({
   lineHeight,
   letterSpacing = "tracking-normal",
 }) => {
-  // text-sm
-  // text-secondaryColor
   return (
-    <h1
+    <p
       className={`font-normal ${color} ${lineHeight} ${
         letterSpacing || ""
       } ${fontSize}`}
     >
       {text} {children && <span>{children}</span>}
-    </h1>
+    </p>
   );
 };
 
