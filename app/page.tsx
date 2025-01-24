@@ -5,7 +5,19 @@ import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
+import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
+import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
+import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
+import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
+import HomeIcon from "@mui/icons-material/Home";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import ActionButton from "./components/Buttons&Icons/ActionButton";
 import LinkText from "./components/links/LinkText";
+import InputTextFieldWithExpandable from "./components/inputFields/InputTextFieldWithExpandable";
+import InputPasswordField from "./components/inputFields/InputPasswordField";
+import SelectOptionTextField from "./components/inputFields/SelectOptionTextField";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -13,6 +25,7 @@ export default function Home() {
   const value = 235;
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
+  const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
   return (
     <div className="mx-10 my-5">
       <h1 className="tracking-normal leading-5">Home</h1>
@@ -157,6 +170,61 @@ export default function Home() {
         <div className="mt-8 bg-white space-y-5">
           <SecondaryHeading text="Create Course" />
         </div>
+      </div>
+      <div className="mt-8">
+        <RowRadioButtonsGroup />
+      </div>
+      <div className="mt-6 mb-6 flex flex-col gap-4">
+        <FullWidthButton text="Log In" />
+        <FullWidthButton text="Sign Up" />
+        <ActionButton
+          text="Create"
+          textColor="text-white"
+          hoverColor="hover:bg-indigo-600"
+          bgColor="bg-skyBlue"
+          fontSize="text-xl"
+        />
+        <ActionButton
+          text="Save"
+          textColor="text-white"
+          hoverColor="hover:bg-indigo-600"
+          bgColor="bg-skyBlue"
+          fontSize="text-xl"
+        />
+        <ActionButton
+          text="Cancel"
+          textColor="text-[#B1B1B1]"
+          hoverColor="hover:bg-gray-100"
+          bgColor="bg-white/[0.12]"
+          borderColor="border-[#B1B1B1]"
+          fontSize="text-xl"
+        />
+        <ButtonWithIcons
+          icon={HomeIcon}
+          text="Home"
+          trailingIcon={ChevronRightIcon}
+        />
+        <ButtonWithIcons
+          icon={LocalLibraryRoundedIcon}
+          text="ClassWork"
+          trailingIcon={ChevronRightIcon}
+        />
+        <ButtonWithIcons icon={LogoutRoundedIcon} text="Log out" />
+      </div>
+      <div className="mt-8 flex flex-col items-center space-y-5">
+        <InputTextFieldWithVariant
+          label="Username"
+          placeholder="Enter Your UserName"
+          variant="outlined"
+        />
+        <InputTextFieldWithVariant
+          label="Course Name"
+          placeholder="Enter Your Course Name"
+          variant="filled"
+        />
+        <InputTextFieldWithExpandable />
+        <InputPasswordField />
+        <SelectOptionTextField />
       </div>
     </div>
   );
