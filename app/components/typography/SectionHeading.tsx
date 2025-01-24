@@ -7,7 +7,7 @@ interface SectionHeadingProps {
 
 const SectionHeading: React.FC<SectionHeadingProps> = ({ text, fontSize }) => {
   return (
-    <h1 className={`font-medium ${fontSize} leading-9 text-white`}>{text}</h1>
+    <h3 className={`font-medium ${fontSize} leading-9 text-white`}>{text}</h3>
   );
 };
 
