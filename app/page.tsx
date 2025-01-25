@@ -84,7 +84,12 @@ export default function Home() {
           fontWeight="font-medium"
         />
         <hr className="border-slate-800" />
-        <NavBarProfile />
+        <NavBarProfile
+          avatarSrc="/profile_avatar.jpeg"
+          name="Salman Aziz"
+          avatarHeight={50}
+          avatarWidth={50}
+        />
         <hr className="border-slate-800" />
         <UserProfile
           name="Salman Aziz"

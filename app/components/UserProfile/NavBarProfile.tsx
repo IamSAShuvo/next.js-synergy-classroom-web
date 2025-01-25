@@ -1,15 +1,26 @@
 import { Avatar } from "@mui/material";
 import React, { FC } from "react";
 
-const NavBarProfile: FC = () => {
+interface NavBarProfileProps {
+  name: string;
+  avatarSrc: string;
+  avatarHeight?: number;
+  avatarWidth?: number;
+}
+const NavBarProfile: FC<NavBarProfileProps> = ({
+  name,
+  avatarSrc,
+  avatarHeight,
+  avatarWidth,
+}) => {
   return (
     <div className="flex items-center gap-8 text-lg font-medium leading-5 text-midnightBlack">
-      <h1>Salman Aziz</h1>
+      <h1>{name}</h1>
       <Avatar
         className=""
-        alt="Salman Aziz"
-        src="/profile_avatar.jpeg"
-        sx={{ height: 50, width: 50 }}
+        alt={name}
+        src={avatarSrc}
+        sx={{ height: avatarHeight, width: avatarWidth }}
       />
     </div>
   );
