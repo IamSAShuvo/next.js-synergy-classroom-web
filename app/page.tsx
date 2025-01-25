@@ -21,6 +21,7 @@ import SelectOptionTextField from "./components/inputFields/SelectOptionTextFiel
 import CardProfile from "./components/UserProfile/CardProfile";
 import NavBarProfile from "./components/UserProfile/NavBarProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
+import PrimaryCard from "./components/CardComponent/PrimaryCard";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -65,6 +66,56 @@ export default function Home() {
       >
         <LinkText url="/login" text="Login" />
       </DescriptionText>
+
+      {/* Card Component */}
+
+      <div className="flex flex-col items-center justify-center m-14 p-6">
+        {/* Card with custom content and footer */}
+        <PrimaryCard
+          header={
+            <>
+              <PrimaryHeading text="Login" />
+              <DescriptionText
+                text="Enter your details below & free sign up"
+                color="text-secondaryColor"
+                fontSize="text-sm"
+                lineHeight="leading-6"
+              />
+            </>
+          }
+          content={
+            <>
+              <InputTextFieldWithVariant
+                label="Username"
+                placeholder="Enter Your UserName"
+                variant="outlined"
+              />
+              <InputPasswordField />
+            </>
+          }
+          aside={
+            <DescriptionText
+              text="Forgot PassWord?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-5"
+              letterSpacing="tracking-[0.48px]"
+            />
+          }
+          footer={
+            <DescriptionText
+              text="Don't have an account?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-6"
+            >
+              <LinkText url="/signup" text="Sign Up" />
+            </DescriptionText>
+          }
+        >
+          <FullWidthButton text="Log In" />
+        </PrimaryCard>
+      </div>
 
       {/* User Profile */}
       <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5">
