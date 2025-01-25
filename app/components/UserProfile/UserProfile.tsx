@@ -1,5 +1,5 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import React, { FC } from "react";
 
 type UserProfileProps = {
   name: string;
@@ -7,7 +7,7 @@ type UserProfileProps = {
   avatarSrc: string;
 };
 
-const UserProfile: React.FC<UserProfileProps> = ({ name, role, avatarSrc }) => {
+const UserProfile: FC<UserProfileProps> = ({ name, role, avatarSrc }) => {
   return (
     <div className="flex flex-col items-center gap-7">
       <Avatar

@@ -1,5 +1,5 @@
 import { Avatar } from "@mui/material";
-import React from "react";
+import React, { FC } from "react";
 
 interface CardProfileProps {
   name: string;
@@ -10,7 +10,7 @@ interface CardProfileProps {
   avatarWidth?: number;
 }
 
-const CardProfile: React.FC<CardProfileProps> = ({
+const CardProfile: FC<CardProfileProps> = ({
   name,
   avatarSrc,
   fontSize,
