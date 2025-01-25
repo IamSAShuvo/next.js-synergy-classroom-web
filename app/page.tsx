@@ -10,7 +10,6 @@ import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
 import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
 import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import ActionButton from "./components/Buttons&Icons/ActionButton";
@@ -204,11 +203,6 @@ export default function Home() {
         <ButtonWithIcons
           icon={HomeIcon}
           text="Home"
-          trailingIcon={ChevronRightIcon}
-        />
-        <ButtonWithIcons
-          icon={LocalLibraryRoundedIcon}
-          text="ClassWork"
           trailingIcon={ChevronRightIcon}
         />
         <ButtonWithIcons icon={LogoutRoundedIcon} text="Log out" />
