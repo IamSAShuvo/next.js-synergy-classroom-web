@@ -1,10 +1,20 @@
 // export default function Home() {}
+"use client";
 import DescriptionText from "./components/typography/DescriptionText";
 import PrimaryHeading from "./components/typography/PrimaryHeading";
 import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
+import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
+import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
+import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
+import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
+import HomeIcon from "@mui/icons-material/Home";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import ActionButton from "./components/Buttons&Icons/ActionButton";
 import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
 import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
 import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
@@ -209,8 +219,14 @@ export default function Home() {
         <RowRadioButtonsGroup />
       </div>
       <div className="mt-6 mb-6 flex flex-col gap-4">
-        <FullWidthButton text="Log In" />
-        <FullWidthButton text="Sign Up" />
+        <FullWidthButton
+          onClick={() => console.log("Button Clicked")}
+          text="Log In"
+        />
+        <FullWidthButton
+          onClick={() => console.log("Button Clicked")}
+          text="Sign Up"
+        />
         <ActionButton
           text="Create"
           textColor="text-white"

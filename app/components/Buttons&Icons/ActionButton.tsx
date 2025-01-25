@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 interface ActionButtonProps {
   fontSize: string;
@@ -15,7 +15,7 @@ interface ActionButtonProps {
 //   bgColor: "bg-skyBlue",
 // };
 
-const ActionButton: React.FC<ActionButtonProps> = ({
+const ActionButton: FC<ActionButtonProps> = ({
   fontSize,
   text,
   textColor,
