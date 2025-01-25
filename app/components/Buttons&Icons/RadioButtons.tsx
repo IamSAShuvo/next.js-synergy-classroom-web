@@ -1,21 +1,21 @@
 "use client";
-import * as React from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import React, { ChangeEvent, FC, useState } from "react";
 
 interface RowRadioButtonsGroupProps {
   initialValue?: string;
 }
 
-const RowRadioButtonsGroup: React.FC<RowRadioButtonsGroupProps> = ({
+const RowRadioButtonsGroup: FC<RowRadioButtonsGroupProps> = ({
   initialValue = "female",
 }) => {
-  const [value, setValue] = React.useState(initialValue);
+  const [value, setValue] = useState(initialValue);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
 
