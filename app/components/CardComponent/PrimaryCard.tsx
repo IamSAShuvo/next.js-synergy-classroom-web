@@ -7,6 +7,7 @@ interface PrimaryCardProps {
   aside?: ReactNode;
   footer?: ReactNode;
   children?: ReactNode;
+  className?: string;
 }
 
 const PrimaryCard: FC<PrimaryCardProps> = ({
@@ -15,9 +16,10 @@ const PrimaryCard: FC<PrimaryCardProps> = ({
   aside,
   footer,
   children,
+  className = "",
 }) => {
   return (
-    <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8">
+    <div className={className}>
       {header ? (
         <header className="mb-8">{header}</header>
       ) : (

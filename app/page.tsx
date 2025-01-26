@@ -6,7 +6,7 @@ import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
-import RowRadioButtonsGroup from "./components/Buttons&Icons/RadioButtons";
+import RowRadioButtons from "./components/Buttons&Icons/RadioButtons";
 import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
 import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
 import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
@@ -70,9 +70,10 @@ export default function Home() {
 
       {/* Card Component */}
 
-      <div className="flex flex-col items-center justify-center m-14 p-6">
-        {/* Card with custom content and footer */}
+      <div className="flex flex-col items-center justify-center m-14 p-6 space-y-8">
+        {/* Login Card */}
         <PrimaryCard
+          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
           header={
             <>
               <PrimaryHeading text="Login" />
@@ -114,7 +115,62 @@ export default function Home() {
             </DescriptionText>
           }
         >
-          <FullWidthButton text="Log In" />
+          <FullWidthButton
+            onClick={() => console.log("Button Clicked")}
+            text="Log In"
+          />
+        </PrimaryCard>
+
+        {/* Sign Up Card */}
+        <PrimaryCard
+          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+          header={
+            <>
+              <PrimaryHeading text="Sign Up" />
+              <DescriptionText
+                text="Enter your details below & free sign up"
+                color="text-secondaryColor"
+                fontSize="text-sm"
+                lineHeight="leading-6"
+              />
+            </>
+          }
+          content={
+            <>
+              <InputTextFieldWithVariant
+                label="Username"
+                placeholder="Enter Your UserName"
+                variant="outlined"
+              />
+              <InputTextFieldWithVariant
+                label="Name"
+                placeholder="Enter Your Name"
+                variant="outlined"
+              />
+              <InputPasswordField />
+              <InputTextFieldWithVariant
+                label="Email"
+                placeholder="Please Provide Your Email"
+                variant="outlined"
+              />
+              <RowRadioButtons />
+            </>
+          }
+          footer={
+            <DescriptionText
+              text="Already have an account?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-6"
+            >
+              <LinkText url="/login" text="Login" />
+            </DescriptionText>
+          }
+        >
+          <FullWidthButton
+            onClick={() => console.log("Button Clicked")}
+            text="Sign Up"
+          />
         </PrimaryCard>
       </div>
 
@@ -258,7 +314,7 @@ export default function Home() {
         </div>
       </div>
       <div className="mt-8">
-        <RowRadioButtonsGroup />
+        <RowRadioButtons />
       </div>
       <div className="mt-6 mb-6 flex flex-col gap-4">
         <FullWidthButton
