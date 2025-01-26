@@ -193,6 +193,7 @@ export default function Home() {
         />
         <hr className="border-slate-800" />
         <NavBarProfile
+          roles={role}
           avatarSrc="/profile_avatar.jpeg"
           name="Salman Aziz"
           avatarHeight={50}
