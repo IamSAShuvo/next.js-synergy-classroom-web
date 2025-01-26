@@ -15,7 +15,7 @@ const ItemList: FC<ItemListProps> = ({
     <div>
       <ul>
         {items.map((item, index) => (
-          <li key={index} className={className}>
+          <li key={item} className={className}>
             <span className="mr-2">{useNumber && `${index + 1}`}</span>
             {item}
           </li>
