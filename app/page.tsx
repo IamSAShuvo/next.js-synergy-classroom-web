@@ -23,6 +23,7 @@ import CardProfile from "./components/UserProfile/CardProfile";
 import NavBarProfile from "./components/UserProfile/NavBarProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
 import PrimaryCard from "./components/CardComponent/PrimaryCard";
+import SecondaryCard from "./components/CardComponent/SecondaryCard";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -172,6 +173,60 @@ export default function Home() {
             text="Sign Up"
           />
         </PrimaryCard>
+        <SecondaryCard
+          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+          header={
+            <>
+              <SectionHeading
+                text="Electrical Circuit 01"
+                fontSize="text-2xl"
+              />
+              <DescriptionText
+                color="text-white"
+                fontSize="text-sm"
+                text={`Section - ${section}`}
+                lineHeight="leading-5"
+              />
+              <DescriptionText
+                color="text-white"
+                fontSize="text-sm"
+                text={`Course Teacher - ${teacherName}`}
+                lineHeight="leading-5"
+              />
+            </>
+          }
+          content={
+            <>
+              <div className="flex justify-between mt-4">
+                <DescriptionText
+                  text={`Book List`}
+                  color="text-primaryColor"
+                  fontSize="text-sm"
+                  lineHeight="leading-5"
+                />
+                <DescriptionText
+                  text={`Author`}
+                  color="text-primaryColor"
+                  fontSize="text-sm"
+                  lineHeight="leading-5"
+                />
+              </div>
+              <div className="flex justify-between mt-2 mb-4">
+                <ItemList
+                  items={bookList}
+                  className="text-primaryColor font-medium text-ex_sm leading-4"
+                  useNumber={true}
+                />
+                <ItemList
+                  items={authorList}
+                  className="text-secondaryColor font-normal text-ex_sm leading-4"
+                  useNumber={false}
+                />
+              </div>
+            </>
+          }
+          footer={<NumberBadge count={value} />}
+        />
       </div>
 
       {/* User Profile */}
