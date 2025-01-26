@@ -9,8 +9,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primaryColor: "var(--primaryColor)",
+        secondaryColor: "var(--secondaryColor)",
+        steelBlue: "var(--steelBlue)",
+        skyBlue: "var(--skyBlue)",
+        leafGreen: "var(--leafGreen)",
+        midnightBlack: "var(--midnightBlack)",
+      },
+      fontSize: {
+        ex_sm: "10px",
+        "xl-plus": "40px",
+      },
+      lineHeight: {
+        "extra-loose": "57.58px",
       },
     },
   },
