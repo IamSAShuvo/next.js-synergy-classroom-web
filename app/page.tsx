@@ -180,25 +180,17 @@ export default function Home() {
         />
         <ActionButton
           text="Create"
-          textColor="text-white"
-          hoverColor="hover:bg-indigo-600"
-          bgColor="bg-skyBlue"
-          fontSize="text-xl"
+          className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
         />
+
         <ActionButton
           text="Save"
-          textColor="text-white"
-          hoverColor="hover:bg-indigo-600"
-          bgColor="bg-skyBlue"
-          fontSize="text-xl"
+          className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
         />
         <ActionButton
           text="Cancel"
-          textColor="text-[#B1B1B1]"
-          hoverColor="hover:bg-gray-100"
-          bgColor="bg-white/[0.12]"
+          className="text-[#B1B1B1] hover:bg-gray-100 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
           borderColor="border-[#B1B1B1]"
-          fontSize="text-xl"
         />
         <ButtonWithIcons
           icon={HomeIcon}
