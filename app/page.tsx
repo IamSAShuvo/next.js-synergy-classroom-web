@@ -6,15 +6,13 @@ import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
-import RowRadioButtons from "./components/Buttons&Icons/RadioButtons";
-import FullWidthButton from "./components/Buttons&Icons/FullWidthButton";
-import ButtonWithIcons from "./components/Buttons&Icons/ButtonWithIcons";
+import RowRadioButtonsGroup from "./components/Buttons/RadioButtons";
+import SidebarMenuButton from "./components/Buttons/SidebarMenuButton";
 import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import LocalLibraryRoundedIcon from "@mui/icons-material/LocalLibraryRounded";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import ActionButton from "./components/Buttons&Icons/ActionButton";
+import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
 import InputTextFieldWithExpandable from "./components/inputFields/InputTextFieldWithExpandable";
 import InputPasswordField from "./components/inputFields/InputPasswordField";
@@ -378,39 +376,34 @@ export default function Home() {
         <RowRadioButtons />
       </div>
       <div className="mt-6 mb-6 flex flex-col gap-4">
-        <FullWidthButton
-          onClick={() => console.log("Button Clicked")}
+        <PrimaryButton
           text="Log In"
+          className="hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
         />
-        <FullWidthButton
-          onClick={() => console.log("Button Clicked")}
+        <PrimaryButton
           text="Sign Up"
+          className="hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
         />
-        <ActionButton
+        <PrimaryButton
           text="Create"
           className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
         />
 
-        <ActionButton
+        <PrimaryButton
           text="Save"
           className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
         />
-        <ActionButton
+        <PrimaryButton
           text="Cancel"
           className="text-[#B1B1B1] hover:bg-gray-100 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
           borderColor="border-[#B1B1B1]"
         />
-        <ButtonWithIcons
+        <SidebarMenuButton
           icon={HomeIcon}
           text="Home"
           trailingIcon={ChevronRightIcon}
         />
-        <ButtonWithIcons
-          icon={LocalLibraryRoundedIcon}
-          text="ClassWork"
-          trailingIcon={ChevronRightIcon}
-        />
-        <ButtonWithIcons icon={LogoutRoundedIcon} text="Log out" />
+        <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
         <InputTextFieldWithVariant
