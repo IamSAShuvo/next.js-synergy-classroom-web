@@ -1,5 +1,6 @@
 // import Link from "next/link";
 import React, { FC, ReactNode } from "react";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 interface SecondaryCardProps {
   header?: ReactNode;
@@ -20,15 +21,23 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
     <div className={className}>
       {header ? (
         <header
-          className="bg-cover bg-center p-5 rounded-t-2xl"
+          className="relative bg-cover bg-center p-5 rounded-t-2xl"
           style={{ backgroundImage: "url(/card_bg.jpeg)" }}
         >
+          <div className="absolute top-6 right-4 text-white cursor-pointer">
+            <MoreVertIcon />
+          </div>
           {header}
         </header>
       ) : (
-        <h2 className="text-xl font-semibold text-gray-800 mb-2">
-          Default Header
-        </h2>
+        <div className="relative p-5 bg-gray-200 rounded-t-2xl">
+          <div className="absolute top-4 right-4 text-white cursor-pointer">
+            <MoreVertIcon />
+          </div>
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Default Header
+          </h2>
+        </div>
       )}
       {content ? (
         <main className="flex flex-col gap-2 px-5">{content}</main>

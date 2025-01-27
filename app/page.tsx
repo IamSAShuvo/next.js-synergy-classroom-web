@@ -174,7 +174,7 @@ export default function Home() {
           />
         </PrimaryCard>
         <SecondaryCard
-          className="w-1/5 mx-auto bg-white rounded-2xl shadow-lg"
+          className="w-[354px] mx-auto bg-white rounded-2xl shadow-lg"
           header={
             <>
               <SectionHeading
