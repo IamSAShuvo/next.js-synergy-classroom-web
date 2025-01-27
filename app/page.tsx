@@ -174,7 +174,7 @@ export default function Home() {
           />
         </PrimaryCard>
         <SecondaryCard
-          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+          className="w-1/5 mx-auto bg-white rounded-2xl shadow-lg"
           header={
             <>
               <SectionHeading
@@ -197,7 +197,7 @@ export default function Home() {
           }
           content={
             <>
-              <div className="flex justify-between mt-4">
+              <div className="flex justify-between mt-5">
                 <DescriptionText
                   text={`Book List`}
                   color="text-primaryColor"
@@ -211,7 +211,7 @@ export default function Home() {
                   lineHeight="leading-5"
                 />
               </div>
-              <div className="flex justify-between mt-2 mb-4">
+              <div className="flex justify-between mb-6">
                 <ItemList
                   items={bookList}
                   className="text-primaryColor font-medium text-ex_sm leading-4"
@@ -226,7 +226,12 @@ export default function Home() {
             </>
           }
           footer={<NumberBadge count={value} />}
-        />
+        >
+          <ActionButton
+            text="Enroll"
+            className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
+          />
+        </SecondaryCard>
       </div>
 
       {/* User Profile */}
