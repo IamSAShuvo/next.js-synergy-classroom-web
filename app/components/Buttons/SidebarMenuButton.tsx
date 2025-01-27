@@ -1,13 +1,13 @@
 import React, { ComponentType, FC } from "react";
 import { SvgIconProps } from "@mui/material/SvgIcon";
 
-interface ButtonWithIconsProps {
+interface SidebarMenuButtonProps {
   icon: ComponentType<SvgIconProps>;
   text: string;
   trailingIcon?: ComponentType<SvgIconProps>;
 }
 
-const ButtonWithIcons: FC<ButtonWithIconsProps> = ({
+const SidebarMenuButton: FC<SidebarMenuButtonProps> = ({
   icon: Icon,
   text,
   trailingIcon: TrailingIcon,
@@ -23,4 +23,4 @@ const ButtonWithIcons: FC<ButtonWithIconsProps> = ({
   );
 };
 
-export default ButtonWithIcons;
+export default SidebarMenuButton;
