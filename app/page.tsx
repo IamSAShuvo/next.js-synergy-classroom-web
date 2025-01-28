@@ -114,9 +114,9 @@ export default function Home() {
             </DescriptionText>
           }
         >
-          <FullWidthButton
-            onClick={() => console.log("Button Clicked")}
+          <PrimaryButton
             text="Log In"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
           />
         </PrimaryCard>
 
@@ -152,7 +152,7 @@ export default function Home() {
                 placeholder="Please Provide Your Email"
                 variant="outlined"
               />
-              <RowRadioButtons />
+              <RowRadioButtonsGroup />
             </>
           }
           footer={
@@ -166,9 +166,9 @@ export default function Home() {
             </DescriptionText>
           }
         >
-          <FullWidthButton
-            onClick={() => console.log("Button Clicked")}
+          <PrimaryButton
             text="Sign Up"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
           />
         </PrimaryCard>
         <SecondaryCard
@@ -225,7 +225,7 @@ export default function Home() {
           }
           footer={<NumberBadge count={value} />}
         >
-          <ActionButton
+          <PrimaryButton
             text="Enroll"
             className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
           />
@@ -371,9 +371,6 @@ export default function Home() {
         <div className="mt-8 bg-white space-y-5">
           <SecondaryHeading text="Create Course" />
         </div>
-      </div>
-      <div className="mt-8">
-        <RowRadioButtons />
       </div>
       <div className="mt-6 mb-6 flex flex-col gap-4">
         <PrimaryButton
