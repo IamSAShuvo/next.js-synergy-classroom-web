@@ -1,10 +1,17 @@
 // export default function Home() {}
+"use client";
 import DescriptionText from "./components/typography/DescriptionText";
 import PrimaryHeading from "./components/typography/PrimaryHeading";
 import SectionHeading from "./components/typography/SectionHeading";
 import NumberBadge from "./components/typography/NumberBadge";
 import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
+import RowRadioButtonsGroup from "./components/Buttons/RadioButtons";
+import SidebarMenuButton from "./components/Buttons/SidebarMenuButton";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import HomeIcon from "@mui/icons-material/Home";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
 
 export default function Home() {
@@ -157,6 +164,39 @@ export default function Home() {
         <div className="mt-8 bg-white space-y-5">
           <SecondaryHeading text="Create Course" />
         </div>
+      </div>
+      <div className="mt-8">
+        <RowRadioButtonsGroup />
+      </div>
+      <div className="mt-6 mb-6 flex flex-col gap-4">
+        <PrimaryButton
+          text="Log In"
+          className="hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+        />
+        <PrimaryButton
+          text="Sign Up"
+          className="hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+        />
+        <PrimaryButton
+          text="Create"
+          className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
+        />
+
+        <PrimaryButton
+          text="Save"
+          className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
+        />
+        <PrimaryButton
+          text="Cancel"
+          className="text-[#B1B1B1] hover:bg-gray-100 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
+          borderColor="border-[#B1B1B1]"
+        />
+        <SidebarMenuButton
+          icon={HomeIcon}
+          text="Home"
+          trailingIcon={ChevronRightIcon}
+        />
+        <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
       </div>
     </div>
   );
