@@ -16,11 +16,11 @@ const ProfileModal: FC<ProfileModalProps> = ({
 }) => {
   return (
     <div
-      className="fixed inset-0 bg-[#D9D9D9] bg-opacity-50 z-50 flex justify-end items-start"
+      className="fixed  inset-0 bg-[#D9D9D9] bg-opacity-50 z-50 flex justify-end items-start"
       onClick={onClose}
     >
       <div
-        className="relative max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8 mt-4 mr-4"
+        className="relative top-28 max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8 mt-4 mr-4"
         onClick={(e) => e.stopPropagation()} // Prevent click on modal from closing
       >
         <button
