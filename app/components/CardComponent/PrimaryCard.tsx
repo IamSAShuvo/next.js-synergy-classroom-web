@@ -34,11 +34,13 @@ const PrimaryCard: FC<PrimaryCardProps> = ({
           This is the default content of the card.
         </p>
       )}
-      {
+      {aside ? (
         <aside className="mb-4 text-right hover:underline">
           <Link href={""}>{aside}</Link>
         </aside>
-      }
+      ) : (
+        ""
+      )}
       {children}
       {footer ? (
         <footer className="mt-16 text-center">{footer}</footer>
