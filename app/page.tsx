@@ -152,7 +152,9 @@ export default function Home() {
                 placeholder="Please Provide Your Email"
                 variant="outlined"
               />
-              <RowRadioButtonsGroup />
+              <div>
+                <RowRadioButtonsGroup />
+              </div>
             </>
           }
           footer={
