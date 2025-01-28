@@ -20,7 +20,7 @@ const RadioButtons: FC = () => {
   };
 
   return (
-    <div>
+    <>
       <label className="font-normal text-base leading-6 text-primaryColor">
         Select Profession
       </label>
@@ -45,7 +45,7 @@ const RadioButtons: FC = () => {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
