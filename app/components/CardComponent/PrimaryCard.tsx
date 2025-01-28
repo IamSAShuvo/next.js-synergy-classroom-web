@@ -28,7 +28,7 @@ const PrimaryCard: FC<PrimaryCardProps> = ({
         </h2>
       )}
       {content ? (
-        <main className="mb-4 flex flex-col gap-6">{content}</main>
+        <main className="mb-8 flex flex-col gap-6">{content}</main>
       ) : (
         <p className="text-gray-600 mb-4">
           This is the default content of the card.
