@@ -17,6 +17,7 @@ import LinkText from "./components/links/LinkText";
 import InputTextFieldWithExpandable from "./components/inputFields/InputTextFieldWithExpandable";
 import InputPasswordField from "./components/inputFields/InputPasswordField";
 import SelectOptionTextField from "./components/inputFields/SelectOptionTextField";
+import ReusableInputField from "./components/inputFields/DemoInputField";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -204,6 +205,21 @@ export default function Home() {
         <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
+        <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full p-8">
+          {/* Password Field */}
+          <ReusableInputField
+            label="Password"
+            isPassword
+            placeholder="Enter your password"
+          />
+
+          {/* Expandable Field */}
+          <ReusableInputField
+            label="Book Name"
+            hasExpandableFields
+            placeholder="Add a book"
+          />
+        </div>
         <InputTextFieldWithVariant
           label="Username"
           placeholder="Enter Your UserName"
