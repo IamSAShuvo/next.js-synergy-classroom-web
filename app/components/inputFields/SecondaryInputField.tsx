@@ -10,7 +10,7 @@ import {
   TextFieldProps,
 } from "@mui/material";
 import React, { useState } from "react";
-import InputTextFieldWithVariant from "./InputTextFieldWithVariant";
+import InputTextFieldWithVariant from "./PrimaryInputField";
 
 interface InputTextFieldWithExpandableProps {
   placeholder?: string;
