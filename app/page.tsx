@@ -8,7 +8,7 @@ import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
 import RowRadioButtonsGroup from "./components/Buttons/RadioButtons";
 import SidebarMenuButton from "./components/Buttons/SidebarMenuButton";
-import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
+import PrimaryInputField from "./components/inputFields/PrimaryInputField";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
@@ -208,6 +208,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full p-8">
           {/* Password Field */}
           <ReusableInputField
+            variant="outlined"
             label="Password"
             isPassword
             placeholder="Enter your password"
@@ -215,17 +216,19 @@ export default function Home() {
 
           {/* Expandable Field */}
           <ReusableInputField
+            variant="standard"
             label="Book Name"
             hasExpandableFields
             placeholder="Add a book"
           />
         </div>
-        <InputTextFieldWithVariant
+
+        <PrimaryInputField
           label="Username"
           placeholder="Enter Your UserName"
           variant="outlined"
         />
-        <InputTextFieldWithVariant
+        <PrimaryInputField
           label="Course Name"
           placeholder="Enter Your Course Name"
           variant="filled"
