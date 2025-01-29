@@ -84,12 +84,16 @@ export default function Home() {
           }
           content={
             <>
-              <InputTextFieldWithVariant
+              <PrimaryInputField
                 label="Username"
                 placeholder="Enter Your UserName"
                 variant="outlined"
               />
-              <InputPasswordField />
+              <PrimaryInputField
+                label="Password"
+                isPassword
+                variant="outlined"
+              />
             </>
           }
           aside={
@@ -134,18 +138,22 @@ export default function Home() {
           }
           content={
             <>
-              <InputTextFieldWithVariant
+              <PrimaryInputField
                 label="Username"
                 placeholder="Enter Your UserName"
                 variant="outlined"
               />
-              <InputTextFieldWithVariant
+              <PrimaryInputField
                 label="Name"
                 placeholder="Enter Your Name"
                 variant="outlined"
               />
-              <InputPasswordField />
-              <InputTextFieldWithVariant
+              <PrimaryInputField
+                label="Password"
+                isPassword
+                variant="outlined"
+              />
+              <PrimaryInputField
                 label="Email"
                 placeholder="Please Provide Your Email"
                 variant="outlined"
