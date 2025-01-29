@@ -63,7 +63,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
       onMouseDown={handleMouseDownPassword}
       onMouseUp={handleMouseUpPassword}
     >
-      {showPassword ? <VisibilityOff /> : <Visibility />}
+      {showPassword ? <Visibility /> : <VisibilityOff />}
     </IconButton>
   ) : hasExpandableFields ? (
     <IconButton
@@ -91,7 +91,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
           <Input
             sx={inputStyle}
             id={`input-${label}`}
-            type={isPassword && !showPassword ? "text" : "password"}
+            type={isPassword && !showPassword ? "password" : "text"}
             placeholder={placeholder}
             endAdornment={
               <InputAdornment position="end">{endAdornment}</InputAdornment>
@@ -101,7 +101,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
           <FilledInput
             sx={inputStyle}
             id={`input-${label}`}
-            type={isPassword && !showPassword ? "text" : "password"}
+            type={isPassword && !showPassword ? "password" : "text"}
             placeholder={placeholder}
             endAdornment={
               <InputAdornment position="end">{endAdornment}</InputAdornment>
@@ -111,7 +111,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
           <OutlinedInput
             sx={inputStyle}
             id={`input-${label}`}
-            type={isPassword && !showPassword ? "text" : "password"}
+            type={isPassword && !showPassword ? "password" : "text"}
             placeholder={placeholder}
             endAdornment={
               <InputAdornment position="end">{endAdornment}</InputAdornment>
