@@ -1,8 +1,7 @@
 import PrimaryButton from "@/app/components/Buttons/PrimaryButton";
 import RadioButtons from "@/app/components/Buttons/RadioButtons";
 import PrimaryCard from "@/app/components/CardComponent/PrimaryCard";
-import InputPasswordField from "@/app/components/inputFields/InputPasswordField";
-import InputTextFieldWithVariant from "@/app/components/inputFields/InputTextFieldWithVariant";
+import PrimaryInputField from "@/app/components/inputFields/PrimaryInputField";
 import LinkText from "@/app/components/links/LinkText";
 import DescriptionText from "@/app/components/typography/DescriptionText";
 import PrimaryHeading from "@/app/components/typography/PrimaryHeading";
@@ -10,7 +9,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
+    <div className="min-h-screen flex items-center justify-center">
       <PrimaryCard
         className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
         header={
@@ -26,18 +25,18 @@ const page = () => {
         }
         content={
           <>
-            <InputTextFieldWithVariant
+            <PrimaryInputField
               label="Username"
               placeholder="Enter Your UserName"
               variant="outlined"
             />
-            <InputTextFieldWithVariant
+            <PrimaryInputField
               label="Name"
               placeholder="Enter Your Name"
               variant="outlined"
             />
-            <InputPasswordField />
-            <InputTextFieldWithVariant
+            <PrimaryInputField label="Password" isPassword variant="outlined" />
+            <PrimaryInputField
               label="Email"
               placeholder="Please Provide Your Email"
               variant="outlined"
