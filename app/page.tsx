@@ -8,15 +8,13 @@ import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
 import RowRadioButtonsGroup from "./components/Buttons/RadioButtons";
 import SidebarMenuButton from "./components/Buttons/SidebarMenuButton";
-import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
-import InputTextFieldWithExpandable from "./components/inputFields/InputTextFieldWithExpandable";
-import InputPasswordField from "./components/inputFields/InputPasswordField";
 import SelectOptionTextField from "./components/inputFields/SelectOptionTextField";
+import PrimaryInputField from "./components/inputFields/PrimaryInputField";
 import CardProfile from "./components/UserProfile/CardProfile";
 import NavBarProfile from "./components/UserProfile/NavBarProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
@@ -27,7 +25,7 @@ export default function Home() {
   const value = 235;
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
-  const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
+  // const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
   return (
     <div className="mx-10 my-5">
       <h1 className="tracking-normal leading-5">Home</h1>
@@ -238,18 +236,34 @@ export default function Home() {
         <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
-        <InputTextFieldWithVariant
+        <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full p-8">
+          <PrimaryInputField
+            label="Password"
+            isPassword
+            placeholder="Put your Password"
+          />
+          <PrimaryInputField
+            label="username"
+            placeholder="Enter your username"
+          />
+          <PrimaryInputField
+            label="Book Name"
+            hasExpandableFields
+            placeholder="Add your book name"
+            variant="standard"
+          />
+        </div>
+
+        <PrimaryInputField
           label="Username"
           placeholder="Enter Your UserName"
           variant="outlined"
         />
-        <InputTextFieldWithVariant
+        <PrimaryInputField
           label="Course Name"
           placeholder="Enter Your Course Name"
           variant="filled"
         />
-        <InputTextFieldWithExpandable />
-        <InputPasswordField />
         <SelectOptionTextField />
       </div>
     </div>
