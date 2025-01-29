@@ -407,8 +407,13 @@ export default function Home() {
           icon={HomeIcon}
           text="Home"
           trailingIcon={ChevronRightIcon}
+          className="bg-skyBlue hover:bg-indigo-600 text-white px-7 py-5 rounded-full font-medium text-sm leading-3 flex justify-between"
         />
-        <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
+        <SidebarMenuButton
+          icon={LogoutRoundedIcon}
+          text="Log out"
+          className="text-cosmicBlue hover:border-2 border-cosmicBlue px-7 py-5 rounded-full font-medium text-sm leading-3 flex justify-between"
+        />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
         <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full lg:p-8 md:p-8 p-8">
