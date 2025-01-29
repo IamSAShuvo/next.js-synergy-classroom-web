@@ -236,7 +236,7 @@ export default function Home() {
         <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
-        <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full p-8">
+        <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full lg:p-8 md:p-8 p-8">
           <PrimaryInputField
             label="Password"
             isPassword
