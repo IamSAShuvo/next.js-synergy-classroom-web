@@ -7,6 +7,7 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
+  styled,
 } from "@mui/material";
 import React, { FC, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -29,60 +30,71 @@ const inputStyle = {
   },
 };
 
+const StyledFormControl = styled(FormControl)(({}) => ({
+  "& label": {
+    fontFamily: "Poppins, sans-serif",
+    color: "var(--primaryColor, #1976d2)",
+  },
+}));
+
+const inputComponents = {
+  standard: Input,
+  filled: FilledInput,
+  outlined: OutlinedInput,
+};
+
 const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   label,
   placeholder,
-  variant,
+  variant = "outlined",
   isPassword = false,
   hasExpandableFields = false,
+  ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleExpandToggle = () => {
-    setIsExpanded((prev) => !prev);
-  };
+  const handleExpandToggle = () => setIsExpanded((prev) => !prev);
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
-  ) => {
+  ) => event.preventDefault();
+  const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) =>
     event.preventDefault();
-  };
-  const handleMouseUpPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
+
+  const InputComponent = inputComponents[variant] || OutlinedInput;
 
   const endAdornment = () => {
     if (isPassword) {
       return (
-        <IconButton
-          aria-label={
-            showPassword ? "hide the password" : "display the password"
-          }
-          onClick={handleClickShowPassword}
-          onMouseDown={handleMouseDownPassword}
-          onMouseUp={handleMouseUpPassword}
-        >
-          {showPassword ? <Visibility /> : <VisibilityOff />}
-        </IconButton>
+        <InputAdornment position="end">
+          <IconButton
+            aria-label={showPassword ? "Hide password" : "Show password"}
+            onClick={handleClickShowPassword}
+            onMouseDown={handleMouseDownPassword}
+            onMouseUp={handleMouseUpPassword}
+          >
+            {showPassword ? <Visibility /> : <VisibilityOff />}
+          </IconButton>
+        </InputAdornment>
       );
     }
     if (hasExpandableFields) {
       return (
-        <IconButton
-          aria-label={
-            isExpanded ? "hide additional fields" : "show additional fields"
-          }
-          onClick={handleExpandToggle}
-          edge="end"
-        >
-          {isExpanded ? (
-            <IndeterminateCheckBoxOutlinedIcon />
-          ) : (
-            <AddBoxOutlinedIcon />
-          )}
-        </IconButton>
+        <InputAdornment position="end">
+          <IconButton
+            aria-label={
+              isExpanded ? "Hide additional fields" : "Show additional fields"
+            }
+            onClick={handleExpandToggle}
+            edge="end"
+          >
+            {isExpanded ? (
+              <IndeterminateCheckBoxOutlinedIcon />
+            ) : (
+              <AddBoxOutlinedIcon />
+            )}
+          </IconButton>
+        </InputAdornment>
       );
     }
     return null;
@@ -90,55 +102,33 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
 
   return (
     <div className="w-full flex flex-col gap-5">
-      <FormControl variant={variant}>
-        <InputLabel sx={inputStyle} htmlFor="standard-adornment-password">
+      <StyledFormControl variant={variant}>
+        <InputLabel htmlFor={label.toLowerCase().replace(/\s+/g, "-")}>
           {label}
         </InputLabel>
-        {variant === "standard" ? (
-          <Input
-            sx={inputStyle}
-            id={`input-${label}`}
-            type={isPassword && !showPassword ? "password" : "text"}
-            placeholder={placeholder}
-            endAdornment={
-              <InputAdornment position="end">{endAdornment()}</InputAdornment>
-            }
-          />
-        ) : variant === "filled" ? (
-          <FilledInput
-            sx={inputStyle}
-            id={`input-${label}`}
-            type={isPassword && !showPassword ? "password" : "text"}
-            placeholder={placeholder}
-            endAdornment={
-              <InputAdornment position="end">{endAdornment()}</InputAdornment>
-            }
-          />
-        ) : (
-          <OutlinedInput
-            sx={inputStyle}
-            id={`input-${label}`}
-            type={isPassword && !showPassword ? "password" : "text"}
-            placeholder={placeholder}
-            endAdornment={
-              <InputAdornment position="end">{endAdornment()}</InputAdornment>
-            }
-            label={label}
-          />
-        )}
-      </FormControl>
+        <InputComponent
+          sx={inputStyle}
+          id={label.toLowerCase().replace(/\s+/g, "-")}
+          type={isPassword && !showPassword ? "password" : "text"}
+          placeholder={placeholder}
+          endAdornment={endAdornment()}
+          label={variant === "outlined" ? label : undefined}
+          {...props}
+        />
+      </StyledFormControl>
+
       {isExpanded && hasExpandableFields && (
         <>
           <PrimaryInputField
-            placeholder="Book Author"
-            variant="standard"
             label="Author Name"
+            variant="standard"
+            placeholder="Book Author"
           />
           <PrimaryInputField
             label="Book Name"
-            hasExpandableFields
-            placeholder="Add your book name"
             variant="standard"
+            placeholder="Add your book name"
+            hasExpandableFields
           />
         </>
       )}
