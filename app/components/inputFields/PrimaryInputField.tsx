@@ -19,7 +19,6 @@ interface PrimaryInputFieldProps {
   variant?: "standard" | "outlined" | "filled";
   isPassword?: boolean;
   hasExpandableFields?: boolean;
-  onExpand?: () => void;
 }
 
 const inputStyle = {
@@ -36,14 +35,12 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   variant,
   isPassword = false,
   hasExpandableFields = false,
-  onExpand,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleExpandToggle = () => {
     setIsExpanded((prev) => !prev);
-    if (onExpand) onExpand();
   };
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -56,34 +53,44 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
     event.preventDefault();
   };
 
-  const endAdornment = isPassword ? (
-    <IconButton
-      aria-label={showPassword ? "hide the password" : "display the password"}
-      onClick={handleClickShowPassword}
-      onMouseDown={handleMouseDownPassword}
-      onMouseUp={handleMouseUpPassword}
-    >
-      {showPassword ? <Visibility /> : <VisibilityOff />}
-    </IconButton>
-  ) : hasExpandableFields ? (
-    <IconButton
-      aria-label={
-        isExpanded ? "hide additional fields" : "show additional fields"
-      }
-      onClick={handleExpandToggle}
-      edge="end"
-    >
-      {isExpanded ? (
-        <IndeterminateCheckBoxOutlinedIcon />
-      ) : (
-        <AddBoxOutlinedIcon />
-      )}
-    </IconButton>
-  ) : null;
+  const endAdornment = () => {
+    if (isPassword) {
+      return (
+        <IconButton
+          aria-label={
+            showPassword ? "hide the password" : "display the password"
+          }
+          onClick={handleClickShowPassword}
+          onMouseDown={handleMouseDownPassword}
+          onMouseUp={handleMouseUpPassword}
+        >
+          {showPassword ? <Visibility /> : <VisibilityOff />}
+        </IconButton>
+      );
+    }
+    if (hasExpandableFields) {
+      return (
+        <IconButton
+          aria-label={
+            isExpanded ? "hide additional fields" : "show additional fields"
+          }
+          onClick={handleExpandToggle}
+          edge="end"
+        >
+          {isExpanded ? (
+            <IndeterminateCheckBoxOutlinedIcon />
+          ) : (
+            <AddBoxOutlinedIcon />
+          )}
+        </IconButton>
+      );
+    }
+    return null;
+  };
 
   return (
-    <div className="flex flex-col gap-5">
-      <FormControl variant={variant} className="md:w-[420px] lg:w-[420px]">
+    <div className="w-full flex flex-col gap-5">
+      <FormControl variant={variant}>
         <InputLabel sx={inputStyle} htmlFor="standard-adornment-password">
           {label}
         </InputLabel>
@@ -94,7 +101,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
             type={isPassword && !showPassword ? "password" : "text"}
             placeholder={placeholder}
             endAdornment={
-              <InputAdornment position="end">{endAdornment}</InputAdornment>
+              <InputAdornment position="end">{endAdornment()}</InputAdornment>
             }
           />
         ) : variant === "filled" ? (
@@ -104,7 +111,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
             type={isPassword && !showPassword ? "password" : "text"}
             placeholder={placeholder}
             endAdornment={
-              <InputAdornment position="end">{endAdornment}</InputAdornment>
+              <InputAdornment position="end">{endAdornment()}</InputAdornment>
             }
           />
         ) : (
@@ -114,7 +121,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
             type={isPassword && !showPassword ? "password" : "text"}
             placeholder={placeholder}
             endAdornment={
-              <InputAdornment position="end">{endAdornment}</InputAdornment>
+              <InputAdornment position="end">{endAdornment()}</InputAdornment>
             }
             label={label}
           />
