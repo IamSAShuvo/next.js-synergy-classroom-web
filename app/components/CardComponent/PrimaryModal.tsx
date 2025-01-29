@@ -14,11 +14,11 @@ interface ProfileModalProps {
 
 const modalStyle = {
   position: "absolute",
-  top: "50%",
-  left: "50%",
+  bottom: "4rem",
+  right: "-10rem",
   transform: "translate(-50%, -50%)",
   width: "90%",
-  maxWidth: "380px",
+  maxWidth: "420px",
   bgcolor: "white",
   borderRadius: "16px",
   boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.2)",
@@ -36,7 +36,11 @@ const ProfileModal: FC<ProfileModalProps> = ({
   setOpen,
 }) => {
   return (
-    <Modal open={open} onClose={() => setOpen(false)}>
+    <Modal
+      open={open}
+      onClose={() => setOpen(false)}
+      container={() => document.body}
+    >
       <Box sx={modalStyle}>
         <IconButton
           sx={{
