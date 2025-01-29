@@ -75,7 +75,7 @@ export default function Home() {
             <>
               <PrimaryHeading text="Login" />
               <DescriptionText
-                text="Enter your details below & free sign up"
+                text="Welcome back! Enter your details to proceed."
                 color="text-secondaryColor"
                 fontSize="text-sm"
                 lineHeight="leading-6"
@@ -98,11 +98,11 @@ export default function Home() {
           }
           aside={
             <DescriptionText
-              text="Forgot PassWord?"
+              text="Forgot Password?"
               color="text-secondaryColor"
               fontSize="text-sm"
               lineHeight="leading-5"
-              letterSpacing="tracking-[0.48px]"
+              letterSpacing="tracking-wider"
             />
           }
           footer={

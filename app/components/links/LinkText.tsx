@@ -8,7 +8,10 @@ interface LinkTextProps {
 
 const LinkText: FC<LinkTextProps> = ({ url, text }) => {
   return (
-    <Link href={url} className="font-normal text-sm leading-5 text-skyBlue">
+    <Link
+      href={url}
+      className="font-normal text-sm leading-5 text-skyBlue hover:underline"
+    >
       {text}
     </Link>
   );
