@@ -25,7 +25,7 @@ export default function Home() {
   const value = 235;
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
-  // const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
+  const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
   return (
     <div className="mx-10 my-5">
       <h1 className="tracking-normal leading-5">Home</h1>
