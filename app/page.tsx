@@ -124,6 +124,60 @@ export default function Home() {
               className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
             />
           </PrimaryCard>
+      <div className="flex flex-col items-center justify-center m-14 p-6 space-y-8">
+        {/* Login Card */}
+        <PrimaryCard
+          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+          header={
+            <>
+              <PrimaryHeading text="Login" />
+              <DescriptionText
+                text="Welcome back! Enter your details to proceed."
+                color="text-secondaryColor"
+                fontSize="text-sm"
+                lineHeight="leading-6"
+              />
+            </>
+          }
+          content={
+            <>
+              <PrimaryInputField
+                label="Username"
+                placeholder="Enter Your UserName"
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Password"
+                isPassword
+                variant="outlined"
+              />
+            </>
+          }
+          aside={
+            <DescriptionText
+              text="Forgot Password?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-5"
+              letterSpacing="tracking-wider"
+            />
+          }
+          footer={
+            <DescriptionText
+              text="Don't have an account?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-6"
+            >
+              <LinkText url="/signup" text="Sign Up" />
+            </DescriptionText>
+          }
+        >
+          <PrimaryButton
+            text="Log In"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+          />
+        </PrimaryCard>
 
           {/* Sign Up Card */}
           <PrimaryCard
@@ -437,6 +491,40 @@ export default function Home() {
               variant="standard"
             />
           </div>
+        <PrimaryButton
+          text="Save"
+          className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
+        />
+        <PrimaryButton
+          text="Cancel"
+          className="text-ashGray hover:bg-gray-100 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
+          borderColor="border-ashGray"
+        />
+        <SidebarMenuButton
+          icon={HomeIcon}
+          text="Home"
+          trailingIcon={ChevronRightIcon}
+        />
+        <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
+      </div>
+      <div className="mt-8 flex flex-col items-center space-y-5">
+        <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full p-8">
+          <PrimaryInputField
+            label="Password"
+            isPassword
+            placeholder="Put your Password"
+          />
+          <PrimaryInputField
+            label="username"
+            placeholder="Enter your username"
+          />
+          <PrimaryInputField
+            label="Book Name"
+            hasExpandableFields
+            placeholder="Add your book name"
+            variant="standard"
+          />
+        </div>
 
           <PrimaryInputField
             label="Username"
