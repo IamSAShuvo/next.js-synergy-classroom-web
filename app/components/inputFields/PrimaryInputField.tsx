@@ -121,11 +121,19 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
         )}
       </FormControl>
       {isExpanded && hasExpandableFields && (
-        <PrimaryInputField
-          placeholder="add your input"
-          variant="outlined"
-          label="Author Name"
-        />
+        <>
+          <PrimaryInputField
+            placeholder="Book Author"
+            variant="standard"
+            label="Author Name"
+          />
+          <PrimaryInputField
+            label="Book Name"
+            hasExpandableFields
+            placeholder="Add your book name"
+            variant="standard"
+          />
+        </>
       )}
     </div>
   );

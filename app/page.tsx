@@ -208,6 +208,16 @@ export default function Home() {
             isPassword
             placeholder="Put your Password"
           />
+          <PrimaryInputField
+            label="username"
+            placeholder="Enter your username"
+          />
+          <PrimaryInputField
+            label="Book Name"
+            hasExpandableFields
+            placeholder="Add your book name"
+            variant="standard"
+          />
         </div>
 
         <PrimaryInputField
