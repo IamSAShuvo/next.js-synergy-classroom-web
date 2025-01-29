@@ -2,10 +2,9 @@ import React from "react";
 import PrimaryCard from "../CardComponent/PrimaryCard";
 import PrimaryHeading from "../typography/PrimaryHeading";
 import DescriptionText from "../typography/DescriptionText";
-import InputTextFieldWithVariant from "../inputFields/InputTextFieldWithVariant";
-import InputPasswordField from "../inputFields/InputPasswordField";
 import LinkText from "../links/LinkText";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import PrimaryInputField from "../inputFields/PrimaryInputField";
 
 const LoginMain = () => {
   return (
@@ -25,12 +24,12 @@ const LoginMain = () => {
         }
         content={
           <>
-            <InputTextFieldWithVariant
+            <PrimaryInputField
               label="Username"
               placeholder="Enter Your UserName"
               variant="outlined"
             />
-            <InputPasswordField />
+            <PrimaryInputField label="Password" isPassword variant="outlined" />
           </>
         }
         aside={
