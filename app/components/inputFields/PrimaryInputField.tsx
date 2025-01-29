@@ -63,7 +63,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
       onMouseDown={handleMouseDownPassword}
       onMouseUp={handleMouseUpPassword}
     >
-      {showPassword ? <VisibilityOff /> : <Visibility />}
+      {showPassword ? <Visibility /> : <VisibilityOff />}
     </IconButton>
   ) : hasExpandableFields ? (
     <IconButton
