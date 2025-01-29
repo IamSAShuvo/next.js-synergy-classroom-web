@@ -37,7 +37,7 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
       <PrimaryModal
         open={open}
         setOpen={setOpen}
-        avatarSrc="/profile_avatar.jpeg"
+        avatarSrc={avatarSrc}
         name={name}
         roles={roles}
       />
