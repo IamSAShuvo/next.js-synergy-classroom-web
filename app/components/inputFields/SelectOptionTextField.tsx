@@ -1,58 +1,56 @@
 import { MenuItem, TextField } from "@mui/material";
-import React from "react";
+import React, { FC } from "react";
+import USER_ROLE_OPTIONS from "@/app/constantData/userRoleOption";
 
-const roles = [
-  {
-    value: "student",
-    label: "Student",
-  },
-  {
-    value: "teacher",
-    label: "Teacher",
-  },
-];
+interface SelectOptionTextFieldProps {
+  defaultValue?: string;
+  label?: string;
+  helperText?: string;
+}
 
-const SelectOptionTextField = () => {
+const SelectOptionTextField: FC<SelectOptionTextFieldProps> = ({
+  defaultValue = "student",
+  label = "Profession",
+  helperText = "Please select your Role",
+}) => {
+  const inputFieldStyle = {
+    "& .MuiInputLabel-root": {
+      fontFamily: "Poppins, sans-serif",
+      color: "var(--primaryColor)",
+    },
+    "& .MuiOutlinedInput-root": {
+      fontFamily: "Poppins, sans-serif",
+      "& fieldset": {
+        borderColor: "var(--primaryColor)",
+      },
+      "&:hover fieldset": {
+        borderColor: "var(--primaryColor)",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "var(--primaryColor)",
+      },
+    },
+    "& .MuiFormHelperText-root": {
+      fontFamily: "Poppins, sans-serif",
+      color: "var(--primaryColor)",
+    },
+  };
+  const menuItemStyle = {
+    fontFamily: "Poppins, sans-serif",
+    color: "var(--primaryColor)",
+  };
   return (
     <TextField
-      className="w-[420px] mx-auto"
-      sx={{
-        "& .MuiInputLabel-root": {
-          fontFamily: "Poppins, sans-serif",
-          color: "var(--primaryColor)",
-        },
-        "& .MuiOutlinedInput-root": {
-          fontFamily: "Poppins, sans-serif",
-          "& fieldset": {
-            borderColor: "var(--primaryColor)",
-          },
-          "&:hover fieldset": {
-            borderColor: "var(--primaryColor)",
-          },
-          "&.Mui-focused fieldset": {
-            borderColor: "var(--primaryColor)",
-          },
-        },
-        "& .MuiFormHelperText-root": {
-          fontFamily: "Poppins, sans-serif",
-          color: "var(--primaryColor)",
-        },
-      }}
+      className=" w-full"
+      sx={inputFieldStyle}
       id="outlined-select-currency"
       select
-      label="Profession"
-      defaultValue="student"
-      helperText="Please select your Role"
+      label={label}
+      defaultValue={defaultValue}
+      helperText={helperText}
     >
-      {roles.map((option) => (
-        <MenuItem
-          sx={{
-            fontFamily: "Poppins, sans-serif",
-            color: "var(--primaryColor)",
-          }}
-          key={option.value}
-          value={option.value}
-        >
+      {USER_ROLE_OPTIONS.map((option) => (
+        <MenuItem sx={menuItemStyle} key={option.value} value={option.value}>
           {option.label}
         </MenuItem>
       ))}
