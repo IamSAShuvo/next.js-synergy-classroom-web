@@ -8,15 +8,13 @@ import ItemList from "./components/typography/itemsList/ItemList";
 import SecondaryHeading from "./components/typography/SecondaryHeading";
 import RowRadioButtonsGroup from "./components/Buttons/RadioButtons";
 import SidebarMenuButton from "./components/Buttons/SidebarMenuButton";
-import InputTextFieldWithVariant from "./components/inputFields/InputTextFieldWithVariant";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
-import InputTextFieldWithExpandable from "./components/inputFields/InputTextFieldWithExpandable";
-import InputPasswordField from "./components/inputFields/InputPasswordField";
 import SelectOptionTextField from "./components/inputFields/SelectOptionTextField";
+import PrimaryInputField from "./components/inputFields/PrimaryInputField";
 import CardProfile from "./components/UserProfile/CardProfile";
 import NavBarProfile from "./components/UserProfile/NavBarProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
@@ -72,170 +70,178 @@ export default function Home() {
 
         {/* Card Component */}
 
-        <div className="flex flex-col items-center justify-center m-14 p-6 space-y-8">
-          {/* Login Card */}
-          <PrimaryCard
-            className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
-            header={
-              <>
-                <PrimaryHeading text="Login" />
-                <DescriptionText
-                  text="Enter your details below & free sign up"
-                  color="text-secondaryColor"
-                  fontSize="text-sm"
-                  lineHeight="leading-6"
-                />
-              </>
-            }
-            content={
-              <>
-                <InputTextFieldWithVariant
-                  label="Username"
-                  placeholder="Enter Your UserName"
-                  variant="outlined"
-                />
-                <InputPasswordField />
-              </>
-            }
-            aside={
+      <div className="flex flex-col items-center justify-center m-14 p-6 space-y-8">
+        {/* Login Card */}
+        <PrimaryCard
+          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+          header={
+            <>
+              <PrimaryHeading text="Login" />
               <DescriptionText
-                text="Forgot PassWord?"
+                text="Enter your details below & free sign up"
                 color="text-secondaryColor"
                 fontSize="text-sm"
-                lineHeight="leading-5"
-                letterSpacing="tracking-[0.48px]"
+                lineHeight="leading-6"
               />
-            }
-            footer={
-              <DescriptionText
-                text="Don't have an account?"
-                color="text-secondaryColor"
-                fontSize="text-sm"
-                lineHeight="leading-6"
-              >
-                <LinkText url="/signup" text="Sign Up" />
-              </DescriptionText>
-            }
-          >
-            <PrimaryButton
-              text="Log In"
-              className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+            </>
+          }
+          content={
+            <>
+              <PrimaryInputField
+                label="Username"
+                placeholder="Enter Your UserName"
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Password"
+                isPassword
+                variant="outlined"
+              />
+            </>
+          }
+          aside={
+            <DescriptionText
+              text="Forgot PassWord?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-5"
+              letterSpacing="tracking-[0.48px]"
             />
-          </PrimaryCard>
+          }
+          footer={
+            <DescriptionText
+              text="Don't have an account?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-6"
+            >
+              <LinkText url="/signup" text="Sign Up" />
+            </DescriptionText>
+          }
+        >
+          <PrimaryButton
+            text="Log In"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+          />
+        </PrimaryCard>
 
-          {/* Sign Up Card */}
-          <PrimaryCard
-            className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
-            header={
-              <>
-                <PrimaryHeading text="Sign Up" />
-                <DescriptionText
-                  text="Enter your details below & free sign up"
-                  color="text-secondaryColor"
-                  fontSize="text-sm"
-                  lineHeight="leading-6"
-                />
-              </>
-            }
-            content={
-              <>
-                <InputTextFieldWithVariant
-                  label="Username"
-                  placeholder="Enter Your UserName"
-                  variant="outlined"
-                />
-                <InputTextFieldWithVariant
-                  label="Name"
-                  placeholder="Enter Your Name"
-                  variant="outlined"
-                />
-                <InputPasswordField />
-                <InputTextFieldWithVariant
-                  label="Email"
-                  placeholder="Please Provide Your Email"
-                  variant="outlined"
-                />
-                <div>
-                  <RowRadioButtonsGroup />
-                </div>
-              </>
-            }
-            footer={
+        {/* Sign Up Card */}
+        <PrimaryCard
+          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+          header={
+            <>
+              <PrimaryHeading text="Sign Up" />
               <DescriptionText
-                text="Already have an account?"
+                text="Enter your details below & free sign up"
                 color="text-secondaryColor"
                 fontSize="text-sm"
                 lineHeight="leading-6"
-              >
-                <LinkText url="/login" text="Login" />
-              </DescriptionText>
-            }
-          >
-            <PrimaryButton
-              text="Sign Up"
-              className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
-            />
-          </PrimaryCard>
-          <SecondaryCard
-            className="w-[354px] mx-auto bg-white rounded-2xl shadow-lg"
-            header={
-              <>
-                <SectionHeading
-                  text="Electrical Circuit 01"
-                  fontSize="text-2xl"
-                />
+              />
+            </>
+          }
+          content={
+            <>
+              <PrimaryInputField
+                label="Username"
+                placeholder="Enter Your UserName"
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Name"
+                placeholder="Enter Your Name"
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Password"
+                isPassword
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Email"
+                placeholder="Please Provide Your Email"
+                variant="outlined"
+              />
+              <div>
+                <RowRadioButtonsGroup />
+              </div>
+            </>
+          }
+          footer={
+            <DescriptionText
+              text="Already have an account?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-6"
+            >
+              <LinkText url="/login" text="Login" />
+            </DescriptionText>
+          }
+        >
+          <PrimaryButton
+            text="Sign Up"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+          />
+        </PrimaryCard>
+        <SecondaryCard
+          className="w-[354px] mx-auto bg-white rounded-2xl shadow-lg"
+          header={
+            <>
+              <SectionHeading
+                text="Electrical Circuit 01"
+                fontSize="text-2xl"
+              />
+              <DescriptionText
+                color="text-white"
+                fontSize="text-sm"
+                text={`Section - ${section}`}
+                lineHeight="leading-5"
+              />
+              <DescriptionText
+                color="text-white"
+                fontSize="text-sm"
+                text={`Course Teacher - ${teacherName}`}
+                lineHeight="leading-5"
+              />
+            </>
+          }
+          content={
+            <>
+              <div className="flex justify-between mt-5">
                 <DescriptionText
-                  color="text-white"
+                  text={`Book List`}
+                  color="text-primaryColor"
                   fontSize="text-sm"
-                  text={`Section - ${section}`}
                   lineHeight="leading-5"
                 />
                 <DescriptionText
-                  color="text-white"
+                  text={`Author`}
+                  color="text-primaryColor"
                   fontSize="text-sm"
-                  text={`Course Teacher - ${teacherName}`}
                   lineHeight="leading-5"
                 />
-              </>
-            }
-            content={
-              <>
-                <div className="flex justify-between mt-5">
-                  <DescriptionText
-                    text={`Book List`}
-                    color="text-primaryColor"
-                    fontSize="text-sm"
-                    lineHeight="leading-5"
-                  />
-                  <DescriptionText
-                    text={`Author`}
-                    color="text-primaryColor"
-                    fontSize="text-sm"
-                    lineHeight="leading-5"
-                  />
-                </div>
-                <div className="flex justify-between mb-6">
-                  <ItemList
-                    items={bookList}
-                    className="text-primaryColor font-medium text-ex_sm leading-4"
-                    useNumber={true}
-                  />
-                  <ItemList
-                    items={authorList}
-                    className="text-secondaryColor font-normal text-ex_sm leading-4"
-                    useNumber={false}
-                  />
-                </div>
-              </>
-            }
-            footer={<NumberBadge count={value} />}
-          >
-            <PrimaryButton
-              text="Enroll"
-              className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
-            />
-          </SecondaryCard>
-        </div>
+              </div>
+              <div className="flex justify-between mb-6">
+                <ItemList
+                  items={bookList}
+                  className="text-primaryColor font-medium text-ex_sm leading-4"
+                  useNumber={true}
+                />
+                <ItemList
+                  items={authorList}
+                  className="text-secondaryColor font-normal text-ex_sm leading-4"
+                  useNumber={false}
+                />
+              </div>
+            </>
+          }
+          footer={<NumberBadge count={value} />}
+        >
+          <PrimaryButton
+            text="Enroll"
+            className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
+          />
+        </SecondaryCard>
+      </div>
 
         {/* User Profile */}
         <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5">
@@ -397,37 +403,52 @@ export default function Home() {
             className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
           />
 
-          <PrimaryButton
-            text="Save"
-            className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
+        <PrimaryButton
+          text="Save"
+          className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
+        />
+        <PrimaryButton
+          text="Cancel"
+          className="text-[#B1B1B1] hover:bg-gray-100 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
+          borderColor="border-[#B1B1B1]"
+        />
+        <SidebarMenuButton
+          icon={HomeIcon}
+          text="Home"
+          trailingIcon={ChevronRightIcon}
+        />
+        <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
+      </div>
+      <div className="mt-8 flex flex-col items-center space-y-5">
+        <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full p-8">
+          <PrimaryInputField
+            label="Password"
+            isPassword
+            placeholder="Put your Password"
           />
-          <PrimaryButton
-            text="Cancel"
-            className="text-[#B1B1B1] hover:bg-gray-100 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
-            borderColor="border-[#B1B1B1]"
+          <PrimaryInputField
+            label="username"
+            placeholder="Enter your username"
           />
-          <SidebarMenuButton
-            icon={HomeIcon}
-            text="Home"
-            trailingIcon={ChevronRightIcon}
+          <PrimaryInputField
+            label="Book Name"
+            hasExpandableFields
+            placeholder="Add your book name"
+            variant="standard"
           />
-          <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
         </div>
-        <div className="mt-8 flex flex-col items-center space-y-5">
-          <InputTextFieldWithVariant
-            label="Username"
-            placeholder="Enter Your UserName"
-            variant="outlined"
-          />
-          <InputTextFieldWithVariant
-            label="Course Name"
-            placeholder="Enter Your Course Name"
-            variant="filled"
-          />
-          <InputTextFieldWithExpandable />
-          <InputPasswordField />
-          <SelectOptionTextField />
-        </div>
+
+        <PrimaryInputField
+          label="Username"
+          placeholder="Enter Your UserName"
+          variant="outlined"
+        />
+        <PrimaryInputField
+          label="Course Name"
+          placeholder="Enter Your Course Name"
+          variant="filled"
+        />
+        <SelectOptionTextField />
       </div>
     </div>
   );
