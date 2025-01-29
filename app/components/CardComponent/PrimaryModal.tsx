@@ -21,7 +21,7 @@ const ProfileModal: FC<ProfileModalProps> = ({
     >
       <div
         className="relative max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8 mt-4 mr-4"
-        onClick={(e) => e.stopPropagation()} // Prevent click on modal from closing
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           className="absolute top-4 right-5 text-gray-500 hover:text-gray-800"

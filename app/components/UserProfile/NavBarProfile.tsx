@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { Avatar } from "@mui/material";
-import ProfileModal from "../CardComponent/ProfileModal";
+import PrimaryModal from "../CardComponent/PrimaryModal";
 
 interface NavBarProfileProps {
   name: string;
@@ -35,7 +35,7 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
       />
 
       {open && (
-        <ProfileModal
+        <PrimaryModal
           name={name}
           avatarSrc={avatarSrc}
           roles={roles}

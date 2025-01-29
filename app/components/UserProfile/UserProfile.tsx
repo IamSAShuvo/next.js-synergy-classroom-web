@@ -21,7 +21,7 @@ const UserProfile: FC<UserProfileProps> = ({ name, role, avatarSrc }) => {
       />
       <div className="flex flex-col items-center gap-2 ">
         <h1 className="font-medium text-3xl text-deepNavy">{name}</h1>
-        <p className="text-shadowSteel font-normal text-xl">{role}</p>
+        <p className="text-blueHaze font-normal text-xl">{role}</p>
       </div>
     </div>
   );
