@@ -478,7 +478,7 @@ export default function Home() {
             <SidebarMenuButton
               icon={LogoutRoundedIcon}
               text="Log out"
-              className="bg-skyBlue hover:bg-indigo-600 text-white px-7 py-5 rounded-full font-medium text-sm leading-3 flex justify-between"
+              className="hover:border-2 border-cosmicBlue text-cosmicBlue px-7 py-5 rounded-full font-medium text-sm leading-3 flex justify-between"
             />
           </div>
           <div className="mt-8 flex flex-col items-center space-y-5">
