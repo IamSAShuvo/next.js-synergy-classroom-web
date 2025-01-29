@@ -18,7 +18,10 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
   avatarWidth,
 }) => {
   const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    console.log("Modal close triggered");
+    setOpen(false);
+  };
   const handleOpen = () => setOpen(true);
 
   return (

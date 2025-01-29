@@ -400,8 +400,8 @@ export default function Home() {
         />
         <PrimaryButton
           text="Cancel"
-          className="text-[#B1B1B1] hover:bg-gray-100 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
-          borderColor="border-[#B1B1B1]"
+          className="text-ashGray hover:bg-gray-100 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
+          borderColor="border-ashGray"
         />
         <SidebarMenuButton
           icon={HomeIcon}

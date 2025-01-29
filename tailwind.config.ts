@@ -17,6 +17,8 @@ export default {
         midnightBlack: "var(--midnightBlack)",
         deepNavy: "var(--deepNavy)",
         blueHaze: "var(--blueHaze)",
+        ashGray: "var(--ashGray)",
+        lightGray: "var(--lightGray)",
       },
       fontSize: {
         ex_sm: "10px",
