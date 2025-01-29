@@ -18,7 +18,7 @@ export default function DashboardLayout({
 
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-gray-200 px-4 flex flex-col justify-between h-[calc(100vh-4rem)] sticky top-[4rem]">
+        <aside className="w-40 md:w-52 lg:w-64 bg-white border-r border-gray-200 px-4 flex flex-col justify-between h-[calc(100vh-4rem)] sticky top-[4rem]">
           <div className="flex-1 overflow-hidden">
             <nav className="mt-6">
               <SidebarMenuButton
