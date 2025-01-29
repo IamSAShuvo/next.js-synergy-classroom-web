@@ -42,7 +42,7 @@ export default function Home() {
         lineHeight="leading-6"
       />
       <DescriptionText
-        text="Forgot PassWord?"
+        text="Forgot Password?"
         color="text-secondaryColor"
         fontSize="text-sm"
         lineHeight="leading-5"
