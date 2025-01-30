@@ -6,7 +6,13 @@ const NavBar = () => {
   const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
   return (
     <nav className="flex justify-between items-center p-6">
-      <Image src="/logo.svg" alt="logo" width={180} height={100} />
+      <Image
+        src="/logo.svg"
+        className="cursor-pointer"
+        alt="logo"
+        width={180}
+        height={100}
+      />
       <NavBarProfile
         roles={role}
         avatarSrc="/my_profile.jpeg"
