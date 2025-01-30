@@ -87,6 +87,7 @@ const LoginMain = () => {
     dispatch(loginUser({ username, password }));
   };
 
+const LoginComponent = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <PrimaryCard
@@ -151,4 +152,4 @@ const LoginMain = () => {
   );
 };
 
-export default LoginMain;
+export default LoginComponent;

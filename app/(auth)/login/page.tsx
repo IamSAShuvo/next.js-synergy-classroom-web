@@ -1,9 +1,9 @@
-import LoginMain from "@/app/components/Auth/LoginMain";
+import LoginComponent from "@/app/components/Auth/LoginComponent";
 
 import React from "react";
 
 const page = () => {
-  return <LoginMain />;
+  return <LoginComponent />;
 };
 
 export default page;
