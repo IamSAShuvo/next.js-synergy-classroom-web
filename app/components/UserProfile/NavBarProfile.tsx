@@ -34,13 +34,14 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
           className=""
         />
       </div>
-      <PrimaryModal
+      {/* <PrimaryModal
         open={open}
         setOpen={setOpen}
         avatarSrc={avatarSrc}
         name={name}
         roles={roles}
-      />
+      /> */}
+      <PrimaryModal />
     </>
   );
 };
