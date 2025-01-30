@@ -75,7 +75,7 @@ import PrimaryButton from "../Buttons/PrimaryButton";
 import PrimaryInputField from "../inputFields/PrimaryInputField";
 import LinkText from "../links/LinkText";
 
-const LoginMain = () => {
+const LoginComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { user, loading, error } = useSelector(
     (state: RootState) => state.auth
@@ -87,7 +87,6 @@ const LoginMain = () => {
     dispatch(loginUser({ username, password }));
   };
 
-const LoginComponent = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <PrimaryCard
