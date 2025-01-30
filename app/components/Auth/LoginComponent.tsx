@@ -2,19 +2,18 @@ import React from "react";
 import PrimaryCard from "../CardComponent/PrimaryCard";
 import PrimaryHeading from "../typography/PrimaryHeading";
 import DescriptionText from "../typography/DescriptionText";
-import PrimaryInputField from "../inputFields/PrimaryInputField";
-import RadioButtons from "../Buttons/RadioButtons";
 import LinkText from "../links/LinkText";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import PrimaryInputField from "../inputFields/PrimaryInputField";
 
-const SignupMain = () => {
+const LoginComponent = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <PrimaryCard
         className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
         header={
           <>
-            <PrimaryHeading text="Sign Up" />
+            <PrimaryHeading text="Login" />
             <DescriptionText
               text="Enter your details below & free sign up"
               color="text-secondaryColor"
@@ -30,35 +29,31 @@ const SignupMain = () => {
               placeholder="Enter Your UserName"
               variant="outlined"
             />
-            <PrimaryInputField
-              label="Name"
-              placeholder="Enter Your Name"
-              variant="outlined"
-            />
             <PrimaryInputField label="Password" isPassword variant="outlined" />
-            <PrimaryInputField
-              label="Email"
-              placeholder="Please Provide Your Email"
-              variant="outlined"
-            />
-            <div>
-              <RadioButtons />
-            </div>
           </>
+        }
+        aside={
+          <DescriptionText
+            text="Forgot PassWord?"
+            color="text-secondaryColor"
+            fontSize="text-sm"
+            lineHeight="leading-5"
+            letterSpacing="tracking-[0.48px]"
+          />
         }
         footer={
           <DescriptionText
-            text="Already have an account?"
+            text="Don't have an account?"
             color="text-secondaryColor"
             fontSize="text-sm"
             lineHeight="leading-6"
           >
-            <LinkText url="/login" text="Login" />
+            <LinkText url="/signup" text="Sign Up" />
           </DescriptionText>
         }
       >
         <PrimaryButton
-          text="Sign Up"
+          text="Log In"
           className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
         />
       </PrimaryCard>
@@ -66,4 +61,4 @@ const SignupMain = () => {
   );
 };
 
-export default SignupMain;
+export default LoginComponent;
