@@ -13,7 +13,7 @@ const page = () => {
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
   return (
-    <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 mt-7 ml-7 mr-6">
+    <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 mx-7 my-6">
       <SecondaryCard
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
