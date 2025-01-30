@@ -95,7 +95,7 @@ const LoginComponent = () => {
           <>
             <PrimaryHeading text="Login" />
             <DescriptionText
-              text="Enter your details below & free sign up"
+              text="Welcome back! Enter your details to proceed."
               color="text-secondaryColor"
               fontSize="text-sm"
               lineHeight="leading-6"
