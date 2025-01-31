@@ -4,14 +4,12 @@ import React, { FC } from "react";
 interface LinkTextProps {
   url: string;
   text: string;
+  className?: string;
 }
 
-const LinkText: FC<LinkTextProps> = ({ url, text }) => {
+const LinkText: FC<LinkTextProps> = ({ url, text, className = "" }) => {
   return (
-    <Link
-      href={url}
-      className="font-normal text-sm leading-5 text-skyBlue hover:underline"
-    >
+    <Link href={url} className={className}>
       {text}
     </Link>
   );

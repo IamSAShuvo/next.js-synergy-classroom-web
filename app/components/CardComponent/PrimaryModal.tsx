@@ -62,12 +62,16 @@ const ProfileModal: FC<ProfileModalProps> = ({
   };
   return (
     <Stack direction="row" spacing={2}>
-      <Button
-        ref={anchorRef}
-        onClick={handleToggle}
-        sx={{ borderRadius: "50%", minWidth: 0, p: 0 }}
-      >
-        <Avatar alt={name} src={avatarSrc} />
+      <Button ref={anchorRef} onClick={handleToggle} sx={{ minWidth: 0, p: 0 }}>
+        <div className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack">
+          <h1>{name}</h1>
+          <Avatar
+            alt={name}
+            src={avatarSrc}
+            sx={{ height: 50, width: 50 }}
+            className=""
+          />
+        </div>
       </Button>
       <ClickAwayListener onClickAway={handleClose}>
         <Popper

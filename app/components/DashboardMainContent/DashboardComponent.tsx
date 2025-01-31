@@ -16,14 +16,29 @@ const DashboardComponent = () => {
   const authorList = ["Author 01", "Author 02", "Author 03"];
   const router = useRouter();
 
+  const handleCardClick = () => {
+    const queryParams = new URLSearchParams({
+      teacherName,
+      section,
+      value: value.toString(),
+      bookList: bookList.join(","),
+      authorList: authorList.join(","),
+    }).toString();
+
+    router.push(`/dashboard/course-details?${queryParams}`);
+  };
+
   return (
-    <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 mx-7 my-6">
+    <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5">
       <SecondaryCard
-        onClick={() => router.push("/dashboard/course-details")}
+        onClick={handleCardClick}
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -80,7 +95,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -137,7 +155,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -194,7 +215,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -251,7 +275,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -308,7 +335,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -365,7 +395,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -422,7 +455,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -479,7 +515,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"
@@ -536,7 +575,10 @@ const DashboardComponent = () => {
         className="w-full mx-auto bg-white rounded-2xl shadow-lg"
         header={
           <>
-            <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-2xl leading-9 text-white mb-8"
+            />
             <DescriptionText
               color="text-white"
               fontSize="text-sm"

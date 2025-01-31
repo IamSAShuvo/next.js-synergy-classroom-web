@@ -382,10 +382,10 @@ export default function Home() {
           </div>
 
           <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
-            <div className="space-y-3">
+            <div className="space-y-3x">
               <SectionHeading
                 text="Electrical Circuit 01"
-                fontSize="text-[40px]"
+                fontSize="text-4xl"
               />
               <DescriptionText
                 text={`Course Teacher - ${teacherName}`}
