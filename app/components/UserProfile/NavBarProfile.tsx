@@ -22,7 +22,7 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
 
   return (
     <>
-      <div
+      {/* <div
         onClick={() => setOpen(true)}
         className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack"
       >
@@ -33,7 +33,8 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
           sx={{ height: avatarHeight, width: avatarWidth }}
           className=""
         />
-      </div>
+      </div> */}
+
       {/* <PrimaryModal
         open={open}
         setOpen={setOpen}
@@ -41,7 +42,7 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
         name={name}
         roles={roles}
       /> */}
-      <PrimaryModal />
+      <PrimaryModal avatarSrc={avatarSrc} name={name} roles={roles} />
     </>
   );
 };

@@ -38,7 +38,7 @@ const LoginComponent = () => {
             color="text-secondaryColor"
             fontSize="text-sm"
             lineHeight="leading-5"
-            letterSpacing="tracking-[0.48px]"
+            letterSpacing="tracking-wider"
           />
         }
         footer={
