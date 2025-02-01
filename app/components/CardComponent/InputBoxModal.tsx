@@ -34,7 +34,6 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
           boxShadow: 24,
         }}
       >
-        {/* Close Button (Top-Right) */}
         <IconButton
           onClick={onClose}
           sx={{
@@ -80,53 +79,3 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
 };
 
 export default CreateCourseModal;
-
-{
-  /* <Modal open={open} onClose={onClose}>
-      <Box
-        className="bg-[#696969]/[0.40] p-6 rounded-lg shadow-lg"
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: 400,
-          bgcolor: "var(--lightGray)",
-          p: 4,
-          filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-          borderRadius: 2,
-          outline: "none",
-          border: "none",
-          boxShadow: 24,
-        }}
-      >
-        <IconButton
-          onClick={onClose}
-          sx={{
-            position: "absolute",
-            top: 8,
-            right: 8,
-            color: "gray",
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-        <SecondaryHeading text="Create Course" />
-        <div className="bg-white p-6">
-          <PrimaryInputField
-            label="Course Name"
-            placeholder="Course Name"
-            variant="standard"
-          />
-          <div className="flex justify-end gap-4 mt-4">
-            <Button onClick={onClose} variant="outlined">
-              Cancel
-            </Button>
-            <Button variant="contained" color="primary">
-              Create
-            </Button>
-          </div>
-        </div>
-      </Box>
-    </Modal> */
-}
