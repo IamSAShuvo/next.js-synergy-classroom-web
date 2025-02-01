@@ -4,7 +4,7 @@ interface PrimaryButtonProps {
   text: string;
   borderColor?: string;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const PrimaryButton: FC<PrimaryButtonProps> = ({

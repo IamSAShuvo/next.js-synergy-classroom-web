@@ -28,14 +28,14 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
             style={{ backgroundImage: "url(/card_bg.jpeg)" }}
           >
             <div className="absolute top-6 right-4 text-white cursor-pointer">
-              <MoreVertIcon />
+              <MoreVertIcon className="hover:bg-gray-200/45 rounded-full" />
             </div>
             {header}
           </header>
         ) : (
           <div className="relative p-5 bg-gray-200 rounded-t-2xl">
             <div className="absolute top-4 right-4 text-white cursor-pointer">
-              <MoreVertIcon />
+              <MoreVertIcon className="hover:bg-gray-200/45 rounded-full" />
             </div>
             <h2 className="text-xl font-semibold text-gray-800 mb-2">
               Default Header

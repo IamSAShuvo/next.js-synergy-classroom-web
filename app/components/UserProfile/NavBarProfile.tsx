@@ -1,7 +1,7 @@
 "use client";
 import React, { FC, useState } from "react";
 import { Avatar } from "@mui/material";
-import PrimaryModal from "../CardComponent/PrimaryModal";
+import PrimaryPoppers from "../CardComponent/PrimaryPoppers";
 
 interface NavBarProfileProps {
   name: string;
@@ -43,7 +43,7 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
         roles={roles}
       /> */}
 
-      <PrimaryModal avatarSrc={avatarSrc} name={name} roles={roles} />
+      <PrimaryPoppers avatarSrc={avatarSrc} name={name} roles={roles} />
     </>
   );
 };

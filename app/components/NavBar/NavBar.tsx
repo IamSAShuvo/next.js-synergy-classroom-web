@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import NavBarProfile from "../UserProfile/NavBarProfile";
+import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/navigation";
 
 const NavBar = () => {
@@ -18,13 +19,16 @@ const NavBar = () => {
         width={180}
         height={100}
       />
-      <NavBarProfile
-        roles={role}
-        avatarSrc="/my_profile.jpeg"
-        name="Salman Aziz"
-        avatarHeight={50}
-        avatarWidth={50}
-      />
+      <div className="flex items-center gap-12">
+        <AddIcon className="cursor-pointer" />
+        <NavBarProfile
+          roles={role}
+          avatarSrc="/my_profile.jpeg"
+          name="Salman Aziz"
+          avatarHeight={50}
+          avatarWidth={50}
+        />
+      </div>
     </nav>
   );
 };

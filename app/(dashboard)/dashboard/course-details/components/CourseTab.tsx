@@ -1,14 +1,15 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
 import SectionHeading from "@/app/components/typography/SectionHeading";
 import DescriptionText from "@/app/components/typography/DescriptionText";
 import CardProfile from "@/app/components/UserProfile/CardProfile";
 import ItemList from "@/app/components/typography/itemsList/ItemList";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { courseList } from "@/app/constantData/demoData";
+import { Box } from "@mui/material";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,12 +47,9 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
-  const searchParams = useSearchParams();
-
-  const teacherName = searchParams.get("teacherName") || "N/A";
-
-  // Convert comma-separated values back to arrays
-  const bookList = searchParams.get("bookList")?.split(",") || [];
+  const params = useParams();
+  const courseIndex = parseInt(params.id as string) - 1;
+  const courseData = courseList[courseIndex];
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -72,14 +70,14 @@ export default function BasicTabs() {
             style={{ backgroundImage: "url(/card_bg.jpeg)" }}
           >
             <div className="absolute top-8 right-4 text-white cursor-pointer">
-              <MoreVertIcon />
+              <MoreVertIcon className="hover:bg-gray-200/45 rounded-full" />
             </div>
             <SectionHeading
               text="Electrical Circuit 01"
               className="font-medium text-4xl leading-9 text-white mb-8"
             />
             <DescriptionText
-              text={`Course Teacher - ${teacherName}`}
+              text={`Course Teacher - ${courseData.teacherName}`}
               fontSize="text-2xl"
               color="text-white"
               lineHeight="leading-5"
@@ -91,7 +89,7 @@ export default function BasicTabs() {
               avatarSrc="/my_profile.jpeg"
               avatarHeight={60}
               avatarWidth={60}
-              name={`Professor - ${teacherName}`}
+              name={`Professor - ${courseData.teacherName}`}
             />
             <div className="space-y-5">
               <DescriptionText
@@ -101,7 +99,7 @@ export default function BasicTabs() {
                 lineHeight="leading-5"
               />
               <ItemList
-                items={bookList}
+                items={courseData.bookList}
                 className="text-secondaryColor font-normal text-base leading-5"
                 useNumber={true}
               />
