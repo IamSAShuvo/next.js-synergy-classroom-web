@@ -53,7 +53,11 @@ const SignupComponent = () => {
             fontSize="text-sm"
             lineHeight="leading-6"
           >
-            <LinkText url="/login" text="Login" />
+            <LinkText
+              className="font-normal text-sm leading-5 text-skyBlue hover:underline "
+              url="/login"
+              text="Login"
+            />
           </DescriptionText>
         }
       >

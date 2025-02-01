@@ -62,7 +62,12 @@ const ProfileModal: FC<ProfileModalProps> = ({
   };
   return (
     <Stack direction="row" spacing={2}>
-      <Button ref={anchorRef} onClick={handleToggle} sx={{ minWidth: 0, p: 0 }}>
+      <Button
+        ref={anchorRef}
+        onClick={handleToggle}
+        disableRipple
+        sx={{ minWidth: 0, p: 0 }}
+      >
         <div className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack">
           <h1>{name}</h1>
           <Avatar

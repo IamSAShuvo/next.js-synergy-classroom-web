@@ -42,6 +42,7 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
         name={name}
         roles={roles}
       /> */}
+
       <PrimaryModal avatarSrc={avatarSrc} name={name} roles={roles} />
     </>
   );
