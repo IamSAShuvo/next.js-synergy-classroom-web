@@ -10,6 +10,7 @@ import ItemList from "@/app/components/typography/itemsList/ItemList";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { courseList } from "@/app/constantData/demoData";
 import { Box } from "@mui/material";
+import PrimaryButton from "@/app/components/Buttons/PrimaryButton";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -64,9 +65,9 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <div className="p-6">
+        <div className="p-6 flex flex-col gap-8">
           <header
-            className="relative bg-cover bg-center px-8 pt-7 pb-20  rounded-2xl mb-8"
+            className="relative bg-cover bg-center px-8 pt-7 pb-20  rounded-md"
             style={{ backgroundImage: "url(/card_bg.jpeg)" }}
           >
             <div className="absolute top-8 right-4 text-white cursor-pointer">
@@ -83,7 +84,7 @@ export default function BasicTabs() {
               lineHeight="leading-5"
             />
           </header>
-          <section className="flex flex-col gap-8 p-5 border-2 border-gray-300">
+          <section className="flex flex-col gap-8 p-5 border-2 rounded-md border-gray-300">
             <CardProfile
               className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
               avatarSrc="/my_profile.jpeg"
@@ -105,6 +106,10 @@ export default function BasicTabs() {
               />
             </div>
           </section>
+          <PrimaryButton
+            text="Enroll"
+            className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5 self-start"
+          />
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
