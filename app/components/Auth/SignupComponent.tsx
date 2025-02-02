@@ -11,7 +11,7 @@ const SignupComponent = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <PrimaryCard
-        className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+        className="w-[30%] mx-auto bg-white rounded-2xl shadow-lg p-8"
         header={
           <>
             <PrimaryHeading text="Sign Up" />
