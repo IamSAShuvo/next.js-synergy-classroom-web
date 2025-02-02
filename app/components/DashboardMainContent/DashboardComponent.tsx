@@ -92,6 +92,7 @@ const DashboardComponent = () => {
                   }}
                   text="Enroll"
                   className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
+                  disabled={isEnrolled}
                 />
               ) : (
                 <CheckCircleIcon className="text-green-500" fontSize="large" />

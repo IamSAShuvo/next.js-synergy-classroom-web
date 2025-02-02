@@ -11,6 +11,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { courseList } from "@/app/constantData/demoData";
 import { Box } from "@mui/material";
 import PrimaryButton from "@/app/components/Buttons/PrimaryButton";
+import { useState } from "react";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,8 +50,17 @@ export default function BasicTabs() {
   };
 
   const params = useParams();
+  const { id } = params;
   const courseIndex = parseInt(params.id as string) - 1;
   const courseData = courseList[courseIndex];
+  const [enrolledCourses, setEnrolledCourses] = useState<number[]>([]);
+
+  // const course = courseList.find((course) => course.id === Number(id));
+  const isEnrolled = enrolledCourses.includes(Number(id));
+
+  const handleEnroll = () => {
+    setEnrolledCourses((prev) => [...prev, Number(id)]);
+  };
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -107,8 +117,12 @@ export default function BasicTabs() {
             </div>
           </section>
           <PrimaryButton
-            text="Enroll"
-            className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5 self-start"
+            onClick={handleEnroll}
+            text={isEnrolled ? "Already Enrolled" : "Enroll"}
+            className={`${
+              isEnrolled ? "bg-gray-500 cursor-not-allowed" : "bg-skyBlue"
+            } text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5`}
+            disabled={isEnrolled}
           />
         </div>
       </CustomTabPanel>
