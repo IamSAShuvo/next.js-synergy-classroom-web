@@ -1,8 +1,7 @@
 import React from "react";
-import BasicTabs from "./components/CourseTab";
 
 const page = () => {
-  return <BasicTabs />;
+  return <div>See all courses</div>;
 };
 
 export default page;

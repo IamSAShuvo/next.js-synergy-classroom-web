@@ -1,8 +1,17 @@
 "use client";
+import { useParams } from "next/navigation";
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
+import SectionHeading from "@/app/components/typography/SectionHeading";
+import DescriptionText from "@/app/components/typography/DescriptionText";
+import CardProfile from "@/app/components/UserProfile/CardProfile";
+import ItemList from "@/app/components/typography/itemsList/ItemList";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { courseList } from "@/app/constantData/demoData";
+import { Box } from "@mui/material";
+import PrimaryButton from "@/app/components/Buttons/PrimaryButton";
+import { useState } from "react";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -40,6 +49,19 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
+  const params = useParams();
+  const { id } = params;
+  const courseIndex = parseInt(params.id as string) - 1;
+  const courseData = courseList[courseIndex];
+  const [enrolledCourses, setEnrolledCourses] = useState<number[]>([]);
+
+  // const course = courseList.find((course) => course.id === Number(id));
+  const isEnrolled = enrolledCourses.includes(Number(id));
+
+  const handleEnroll = () => {
+    setEnrolledCourses((prev) => [...prev, Number(id)]);
+  };
+
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -53,10 +75,84 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        Item One
+        <div className="p-6 flex flex-col gap-8">
+          <header
+            className="relative bg-cover bg-center px-8 pt-7 pb-20  rounded-md"
+            style={{ backgroundImage: "url(/card_bg.jpeg)" }}
+          >
+            <div className="absolute top-8 right-4 text-white cursor-pointer">
+              <MoreVertIcon className="hover:bg-gray-200/45 rounded-full" />
+            </div>
+            <SectionHeading
+              text="Electrical Circuit 01"
+              className="font-medium text-4xl leading-9 text-white mb-8"
+            />
+            <DescriptionText
+              text={`Course Teacher - ${courseData.teacherName}`}
+              fontSize="text-2xl"
+              color="text-white"
+              lineHeight="leading-5"
+            />
+          </header>
+          <section className="flex flex-col gap-8 p-5 border-2 rounded-md border-gray-300">
+            <CardProfile
+              className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
+              avatarSrc="/my_profile.jpeg"
+              avatarHeight={60}
+              avatarWidth={60}
+              name={`Professor - ${courseData.teacherName}`}
+            />
+            <div className="space-y-5">
+              <DescriptionText
+                text="Book List"
+                color="text-steelBlue"
+                fontSize="text-xl"
+                lineHeight="leading-5"
+              />
+              <ItemList
+                items={courseData.bookList}
+                className="text-secondaryColor font-normal text-base leading-5"
+                useNumber={true}
+              />
+            </div>
+          </section>
+          <PrimaryButton
+            onClick={handleEnroll}
+            text={isEnrolled ? "Already Enrolled" : "Enroll"}
+            className={`${
+              isEnrolled ? "bg-gray-500 cursor-not-allowed" : "bg-skyBlue"
+            } text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5`}
+            disabled={isEnrolled}
+          />
+        </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <h3 className="font-semibold text-3xl text-primaryColor border-b-2 p-6">
+          Students
+        </h3>
+        <div className="mt-3 p-6 flex flex-col gap-5">
+          <CardProfile
+            className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack "
+            avatarHeight={40}
+            avatarWidth={40}
+            avatarSrc="/profile_avatar_boy.png"
+            name="Someone unknown"
+          />
+          <CardProfile
+            className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
+            avatarHeight={40}
+            avatarWidth={40}
+            avatarSrc="/my_profile.jpeg"
+            name="Salman Aziz"
+          />
+          <CardProfile
+            className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
+            avatarHeight={40}
+            avatarWidth={40}
+            avatarSrc="/profile_picture.png"
+            name="Could be anyone"
+          />
+        </div>
       </CustomTabPanel>
     </Box>
   );

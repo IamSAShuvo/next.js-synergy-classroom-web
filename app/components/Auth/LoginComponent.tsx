@@ -126,7 +126,7 @@ const LoginComponent = () => {
             color="text-secondaryColor"
             fontSize="text-sm"
             lineHeight="leading-5"
-            letterSpacing="tracking-[0.48px]"
+            letterSpacing="tracking-wider"
           />
         }
         footer={
@@ -136,7 +136,11 @@ const LoginComponent = () => {
             fontSize="text-sm"
             lineHeight="leading-6"
           >
-            <LinkText url="/signup" text="Sign Up" />
+            <LinkText
+              className="font-normal text-sm leading-5 text-skyBlue hover:underline "
+              url="/signup"
+              text="Sign Up"
+            />
           </DescriptionText>
         }
       >

@@ -1,7 +1,7 @@
 "use client";
 import React, { FC, useState } from "react";
 import { Avatar } from "@mui/material";
-import PrimaryModal from "../CardComponent/PrimaryModal";
+import PrimaryPoppers from "../CardComponent/PrimaryPoppers";
 
 interface NavBarProfileProps {
   name: string;
@@ -22,7 +22,7 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
 
   return (
     <>
-      <div
+      {/* <div
         onClick={() => setOpen(true)}
         className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack"
       >
@@ -33,14 +33,17 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
           sx={{ height: avatarHeight, width: avatarWidth }}
           className=""
         />
-      </div>
-      <PrimaryModal
+      </div> */}
+
+      {/* <PrimaryModal
         open={open}
         setOpen={setOpen}
         avatarSrc={avatarSrc}
         name={name}
         roles={roles}
-      />
+      /> */}
+
+      <PrimaryPoppers avatarSrc={avatarSrc} name={name} roles={roles} />
     </>
   );
 };

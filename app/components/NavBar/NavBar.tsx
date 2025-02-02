@@ -1,26 +1,42 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import NavBarProfile from "../UserProfile/NavBarProfile";
+import AddIcon from "@mui/icons-material/Add";
+import { useRouter } from "next/navigation";
+import InputBoxModal from "../CardComponent/InputBoxModal";
 
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
+  const handleNavigate = () => router.push("/dashboard");
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
   return (
-    <nav className="flex justify-between items-center p-6">
-      <Image
-        src="/logo.svg"
-        className="cursor-pointer"
-        alt="logo"
-        width={180}
-        height={100}
-      />
-      <NavBarProfile
-        roles={role}
-        avatarSrc="/my_profile.jpeg"
-        name="Salman Aziz"
-        avatarHeight={50}
-        avatarWidth={50}
-      />
-    </nav>
+    <React.Fragment>
+      <nav className="flex justify-between items-center p-6">
+        <Image
+          className="cursor-pointer"
+          onClick={handleNavigate}
+          src="/logo.svg"
+          alt="logo"
+          width={180}
+          height={100}
+        />
+        <div className="flex items-center gap-12">
+          <AddIcon className="cursor-pointer" onClick={handleOpen} />
+          <NavBarProfile
+            roles={role}
+            avatarSrc="/my_profile.jpeg"
+            name="Salman Aziz"
+            avatarHeight={50}
+            avatarWidth={50}
+          />
+        </div>
+      </nav>
+      <InputBoxModal open={open} onClose={handleClose} />
+    </React.Fragment>
   );
 };
 
