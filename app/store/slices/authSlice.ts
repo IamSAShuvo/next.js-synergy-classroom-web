@@ -24,14 +24,14 @@ const initialState: AuthState = {
 };
 
 export const loginUser = createAsyncThunk(
-  "auth/loginUser",
+  "auth/login",
   async (
     credentials: { username: string; password: string },
     { rejectWithValue }
   ) => {
     try {
       const response = await axios.post(
-        "http://192.168.0.204:8080/login",
+        "http://localhost:8080/login",
         credentials
       );
       console.log(response);
