@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "@/app/store/slices/authSlice";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import PrimaryCard from "../CardComponent/PrimaryCard";
 import PrimaryHeading from "../typography/PrimaryHeading";
 import DescriptionText from "../typography/DescriptionText";
@@ -10,13 +10,21 @@ import PrimaryInputField from "../inputFields/PrimaryInputField";
 import RadioButtons from "../Buttons/RadioButtons";
 import LinkText from "../links/LinkText";
 import PrimaryButton from "../Buttons/PrimaryButton";
-import { RootState } from "@/app/store/store";
-import store from "@/app/store/store";
+import { AppDispatch, RootState } from "@/app/store/store";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 const SignupComponent = () => {
-  const dispatch = useDispatch<typeof store.dispatch>();
-  const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
+  // const router = useRouter();
   const { loading, error } = useSelector((state: RootState) => state.auth);
+
+  // State for Snackbar
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
+    "success"
+  );
 
   // State for form inputs
   const [formData, setFormData] = useState<{
@@ -51,25 +59,48 @@ const SignupComponent = () => {
     try {
       const resultAction = await dispatch(signupUser(formData));
 
-      console.log("Signup result action:", resultAction);
+      console.log("Signup result action:", resultAction.meta.arg.role);
 
       if (signupUser.fulfilled.match(resultAction)) {
         console.log("Signup successful:", resultAction.payload);
-        router.push("/dashboard");
+        setFormData({
+          username: "",
+          email: "",
+          password: "",
+          role: "student",
+          name: "",
+        });
+        // 🎉 Success: Show Snackbar with User Role
+        setSnackbarSeverity("success");
+        setSnackbarMessage(
+          `Signup successful! Welcome, ${resultAction.payload.role}`
+        );
+        setOpenSnackbar(true);
       } else {
-        console.error("Signup failed:", resultAction);
+        console.error("Signup failed:", resultAction.payload);
 
-        if (resultAction.payload) {
-          console.error(
-            "Signup error message:",
-            JSON.stringify(resultAction.payload, null, 2)
-          );
-        } else {
-          console.error("Signup failed but no payload received.");
-        }
+        // ❌ Error: Show Error Message in Snackbar
+        setSnackbarSeverity("error");
+        setSnackbarMessage(
+          (resultAction.payload as { message: string })?.message ||
+            "Signup failed. Please try again."
+        );
+        setOpenSnackbar(true);
+
+        // if (resultAction.payload) {
+        //   console.error(
+        //     "Signup error message:",
+        //     JSON.stringify(resultAction.payload, null, 2)
+        //   );
+        // } else {
+        //   console.error("Signup failed but no payload received.");
+        // }
       }
     } catch (err) {
       console.error("Signup failed due to an error:", err);
+      setSnackbarSeverity("error");
+      setSnackbarMessage("An unexpected error occurred. Please try again.");
+      setOpenSnackbar(true);
     }
   };
 
@@ -152,8 +183,31 @@ const SignupComponent = () => {
           disabled={loading}
         />
         {error && typeof error === "object" && "message" in error && (
-          <p>{(error as { message: string }).message}</p>
+          <p className="mt-4 text-red-700">
+            {(error as { message: string }).message}
+          </p>
         )}
+        {/* ✅ MUI Snackbar for Success & Error */}
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={10000}
+          onClose={() => setOpenSnackbar(false)}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }} // Position Snackbar on the right
+        >
+          <Alert
+            onClose={() => setOpenSnackbar(false)}
+            severity={snackbarSeverity}
+            variant="filled"
+            sx={{
+              mb: 8,
+              width: "100%",
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
+              borderRadius: "8px",
+            }}
+          >
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
       </PrimaryCard>
     </div>
   );
