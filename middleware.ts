@@ -2,13 +2,23 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  // Check if the user is trying to access the root "/"
-  if (request.nextUrl.pathname === "/") {
+  const token = request.cookies.get("token");
+
+  if (!token && request.nextUrl.pathname.startsWith("/dashboard")) {
+    return NextResponse.next();
+  }
+
+  if (!token && request.nextUrl.pathname === "/") {
     return NextResponse.redirect(new URL("/login", request.url));
   }
+
+  if (token && ["/", "/login"].includes(request.nextUrl.pathname)) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
+
+  return NextResponse.next();
 }
 
-// Config to specify the paths where the middleware should run
 export const config = {
-  matcher: "/", // Apply middleware only to the root path
+  matcher: ["/", "/dashboard/:path*", "/login"],
 };
