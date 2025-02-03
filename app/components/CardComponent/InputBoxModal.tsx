@@ -58,7 +58,19 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
             placeholder="Add your book name"
             variant="standard"
             hasExpandableFields
-          />
+          >
+            <PrimaryInputField
+              label="Author Name"
+              variant="standard"
+              placeholder="Book Author"
+            />
+            <PrimaryInputField
+              label="Book Name"
+              variant="standard"
+              placeholder="Add your book name"
+              hasExpandableFields
+            />
+          </PrimaryInputField>
         </div>
 
         <div className="flex justify-end gap-4 mt-12">
