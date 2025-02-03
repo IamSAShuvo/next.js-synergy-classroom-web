@@ -1,7 +1,7 @@
 import DashboardComponent from "@/app/components/DashboardMainContent/DashboardComponent";
 import LinkText from "@/app/components/links/LinkText";
 
-const page = () => {
+const Page = () => {
   return (
     <div className="flex flex-col mx-7 my-6 gap-4">
       <LinkText
@@ -14,4 +14,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

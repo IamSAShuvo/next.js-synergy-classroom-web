@@ -1,5 +1,6 @@
 "use client";
 import React, { FC } from "react";
+import Cookies from "js-cookie";
 import {
   ClickAwayListener,
   Avatar,
@@ -30,7 +31,6 @@ const Arrow = styled("div")(({ theme }) => ({
   top: "-10px",
   right: "1%",
   transform: "translateX(-50%) rotate(45deg)",
-  // boxShadow: theme.shadows[3],
   zIndex: -1,
 }));
 
@@ -45,7 +45,13 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
   const anchorRef = React.useRef<HTMLButtonElement>(null);
   const router = useRouter();
 
-  const handleNavigate = () => router.push("/");
+  const handleNavigate = () => {
+    Cookies.remove("token");
+    Cookies.remove("user");
+    sessionStorage.clear();
+    localStorage.clear();
+    router.push("/login");
+  };
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);

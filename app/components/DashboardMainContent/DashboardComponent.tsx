@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import SecondaryCard from "../CardComponent/SecondaryCard";
 import SectionHeading from "../typography/SectionHeading";
@@ -16,6 +16,13 @@ const DashboardComponent = () => {
   const handleCardClick = (id: number) => {
     router.push(`/dashboard/course-details/${id}`);
   };
+
+  useEffect(() => {
+    const storedToken = sessionStorage.getItem("token");
+    if (!storedToken) {
+      router.push("/login"); // Redirect if no token
+    }
+  }, [router]);
 
   const handleEnroll = (id: number) => {
     setEnrolledCourses((prev) => [...prev, id]);
