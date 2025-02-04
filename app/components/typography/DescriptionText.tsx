@@ -4,7 +4,7 @@ interface DescriptionWithChildrenProps {
   text: string;
   color: string;
   fontSize: string;
-  lineHeight:
+  lineHeight?:
     | "leading-normal"
     | "leading-loose"
     | "leading-tight"

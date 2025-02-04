@@ -3,6 +3,10 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 interface User {
+  data: {
+    accessToken: string;
+    refreshToken: string;
+  };
   id: string;
   username: string;
   role: "student" | "teacher";
@@ -17,10 +21,8 @@ interface AuthState {
 }
 
 // Retrieve token and user from sessionStorage (on page reload)
-const storedToken =
-  typeof window !== "undefined" ? sessionStorage.getItem("token") : null;
-const storedUser =
-  typeof window !== "undefined" ? sessionStorage.getItem("user") : null;
+const storedToken = typeof window !== "undefined" ? Cookies.get("token") : null;
+const storedUser = typeof window !== "undefined" ? Cookies.get("user") : null;
 
 const initialState: AuthState = {
   user: storedUser ? JSON.parse(storedUser) : null,
@@ -43,15 +45,12 @@ export const signupUser = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      console.log("Sending signup request with data:", userData);
-
       const response = await axios.post(
         "http://localhost:8080/signup",
         userData,
         { headers: { "Content-Type": "application/json" } }
       );
 
-      console.log("Signup response:", response); // Log the full response
       return response.data;
     } catch (error) {
       console.error("Signup API call failed:", error);
@@ -78,7 +77,6 @@ export const loginUser = createAsyncThunk(
         "http://localhost:8080/login",
         credentials
       );
-      console.log("Login response:", response.data);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
@@ -98,8 +96,7 @@ const authSlice = createSlice({
       state.token = null;
       Cookies.remove("token");
       Cookies.remove("user");
-      sessionStorage.removeItem("token");
-      sessionStorage.removeItem("user");
+      fetch("/api/logout", { method: "POST", credentials: "include" });
     },
   },
   extraReducers: (builder) => {
@@ -110,7 +107,6 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(signupUser.fulfilled, (state, action: PayloadAction<User>) => {
-        console.log("User registered:", action.payload);
         state.loading = false;
         state.user = action.payload;
       })
@@ -124,14 +120,10 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action: PayloadAction<User>) => {
-        console.log("User logged in:", action.payload);
         state.loading = false;
-        state.user = action.payload;
-        state.token = action.payload.token;
-        Cookies.set("token", action.payload.token);
-        Cookies.set("user", JSON.stringify(action.payload));
-        sessionStorage.setItem("token", action.payload.token);
-        sessionStorage.setItem("user", JSON.stringify(action.payload));
+        // state.user = action.payload;
+        // state.token = action.payload.token;
+        Cookies.set("token", action.payload.data.accessToken);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

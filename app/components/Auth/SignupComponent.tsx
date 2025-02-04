@@ -62,7 +62,7 @@ const SignupComponent = () => {
         });
         setSnackbarSeverity("success");
         setSnackbarMessage(
-          `Signup successful! Welcome, ${resultAction.payload.role}`
+          `Signup successful! Welcome, ${resultAction.meta.arg.name}`
         );
         setOpenSnackbar(true);
       } else {
