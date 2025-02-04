@@ -17,7 +17,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
 import dashboardReducer from "./slices/dashboardSlice";
 import userReducer from "./slices/userSlice";
-import axios from "axios";
+// import axios from "axios";
 
 const store = configureStore({
   reducer: {
@@ -27,14 +27,14 @@ const store = configureStore({
   },
 });
 
-// Axios Interceptor to attach Bearer Token from Redux
-axios.interceptors.request.use((config) => {
-  const token = store.getState().auth.token;
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+// // Axios Interceptor to attach Bearer Token from Redux
+// axios.interceptors.request.use((config) => {
+//   const token = store.getState().auth.token;
+//   if (token) {
+//     config.headers.Authorization = `Bearer ${token}`;
+//   }
+//   return config;
+// });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -1,47 +1,26 @@
-// import { NextResponse } from "next/server";
-// import type { NextRequest } from "next/server";
-
-// export function middleware(request: NextRequest) {
-//   const token = request.cookies.get("token");
-
-//   if (!token && request.nextUrl.pathname.startsWith("/dashboard")) {
-//     return NextResponse.next();
-//   }
-
-//   if (!token && request.nextUrl.pathname === "/") {
-//     return NextResponse.redirect(new URL("/login", request.url));
-//   }
-
-//   if (token && ["/", "/login"].includes(request.nextUrl.pathname)) {
-//     return NextResponse.redirect(new URL("/dashboard", request.url));
-//   }
-
-//   return NextResponse.next();
-// }
-
-// export const config = {
-//   matcher: ["/", "/dashboard/:path*", "/login"],
-// };
-
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get("token");
+  const token = request.cookies.get("token")?.value;
+  const { pathname } = request.nextUrl;
 
-  // If no token, restrict access to dashboard
-  if (!token && request.nextUrl.pathname.startsWith("/dashboard")) {
+  // Redirect root path based on token
+  if (pathname === "/") {
+    return NextResponse.redirect(
+      new URL(token ? "/dashboard" : "/login", request.url)
+    );
+  }
+
+  // Protect dashboard route
+  if (pathname === "/dashboard" && !token) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // If logged in, prevent access to login/signup
-  if (token && ["/", "/login"].includes(request.nextUrl.pathname)) {
+  // Redirect authenticated users from login
+  if (pathname === "/login" && token) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
   return NextResponse.next();
 }
-
-export const config = {
-  matcher: ["/", "/dashboard/:path*", "/login"],
-};

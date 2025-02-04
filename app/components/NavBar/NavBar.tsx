@@ -22,7 +22,8 @@ const NavBar = () => {
           src="/logo.svg"
           alt="logo"
           width={180}
-          height={100}
+          height={120}
+          priority
         />
         <div className="flex items-center gap-12">
           <AddIcon className="cursor-pointer" onClick={handleOpen} />
