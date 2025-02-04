@@ -8,6 +8,7 @@ interface Book {
 }
 
 interface Course {
+  id: number;
   courseId: number;
   courseTitle: string;
   books: Book[];
@@ -16,6 +17,7 @@ interface Course {
 
 interface CourseState {
   courses: Course[];
+  role: string;
   loading: boolean;
   error: string | null;
 }
@@ -23,6 +25,7 @@ interface CourseState {
 // Initial state
 const initialState: CourseState = {
   courses: [],
+  role: "",
   loading: false,
   error: null,
 };
@@ -41,8 +44,15 @@ export const fetchCourses = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
+      console.log(response.data.message); // Log to inspect message structure
 
-      return response.data.data; // Ensure API returns data in `data.data`
+      // Extract role
+      const roleMatch = response.data.message.match(/the (\w+)/);
+      const role = roleMatch ? roleMatch[1].toLowerCase() : ""; // Set default empty string if no match
+
+      console.log("Extracted Role:", role);
+
+      return { courses: response.data.data, role: role };
     } catch (error) {
       console.error("Error fetching courses:", error);
       if (axios.isAxiosError(error)) {
@@ -69,9 +79,11 @@ const dashboardSlice = createSlice({
       })
       .addCase(
         fetchCourses.fulfilled,
-        (state, action: PayloadAction<Course[]>) => {
+        (state, action: PayloadAction<{ courses: Course[]; role: string }>) => {
+          console.log("action payload", action.payload);
           state.loading = false;
-          state.courses = action.payload;
+          state.courses = action.payload.courses;
+          state.role = action.payload.role;
         }
       )
       .addCase(fetchCourses.rejected, (state, action) => {

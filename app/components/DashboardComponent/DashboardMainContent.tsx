@@ -12,14 +12,16 @@ import NumberBadge from "../typography/NumberBadge";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LinkText from "../links/LinkText";
 
-const DashboardComponent = () => {
+const DashboardMainContent = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
 
   // Get courses from Redux store
-  const { courses, loading, error } = useSelector(
+  const { courses, loading, error, role } = useSelector(
     (state: RootState) => state.courses
   );
+
+  console.log(`course: ${courses} & role: ${role}`);
 
   // Fetch courses on mount
   useEffect(() => {
@@ -31,17 +33,21 @@ const DashboardComponent = () => {
 
   return (
     <div className="flex flex-col mx-7 my-6 gap-4">
-      <LinkText
-        className="font-normal text-sm leading-5 text-skyBlue hover:underline self-end"
-        url="/dashboard/all-courses"
-        text="See All"
-      />
+      {role === "student" && (
+        <LinkText
+          className="font-normal text-sm leading-5 text-skyBlue hover:underline self-end"
+          url="/dashboard/all-courses"
+          text="See All"
+        />
+      )}
       <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5">
         {courses.map((course) => (
           <SecondaryCard
-            key={course.courseId}
+            key={course.courseId || course.id}
             onClick={() =>
-              router.push(`/dashboard/course-details/${course.courseId}`)
+              router.push(
+                `/dashboard/course-details/${course.courseId || course.id}`
+              )
             }
             className="w-full mx-auto bg-white rounded-2xl shadow-lg"
             header={
@@ -53,9 +59,7 @@ const DashboardComponent = () => {
                 <DescriptionText
                   color="text-white"
                   fontSize="text-sm"
-                  text={`Course Teacher - ${
-                    course.teacherName[0]?.name || "N/A"
-                  }`}
+                  text={`Course Teacher - `}
                   lineHeight="leading-5"
                 />
               </>
@@ -100,4 +104,4 @@ const DashboardComponent = () => {
   );
 };
 
-export default DashboardComponent;
+export default DashboardMainContent;
