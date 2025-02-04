@@ -15,13 +15,13 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
-import courseReducer from "./slices/dashboardSlice";
+import dashboardReducer from "./slices/dashboardSlice";
 import axios from "axios";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    courses: courseReducer,
+    courses: dashboardReducer,
   },
 });
 

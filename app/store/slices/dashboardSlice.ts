@@ -57,7 +57,7 @@ export const fetchCourses = createAsyncThunk(
 );
 
 // **Course Slice**
-const courseSlice = createSlice({
+const dashboardSlice = createSlice({
   name: "courses",
   initialState,
   reducers: {},
@@ -81,4 +81,4 @@ const courseSlice = createSlice({
   },
 });
 
-export default courseSlice.reducer;
+export default dashboardSlice.reducer;
