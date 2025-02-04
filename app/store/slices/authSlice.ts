@@ -123,7 +123,7 @@ const authSlice = createSlice({
         state.loading = false;
         // state.user = action.payload;
         // state.token = action.payload.token;
-        Cookies.set("token", action.payload.data.accessToken);
+        Cookies.set("token", action.payload.data.accessToken, { expires: 1 });
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
