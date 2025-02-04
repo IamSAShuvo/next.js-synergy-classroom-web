@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import { Avatar } from "@mui/material";
 import PrimaryPoppers from "../CardComponent/PrimaryPoppers";
 
@@ -8,7 +8,7 @@ interface NavBarProfileProps {
   avatarSrc: string;
   avatarHeight?: number;
   avatarWidth?: number;
-  roles: string[];
+  roles: string;
 }
 
 const NavBarProfile: FC<NavBarProfileProps> = ({
@@ -19,11 +19,17 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
   avatarWidth,
 }) => {
   const [open, setOpen] = useState(false);
+  const anchorRef = useRef<HTMLDivElement>(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
 
   return (
-    <>
-      {/* <div
-        onClick={() => setOpen(true)}
+    <React.Fragment>
+      <div
+        ref={anchorRef}
+        onClick={handleToggle}
         className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack"
       >
         <h1>{name}</h1>
@@ -33,18 +39,17 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
           sx={{ height: avatarHeight, width: avatarWidth }}
           className=""
         />
-      </div> */}
+      </div>
 
-      {/* <PrimaryModal
+      <PrimaryPoppers
         open={open}
         setOpen={setOpen}
         avatarSrc={avatarSrc}
         name={name}
         roles={roles}
-      /> */}
-
-      <PrimaryPoppers avatarSrc={avatarSrc} name={name} roles={roles} />
-    </>
+        anchorRef={anchorRef}
+      />
+    </React.Fragment>
   );
 };
 

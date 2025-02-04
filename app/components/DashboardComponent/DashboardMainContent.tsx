@@ -21,8 +21,6 @@ const DashboardMainContent = () => {
     (state: RootState) => state.courses
   );
 
-  console.log(`course: ${courses} & role: ${role}`);
-
   // Fetch courses on mount
   useEffect(() => {
     dispatch(fetchCourses());

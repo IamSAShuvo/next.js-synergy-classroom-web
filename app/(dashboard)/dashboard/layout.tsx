@@ -1,8 +1,6 @@
 import DashboardSidebarContent from "@/app/components/DashboardComponent/DashboardSidebarContent";
 import NavBar from "@/app/components/NavBar/NavBar";
 
-// import { cookies } from "next/headers";
-
 export default function DashboardLayout({
   children,
 }: Readonly<{

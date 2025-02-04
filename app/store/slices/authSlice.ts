@@ -87,6 +87,39 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+// Logout User Action (API call for server-side logout)
+export const logoutUser = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      // Retrieve the Bearer token from cookies (or wherever you store it)
+      const token = Cookies.get("token");
+
+      if (!token) {
+        return rejectWithValue("No token found");
+      }
+
+      // API call to backend logout with Bearer token in the Authorization header
+      const response = await axios.post(
+        "http://localhost:8080/logout", // Replace with your logout endpoint
+        {}, // Empty body since we are logging out
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include Bearer token here
+          },
+          withCredentials: true, // Include cookies in the request if needed
+        }
+      );
+
+      console.log("logout response:", response.data); // Log API response for debugging
+      return response.data; // return response data if successful
+    } catch (error) {
+      console.error("Logout API error:", error); // Log the error that happened in the API call
+      return rejectWithValue("Logout failed"); // handle error
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -96,7 +129,6 @@ const authSlice = createSlice({
       state.token = null;
       Cookies.remove("token");
       Cookies.remove("user");
-      fetch("/api/logout", { method: "POST", credentials: "include" });
     },
   },
   extraReducers: (builder) => {
@@ -129,6 +161,20 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload as string;
       });
+    // Handle async logout action
+    builder.addCase(logoutUser.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(logoutUser.fulfilled, (state) => {
+      state.loading = false;
+      state.user = null;
+      state.token = null;
+    });
+    builder.addCase(logoutUser.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload as string;
+    });
   },
 });
 

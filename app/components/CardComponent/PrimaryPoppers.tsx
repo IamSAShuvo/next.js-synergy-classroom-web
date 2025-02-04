@@ -1,26 +1,22 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, RefObject } from "react";
 import Cookies from "js-cookie";
-import {
-  ClickAwayListener,
-  Avatar,
-  Button,
-  Grow,
-  Paper,
-  Popper,
-  Stack,
-} from "@mui/material";
+import { ClickAwayListener, Grow, Paper, Popper, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import UserProfile from "../UserProfile/UserProfile";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "@/app/store/slices/authSlice";
+import { AppDispatch, RootState } from "@/app/store/store";
 
 interface PrimaryPoppersProps {
-  // open?: boolean;
-  // setOpen?: (open: boolean) => void;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   name: string;
   avatarSrc: string;
-  roles: string[];
+  roles: string;
+  anchorRef: RefObject<HTMLDivElement | null>;
 }
 
 const Arrow = styled("div")(({ theme }) => ({
@@ -38,52 +34,55 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
   name,
   avatarSrc,
   roles,
-  // open,
-  // setOpen,
+  open,
+  setOpen,
+  anchorRef,
 }) => {
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef<HTMLButtonElement>(null);
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleNavigate = () => {
-    Cookies.remove("token");
-    Cookies.remove("user");
-    sessionStorage.clear();
-    localStorage.clear();
-    router.push("/login");
-  };
+  const { loading } = useSelector((state: RootState) => state.auth);
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+  const handleNavigate = async () => {
+    try {
+      const logoutAction = await dispatch(logoutUser());
+      if (logoutUser.fulfilled.match(logoutAction)) {
+        Cookies.remove("token");
+        Cookies.remove("user");
+        router.push("/login");
+      } else {
+        console.error("error unknown");
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
     if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
+      event.target instanceof HTMLElement &&
+      event.target.contains(event.target as HTMLElement)
     ) {
       return;
     }
-    setOpen(false);
+    setOpen(false); // Close popper when clicking outside
   };
+
   return (
     <Stack direction="row" spacing={2}>
-      <Button
+      {/* <div
         ref={anchorRef}
         onClick={handleToggle}
-        disableRipple
-        sx={{ minWidth: 0, p: 0 }}
+        className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack"
       >
-        <div className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack">
-          <h1>{name}</h1>
-          <Avatar
-            alt={name}
-            src={avatarSrc}
-            sx={{ height: 50, width: 50 }}
-            className=""
-          />
-        </div>
-      </Button>
+        <h1>{name}</h1>
+        <Avatar
+          alt={name}
+          src={avatarSrc}
+          sx={{ height: 50, width: 50 }}
+          className=""
+        />
+      </div> */}
       <ClickAwayListener onClickAway={handleClose}>
         <Popper
           open={open}
@@ -117,14 +116,10 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 <Arrow />
 
                 <div className="w-full">
-                  <UserProfile
-                    avatarSrc={avatarSrc}
-                    name={name}
-                    role={roles[0]}
-                  />
+                  <UserProfile avatarSrc={avatarSrc} name={name} role={roles} />
                   <PrimaryButton
                     onClick={handleNavigate}
-                    text="Log out"
+                    text={loading ? "Log out..." : "Log out"}
                     className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6 mt-16"
                   />
                 </div>
