@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signupUser } from "@/app/store/slices/authSlice";
-// import { useRouter } from "next/navigation";
 import PrimaryCard from "../CardComponent/PrimaryCard";
 import PrimaryHeading from "../typography/PrimaryHeading";
 import DescriptionText from "../typography/DescriptionText";
@@ -16,17 +15,14 @@ import Alert from "@mui/material/Alert";
 
 const SignupComponent = () => {
   const dispatch = useDispatch<AppDispatch>();
-  // const router = useRouter();
   const { loading, error } = useSelector((state: RootState) => state.auth);
 
-  // State for Snackbar
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
     "success"
   );
 
-  // State for form inputs
   const [formData, setFormData] = useState<{
     username: string;
     email: string;
@@ -41,7 +37,6 @@ const SignupComponent = () => {
     name: "",
   });
 
-  // Handle Input Change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({
       ...prev,
@@ -49,20 +44,15 @@ const SignupComponent = () => {
     }));
   };
 
-  // Handle Radio Button Change
   const handleRoleChange = (role: "student" | "teacher") => {
     setFormData({ ...formData, role });
   };
 
-  // Handle Signup
   const handleSignup = async () => {
     try {
       const resultAction = await dispatch(signupUser(formData));
 
-      console.log("Signup result action:", resultAction.meta.arg.role);
-
       if (signupUser.fulfilled.match(resultAction)) {
-        console.log("Signup successful:", resultAction.payload);
         setFormData({
           username: "",
           email: "",
@@ -70,34 +60,21 @@ const SignupComponent = () => {
           role: "student",
           name: "",
         });
-        // 🎉 Success: Show Snackbar with User Role
         setSnackbarSeverity("success");
         setSnackbarMessage(
           `Signup successful! Welcome, ${resultAction.payload.role}`
         );
         setOpenSnackbar(true);
       } else {
-        console.error("Signup failed:", resultAction.payload);
-
-        // ❌ Error: Show Error Message in Snackbar
         setSnackbarSeverity("error");
         setSnackbarMessage(
           (resultAction.payload as { message: string })?.message ||
             "Signup failed. Please try again."
         );
         setOpenSnackbar(true);
-
-        // if (resultAction.payload) {
-        //   console.error(
-        //     "Signup error message:",
-        //     JSON.stringify(resultAction.payload, null, 2)
-        //   );
-        // } else {
-        //   console.error("Signup failed but no payload received.");
-        // }
       }
     } catch (err) {
-      console.error("Signup failed due to an error:", err);
+      console.error(err);
       setSnackbarSeverity("error");
       setSnackbarMessage("An unexpected error occurred. Please try again.");
       setOpenSnackbar(true);
@@ -187,12 +164,11 @@ const SignupComponent = () => {
             {(error as { message: string }).message}
           </p>
         )}
-        {/* ✅ MUI Snackbar for Success & Error */}
         <Snackbar
           open={openSnackbar}
           autoHideDuration={10000}
           onClose={() => setOpenSnackbar(false)}
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }} // Position Snackbar on the right
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         >
           <Alert
             onClose={() => setOpenSnackbar(false)}
