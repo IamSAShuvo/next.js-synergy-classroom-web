@@ -51,15 +51,13 @@ const LoginComponent = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <PrimaryCard
-        className="w-[25%] mx-auto bg-white rounded-2xl shadow-lg p-8"
+        className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
         header={
           <>
             <PrimaryHeading text="Login" />
             <DescriptionText
               text="Welcome back! Enter your details to proceed."
-              color="text-secondaryColor"
-              fontSize="text-sm"
-              lineHeight="leading-6"
+              className="text-secondaryColor text-sm leading-6"
             />
           </>
         }
@@ -84,18 +82,13 @@ const LoginComponent = () => {
         aside={
           <DescriptionText
             text="Forgot PassWord?"
-            color="text-secondaryColor"
-            fontSize="text-sm"
-            lineHeight="leading-5"
-            letterSpacing="tracking-wider"
+            className="text-secondaryColor text-sm leading-5 tracking-wide"
           />
         }
         footer={
           <DescriptionText
             text="Don't have an account?"
-            color="text-secondaryColor"
-            fontSize="text-sm"
-            lineHeight="leading-6"
+            className="text-secondaryColor text-sm leading-6"
           >
             <LinkText
               className="font-normal text-sm leading-5 text-skyBlue hover:underline "
