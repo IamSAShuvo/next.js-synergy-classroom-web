@@ -1,6 +1,5 @@
 "use client";
-import { useParams } from "next/navigation";
-import * as React from "react";
+
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import SectionHeading from "@/app/components/typography/SectionHeading";
@@ -8,10 +7,11 @@ import DescriptionText from "@/app/components/typography/DescriptionText";
 import CardProfile from "@/app/components/UserProfile/CardProfile";
 import ItemList from "@/app/components/typography/itemsList/ItemList";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { courseList } from "@/app/constantData/demoData";
 import { Box } from "@mui/material";
-import PrimaryButton from "@/app/components/Buttons/PrimaryButton";
+// import PrimaryButton from "@/app/components/Buttons/PrimaryButton";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/store/store";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -43,24 +43,25 @@ function a11yProps(index: number) {
 }
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const { course, books, loading } = useSelector(
+    (state: RootState) => state.courseDetails
+  );
+  const { teacherName } = useSelector((state: RootState) => state.courses);
+
+  console.log({ course });
+  console.log("books of ", books);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
-  const params = useParams();
-  const { id } = params;
-  const courseIndex = parseInt(params.id as string) - 1;
-  const courseData = courseList[courseIndex];
-  const [enrolledCourses, setEnrolledCourses] = useState<number[]>([]);
-
   // const course = courseList.find((course) => course.id === Number(id));
-  const isEnrolled = enrolledCourses.includes(Number(id));
+  // const isEnrolled = enrolledCourses.includes(Number(id));
 
-  const handleEnroll = () => {
-    setEnrolledCourses((prev) => [...prev, Number(id)]);
-  };
+  // const handleEnroll = () => {
+  //   setEnrolledCourses((prev) => [...prev, Number(id)]);
+  // };
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -84,14 +85,13 @@ export default function BasicTabs() {
               <MoreVertIcon className="hover:bg-gray-200/45 rounded-full" />
             </div>
             <SectionHeading
-              text="Electrical Circuit 01"
+              text={course?.title}
               className="font-medium text-4xl leading-9 text-white mb-8"
             />
+
             <DescriptionText
-              text={`Course Teacher - ${courseData.teacherName}`}
-              fontSize="text-2xl"
-              color="text-white"
-              lineHeight="leading-5"
+              text={`Course Teacher - ${teacherName}`}
+              className="text-2xl text-white leading-5"
             />
           </header>
           <section className="flex flex-col gap-8 p-5 border-2 rounded-md border-gray-300">
@@ -100,30 +100,28 @@ export default function BasicTabs() {
               avatarSrc="/my_profile.jpeg"
               avatarHeight={60}
               avatarWidth={60}
-              name={`Professor - ${courseData.teacherName}`}
+              name={`Professor - ${teacherName}`}
             />
             <div className="space-y-5">
               <DescriptionText
                 text="Book List"
-                color="text-steelBlue"
-                fontSize="text-xl"
-                lineHeight="leading-5"
+                className="text-steelBlue text-xl leading-5"
               />
               <ItemList
-                items={courseData.bookList}
+                items={books?.map((book) => book.name) || []}
                 className="text-secondaryColor font-normal text-base leading-5"
                 useNumber={true}
               />
             </div>
           </section>
-          <PrimaryButton
+          {/* <PrimaryButton
             onClick={handleEnroll}
             text={isEnrolled ? "Already Enrolled" : "Enroll"}
             className={`${
               isEnrolled ? "bg-gray-500 cursor-not-allowed" : "bg-skyBlue"
             } text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5`}
             disabled={isEnrolled}
-          />
+          /> */}
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
