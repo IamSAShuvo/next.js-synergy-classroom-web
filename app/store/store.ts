@@ -17,6 +17,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
 import dashboardReducer from "./slices/dashboardSlice";
 import userReducer from "./slices/userSlice";
+import profileReducer from "./slices/profileSlice";
 // import axios from "axios";
 
 const store = configureStore({
@@ -24,6 +25,7 @@ const store = configureStore({
     auth: authReducer,
     courses: dashboardReducer,
     users: userReducer,
+    profile: profileReducer,
   },
 });
 

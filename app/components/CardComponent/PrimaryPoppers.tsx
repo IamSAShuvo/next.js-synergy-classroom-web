@@ -13,9 +13,8 @@ import { AppDispatch, RootState } from "@/app/store/store";
 interface PrimaryPoppersProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  name: string;
+
   avatarSrc: string;
-  roles: string;
   anchorRef: RefObject<HTMLDivElement | null>;
 }
 
@@ -31,9 +30,7 @@ const Arrow = styled("div")(({ theme }) => ({
 }));
 
 const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
-  name,
   avatarSrc,
-  roles,
   open,
   setOpen,
   anchorRef,
@@ -42,6 +39,9 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
   const dispatch = useDispatch<AppDispatch>();
 
   const { loading } = useSelector((state: RootState) => state.auth);
+  const { role } = useSelector((state: RootState) => state.courses);
+  const { courses, user } = useSelector((state: RootState) => state.profile);
+  console.log({ courses });
 
   const handleNavigate = async () => {
     try {
@@ -65,24 +65,11 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
     ) {
       return;
     }
-    setOpen(false); // Close popper when clicking outside
+    setOpen(false);
   };
 
   return (
     <Stack direction="row" spacing={2}>
-      {/* <div
-        ref={anchorRef}
-        onClick={handleToggle}
-        className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack"
-      >
-        <h1>{name}</h1>
-        <Avatar
-          alt={name}
-          src={avatarSrc}
-          sx={{ height: 50, width: 50 }}
-          className=""
-        />
-      </div> */}
       <ClickAwayListener onClickAway={handleClose}>
         <Popper
           open={open}
@@ -116,7 +103,19 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 <Arrow />
 
                 <div className="w-full">
-                  <UserProfile avatarSrc={avatarSrc} name={name} role={roles} />
+                  <UserProfile avatarSrc={avatarSrc} />
+                  <div className="mt-6 text-gray-400 flex flex-col gap-4">
+                    <p className="flex justify-between">
+                      username: <span>{user?.username}</span>
+                    </p>
+                    <p className="flex justify-between">
+                      email: <span>{user?.email}</span>
+                    </p>
+                    <p className="flex justify-between">
+                      {`Course ${role === "student" ? "Enrolled" : "Created"}:`}
+                      <span>{courses.length}</span>
+                    </p>
+                  </div>
                   <PrimaryButton
                     onClick={handleNavigate}
                     text={loading ? "Log out..." : "Log out"}

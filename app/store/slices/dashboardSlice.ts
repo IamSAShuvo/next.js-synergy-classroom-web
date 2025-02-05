@@ -50,8 +50,6 @@ export const fetchCourses = createAsyncThunk(
       const roleMatch = response.data.message.match(/the (\w+)/);
       const role = roleMatch ? roleMatch[1].toLowerCase() : ""; // Set default empty string if no match
 
-      console.log("Extracted Role:", role);
-
       return { courses: response.data.data, role: role };
     } catch (error) {
       console.error("Error fetching courses:", error);

@@ -36,9 +36,7 @@ const NavBar = () => {
           )}
 
           <NavBarProfile
-            roles={role}
             avatarSrc="/my_profile.jpeg"
-            name="Salman Aziz"
             avatarHeight={50}
             avatarWidth={50}
           />

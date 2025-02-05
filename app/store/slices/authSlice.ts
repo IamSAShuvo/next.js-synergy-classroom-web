@@ -87,35 +87,32 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-// Logout User Action (API call for server-side logout)
 export const logoutUser = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      // Retrieve the Bearer token from cookies (or wherever you store it)
       const token = Cookies.get("token");
 
       if (!token) {
         return rejectWithValue("No token found");
       }
 
-      // API call to backend logout with Bearer token in the Authorization header
       const response = await axios.post(
-        "http://localhost:8080/logout", // Replace with your logout endpoint
-        {}, // Empty body since we are logging out
+        "http://localhost:8080/logout",
+        {},
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Include Bearer token here
+            Authorization: `Bearer ${token}`,
           },
-          withCredentials: true, // Include cookies in the request if needed
+          withCredentials: true,
         }
       );
 
-      console.log("logout response:", response.data); // Log API response for debugging
-      return response.data; // return response data if successful
+      console.log("logout response:", response.data);
+      return response.data;
     } catch (error) {
-      console.error("Logout API error:", error); // Log the error that happened in the API call
-      return rejectWithValue("Logout failed"); // handle error
+      console.error("Logout API error:", error);
+      return rejectWithValue("Logout failed");
     }
   }
 );
