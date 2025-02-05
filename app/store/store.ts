@@ -19,6 +19,7 @@ import dashboardReducer from "./slices/dashboardSlice";
 import userReducer from "./slices/userSlice";
 import profileReducer from "./slices/profileSlice";
 import courseDetailsReducer from "./slices/courseDetailsSlice";
+import seeAllCoursesReducers from "./slices/allCoursesSlice";
 // import axios from "axios";
 
 const store = configureStore({
@@ -27,6 +28,7 @@ const store = configureStore({
     courses: dashboardReducer,
     profile: profileReducer,
     courseDetails: courseDetailsReducer,
+    seeAllCourses: seeAllCoursesReducers,
     users: userReducer,
   },
 });

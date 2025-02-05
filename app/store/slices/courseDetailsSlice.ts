@@ -56,9 +56,6 @@ export const fetchCourseDetails = createAsyncThunk(
       const course = response.data.data;
       const books = course.books;
 
-      // console.log({ course });
-      // console.log({ books });
-
       return { course, books };
     } catch (error) {
       console.error("Error fetching profile:", error);

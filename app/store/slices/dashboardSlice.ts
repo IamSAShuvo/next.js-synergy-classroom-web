@@ -13,14 +13,14 @@ interface Course {
   courseTitle: string;
   title: string;
   books: Book[];
-  teacherName: { name: string }[];
+  teacherName?: { name: string }[];
 }
 
 interface CourseState {
   courses: Course[];
   role: string;
   courseId: number | null;
-  teacherName: string | null;
+  teacherName: string;
   loading: boolean;
   error: string | null;
 }
@@ -29,7 +29,7 @@ const initialState: CourseState = {
   courses: [],
   role: "",
   courseId: null,
-  teacherName: null,
+  teacherName: "",
   loading: false,
   error: null,
 };
@@ -47,36 +47,36 @@ export const fetchCourses = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      console.log(response.data.message);
-      const courseData = response.data.data;
+
+      const courseData: Course[] = response.data.data;
 
       const roleMatch = response.data.message.match(/the (\w+)/);
       const role = roleMatch ? roleMatch[1].toLowerCase() : "";
-      // Check for teacherName array or message
+
       let teacherName = "";
-      if (courseData.length > 0 && courseData[0]?.teacherName?.length > 0) {
-        teacherName = courseData[0].teacherName
-          .map((teacher: { name: string }) => teacher.name)
-          .join(", ");
-      } else if (response.data.message.includes("Teacher")) {
-        const matchTeacherName = response.data.message.match(/Name: (\w+ \w+)/);
-        teacherName = matchTeacherName ? matchTeacherName[1] : "";
+
+      if (response.data.message.includes("Teacher")) {
+        const matches = response.data.message.match(/Name: (\w+ \w+)/g);
+        if (matches) {
+          teacherName = matches
+            .map((match: string) => match.split(": ")[1])
+            .join(", ");
+        }
       }
+
+      console.log(response.data);
       console.log({ teacherName });
       return {
-        courses: response.data.data,
-        role: role,
-        teacherName: teacherName,
+        courses: courseData,
+        role,
+        teacherName,
       };
     } catch (error) {
-      console.error("Error fetching courses:", error);
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(
-          error.response?.data || "Failed to fetch courses"
-        );
-      } else {
-        return rejectWithValue("Failed to fetch courses");
-      }
+      return rejectWithValue(
+        axios.isAxiosError(error)
+          ? error.response?.data || "Failed to fetch courses"
+          : "Failed to fetch courses"
+      );
     }
   }
 );
@@ -101,11 +101,10 @@ const dashboardSlice = createSlice({
             teacherName: string;
           }>
         ) => {
-          console.log("action payload", action.payload);
           state.loading = false;
           state.courses = action.payload.courses;
           state.role = action.payload.role;
-          state.teacherName = action.payload.teacherName;
+          state.teacherName = action.payload.teacherName; // Now storing teacher names as a string
         }
       )
       .addCase(fetchCourses.rejected, (state, action) => {
