@@ -12,6 +12,7 @@ import NumberBadge from "../typography/NumberBadge";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LinkText from "../links/LinkText";
 import { fetchCourseDetails } from "@/app/store/slices/courseDetailsSlice";
+import { seeAllCoursesReducers } from "@/app/store/slices/allCoursesSlice";
 
 const DashboardMainContent = () => {
   const router = useRouter();
@@ -20,6 +21,11 @@ const DashboardMainContent = () => {
   const { courses, teacherName, loading, error, role } = useSelector(
     (state: RootState) => state.courses
   );
+  console.log({ courses });
+  const { seeAllCourses } = useSelector(
+    (state: RootState) => state.seeAllCourses
+  );
+  console.log({ seeAllCourses });
 
   const handleCardClick = (courseId: number) => {
     dispatch(fetchCourseDetails({ courseId: courseId.toString() }));
@@ -28,6 +34,10 @@ const DashboardMainContent = () => {
 
   useEffect(() => {
     dispatch(fetchCourses());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(seeAllCoursesReducers());
   }, [dispatch]);
 
   if (loading) return <div>Loading courses...</div>;
@@ -56,7 +66,13 @@ const DashboardMainContent = () => {
                 />
                 <DescriptionText
                   className="text-white text-sm leading-5"
-                  text={`Course Teacher - ${teacherName}`}
+                  text={`Course Teacher - ${
+                    course.teacherName
+                      ? course.teacherName
+                          .map((teacher) => teacher.name)
+                          .join(", ")
+                      : teacherName || "N/A"
+                  }`}
                 />
               </>
             }
