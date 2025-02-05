@@ -11,17 +11,21 @@ import ItemList from "../typography/itemsList/ItemList";
 import NumberBadge from "../typography/NumberBadge";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LinkText from "../links/LinkText";
+import { fetchCourseDetails } from "@/app/store/slices/courseDetailsSlice";
 
 const DashboardMainContent = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
 
-  // Get courses from Redux store
-  const { courses, loading, error, role } = useSelector(
+  const { courses, teacherName, loading, error, role } = useSelector(
     (state: RootState) => state.courses
   );
 
-  // Fetch courses on mount
+  const handleCardClick = (courseId: number) => {
+    dispatch(fetchCourseDetails({ courseId: courseId.toString() }));
+    router.push(`/dashboard/course-details/${courseId}`);
+  };
+
   useEffect(() => {
     dispatch(fetchCourses());
   }, [dispatch]);
@@ -42,23 +46,17 @@ const DashboardMainContent = () => {
         {courses.map((course) => (
           <SecondaryCard
             key={course.courseId || course.id}
-            onClick={() =>
-              router.push(
-                `/dashboard/course-details/${course.courseId || course.id}`
-              )
-            }
+            onClick={() => handleCardClick(course.courseId || course.id)}
             className="w-full mx-auto bg-white rounded-2xl shadow-lg"
             header={
               <>
                 <SectionHeading
-                  text={course.courseTitle}
+                  text={course.title || course.courseTitle}
                   className="font-medium text-2xl leading-9 text-white"
                 />
                 <DescriptionText
-                  color="text-white"
-                  fontSize="text-sm"
-                  text={`Course Teacher - `}
-                  lineHeight="leading-5"
+                  className="text-white text-sm leading-5"
+                  text={`Course Teacher - ${teacherName}`}
                 />
               </>
             }
@@ -67,15 +65,11 @@ const DashboardMainContent = () => {
                 <div className="flex justify-between mt-5">
                   <DescriptionText
                     text="Book List"
-                    color="text-primaryColor"
-                    fontSize="text-sm"
-                    lineHeight="leading-5"
+                    className="text-primaryColor text-sm leading-5"
                   />
                   <DescriptionText
                     text="Author"
-                    color="text-primaryColor"
-                    fontSize="text-sm"
-                    lineHeight="leading-5"
+                    className="text-primaryColor text-sm leading-5"
                   />
                 </div>
                 <div className="flex justify-between mb-6">
