@@ -18,14 +18,16 @@ import authReducer from "./slices/authSlice";
 import dashboardReducer from "./slices/dashboardSlice";
 import userReducer from "./slices/userSlice";
 import profileReducer from "./slices/profileSlice";
+import courseDetailsReducer from "./slices/courseDetailsSlice";
 // import axios from "axios";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     courses: dashboardReducer,
-    users: userReducer,
     profile: profileReducer,
+    courseDetails: courseDetailsReducer,
+    users: userReducer,
   },
 });
 
