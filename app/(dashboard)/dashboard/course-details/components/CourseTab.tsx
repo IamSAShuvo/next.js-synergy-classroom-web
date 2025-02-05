@@ -8,7 +8,6 @@ import CardProfile from "@/app/components/UserProfile/CardProfile";
 import ItemList from "@/app/components/typography/itemsList/ItemList";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Box } from "@mui/material";
-// import PrimaryButton from "@/app/components/Buttons/PrimaryButton";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
@@ -44,13 +43,10 @@ function a11yProps(index: number) {
 
 export default function BasicTabs() {
   const [value, setValue] = useState(0);
-  const { course, books, loading } = useSelector(
+  const { course, books } = useSelector(
     (state: RootState) => state.courseDetails
   );
   const { teacherName } = useSelector((state: RootState) => state.courses);
-
-  console.log({ course });
-  console.log("books of ", books);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
