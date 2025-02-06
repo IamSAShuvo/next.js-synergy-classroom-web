@@ -57,12 +57,14 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
           {footer}
         </footer>
       ) : (
-        <footer className="mt-16 border-t pt-4 text-gray-500">
-          This is the default footer of the card.
-        </footer>
+        ""
       )}
     </div>
   );
 };
 
 export default SecondaryCard;
+
+{
+  /* <CheckCircleIcon className="text-green-500" fontSize="large" /> */
+}

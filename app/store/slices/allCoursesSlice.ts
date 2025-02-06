@@ -15,6 +15,7 @@ interface Course {
   books: Book[];
   teacherName: string;
   numberOfStudentsEnrolled: number;
+  studentEnrolled: boolean;
 }
 
 interface CourseState {

@@ -8,11 +8,8 @@ import SecondaryCard from "../CardComponent/SecondaryCard";
 import SectionHeading from "../typography/SectionHeading";
 import DescriptionText from "../typography/DescriptionText";
 import ItemList from "../typography/itemsList/ItemList";
-import NumberBadge from "../typography/NumberBadge";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LinkText from "../links/LinkText";
 import { fetchCourseDetails } from "@/app/store/slices/courseDetailsSlice";
-import { seeAllCoursesReducers } from "@/app/store/slices/allCoursesSlice";
 import Cookies from "js-cookie";
 
 const DashboardMainContent = () => {
@@ -41,10 +38,6 @@ const DashboardMainContent = () => {
 
   useEffect(() => {
     dispatch(fetchCourses());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(seeAllCoursesReducers());
   }, [dispatch]);
 
   if (loading) return <div>Loading courses...</div>;
@@ -109,10 +102,7 @@ const DashboardMainContent = () => {
                 </div>
               </>
             }
-            footer={<NumberBadge count={course.courseId} />}
-          >
-            <CheckCircleIcon className="text-green-500" fontSize="large" />
-          </SecondaryCard>
+          ></SecondaryCard>
         ))}
       </div>
     </div>

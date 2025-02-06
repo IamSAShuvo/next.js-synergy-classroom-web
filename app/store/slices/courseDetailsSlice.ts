@@ -37,9 +37,7 @@ export const fetchCourseDetails = createAsyncThunk(
   ) => {
     try {
       const id = courseIdentifier.id || courseIdentifier.courseId;
-      console.log("Making request with ID:", typeof id, id);
       const token = Cookies.get("token");
-      console.log("Token:", token);
       if (!token) throw new Error("No authentication token found");
 
       const response = await axios.post(
