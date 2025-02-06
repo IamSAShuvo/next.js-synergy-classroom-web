@@ -21,6 +21,7 @@ import profileReducer from "./slices/profileSlice";
 import courseDetailsReducer from "./slices/courseDetailsSlice";
 import seeAllCoursesReducers from "./slices/allCoursesSlice";
 import courseEnrollReducer from "./slices/courseEnrollmentSlice";
+import courseCreateReducer from "./slices/courseCreateSlice";
 // import axios from "axios";
 
 const store = configureStore({
@@ -31,6 +32,7 @@ const store = configureStore({
     courseDetails: courseDetailsReducer,
     seeAllCourses: seeAllCoursesReducers,
     courseEnroll: courseEnrollReducer,
+    courseCreate: courseCreateReducer,
     users: userReducer,
   },
 });

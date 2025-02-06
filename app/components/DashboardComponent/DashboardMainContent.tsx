@@ -26,11 +26,6 @@ const DashboardMainContent = () => {
 
   const role = Cookies.get("role")?.toLowerCase();
 
-  const { seeAllCourses } = useSelector(
-    (state: RootState) => state.seeAllCourses
-  );
-  console.log({ seeAllCourses });
-
   const handleCardClick = (courseId: number) => {
     dispatch(fetchCourseDetails({ courseId: courseId.toString() }));
     router.push(`/dashboard/course-details/${courseId}`);

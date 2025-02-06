@@ -5,16 +5,16 @@ import NavBarProfile from "../UserProfile/NavBarProfile";
 import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/navigation";
 import InputBoxModal from "../CardComponent/InputBoxModal";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/store/store";
+// import { useSelector } from "react-redux";
+// import { RootState } from "@/app/store/store";
+import Cookies from "js-cookie";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  // Get courses from Redux store
-  const { role } = useSelector((state: RootState) => state.courses);
-  console.log(`from navbar role: ${role}`);
+  const role = Cookies.get("role")?.toLowerCase();
+
   const handleNavigate = () => router.push("/dashboard");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

@@ -1,6 +1,5 @@
 "use client";
 import React, { FC, RefObject } from "react";
-import Cookies from "js-cookie";
 import { ClickAwayListener, Grow, Paper, Popper, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import UserProfile from "../UserProfile/UserProfile";
@@ -9,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "@/app/store/slices/authSlice";
 import { AppDispatch, RootState } from "@/app/store/store";
+import Cookies from "js-cookie";
 
 interface PrimaryPoppersProps {
   open: boolean;
@@ -39,7 +39,7 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
   const dispatch = useDispatch<AppDispatch>();
 
   const { loading } = useSelector((state: RootState) => state.auth);
-  const { role } = useSelector((state: RootState) => state.courses);
+  const role = Cookies.get("role")?.toLowerCase();
   const { courses, user } = useSelector((state: RootState) => state.profile);
   console.log({ courses });
 
@@ -49,6 +49,7 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
       if (logoutUser.fulfilled.match(logoutAction)) {
         Cookies.remove("token");
         Cookies.remove("user");
+        Cookies.remove("role");
         router.push("/login");
       } else {
         console.error("error unknown");

@@ -1,10 +1,13 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Box, IconButton } from "@mui/material";
 import SecondaryHeading from "../typography/SecondaryHeading";
 import PrimaryInputField from "../inputFields/PrimaryInputField";
 import CloseIcon from "@mui/icons-material/Close";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import { useDispatch, useSelector } from "react-redux";
+import { createCourse } from "@/app/store/slices/courseCreateSlice";
+import { AppDispatch, RootState } from "@/app/store/store";
 
 interface CreateCourseModalProps {
   open: boolean;
@@ -15,6 +18,41 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
   open,
   onClose,
 }) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const [courseData, setCourseData] = useState({
+    title: "",
+    books: [
+      {
+        name: "",
+        author: "",
+      },
+    ],
+  });
+
+  // const [courseTitle, setCourseTitle] = useState("");
+  // const [bookName, setBookName] = useState("");
+  // const [authorName, setAuthorName] = useState("");
+
+  const { isLoading, success, error } = useSelector(
+    (state: RootState) => state.courseCreate
+  );
+
+  useEffect(() => {
+    if (success) {
+      alert("Course created successfully!");
+    }
+    if (error) {
+      alert(`Error: ${error}`);
+    }
+  }, [success, error]);
+
+  // Step 3: Handle form submission and dispatch action
+  const handleCreateCourse = () => {
+    dispatch(createCourse(courseData)); // Dispatch the create course action
+    onClose(); // Close the modal
+  };
+
   return (
     <Modal open={open} onClose={onClose}>
       <Box
@@ -52,22 +90,52 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
             label="Course Name"
             placeholder="Course Name"
             variant="standard"
+            value={courseData.title}
+            onChange={(e) =>
+              setCourseData({ ...courseData, title: e.target.value })
+            }
           />
           <PrimaryInputField
             label="Book Name"
             placeholder="Add your book name"
             variant="standard"
+            value={courseData.books[0].name}
+            onChange={(e) =>
+              setCourseData({
+                ...courseData,
+                books: [{ ...courseData.books[0], name: e.target.value }],
+              })
+            }
             hasExpandableFields
           >
             <PrimaryInputField
               label="Author Name"
               variant="standard"
               placeholder="Book Author"
+              value={courseData.books[0].author}
+              onChange={(e) =>
+                setCourseData({
+                  ...courseData,
+                  books: [
+                    {
+                      ...courseData.books[0],
+                      author: e.target.value,
+                    },
+                  ],
+                })
+              }
             />
             <PrimaryInputField
               label="Book Name"
-              variant="standard"
               placeholder="Add your book name"
+              variant="standard"
+              value={courseData.books[0].name}
+              onChange={(e) =>
+                setCourseData({
+                  ...courseData,
+                  books: [{ ...courseData.books[0], name: e.target.value }],
+                })
+              }
               hasExpandableFields
             />
           </PrimaryInputField>
@@ -81,7 +149,8 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
             borderColor="border-ashGray"
           />
           <PrimaryButton
-            text="Create"
+            onClick={handleCreateCourse}
+            text={isLoading ? "Creating..." : "Create"}
             className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
           />
         </div>

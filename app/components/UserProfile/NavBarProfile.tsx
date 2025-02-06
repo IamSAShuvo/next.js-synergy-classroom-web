@@ -18,13 +18,17 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
   avatarWidth,
 }) => {
   const [open, setOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<AppDispatch>();
 
   const { profile } = useSelector((state: RootState) => state.profile);
   console.log({ profile });
 
-  // Fetch courses on mount
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   useEffect(() => {
     dispatch(fetchProfile());
   }, [dispatch]);
@@ -32,6 +36,8 @@ const NavBarProfile: FC<NavBarProfileProps> = ({
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
+
+  if (!isClient) return null;
 
   return (
     <React.Fragment>
