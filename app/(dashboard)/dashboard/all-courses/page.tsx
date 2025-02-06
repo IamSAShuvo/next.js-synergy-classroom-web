@@ -1,7 +1,8 @@
+import DashboardSeeAllCourses from "@/app/components/DashboardComponent/DashboardSeeAllCourses";
 import React from "react";
 
 const page = () => {
-  return <div>See all courses</div>;
+  return <DashboardSeeAllCourses />;
 };
 
 export default page;

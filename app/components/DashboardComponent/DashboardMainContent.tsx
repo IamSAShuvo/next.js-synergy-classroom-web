@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCourses } from "@/app/store/slices/dashboardSlice";
 import { RootState, AppDispatch } from "@/app/store/store";
+import { fetchCourses } from "@/app/store/slices/dashboardSlice";
 import SecondaryCard from "../CardComponent/SecondaryCard";
 import SectionHeading from "../typography/SectionHeading";
 import DescriptionText from "../typography/DescriptionText";
@@ -13,15 +13,22 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import LinkText from "../links/LinkText";
 import { fetchCourseDetails } from "@/app/store/slices/courseDetailsSlice";
 import { seeAllCoursesReducers } from "@/app/store/slices/allCoursesSlice";
+import Cookies from "js-cookie";
 
 const DashboardMainContent = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  const { courses, teacherName, loading, error, role } = useSelector(
+  const { courses, teacherName, loading, error } = useSelector(
     (state: RootState) => state.courses
   );
-  console.log({ courses });
+
+  console.log("dashboard courses", courses);
+
+  const role = Cookies.get("role")?.toLowerCase();
+
   const { seeAllCourses } = useSelector(
     (state: RootState) => state.seeAllCourses
   );
@@ -45,7 +52,7 @@ const DashboardMainContent = () => {
 
   return (
     <div className="flex flex-col mx-7 my-6 gap-4">
-      {role === "student" && (
+      {mounted && role === "student" && (
         <LinkText
           className="font-normal text-sm leading-5 text-skyBlue hover:underline self-end"
           url="/dashboard/all-courses"

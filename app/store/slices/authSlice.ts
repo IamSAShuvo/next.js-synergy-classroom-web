@@ -9,13 +9,14 @@ interface User {
   };
   id: string;
   username: string;
-  role: "student" | "teacher";
+  role: string;
   token: string;
 }
 
 interface AuthState {
   user: User | null;
   token: string | null;
+  role: string | null;
   loading: boolean;
   error: string | null;
 }
@@ -27,6 +28,7 @@ const storedUser = typeof window !== "undefined" ? Cookies.get("user") : null;
 const initialState: AuthState = {
   user: storedUser ? JSON.parse(storedUser) : null,
   token: storedToken || null,
+  role: storedUser ? JSON.parse(storedUser).role : null,
   loading: false,
   error: null,
 };
@@ -46,7 +48,7 @@ export const signupUser = createAsyncThunk(
   ) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/signup",
+        "http://192.168.0.204:8080/signup",
         userData,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -74,10 +76,11 @@ export const loginUser = createAsyncThunk(
   ) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/login",
+        "http://192.168.0.204:8080/login",
         credentials
       );
-      return response.data;
+      console.log(response.data.data.role);
+      return { ...response.data, role: response.data.data.role };
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         return rejectWithValue(error.response.data);
@@ -98,7 +101,7 @@ export const logoutUser = createAsyncThunk(
       }
 
       const response = await axios.post(
-        "http://localhost:8080/logout",
+        "http://192.168.0.204:8080/logout",
         {},
         {
           headers: {
@@ -149,10 +152,16 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action: PayloadAction<User>) => {
+        console.log(action.payload.role);
         state.loading = false;
-        // state.user = action.payload;
-        // state.token = action.payload.token;
+        state.user = action.payload;
+        state.token = action.payload.data.accessToken;
+        state.role = action.payload.role;
+        Cookies.set("role", action.payload.role, { expires: 1 });
         Cookies.set("token", action.payload.data.accessToken, { expires: 1 });
+        Cookies.set("refreshToken", action.payload.data.refreshToken, {
+          expires: 1,
+        });
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

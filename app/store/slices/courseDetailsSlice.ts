@@ -43,7 +43,7 @@ export const fetchCourseDetails = createAsyncThunk(
       if (!token) throw new Error("No authentication token found");
 
       const response = await axios.post(
-        `http://localhost:8080/course/details`,
+        `http://192.168.0.204:8080/course/details`,
         { courseId: id },
         {
           headers: {

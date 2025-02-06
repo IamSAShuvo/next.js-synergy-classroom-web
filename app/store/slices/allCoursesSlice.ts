@@ -9,6 +9,7 @@ interface Book {
 
 interface Course {
   courseId: number;
+  id: number;
   courseTitle?: string;
   title?: string;
   books: Book[];
@@ -36,15 +37,14 @@ export const seeAllCoursesReducers = createAsyncThunk(
       const token = Cookies.get("token");
       if (!token) throw new Error("No authentication token found");
 
-      const response = await axios.get("http://localhost:8080/course/all", {
+      const response = await axios.get("http://192.168.0.204:8080/course/all", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
       console.log("Fetched Courses:", response.data);
-      // const {};
-      return response.data;
+      return response.data.data;
     } catch (error) {
       console.error("Error fetching courses:", error);
       if (axios.isAxiosError(error)) {

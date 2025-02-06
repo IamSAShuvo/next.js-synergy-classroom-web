@@ -52,7 +52,7 @@ export const fetchProfile = createAsyncThunk(
       if (!token) throw new Error("No authentication token found");
 
       const response = await axios.get(
-        "http://localhost:8080/profile/details",
+        "http://192.168.0.204:8080/profile/details",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -61,9 +61,6 @@ export const fetchProfile = createAsyncThunk(
         }
       );
 
-      console.log("Profile Response:", response.data.data);
-
-      // Extract relevant fields
       const { id, name, imageUrl, user, courses } = response.data.data;
 
       return {
