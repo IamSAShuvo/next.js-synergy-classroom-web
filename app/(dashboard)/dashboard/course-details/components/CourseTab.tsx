@@ -8,9 +8,10 @@ import CardProfile from "@/app/components/UserProfile/CardProfile";
 import ItemList from "@/app/components/typography/itemsList/ItemList";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/store/store";
+import { usePathname, useRouter } from "next/navigation";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -42,17 +43,40 @@ function a11yProps(index: number) {
 }
 
 export default function BasicTabs() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [value, setValue] = useState(0);
+
   const { course, books } = useSelector(
     (state: RootState) => state.courseDetails
   );
 
-  console.log({ course, books });
+  const { students } = useSelector(
+    (state: RootState) => state.enrolledStudents
+  );
+
+  console.log({ students });
   const { teacherName } = useSelector((state: RootState) => state.courses);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  // const courseId = course?.id; // Assuming course has an `id` field
+
+  // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  //   setValue(newValue);
+
+  //   if (newValue === 1 && courseId) {
+  //     router.push(`/enrolled-student/${courseId}`);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (pathname.includes("/enrolled-student/")) {
+  //     setValue(1);
+  //   }
+  // }, [pathname]);
 
   // const course = courseList.find((course) => course.id === Number(id));
   // const isEnrolled = enrolledCourses.includes(Number(id));
@@ -127,7 +151,17 @@ export default function BasicTabs() {
           Students
         </h3>
         <div className="mt-3 p-6 flex flex-col gap-5">
-          <CardProfile
+          {students?.map((student) => (
+            <CardProfile
+              key={student.studentId}
+              className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack "
+              avatarHeight={40}
+              avatarWidth={40}
+              avatarSrc="/profile_avatar_boy.png"
+              name={student.studentName}
+            />
+          ))}
+          {/* <CardProfile
             className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack "
             avatarHeight={40}
             avatarWidth={40}
@@ -147,7 +181,7 @@ export default function BasicTabs() {
             avatarWidth={40}
             avatarSrc="/profile_picture.png"
             name="Could be anyone"
-          />
+          /> */}
         </div>
       </CustomTabPanel>
     </Box>

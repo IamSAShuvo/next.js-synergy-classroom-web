@@ -11,6 +11,7 @@ import ItemList from "../typography/itemsList/ItemList";
 import LinkText from "../links/LinkText";
 import { fetchCourseDetails } from "@/app/store/slices/courseDetailsSlice";
 import Cookies from "js-cookie";
+import { fetchEnrolledStudents } from "@/app/store/slices/enrolledStudentsSlice";
 
 const DashboardMainContent = () => {
   const router = useRouter();
@@ -28,6 +29,7 @@ const DashboardMainContent = () => {
 
   const handleCardClick = (courseId: number) => {
     dispatch(fetchCourseDetails({ courseId: courseId.toString() }));
+    dispatch(fetchEnrolledStudents({ courseId: courseId.toString() }));
     router.push(`/dashboard/course-details/${courseId}`);
   };
 
