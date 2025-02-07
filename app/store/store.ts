@@ -14,7 +14,7 @@
 // export default store;
 
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./slices/authSlice";
+import authReducer from "./slices/authenticationSlice/authSlice";
 import dashboardReducer from "./slices/dashboardSlice";
 import userReducer from "./slices/userSlice";
 import profileReducer from "./slices/profileSlice";

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signupUser } from "@/app/store/slices/authSlice";
+import { signupUser } from "@/app/store/slices/authenticationSlice/authSlice";
 import PrimaryCard from "../CardComponent/PrimaryCard";
 import PrimaryHeading from "../typography/PrimaryHeading";
 import DescriptionText from "../typography/DescriptionText";

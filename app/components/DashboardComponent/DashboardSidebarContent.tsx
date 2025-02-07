@@ -6,7 +6,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import SidebarMenuButton from "@/app/components/Buttons/SidebarMenuButton";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { logoutUser } from "@/app/store/slices/authSlice";
+import { logoutUser } from "@/app/store/slices/authenticationSlice/authActions/authActions";
 import { AppDispatch } from "@/app/store/store";
 import Cookies from "js-cookie";
 

@@ -46,6 +46,8 @@ export default function BasicTabs() {
   const { course, books } = useSelector(
     (state: RootState) => state.courseDetails
   );
+
+  console.log({ course, books });
   const { teacherName } = useSelector((state: RootState) => state.courses);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

@@ -6,7 +6,7 @@ import UserProfile from "../UserProfile/UserProfile";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "@/app/store/slices/authSlice";
+import { logoutUser } from "@/app/store/slices/authenticationSlice/authActions/authActions";
 import { AppDispatch, RootState } from "@/app/store/store";
 import Cookies from "js-cookie";
 

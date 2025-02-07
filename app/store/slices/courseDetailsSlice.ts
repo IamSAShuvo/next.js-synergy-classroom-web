@@ -39,11 +39,10 @@ export const fetchCourseDetails = createAsyncThunk(
       const id = courseIdentifier.id || courseIdentifier.courseId;
       const token = Cookies.get("token");
       if (!token) throw new Error("No authentication token found");
-
-      const response = await axios.post(
+      const response = await axios.get(
         `http://192.168.0.204:8080/course/details`,
-        { courseId: id },
         {
+          params: { courseId: id },
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
