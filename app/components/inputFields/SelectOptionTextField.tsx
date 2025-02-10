@@ -1,6 +1,6 @@
 import { MenuItem, TextField } from "@mui/material";
 import React, { FC } from "react";
-import USER_ROLE_OPTIONS from "@/app/constantData/userRoleOption";
+import USER_ROLE_OPTIONS from "@/app/constants/userRoleOption";
 
 interface SelectOptionTextFieldProps {
   defaultValue?: string;
