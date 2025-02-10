@@ -21,13 +21,20 @@ interface AuthState {
   error: string | null;
 }
 
-const storedToken = Cookies.get("token");
-const storedRole = Cookies.get("role");
+const storedToken = Cookies.get("token") || null;
+const storedRefreshToken = Cookies.get("refreshToken") || "";
+const storedRole = Cookies.get("role") || "";
 
 const initialState: AuthState = {
-  user: null,
-  token: storedToken || null,
-  role: storedRole || null,
+  user: storedToken
+    ? {
+        accessToken: storedToken,
+        refreshToken: storedRefreshToken,
+        role: storedRole,
+      }
+    : null,
+  token: storedToken,
+  role: storedRole,
   loading: false,
   error: null,
 };
@@ -73,6 +80,7 @@ const authSlice = createSlice({
       })
       .addCase(refreshToken.fulfilled, (state, action) => {
         state.token = action.payload.accessToken;
+        Cookies.set("token", action.payload.accessToken);
       })
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;

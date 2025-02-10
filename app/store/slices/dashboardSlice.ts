@@ -22,7 +22,7 @@ interface CourseState {
   courseId: number | null;
   teacherName: string;
   loading: boolean;
-  error: string | null;
+  error: string | { message: string } | null;
 }
 
 const initialState: CourseState = {
@@ -31,7 +31,7 @@ const initialState: CourseState = {
   courseId: null,
   teacherName: "",
   loading: false,
-  error: null,
+  error: null as string | null | { message: string },
 };
 
 export const fetchCourses = createAsyncThunk(

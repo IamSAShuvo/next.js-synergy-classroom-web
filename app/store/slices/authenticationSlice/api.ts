@@ -1,3 +1,41 @@
+// import axios from "axios";
+// import Cookies from "js-cookie";
+// import store from "../../store";
+// import { logoutUser } from "./authActions/authActions";
+
+// const API_BASE_URL = "http://192.168.0.204:8080";
+
+// const api = axios.create({
+//   baseURL: API_BASE_URL,
+//   headers: { "Content-Type": "application/json" },
+// });
+
+// // Attach Authorization Header
+// api.interceptors.request.use(
+//   (config) => {
+//     const token = Cookies.get("token");
+//     if (token) {
+//       config.headers.Authorization = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error)
+// );
+
+// api.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response?.status === 401) {
+//       console.error("❌ Unauthorized access. Logging out.");
+//       store.dispatch(logoutUser());
+//     }
+
+//     return Promise.reject(error);
+//   }
+// );
+
+// export default api;
+
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -32,6 +70,9 @@ api.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
+      console.warn("Access token expired, attempting refresh ....");
+      console.log("Stored refresh token:", Cookies.get("refreshToken"));
+
       try {
         const refreshResponse = await store.dispatch(refreshToken());
 
@@ -41,9 +82,13 @@ api.interceptors.response.use(
 
           originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
           return api(originalRequest);
+        } else {
+          console.error("Refresh token faild, logging out....");
+          store.dispatch(logoutUser());
         }
       } catch (refreshError) {
-        store.dispatch(logoutUser()); // Logout if refresh fails
+        console.error("Error during token refresh:", refreshError);
+        store.dispatch(logoutUser());
         return Promise.reject(refreshError);
       }
     }

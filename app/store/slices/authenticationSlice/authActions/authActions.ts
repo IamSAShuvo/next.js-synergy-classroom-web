@@ -70,12 +70,17 @@ export const refreshToken = createAsyncThunk(
       const response = await api.post(
         "/refresh",
         {},
-        { headers: { "Refresh-Token": refreshToken } }
+        {
+          headers: {
+            "Refresh-Token": refreshToken,
+            "Content-Type": "application/json",
+          },
+        }
       );
 
-      console.log("Refresh Token Response:", response.data);
+      // console.log("Refresh Token Response:", response.data);
 
-      Cookies.set("newAccessToken", response.data.accessToken);
+      Cookies.set("token", response.data.accessToken);
       return response.data;
     } catch (error) {
       console.error("Refresh token API call failed:", error);
