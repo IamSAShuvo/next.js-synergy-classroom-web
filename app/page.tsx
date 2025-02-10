@@ -15,6 +15,7 @@ import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
 import SelectOptionTextField from "./components/inputFields/SelectOptionTextField";
 import PrimaryInputField from "./components/inputFields/PrimaryInputField";
+import { ChangeEvent, useState } from "react";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -23,6 +24,10 @@ export default function Home() {
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
   // const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
+  const [selectedRole, setSelectedRole] = useState<string>("student");
+  const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedRole(event.target.value);
+  };
   return (
     <div className="mx-10 my-5">
       <h1 className="tracking-normal leading-5">Home</h1>
@@ -230,7 +235,10 @@ export default function Home() {
           placeholder="Enter Your Course Name"
           variant="filled"
         />
-        <SelectOptionTextField />
+        <SelectOptionTextField
+          value={selectedRole}
+          onChange={handleRoleChange}
+        />
       </div>
     </div>
   );
