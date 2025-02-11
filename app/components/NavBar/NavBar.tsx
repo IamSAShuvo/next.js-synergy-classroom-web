@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBarProfile from "../UserProfile/NavBarProfile";
 import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/navigation";
@@ -8,8 +8,17 @@ import InputBoxModal from "../CardComponent/InputBoxModal";
 // import { useSelector } from "react-redux";
 // import { RootState } from "@/app/store/store";
 import Cookies from "js-cookie";
+// import dynamic from "next/dynamic";
+// const AddIcon = dynamic(() => import("@mui/icons-material/Add"), {
+//   ssr: false,
+// });
 
 const NavBar = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -31,7 +40,7 @@ const NavBar = () => {
           priority
         />
         <div className="flex items-center gap-12">
-          {role === "teacher" && (
+          {role === "teacher" && isClient && (
             <AddIcon className="cursor-pointer" onClick={handleOpen} />
           )}
 

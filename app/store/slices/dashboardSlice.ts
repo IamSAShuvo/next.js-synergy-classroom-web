@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
+import api from "./authenticationSlice/api";
 
 interface Book {
   name: string;
@@ -41,12 +42,14 @@ export const fetchCourses = createAsyncThunk(
       const token = Cookies.get("token");
       if (!token) throw new Error("No authentication token found");
 
-      const response = await axios.get("http://192.168.0.204:8080/dashboard", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      // const response = await axios.get("http://192.168.0.204:8080/dashboard", {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //     "Content-Type": "application/json",
+      //   },
+      // });
+
+      const response = await api.get("/dashboard");
 
       const courseData: Course[] = response.data.data;
 

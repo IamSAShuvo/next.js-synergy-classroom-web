@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
+import api from "./authenticationSlice/api";
 
 export interface User {
   id: number;
@@ -51,15 +52,17 @@ export const fetchProfile = createAsyncThunk(
       const token = Cookies.get("token");
       if (!token) throw new Error("No authentication token found");
 
-      const response = await axios.get(
-        "http://192.168.0.204:8080/profile/details",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      // const response = await axios.get(
+      //   "http://192.168.0.204:8080/profile/details",
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //       "Content-Type": "application/json",
+      //     },
+      //   }
+      // );
+
+      const response = await api.get("/profile/details");
 
       const { id, name, imageUrl, user, courses } = response.data.data;
 
