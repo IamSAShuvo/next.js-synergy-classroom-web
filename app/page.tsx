@@ -13,7 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
-import SelectOptionTextField from "./components/inputFields/SelectOptionTextField";
+import CustomSelectField from "./components/inputFields/CustomSelectField";
 import PrimaryInputField from "./components/inputFields/PrimaryInputField";
 import { ChangeEvent, useState } from "react";
 
@@ -235,10 +235,7 @@ export default function Home() {
           placeholder="Enter Your Course Name"
           variant="filled"
         />
-        <SelectOptionTextField
-          value={selectedRole}
-          onChange={handleRoleChange}
-        />
+        <CustomSelectField value={selectedRole} onChange={handleRoleChange} />
       </div>
     </div>
   );
