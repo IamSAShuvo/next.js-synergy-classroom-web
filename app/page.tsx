@@ -1,4 +1,3 @@
-// export default function Home() {}
 "use client";
 import DescriptionText from "./components/typography/DescriptionText";
 import PrimaryHeading from "./components/typography/PrimaryHeading";
@@ -23,7 +22,6 @@ export default function Home() {
   const value = 235;
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
-  // const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
   const [selectedRole, setSelectedRole] = useState<string>("student");
   const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedRole(event.target.value);
