@@ -75,23 +75,23 @@ export default function Home() {
         />
         <hr className="border-slate-800" />
         <CardProfile
-          name="Random Name"
+          name="Alexandra Alison"
           avatarSrc="/femaleAvatar.png"
           fontSize="text-base"
           fontWeight="font-medium"
         />
         <hr className="border-slate-800" />
         <NavBarProfile
-          avatarSrc="/profile_avatar.jpeg"
+          avatarSrc="/maleAvatar.png"
           name="Salman Aziz"
           avatarHeight={50}
           avatarWidth={50}
         />
         <hr className="border-slate-800" />
         <UserProfile
-          name="Salman Aziz"
-          role={classroomData.roles[0]}
-          avatarSrc="/profile_picture.png"
+          name="Eduardo V. Kozak"
+          role={classroomData.roles[1]}
+          avatarSrc="/maleAvatar.png"
         />
       </div>
       {/* dashboard card page */}
