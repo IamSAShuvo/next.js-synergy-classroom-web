@@ -44,10 +44,6 @@ const inputComponents = {
   outlined: OutlinedInput,
 };
 
-const generateId = (label: string) => {
-  return encodeURIComponent(label.toLowerCase().replace(/\s+/g, "-"));
-};
-
 const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   label,
   placeholder,
@@ -64,6 +60,10 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   const handleExpandToggle = () => setIsExpanded((prev) => !prev);
 
   const InputComponent = inputComponents[variant] || OutlinedInput;
+
+  const generateId = (label: string) => {
+    return encodeURIComponent(label.toLowerCase().replace(/\s+/g, "-"));
+  };
   const inputId = generateId(label);
 
   const endAdornment = () => {

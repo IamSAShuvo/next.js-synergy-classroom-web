@@ -18,23 +18,20 @@ import CardProfile from "./components/UserProfile/CardProfile";
 import NavBarProfile from "./components/UserProfile/NavBarProfile";
 import UserProfile from "./components/UserProfile/UserProfile";
 import { ChangeEvent, useState } from "react";
+import { classroomData } from "./constants/classroomData";
 
 export default function Home() {
-  const teacherName = "Mr. John Doe";
-  const section = "A";
-  const value = 235;
-  const bookList = ["Book 01", "Book 02", "Book 03"];
-  const authorList = ["Author 01", "Author 02", "Author 03"];
-  const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
-  const [selectedRole, setSelectedRole] = useState<string>("student");
+  const [selectedRole, setSelectedRole] = useState<string>(
+    classroomData.roles[0]
+  );
   const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedRole(event.target.value);
   };
+
   return (
     <div className="mx-10 my-5">
       <h1 className="tracking-normal leading-5">Home</h1>
       <p>Welcome to the Synergy Classroom</p>
-      {/* Login and Sign up page */}
       <PrimaryHeading text="Login" />
       <PrimaryHeading text="Sign Up" />
       <DescriptionText
@@ -67,7 +64,6 @@ export default function Home() {
         <LinkText url="/login" text="Login" />
       </DescriptionText>
 
-      {/* User Profile */}
       <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5">
         <CardProfile
           name="Salman Aziz"
@@ -94,7 +90,7 @@ export default function Home() {
         <hr className="border-slate-800" />
         <UserProfile
           name="Salman Aziz"
-          role={role[1]}
+          role={classroomData.roles[0]}
           avatarSrc="/profile_picture.png"
         />
       </div>
@@ -105,13 +101,13 @@ export default function Home() {
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
-            text={`Section - ${section}`}
+            text={`Section - ${classroomData.section}`}
             lineHeight="leading-5"
           />
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             lineHeight="leading-5"
           />
         </div>
@@ -132,26 +128,26 @@ export default function Home() {
           </div>
           <div className="flex justify-between mt-2 mb-4">
             <ItemList
-              items={bookList}
+              items={classroomData.books.map((book) => book.title)}
               className="text-primaryColor font-medium text-ex_sm leading-4"
               useNumber={true}
             />
             <ItemList
-              items={authorList}
+              items={classroomData.books.map((book) => book.author)}
               className="text-secondaryColor font-normal text-ex_sm leading-4"
               useNumber={false}
             />
           </div>
         </div>
         <hr />
-        <NumberBadge count={value} />
+        <NumberBadge count={classroomData.value} />
       </div>
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <DescriptionText
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
             color="text-white"
             lineHeight="leading-5"
@@ -165,7 +161,7 @@ export default function Home() {
             lineHeight="leading-5"
           />
           <ItemList
-            items={bookList}
+            items={classroomData.books.map((book) => book.title)}
             className="text-secondaryColor font-normal text-base leading-5"
             useNumber={true}
           />
@@ -183,7 +179,7 @@ export default function Home() {
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <DescriptionText
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
             color="text-white"
             lineHeight="leading-5"
@@ -197,7 +193,7 @@ export default function Home() {
             lineHeight="leading-5"
           />
           <ItemList
-            items={bookList}
+            items={classroomData.books.map((book) => book.title)}
             className="text-secondaryColor font-normal text-base leading-5"
             useNumber={true}
           />
