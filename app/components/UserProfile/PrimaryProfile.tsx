@@ -1,14 +1,14 @@
 import { Avatar } from "@mui/material";
 import React, { FC } from "react";
 
-type UserProfileProps = {
+type PrimaryProfileProps = {
   name: string;
   role: string;
   avatarSrc: string;
   className?: string;
 };
 
-const UserProfile: FC<UserProfileProps> = ({
+const PrimaryProfile: FC<PrimaryProfileProps> = ({
   name,
   role,
   avatarSrc,
@@ -33,4 +33,4 @@ const UserProfile: FC<UserProfileProps> = ({
   );
 };
 
-export default UserProfile;
+export default PrimaryProfile;

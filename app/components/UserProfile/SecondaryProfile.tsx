@@ -1,25 +1,27 @@
 import { Avatar } from "@mui/material";
 import React, { FC } from "react";
 
-interface CardProfileProps {
+interface SecondaryProfileProps {
   name: string;
   avatarSrc: string;
   avatarHeight?: number;
   avatarWidth?: number;
   className?: string;
+  placeOrder?: string;
 }
 
-const CardProfile: FC<CardProfileProps> = ({
+const SecondaryProfile: FC<SecondaryProfileProps> = ({
   name,
   avatarSrc,
   avatarHeight,
   avatarWidth,
   className = "",
+  placeOrder,
 }) => {
   return (
     <div className={className}>
       <Avatar
-        className=""
+        className={placeOrder}
         alt={name}
         src={avatarSrc}
         sx={{ height: avatarHeight, width: avatarWidth }}
@@ -29,4 +31,4 @@ const CardProfile: FC<CardProfileProps> = ({
   );
 };
 
-export default CardProfile;
+export default SecondaryProfile;

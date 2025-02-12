@@ -14,9 +14,8 @@ import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
 import CustomSelectField from "./components/inputFields/CustomSelectField";
 import PrimaryInputField from "./components/inputFields/PrimaryInputField";
-import CardProfile from "./components/UserProfile/CardProfile";
-import NavBarProfile from "./components/UserProfile/NavBarProfile";
-import UserProfile from "./components/UserProfile/UserProfile";
+import SecondaryProfile from "./components/UserProfile/SecondaryProfile";
+import PrimaryProfile from "./components/UserProfile/PrimaryProfile";
 import { ChangeEvent, useState } from "react";
 import { classroomData } from "./constants/classroomData";
 
@@ -64,8 +63,8 @@ export default function Home() {
         <LinkText url="/login" text="Login" />
       </DescriptionText>
 
-      <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5">
-        <CardProfile
+      <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5 mt-4">
+        <SecondaryProfile
           name="Salman Aziz"
           avatarSrc="/profile_avatar.png"
           avatarHeight={60}
@@ -73,21 +72,22 @@ export default function Home() {
           className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
-        <CardProfile
+        <SecondaryProfile
           name="Alexandra Alison"
           avatarSrc="/femaleAvatars.png"
           className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
-        <NavBarProfile
+        <SecondaryProfile
           avatarSrc="/maleAvatars.png"
+          placeOrder="order-1"
           name="Salman Aziz"
           avatarHeight={50}
           avatarWidth={50}
           className="flex items-center gap-8 text-lg font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
-        <UserProfile
+        <PrimaryProfile
           name="Eduardo V. Kozak"
           role={classroomData.roles[1]}
           avatarSrc="/maleAvatar.png"
