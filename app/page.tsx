@@ -65,10 +65,7 @@ export default function Home() {
         <LinkText url="/login" text="Login" />
       </DescriptionText>
 
-      {/* Card Component */}
-
       <div className="flex flex-col items-center justify-center m-14 p-6 space-y-8">
-        {/* Login Card */}
         <PrimaryCard
           className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
           header={
@@ -122,7 +119,6 @@ export default function Home() {
           />
         </PrimaryCard>
 
-        {/* Sign Up Card */}
         <PrimaryCard
           className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
           header={
@@ -190,13 +186,13 @@ export default function Home() {
               <DescriptionText
                 color="text-white"
                 fontSize="text-sm"
-                text={`Section - ${section}`}
+                text={`Section - ${classroomData.section}`}
                 lineHeight="leading-5"
               />
               <DescriptionText
                 color="text-white"
                 fontSize="text-sm"
-                text={`Course Teacher - ${teacherName}`}
+                text={`Course Teacher - ${classroomData.teacherName}`}
                 lineHeight="leading-5"
               />
             </>
@@ -219,194 +215,19 @@ export default function Home() {
               </div>
               <div className="flex justify-between mb-6">
                 <ItemList
-                  items={bookList}
+                  items={classroomData.books.map((book) => book.title)}
                   className="text-primaryColor font-medium text-ex_sm leading-4"
                   useNumber={true}
                 />
                 <ItemList
-                  items={authorList}
+                  items={classroomData.books.map((book) => book.author)}
                   className="text-secondaryColor font-normal text-ex_sm leading-4"
                   useNumber={false}
                 />
               </div>
             </>
           }
-          footer={<NumberBadge count={value} />}
-        >
-          <PrimaryButton
-            text="Enroll"
-            className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
-          />
-        </SecondaryCard>
-      </div>
-
-      {/* Card Component */}
-
-      <div className="flex flex-col items-center justify-center m-14 p-6 space-y-8">
-        {/* Login Card */}
-        <PrimaryCard
-          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
-          header={
-            <>
-              <PrimaryHeading text="Login" />
-              <DescriptionText
-                text="Welcome back! Enter your details to proceed."
-                color="text-secondaryColor"
-                fontSize="text-sm"
-                lineHeight="leading-6"
-              />
-            </>
-          }
-          content={
-            <>
-              <PrimaryInputField
-                label="Username"
-                placeholder="Enter Your UserName"
-                variant="outlined"
-              />
-              <PrimaryInputField
-                label="Password"
-                isPassword
-                variant="outlined"
-              />
-            </>
-          }
-          aside={
-            <DescriptionText
-              text="Forgot Password?"
-              color="text-secondaryColor"
-              fontSize="text-sm"
-              lineHeight="leading-5"
-              letterSpacing="tracking-wider"
-            />
-          }
-          footer={
-            <DescriptionText
-              text="Don't have an account?"
-              color="text-secondaryColor"
-              fontSize="text-sm"
-              lineHeight="leading-6"
-            >
-              <LinkText url="/signup" text="Sign Up" />
-            </DescriptionText>
-          }
-        >
-          <PrimaryButton
-            text="Log In"
-            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
-          />
-        </PrimaryCard>
-
-        {/* Sign Up Card */}
-        <PrimaryCard
-          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
-          header={
-            <>
-              <PrimaryHeading text="Sign Up" />
-              <DescriptionText
-                text="Enter your details below & free sign up"
-                color="text-secondaryColor"
-                fontSize="text-sm"
-                lineHeight="leading-6"
-              />
-            </>
-          }
-          content={
-            <>
-              <PrimaryInputField
-                label="Username"
-                placeholder="Enter Your UserName"
-                variant="outlined"
-              />
-              <PrimaryInputField
-                label="Name"
-                placeholder="Enter Your Name"
-                variant="outlined"
-              />
-              <PrimaryInputField
-                label="Password"
-                isPassword
-                variant="outlined"
-              />
-              <PrimaryInputField
-                label="Email"
-                placeholder="Please Provide Your Email"
-                variant="outlined"
-              />
-              <div>
-                <RowRadioButtonsGroup />
-              </div>
-            </>
-          }
-          footer={
-            <DescriptionText
-              text="Already have an account?"
-              color="text-secondaryColor"
-              fontSize="text-sm"
-              lineHeight="leading-6"
-            >
-              <LinkText url="/login" text="Login" />
-            </DescriptionText>
-          }
-        >
-          <PrimaryButton
-            text="Sign Up"
-            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
-          />
-        </PrimaryCard>
-        <SecondaryCard
-          className="w-[354px] mx-auto bg-white rounded-2xl shadow-lg"
-          header={
-            <>
-              <SectionHeading
-                text="Electrical Circuit 01"
-                fontSize="text-2xl"
-              />
-              <DescriptionText
-                color="text-white"
-                fontSize="text-sm"
-                text={`Section - ${section}`}
-                lineHeight="leading-5"
-              />
-              <DescriptionText
-                color="text-white"
-                fontSize="text-sm"
-                text={`Course Teacher - ${teacherName}`}
-                lineHeight="leading-5"
-              />
-            </>
-          }
-          content={
-            <>
-              <div className="flex justify-between mt-5">
-                <DescriptionText
-                  text={`Book List`}
-                  color="text-primaryColor"
-                  fontSize="text-sm"
-                  lineHeight="leading-5"
-                />
-                <DescriptionText
-                  text={`Author`}
-                  color="text-primaryColor"
-                  fontSize="text-sm"
-                  lineHeight="leading-5"
-                />
-              </div>
-              <div className="flex justify-between mb-6">
-                <ItemList
-                  items={bookList}
-                  className="text-primaryColor font-medium text-ex_sm leading-4"
-                  useNumber={true}
-                />
-                <ItemList
-                  items={authorList}
-                  className="text-secondaryColor font-normal text-ex_sm leading-4"
-                  useNumber={false}
-                />
-              </div>
-            </>
-          }
-          footer={<NumberBadge count={value} />}
+          footer={<NumberBadge count={classroomData.value} />}
         >
           <PrimaryButton
             text="Enroll"
@@ -430,8 +251,8 @@ export default function Home() {
           className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
-        <NavBarProfile
-          roles={role}
+        <SecondaryProfile
+          placeOrder="order-1"
           avatarSrc="/profile_avatar.jpeg"
           name="Salman Aziz"
           avatarHeight={50}
@@ -441,13 +262,12 @@ export default function Home() {
         <hr className="border-slate-800" />
         <PrimaryProfile
           name="Eduardo V. Kozak"
-          role={classroomData.roles[1]}
           avatarSrc="/maleAvatar.png"
           className="flex flex-col items-center gap-7"
         />
       </div>
-      {/* dashboard card page */}
-      <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
+
+      <div className="bg-zinc-500 w-96 rounded-lg p-4 mt-4">
         <div>
           <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
           <DescriptionText
@@ -527,6 +347,7 @@ export default function Home() {
           />
         </div>
       </div>
+
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />

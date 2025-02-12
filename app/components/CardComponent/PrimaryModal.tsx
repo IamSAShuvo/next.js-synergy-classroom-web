@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 import { Modal, Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import UserProfile from "../UserProfile/UserProfile";
+// import UserProfile from "../UserProfile/UserProfile";
+import PrimaryProfile from "../UserProfile/PrimaryProfile";
 import PrimaryButton from "../Buttons/PrimaryButton";
 
-interface ProfileModalProps {
+interface PrimaryModalProps {
   open: boolean;
   setOpen: (open: boolean) => void;
   name: string;
   avatarSrc: string;
-  roles: string[];
 }
 
 const modalStyle = {
@@ -28,10 +28,9 @@ const modalStyle = {
   overflowY: "auto",
 };
 
-const ProfileModal: FC<ProfileModalProps> = ({
+const PrimaryModal: FC<PrimaryModalProps> = ({
   name,
   avatarSrc,
-  roles,
   open,
   setOpen,
 }) => {
@@ -51,7 +50,7 @@ const ProfileModal: FC<ProfileModalProps> = ({
           <CloseIcon />
         </IconButton>
 
-        <UserProfile avatarSrc={avatarSrc} name={name} role={roles[0]} />
+        <PrimaryProfile avatarSrc={avatarSrc} name={name} />
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <div className="flex items-center justify-between mt-8">
@@ -69,4 +68,4 @@ const ProfileModal: FC<ProfileModalProps> = ({
   );
 };
 
-export default ProfileModal;
+export default PrimaryModal;
