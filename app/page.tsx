@@ -242,22 +242,25 @@ export default function Home() {
           avatarSrc="/profile_avatar.png"
           avatarHeight={60}
           avatarWidth={60}
+          shouldOpenModal={false}
           className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
         <SecondaryProfile
           name="Alexandra Alison"
           avatarSrc="/femaleAvatars.png"
+          shouldOpenModal={false}
           className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
         <SecondaryProfile
+          shouldOpenModal={true}
           placeOrder="order-1"
           avatarSrc="/profile_avatar.jpeg"
           name="Salman Aziz"
           avatarHeight={50}
           avatarWidth={50}
-          className="flex items-center gap-8 text-lg font-medium leading-5 text-midnightBlack"
+          className="flex items-center gap-8 cursor-pointer text-lg font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
         <PrimaryProfile

@@ -9,6 +9,7 @@ interface SecondaryProfileProps {
   avatarWidth?: number;
   className?: string;
   placeOrder?: string;
+  shouldOpenModal: true | false;
 }
 
 const SecondaryProfile: FC<SecondaryProfileProps> = ({
@@ -18,6 +19,7 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
   avatarWidth,
   className = "",
   placeOrder,
+  shouldOpenModal,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -32,12 +34,14 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
         />
         <h1>{name}</h1>
       </div>
-      <PrimaryModal
-        open={open}
-        setOpen={setOpen}
-        avatarSrc="/profile_avatar.jpeg"
-        name={name}
-      />
+      {shouldOpenModal && (
+        <PrimaryModal
+          open={open}
+          setOpen={setOpen}
+          avatarSrc="/profile_avatar.jpeg"
+          name={name}
+        />
+      )}
     </>
   );
 };

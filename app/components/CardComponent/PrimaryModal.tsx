@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { Modal, Box, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-// import UserProfile from "../UserProfile/UserProfile";
 import PrimaryProfile from "../UserProfile/PrimaryProfile";
 import PrimaryButton from "../Buttons/PrimaryButton";
 
@@ -50,7 +49,11 @@ const PrimaryModal: FC<PrimaryModalProps> = ({
           <CloseIcon />
         </IconButton>
 
-        <PrimaryProfile avatarSrc={avatarSrc} name={name} />
+        <PrimaryProfile
+          className="flex flex-col items-center gap-7"
+          avatarSrc={avatarSrc}
+          name={name}
+        />
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <div className="flex items-center justify-between mt-8">
