@@ -18,7 +18,7 @@ const UserProfile: FC<UserProfileProps> = ({
     <div className={className}>
       <Avatar
         className=""
-        alt="Salman Aziz"
+        alt={name}
         src={avatarSrc}
         sx={{
           height: 150,

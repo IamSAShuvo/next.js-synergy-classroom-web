@@ -75,12 +75,12 @@ export default function Home() {
         <hr className="border-slate-800" />
         <CardProfile
           name="Alexandra Alison"
-          avatarSrc="/femaleAvatar.png"
+          avatarSrc="/femaleAvatars.png"
           className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
         <NavBarProfile
-          avatarSrc="/maleAvatar.png"
+          avatarSrc="/maleAvatars.png"
           name="Salman Aziz"
           avatarHeight={50}
           avatarWidth={50}
