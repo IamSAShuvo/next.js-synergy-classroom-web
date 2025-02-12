@@ -70,15 +70,13 @@ export default function Home() {
           avatarSrc="/profile_avatar.png"
           avatarHeight={60}
           avatarWidth={60}
-          fontSize="text-xl"
-          fontWeight="font-normal"
+          className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
         <CardProfile
           name="Alexandra Alison"
           avatarSrc="/femaleAvatar.png"
-          fontSize="text-base"
-          fontWeight="font-medium"
+          className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
         <NavBarProfile
@@ -86,12 +84,14 @@ export default function Home() {
           name="Salman Aziz"
           avatarHeight={50}
           avatarWidth={50}
+          className="flex items-center gap-8 text-lg font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
         <UserProfile
           name="Eduardo V. Kozak"
           role={classroomData.roles[1]}
           avatarSrc="/maleAvatar.png"
+          className="flex flex-col items-center gap-7"
         />
       </div>
       {/* dashboard card page */}

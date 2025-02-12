@@ -4,24 +4,20 @@ import React, { FC } from "react";
 interface CardProfileProps {
   name: string;
   avatarSrc: string;
-  fontSize: string;
-  fontWeight: string;
   avatarHeight?: number;
   avatarWidth?: number;
+  className?: string;
 }
 
 const CardProfile: FC<CardProfileProps> = ({
   name,
   avatarSrc,
-  fontSize,
-  fontWeight,
   avatarHeight,
   avatarWidth,
+  className = "",
 }) => {
   return (
-    <div
-      className={`flex items-center gap-3 ${fontSize} ${fontWeight} leading-5 text-midnightBlack`}
-    >
+    <div className={className}>
       <Avatar
         className=""
         alt={name}

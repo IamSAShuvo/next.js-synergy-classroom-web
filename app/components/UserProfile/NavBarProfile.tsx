@@ -6,15 +6,17 @@ interface NavBarProfileProps {
   avatarSrc: string;
   avatarHeight?: number;
   avatarWidth?: number;
+  className?: string;
 }
 const NavBarProfile: FC<NavBarProfileProps> = ({
   name,
   avatarSrc,
   avatarHeight,
   avatarWidth,
+  className = "",
 }) => {
   return (
-    <div className="flex items-center gap-8 text-lg font-medium leading-5 text-midnightBlack">
+    <div className={className}>
       <h1>{name}</h1>
       <Avatar
         className=""
