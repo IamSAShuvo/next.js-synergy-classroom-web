@@ -1,25 +1,31 @@
 import { Avatar } from "@mui/material";
 import React, { FC } from "react";
 
-type UserProfileProps = {
+type PrimaryProfileProps = {
   name: string;
   role: string;
   avatarSrc: string;
+  className?: string;
 };
 
-const UserProfile: FC<UserProfileProps> = ({ name, role, avatarSrc }) => {
+const PrimaryProfile: FC<PrimaryProfileProps> = ({
+  name,
+  role,
+  avatarSrc,
+  className = "",
+}) => {
   return (
-    <div className="flex flex-col items-center gap-7">
+    <div className={className}>
       <Avatar
         className=""
-        alt="Salman Aziz"
+        alt={name}
         src={avatarSrc}
         sx={{
           height: 150,
           width: 150,
         }}
       />
-      <div className="flex flex-col items-center gap-2 ">
+      <div className="flex flex-col items-center gap-2">
         <h1 className="font-medium text-3xl text-deepNavy">{name}</h1>
         <p className="text-blueHaze font-normal text-xl">{role}</p>
       </div>
@@ -27,4 +33,4 @@ const UserProfile: FC<UserProfileProps> = ({ name, role, avatarSrc }) => {
   );
 };
 
-export default UserProfile;
+export default PrimaryProfile;

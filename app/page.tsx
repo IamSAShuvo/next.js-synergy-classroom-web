@@ -1,4 +1,3 @@
-// export default function Home() {}
 "use client";
 import DescriptionText from "./components/typography/DescriptionText";
 import PrimaryHeading from "./components/typography/PrimaryHeading";
@@ -13,26 +12,27 @@ import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
-import SelectOptionTextField from "./components/inputFields/SelectOptionTextField";
+import CustomSelectField from "./components/inputFields/CustomSelectField";
 import PrimaryInputField from "./components/inputFields/PrimaryInputField";
-import CardProfile from "./components/UserProfile/CardProfile";
-import NavBarProfile from "./components/UserProfile/NavBarProfile";
-import UserProfile from "./components/UserProfile/UserProfile";
+import SecondaryProfile from "./components/UserProfile/SecondaryProfile";
+import PrimaryProfile from "./components/UserProfile/PrimaryProfile";
+import { ChangeEvent, useState } from "react";
+import { classroomData } from "./constants/classroomData";
 import PrimaryCard from "./components/CardComponent/PrimaryCard";
 import SecondaryCard from "./components/CardComponent/SecondaryCard";
 
 export default function Home() {
-  const teacherName = "Mr. John Doe";
-  const section = "A";
-  const value = 235;
-  const bookList = ["Book 01", "Book 02", "Book 03"];
-  const authorList = ["Author 01", "Author 02", "Author 03"];
-  const role = ["Software Engineer", "Frontend Developer", "Backend Developer"];
+  const [selectedRole, setSelectedRole] = useState<string>(
+    classroomData.roles[0]
+  );
+  const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedRole(event.target.value);
+  };
+
   return (
     <div className="mx-10 my-5">
       <h1 className="tracking-normal leading-5">Home</h1>
       <p>Welcome to the Synergy Classroom</p>
-      {/* Login and Sign up page */}
       <PrimaryHeading text="Login" />
       <PrimaryHeading text="Sign Up" />
       <DescriptionText
@@ -240,22 +240,194 @@ export default function Home() {
         </SecondaryCard>
       </div>
 
-      {/* User Profile */}
-      <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5">
-        <CardProfile
+      {/* Card Component */}
+
+      <div className="flex flex-col items-center justify-center m-14 p-6 space-y-8">
+        {/* Login Card */}
+        <PrimaryCard
+          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+          header={
+            <>
+              <PrimaryHeading text="Login" />
+              <DescriptionText
+                text="Welcome back! Enter your details to proceed."
+                color="text-secondaryColor"
+                fontSize="text-sm"
+                lineHeight="leading-6"
+              />
+            </>
+          }
+          content={
+            <>
+              <PrimaryInputField
+                label="Username"
+                placeholder="Enter Your UserName"
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Password"
+                isPassword
+                variant="outlined"
+              />
+            </>
+          }
+          aside={
+            <DescriptionText
+              text="Forgot Password?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-5"
+              letterSpacing="tracking-wider"
+            />
+          }
+          footer={
+            <DescriptionText
+              text="Don't have an account?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-6"
+            >
+              <LinkText url="/signup" text="Sign Up" />
+            </DescriptionText>
+          }
+        >
+          <PrimaryButton
+            text="Log In"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+          />
+        </PrimaryCard>
+
+        {/* Sign Up Card */}
+        <PrimaryCard
+          className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
+          header={
+            <>
+              <PrimaryHeading text="Sign Up" />
+              <DescriptionText
+                text="Enter your details below & free sign up"
+                color="text-secondaryColor"
+                fontSize="text-sm"
+                lineHeight="leading-6"
+              />
+            </>
+          }
+          content={
+            <>
+              <PrimaryInputField
+                label="Username"
+                placeholder="Enter Your UserName"
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Name"
+                placeholder="Enter Your Name"
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Password"
+                isPassword
+                variant="outlined"
+              />
+              <PrimaryInputField
+                label="Email"
+                placeholder="Please Provide Your Email"
+                variant="outlined"
+              />
+              <div>
+                <RowRadioButtonsGroup />
+              </div>
+            </>
+          }
+          footer={
+            <DescriptionText
+              text="Already have an account?"
+              color="text-secondaryColor"
+              fontSize="text-sm"
+              lineHeight="leading-6"
+            >
+              <LinkText url="/login" text="Login" />
+            </DescriptionText>
+          }
+        >
+          <PrimaryButton
+            text="Sign Up"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+          />
+        </PrimaryCard>
+        <SecondaryCard
+          className="w-[354px] mx-auto bg-white rounded-2xl shadow-lg"
+          header={
+            <>
+              <SectionHeading
+                text="Electrical Circuit 01"
+                fontSize="text-2xl"
+              />
+              <DescriptionText
+                color="text-white"
+                fontSize="text-sm"
+                text={`Section - ${section}`}
+                lineHeight="leading-5"
+              />
+              <DescriptionText
+                color="text-white"
+                fontSize="text-sm"
+                text={`Course Teacher - ${teacherName}`}
+                lineHeight="leading-5"
+              />
+            </>
+          }
+          content={
+            <>
+              <div className="flex justify-between mt-5">
+                <DescriptionText
+                  text={`Book List`}
+                  color="text-primaryColor"
+                  fontSize="text-sm"
+                  lineHeight="leading-5"
+                />
+                <DescriptionText
+                  text={`Author`}
+                  color="text-primaryColor"
+                  fontSize="text-sm"
+                  lineHeight="leading-5"
+                />
+              </div>
+              <div className="flex justify-between mb-6">
+                <ItemList
+                  items={bookList}
+                  className="text-primaryColor font-medium text-ex_sm leading-4"
+                  useNumber={true}
+                />
+                <ItemList
+                  items={authorList}
+                  className="text-secondaryColor font-normal text-ex_sm leading-4"
+                  useNumber={false}
+                />
+              </div>
+            </>
+          }
+          footer={<NumberBadge count={value} />}
+        >
+          <PrimaryButton
+            text="Enroll"
+            className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
+          />
+        </SecondaryCard>
+      </div>
+
+      <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5 mt-4">
+        <SecondaryProfile
           name="Salman Aziz"
           avatarSrc="/profile_avatar.png"
           avatarHeight={60}
           avatarWidth={60}
-          fontSize="text-xl"
-          fontWeight="font-normal"
+          className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
-        <CardProfile
-          name="Random Name"
-          avatarSrc="/femaleAvatar.png"
-          fontSize="text-base"
-          fontWeight="font-medium"
+        <SecondaryProfile
+          name="Alexandra Alison"
+          avatarSrc="/femaleAvatars.png"
+          className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
         <NavBarProfile
@@ -264,12 +436,14 @@ export default function Home() {
           name="Salman Aziz"
           avatarHeight={50}
           avatarWidth={50}
+          className="flex items-center gap-8 text-lg font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
-        <UserProfile
-          name="Salman Aziz"
-          role={role[1]}
-          avatarSrc="/profile_picture.png"
+        <PrimaryProfile
+          name="Eduardo V. Kozak"
+          role={classroomData.roles[1]}
+          avatarSrc="/maleAvatar.png"
+          className="flex flex-col items-center gap-7"
         />
       </div>
       {/* dashboard card page */}
@@ -279,13 +453,13 @@ export default function Home() {
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
-            text={`Section - ${section}`}
+            text={`Section - ${classroomData.section}`}
             lineHeight="leading-5"
           />
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             lineHeight="leading-5"
           />
         </div>
@@ -306,26 +480,26 @@ export default function Home() {
           </div>
           <div className="flex justify-between mt-2 mb-4">
             <ItemList
-              items={bookList}
+              items={classroomData.books.map((book) => book.title)}
               className="text-primaryColor font-medium text-ex_sm leading-4"
               useNumber={true}
             />
             <ItemList
-              items={authorList}
+              items={classroomData.books.map((book) => book.author)}
               className="text-secondaryColor font-normal text-ex_sm leading-4"
               useNumber={false}
             />
           </div>
         </div>
         <hr />
-        <NumberBadge count={value} />
+        <NumberBadge count={classroomData.value} />
       </div>
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <DescriptionText
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
             color="text-white"
             lineHeight="leading-5"
@@ -339,7 +513,7 @@ export default function Home() {
             lineHeight="leading-5"
           />
           <ItemList
-            items={bookList}
+            items={classroomData.books.map((book) => book.title)}
             className="text-secondaryColor font-normal text-base leading-5"
             useNumber={true}
           />
@@ -357,7 +531,7 @@ export default function Home() {
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <DescriptionText
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
             color="text-white"
             lineHeight="leading-5"
@@ -371,7 +545,7 @@ export default function Home() {
             lineHeight="leading-5"
           />
           <ItemList
-            items={bookList}
+            items={classroomData.books.map((book) => book.title)}
             className="text-secondaryColor font-normal text-base leading-5"
             useNumber={true}
           />
@@ -444,7 +618,7 @@ export default function Home() {
           placeholder="Enter Your Course Name"
           variant="filled"
         />
-        <SelectOptionTextField />
+        <CustomSelectField value={selectedRole} onChange={handleRoleChange} />
       </div>
     </div>
   );

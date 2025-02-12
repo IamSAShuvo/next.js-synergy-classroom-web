@@ -2,46 +2,44 @@ import React, { FC, useState } from "react";
 import { Avatar } from "@mui/material";
 import PrimaryModal from "../CardComponent/PrimaryModal";
 
-interface NavBarProfileProps {
+interface SecondaryProfileProps {
   name: string;
   avatarSrc: string;
   avatarHeight?: number;
   avatarWidth?: number;
-  roles: string[];
+  className?: string;
+  placeOrder?: string;
 }
 
-const NavBarProfile: FC<NavBarProfileProps> = ({
-  roles,
+const SecondaryProfile: FC<SecondaryProfileProps> = ({
   name,
   avatarSrc,
   avatarHeight,
   avatarWidth,
+  className = "",
+  placeOrder,
 }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <div
-        onClick={() => setOpen(true)}
-        className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack"
-      >
-        <h1>{name}</h1>
+      <div onClick={() => setOpen(true)} className={className}>
         <Avatar
           alt={name}
           src={avatarSrc}
           sx={{ height: avatarHeight, width: avatarWidth }}
-          className=""
+          className={placeOrder}
         />
+        <h1>{name}</h1>
       </div>
       <PrimaryModal
         open={open}
         setOpen={setOpen}
         avatarSrc="/profile_avatar.jpeg"
         name={name}
-        roles={roles}
       />
     </>
   );
 };
 
-export default NavBarProfile;
+export default SecondaryProfile;
