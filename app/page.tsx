@@ -1,4 +1,3 @@
-// export default function Home() {}
 "use client";
 import DescriptionText from "./components/typography/DescriptionText";
 import PrimaryHeading from "./components/typography/PrimaryHeading";
@@ -13,6 +12,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
+import CustomSelectField from "./components/inputFields/CustomSelectField";
+import PrimaryInputField from "./components/inputFields/PrimaryInputField";
+import { ChangeEvent, useState } from "react";
 
 export default function Home() {
   const teacherName = "Mr. John Doe";
@@ -20,6 +22,10 @@ export default function Home() {
   const value = 235;
   const bookList = ["Book 01", "Book 02", "Book 03"];
   const authorList = ["Author 01", "Author 02", "Author 03"];
+  const [selectedRole, setSelectedRole] = useState<string>("student");
+  const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedRole(event.target.value);
+  };
   return (
     <div className="mx-10 my-5">
       <h1 className="tracking-normal leading-5">Home</h1>
@@ -34,7 +40,7 @@ export default function Home() {
         lineHeight="leading-6"
       />
       <DescriptionText
-        text="Forgot PassWord?"
+        text="Forgot Password?"
         color="text-secondaryColor"
         fontSize="text-sm"
         lineHeight="leading-5"
@@ -197,6 +203,37 @@ export default function Home() {
           trailingIcon={ChevronRightIcon}
         />
         <SidebarMenuButton icon={LogoutRoundedIcon} text="Log out" />
+      </div>
+      <div className="mt-8 flex flex-col items-center space-y-5">
+        <div className="flex flex-col items-center gap-6 border-4 border-dashed border-gray-300 w-full lg:p-8 md:p-8 p-8">
+          <PrimaryInputField
+            label="Password"
+            isPassword
+            placeholder="Put your Password"
+          />
+          <PrimaryInputField
+            label="username"
+            placeholder="Enter your username"
+          />
+          <PrimaryInputField
+            label="Book Name"
+            hasExpandableFields
+            placeholder="Add your book name"
+            variant="standard"
+          />
+        </div>
+
+        <PrimaryInputField
+          label="Username"
+          placeholder="Enter Your UserName"
+          variant="outlined"
+        />
+        <PrimaryInputField
+          label="Course Name"
+          placeholder="Enter Your Course Name"
+          variant="filled"
+        />
+        <CustomSelectField value={selectedRole} onChange={handleRoleChange} />
       </div>
     </div>
   );
