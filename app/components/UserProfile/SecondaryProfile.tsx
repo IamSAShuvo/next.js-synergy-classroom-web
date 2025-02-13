@@ -23,7 +23,7 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-  const anchorRef = useRef<HTMLDivElement>(null);
+  const anchorRef = useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);

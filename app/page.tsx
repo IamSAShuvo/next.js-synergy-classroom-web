@@ -253,15 +253,17 @@ export default function Home() {
           className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
         />
         <hr className="border-slate-800" />
-        <SecondaryProfile
-          shouldOpenModal={true}
-          placeOrder="order-1"
-          avatarSrc="/profile_avatar.jpeg"
-          name="Salman Aziz"
-          avatarHeight={50}
-          avatarWidth={50}
-          className="flex items-center gap-8 cursor-pointer text-lg font-medium leading-5 text-midnightBlack"
-        />
+        <div className="self-end">
+          <SecondaryProfile
+            shouldOpenModal={true}
+            placeOrder="order-1"
+            avatarSrc="/profile_avatar.jpeg"
+            name="Salman Aziz"
+            avatarHeight={50}
+            avatarWidth={50}
+            className="flex items-center gap-8 cursor-pointer text-lg font-medium leading-5 text-midnightBlack"
+          />
+        </div>
         <hr className="border-slate-800" />
         <PrimaryProfile
           name="Eduardo V. Kozak"
