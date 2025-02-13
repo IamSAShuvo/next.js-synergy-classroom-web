@@ -2,7 +2,6 @@
 import React, { FC, RefObject } from "react";
 import { ClickAwayListener, Grow, Paper, Popper, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
-// import UserProfile from "../UserProfile/UserProfile";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { useRouter } from "next/navigation";
 import PrimaryProfile from "../UserProfile/PrimaryProfile";
