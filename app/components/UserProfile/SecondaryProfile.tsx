@@ -1,6 +1,6 @@
-import React, { FC, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import { Avatar } from "@mui/material";
-import PrimaryModal from "../CardComponent/PrimaryModal";
+import PrimaryPoppers from "../CardComponent/PrimaryPoppers";
 
 interface SecondaryProfileProps {
   name: string;
@@ -23,9 +23,15 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
 
+  const anchorRef = useRef<HTMLDivElement>(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
   return (
-    <>
-      <div onClick={() => setOpen(true)} className={className}>
+    <React.Fragment>
+      <div ref={anchorRef} onClick={handleToggle} className={className}>
         <Avatar
           alt={name}
           src={avatarSrc}
@@ -35,14 +41,14 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
         <h1>{name}</h1>
       </div>
       {shouldOpenModal && (
-        <PrimaryModal
+        <PrimaryPoppers
           open={open}
           setOpen={setOpen}
+          anchorRef={anchorRef}
           avatarSrc="/profile_avatar.jpeg"
-          name={name}
         />
       )}
-    </>
+    </React.Fragment>
   );
 };
 
