@@ -64,6 +64,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   const handleExpandToggle = () => setIsExpanded((prev) => !prev);
 
   const InputComponent = inputComponents[variant] || OutlinedInput;
+
   const inputId = generateId(label);
 
   const endAdornment = () => {

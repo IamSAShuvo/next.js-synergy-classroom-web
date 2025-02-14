@@ -14,23 +14,21 @@ import PrimaryButton from "./components/Buttons/PrimaryButton";
 import LinkText from "./components/links/LinkText";
 import CustomSelectField from "./components/inputFields/CustomSelectField";
 import PrimaryInputField from "./components/inputFields/PrimaryInputField";
+import SecondaryProfile from "./components/UserProfile/SecondaryProfile";
+import PrimaryProfile from "./components/UserProfile/PrimaryProfile";
 import { ChangeEvent, useState } from "react";
+import { classroomData, allowedRoles } from "./constants/classroomData";
 
 export default function Home() {
-  const teacherName = "Mr. John Doe";
-  const section = "A";
-  const value = 235;
-  const bookList = ["Book 01", "Book 02", "Book 03"];
-  const authorList = ["Author 01", "Author 02", "Author 03"];
-  const [selectedRole, setSelectedRole] = useState<string>("student");
+  const [selectedRole, setSelectedRole] = useState<string>(allowedRoles[0]);
   const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedRole(event.target.value);
   };
+
   return (
     <div className="mx-10 my-5">
       <h1 className="tracking-normal leading-5">Home</h1>
       <p>Welcome to the Synergy Classroom</p>
-      {/* Login and Sign up page */}
       <PrimaryHeading text="Login" />
       <PrimaryHeading text="Sign Up" />
       <DescriptionText
@@ -63,6 +61,37 @@ export default function Home() {
         <LinkText url="/login" text="Login" />
       </DescriptionText>
 
+      <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5 mt-4">
+        <SecondaryProfile
+          name="Salman Aziz"
+          avatarSrc="/profile_avatar.png"
+          avatarHeight={60}
+          avatarWidth={60}
+          className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
+        />
+        <hr className="border-slate-800" />
+        <SecondaryProfile
+          name="Alexandra Alison"
+          avatarSrc="/femaleAvatars.png"
+          className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
+        />
+        <hr className="border-slate-800" />
+        <SecondaryProfile
+          avatarSrc="/maleAvatars.png"
+          flexOrder="order-1"
+          name="Salman Aziz"
+          avatarHeight={50}
+          avatarWidth={50}
+          className="flex items-center gap-8 text-lg font-medium leading-5 text-midnightBlack"
+        />
+        <hr className="border-slate-800" />
+        <PrimaryProfile
+          name="Eduardo V. Kozak"
+          role={allowedRoles[1]}
+          avatarSrc="/maleAvatar.png"
+          className="flex flex-col items-center gap-7"
+        />
+      </div>
       {/* dashboard card page */}
       <div className="bg-zinc-500 w-[354px] rounded-lg p-4 mt-4">
         <div>
@@ -70,13 +99,13 @@ export default function Home() {
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
-            text={`Section - ${section}`}
+            text={`Section - ${classroomData.section}`}
             lineHeight="leading-5"
           />
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             lineHeight="leading-5"
           />
         </div>
@@ -97,26 +126,26 @@ export default function Home() {
           </div>
           <div className="flex justify-between mt-2 mb-4">
             <ItemList
-              items={bookList}
+              items={classroomData.books.map((book) => book.title)}
               className="text-primaryColor font-medium text-ex_sm leading-4"
               useNumber={true}
             />
             <ItemList
-              items={authorList}
+              items={classroomData.books.map((book) => book.author)}
               className="text-secondaryColor font-normal text-ex_sm leading-4"
               useNumber={false}
             />
           </div>
         </div>
         <hr />
-        <NumberBadge count={value} />
+        <NumberBadge count={classroomData.studentCount} />
       </div>
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <DescriptionText
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
             color="text-white"
             lineHeight="leading-5"
@@ -130,7 +159,7 @@ export default function Home() {
             lineHeight="leading-5"
           />
           <ItemList
-            items={bookList}
+            items={classroomData.books.map((book) => book.title)}
             className="text-secondaryColor font-normal text-base leading-5"
             useNumber={true}
           />
@@ -148,7 +177,7 @@ export default function Home() {
         <div className="space-y-3">
           <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
           <DescriptionText
-            text={`Course Teacher - ${teacherName}`}
+            text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
             color="text-white"
             lineHeight="leading-5"
@@ -162,7 +191,7 @@ export default function Home() {
             lineHeight="leading-5"
           />
           <ItemList
-            items={bookList}
+            items={classroomData.books.map((book) => book.title)}
             className="text-secondaryColor font-normal text-base leading-5"
             useNumber={true}
           />
