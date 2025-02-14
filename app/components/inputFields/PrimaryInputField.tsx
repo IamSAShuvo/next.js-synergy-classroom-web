@@ -20,6 +20,7 @@ interface PrimaryInputFieldProps {
   variant?: "standard" | "outlined" | "filled";
   isPassword?: boolean;
   hasExpandableFields?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const inputStyle = {
@@ -43,25 +44,28 @@ const inputComponents = {
   outlined: OutlinedInput,
 };
 
+const generateId = (label: string) => {
+  return encodeURIComponent(label.toLowerCase().replace(/\s+/g, "-"));
+};
+
 const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   label,
   placeholder,
   variant = "outlined",
   isPassword = false,
   hasExpandableFields = false,
+  onChange,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleExpandToggle = () => setIsExpanded((prev) => !prev);
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => event.preventDefault();
-  const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) =>
-    event.preventDefault();
 
   const InputComponent = inputComponents[variant] || OutlinedInput;
+
+  const inputId = generateId(label);
 
   const endAdornment = () => {
     if (isPassword) {
@@ -70,8 +74,6 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
           <IconButton
             aria-label={showPassword ? "Hide password" : "Show password"}
             onClick={handleClickShowPassword}
-            onMouseDown={handleMouseDownPassword}
-            onMouseUp={handleMouseUpPassword}
           >
             {showPassword ? <Visibility /> : <VisibilityOff />}
           </IconButton>
@@ -103,15 +105,14 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   return (
     <div className="w-full flex flex-col gap-5">
       <StyledFormControl variant={variant}>
-        <InputLabel htmlFor={label.toLowerCase().replace(/\s+/g, "-")}>
-          {label}
-        </InputLabel>
+        <InputLabel htmlFor={inputId}>{label}</InputLabel>
         <InputComponent
           sx={inputStyle}
-          id={label.toLowerCase().replace(/\s+/g, "-")}
+          id={inputId}
           type={isPassword && !showPassword ? "password" : "text"}
           placeholder={placeholder}
           endAdornment={endAdornment()}
+          onChange={onChange}
           label={variant === "outlined" ? label : undefined}
           {...props}
         />

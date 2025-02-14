@@ -1,25 +1,17 @@
 "use client";
-import React, { FC } from "react";
-import {
-  ClickAwayListener,
-  Avatar,
-  Button,
-  Grow,
-  Paper,
-  Popper,
-  Stack,
-} from "@mui/material";
+import React, { FC, RefObject } from "react";
+import { ClickAwayListener, Grow, Paper, Popper, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import UserProfile from "../UserProfile/UserProfile";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { useRouter } from "next/navigation";
+import PrimaryProfile from "../UserProfile/PrimaryProfile";
 
 interface PrimaryPoppersProps {
-  // open?: boolean;
-  // setOpen?: (open: boolean) => void;
-  name: string;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
   avatarSrc: string;
-  roles: string[];
+  anchorRef: RefObject<HTMLDivElement | null>;
 }
 
 const Arrow = styled("div")(({ theme }) => ({
@@ -30,26 +22,18 @@ const Arrow = styled("div")(({ theme }) => ({
   top: "-10px",
   right: "1%",
   transform: "translateX(-50%) rotate(45deg)",
-  // boxShadow: theme.shadows[3],
   zIndex: -1,
 }));
 
 const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
-  name,
   avatarSrc,
-  roles,
-  // open,
-  // setOpen,
+  open,
+  setOpen,
+  anchorRef,
 }) => {
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef<HTMLButtonElement>(null);
   const router = useRouter();
 
   const handleNavigate = () => router.push("/");
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
     if (
@@ -60,29 +44,15 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
     }
     setOpen(false);
   };
+
   return (
     <Stack direction="row" spacing={2}>
-      <Button
-        ref={anchorRef}
-        onClick={handleToggle}
-        disableRipple
-        sx={{ minWidth: 0, p: 0 }}
-      >
-        <div className="flex items-center cursor-pointer gap-8 text-lg font-medium leading-5 text-midnightBlack">
-          <h1>{name}</h1>
-          <Avatar
-            alt={name}
-            src={avatarSrc}
-            sx={{ height: 50, width: 50 }}
-            className=""
-          />
-        </div>
-      </Button>
       <ClickAwayListener onClickAway={handleClose}>
         <Popper
           open={open}
           anchorEl={anchorRef.current}
           placement="bottom-start"
+          // placement="bottom-end"
           transition
           disablePortal
           modifiers={[
@@ -111,14 +81,14 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 <Arrow />
 
                 <div className="w-full">
-                  <UserProfile
+                  <PrimaryProfile
                     avatarSrc={avatarSrc}
-                    name={name}
-                    role={roles[0]}
+                    name="Salman Aziz"
+                    className="flex flex-col items-center gap-7"
                   />
                   <PrimaryButton
                     onClick={handleNavigate}
-                    text="Log out"
+                    text={"Log out"}
                     className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6 mt-16"
                   />
                 </div>
@@ -132,28 +102,3 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
 };
 
 export default PrimaryPoppers;
-
-{
-  /* <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-  <div className="flex items-center justify-between mt-8">
-    <p>username:</p>
-    <span>{name}</span>
-  </div>
-</Box> */
-}
-
-{
-  /* <ClickAwayListener onClickAway={handleClose}>
-                <div className="w-full">
-                  <UserProfile
-                    avatarSrc={avatarSrc}
-                    name={name}
-                    role={roles[0]}
-                  />
-                  <PrimaryButton
-                    text="Log out"
-                    className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6 mt-16"
-                  />
-                </div>
-              </ClickAwayListener> */
-}

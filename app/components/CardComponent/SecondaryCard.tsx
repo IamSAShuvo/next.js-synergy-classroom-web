@@ -1,4 +1,3 @@
-"use client";
 import React, { FC, ReactNode } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
