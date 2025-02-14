@@ -20,7 +20,6 @@ import { ChangeEvent, useState } from "react";
 import { classroomData, allowedRoles } from "./constants/classroomData";
 import PrimaryCard from "./components/CardComponent/PrimaryCard";
 import SecondaryCard from "./components/CardComponent/SecondaryCard";
-import NavBar from "./components/NavBar/NavBar";
 
 export default function Home() {
   const [selectedRole, setSelectedRole] = useState<string>(allowedRoles[0]);
@@ -180,7 +179,7 @@ export default function Home() {
             <>
               <SectionHeading
                 text="Electrical Circuit 01"
-                fontSize="text-2xl"
+                className="text-2xl"
               />
               <DescriptionText
                 color="text-white"
@@ -274,7 +273,7 @@ export default function Home() {
 
       <div className="bg-zinc-500 w-96 rounded-lg p-4 mt-4">
         <div>
-          <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+          <SectionHeading text="Electrical Circuit 01" className="text-2xl" />
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
@@ -321,8 +320,8 @@ export default function Home() {
       </div>
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
-        <div className="space-y-3x">
-          <SectionHeading text="Electrical Circuit 01" fontSize="text-4xl" />
+        <div className="space-y-3">
+          <SectionHeading text="Electrical Circuit 01" className="text-4xl" />
           <DescriptionText
             text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
@@ -355,7 +354,7 @@ export default function Home() {
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
-          <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionHeading text="Electrical Circuit 01" className="text-4xl" />
           <DescriptionText
             text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
@@ -412,7 +411,7 @@ export default function Home() {
         <SidebarMenuButton
           icon={LogoutRoundedIcon}
           text="Log out"
-          className="hover:border-2 border-cosmicBlue text-cosmicBlue px-7 py-5 rounded-full font-medium text-sm leading-3 flex justify-between"
+          className="text-cosmicBlue hover:border-2 border-cosmicBlue px-7 py-5 rounded-full font-medium text-sm leading-3 flex justify-between"
         />
       </div>
       <div className="mt-8 flex flex-col items-center space-y-5">
@@ -434,19 +433,17 @@ export default function Home() {
           />
         </div>
 
-            <PrimaryInputField
-              label="Username"
-              placeholder="Enter Your UserName"
-              variant="outlined"
-            />
-            <PrimaryInputField
-              label="Course Name"
-              placeholder="Enter Your Course Name"
-              variant="filled"
-            />
-            <CustomSelectField value={selectedRole} onChange={handleRoleChange} />
-          </div>
-        </div>
+        <PrimaryInputField
+          label="Username"
+          placeholder="Enter Your UserName"
+          variant="outlined"
+        />
+        <PrimaryInputField
+          label="Course Name"
+          placeholder="Enter Your Course Name"
+          variant="filled"
+        />
+        <CustomSelectField value={selectedRole} onChange={handleRoleChange} />
       </div>
     </div>
   );
