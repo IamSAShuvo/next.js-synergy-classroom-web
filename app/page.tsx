@@ -17,12 +17,10 @@ import PrimaryInputField from "./components/inputFields/PrimaryInputField";
 import SecondaryProfile from "./components/UserProfile/SecondaryProfile";
 import PrimaryProfile from "./components/UserProfile/PrimaryProfile";
 import { ChangeEvent, useState } from "react";
-import { classroomData } from "./constants/classroomData";
+import { classroomData, allowedRoles } from "./constants/classroomData";
 
 export default function Home() {
-  const [selectedRole, setSelectedRole] = useState<string>(
-    classroomData.roles[0]
-  );
+  const [selectedRole, setSelectedRole] = useState<string>(allowedRoles[0]);
   const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedRole(event.target.value);
   };
@@ -89,7 +87,7 @@ export default function Home() {
         <hr className="border-slate-800" />
         <PrimaryProfile
           name="Eduardo V. Kozak"
-          role={classroomData.roles[1]}
+          role={allowedRoles[1]}
           avatarSrc="/maleAvatar.png"
           className="flex flex-col items-center gap-7"
         />
@@ -140,7 +138,7 @@ export default function Home() {
           </div>
         </div>
         <hr />
-        <NumberBadge count={classroomData.value} />
+        <NumberBadge count={classroomData.studentCount} />
       </div>
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
