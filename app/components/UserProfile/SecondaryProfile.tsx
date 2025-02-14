@@ -13,8 +13,8 @@ interface SecondaryProfileProps {
 const SecondaryProfile: FC<SecondaryProfileProps> = ({
   name,
   avatarSrc,
-  avatarHeight,
-  avatarWidth,
+  avatarHeight = 40,
+  avatarWidth = 40,
   className = "",
   flexOrder,
 }) => {
