@@ -78,7 +78,7 @@ export default function Home() {
         <hr className="border-slate-800" />
         <SecondaryProfile
           avatarSrc="/maleAvatars.png"
-          placeOrder="order-1"
+          flexOrder="order-1"
           name="Salman Aziz"
           avatarHeight={50}
           avatarWidth={50}

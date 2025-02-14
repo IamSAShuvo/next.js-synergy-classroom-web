@@ -7,7 +7,7 @@ interface SecondaryProfileProps {
   avatarHeight?: number;
   avatarWidth?: number;
   className?: string;
-  placeOrder?: string;
+  flexOrder?: string;
 }
 
 const SecondaryProfile: FC<SecondaryProfileProps> = ({
@@ -16,12 +16,12 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
   avatarHeight,
   avatarWidth,
   className = "",
-  placeOrder,
+  flexOrder,
 }) => {
   return (
     <div className={className}>
       <Avatar
-        className={placeOrder}
+        className={flexOrder}
         alt={name}
         src={avatarSrc}
         sx={{ height: avatarHeight, width: avatarWidth }}
