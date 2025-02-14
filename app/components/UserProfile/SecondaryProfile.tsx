@@ -8,17 +8,17 @@ interface SecondaryProfileProps {
   avatarHeight?: number;
   avatarWidth?: number;
   className?: string;
-  placeOrder?: string;
+  flexOrder?: string;
   shouldOpenModal: true | false;
 }
 
 const SecondaryProfile: FC<SecondaryProfileProps> = ({
   name,
   avatarSrc,
-  avatarHeight,
-  avatarWidth,
+  avatarHeight = 40,
+  avatarWidth = 40,
   className = "",
-  placeOrder,
+  flexOrder,
   shouldOpenModal,
 }) => {
   const [open, setOpen] = useState(false);
@@ -36,7 +36,7 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
           alt={name}
           src={avatarSrc}
           sx={{ height: avatarHeight, width: avatarWidth }}
-          className={placeOrder}
+          className={flexOrder}
         />
         <h1>{name}</h1>
       </div>

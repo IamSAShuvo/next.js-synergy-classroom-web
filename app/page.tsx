@@ -17,14 +17,12 @@ import PrimaryInputField from "./components/inputFields/PrimaryInputField";
 import SecondaryProfile from "./components/UserProfile/SecondaryProfile";
 import PrimaryProfile from "./components/UserProfile/PrimaryProfile";
 import { ChangeEvent, useState } from "react";
-import { classroomData } from "./constants/classroomData";
+import { classroomData, allowedRoles } from "./constants/classroomData";
 import PrimaryCard from "./components/CardComponent/PrimaryCard";
 import SecondaryCard from "./components/CardComponent/SecondaryCard";
 
 export default function Home() {
-  const [selectedRole, setSelectedRole] = useState<string>(
-    classroomData.roles[0]
-  );
+  const [selectedRole, setSelectedRole] = useState<string>(allowedRoles[0]);
   const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedRole(event.target.value);
   };
@@ -227,7 +225,7 @@ export default function Home() {
               </div>
             </>
           }
-          footer={<NumberBadge count={classroomData.value} />}
+          footer={<NumberBadge count={classroomData.studentCount} />}
         >
           <PrimaryButton
             text="Enroll"
@@ -256,7 +254,7 @@ export default function Home() {
         <div className="self-end">
           <SecondaryProfile
             shouldOpenModal={true}
-            placeOrder="order-1"
+            flexOrder="order-1"
             avatarSrc="/profile_avatar.jpeg"
             name="Salman Aziz"
             avatarHeight={50}
@@ -267,6 +265,7 @@ export default function Home() {
         <hr className="border-slate-800" />
         <PrimaryProfile
           name="Eduardo V. Kozak"
+          // role={allowedRoles[1]}
           avatarSrc="/maleAvatar.png"
           className="flex flex-col items-center gap-7"
         />
@@ -317,7 +316,7 @@ export default function Home() {
           </div>
         </div>
         <hr />
-        <NumberBadge count={classroomData.value} />
+        <NumberBadge count={classroomData.studentCount} />
       </div>
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
