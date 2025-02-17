@@ -9,6 +9,7 @@ import NumberBadge from "../typography/NumberBadge";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { courseList } from "@/app/constantData/demoData";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { classroomData } from "@/app/constants/classroomData";
 
 const DashboardComponent = () => {
   const router = useRouter();
@@ -82,22 +83,28 @@ const DashboardComponent = () => {
                   </div>
                 </>
               }
-              footer={<NumberBadge count={course.value} />}
-            >
-              {!isEnrolled ? (
-                <PrimaryButton
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleEnroll(course.id);
-                  }}
-                  text="Enroll"
-                  className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
-                  disabled={isEnrolled}
-                />
-              ) : (
-                <CheckCircleIcon className="text-green-500" fontSize="large" />
-              )}
-            </SecondaryCard>
+              footer={
+                <div className="border-t-2 px-5 py-2 text-center flex items-center justify-between">
+                  {!isEnrolled ? (
+                    <PrimaryButton
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleEnroll(course.id);
+                      }}
+                      text="Enroll"
+                      className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
+                      disabled={isEnrolled}
+                    />
+                  ) : (
+                    <CheckCircleIcon
+                      className="text-green-500"
+                      fontSize="large"
+                    />
+                  )}
+                  <NumberBadge count={classroomData.studentCount} />
+                </div>
+              }
+            ></SecondaryCard>
           </React.Fragment>
         );
       })}

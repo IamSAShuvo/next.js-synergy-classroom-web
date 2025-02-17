@@ -26,22 +26,24 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
   );
 
   return (
-    <div onClick={onClick} className={className}>
-      <header
-        className={`relative p-5 rounded-t-2xl ${
-          header ? "bg-cover bg-center" : "bg-gray-200"
-        }`}
-        style={header ? { backgroundImage: "url(/card_bg.jpeg)" } : {}}
-      >
-        <MoreOptionsButton />
-        {header || (
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">
-            Default Header
-          </h2>
-        )}
-      </header>
+    <div className={className}>
+      <div onClick={onClick}>
+        <header
+          className={`relative p-5 rounded-t-2xl ${
+            header ? "bg-cover bg-center" : "bg-gray-200"
+          }`}
+          style={header ? { backgroundImage: "url(/card_bg.jpeg)" } : {}}
+        >
+          <MoreOptionsButton />
+          {header || (
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              Default Header
+            </h2>
+          )}
+        </header>
 
-      <main className="flex flex-col gap-2 px-5 py-4">{content}</main>
+        <main className="flex flex-col gap-2 px-5 py-4">{content}</main>
+      </div>
 
       {footer && <footer>{footer}</footer>}
     </div>
