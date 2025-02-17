@@ -6,7 +6,7 @@ interface PrimaryCardProps {
   content: ReactNode;
   aside?: ReactNode;
   footer?: ReactNode;
-  children?: ReactNode;
+  button?: ReactNode;
   className?: string;
 }
 
@@ -15,33 +15,27 @@ const PrimaryCard: FC<PrimaryCardProps> = ({
   content,
   aside,
   footer,
-  children,
+  button,
   className = "",
 }) => {
   return (
     <div className={className}>
-      {header ? (
-        <header className="mb-8">{header}</header>
-      ) : (
-        <h2 className="text-xl font-semibold text-gray-800 mb-2">
-          Default Header
-        </h2>
-      )}
-      {content ? (
-        <main className="mb-8 flex flex-col gap-6">{content}</main>
-      ) : (
-        <p className="text-gray-600 mb-4">
-          This is the default content of the card.
-        </p>
-      )}
-      {aside ? (
-        <aside className="mb-4 text-right hover:underline">
-          <Link href={""}>{aside}</Link>
-        </aside>
-      ) : (
-        ""
-      )}
-      {children}
+      <header className="mb-8">
+        {header || (
+          <h2 className="text-xl font-semibold text-gray-800 mb-2">
+            Default Header
+          </h2>
+        )}
+      </header>
+
+      <main className="mb-8 flex flex-col gap-6">{content}</main>
+
+      <aside className="mb-4 text-right hover:underline">
+        <Link href={""}>{aside}</Link>
+      </aside>
+
+      {button}
+
       {footer ? (
         <footer className="mt-16 text-center">{footer}</footer>
       ) : (

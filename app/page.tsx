@@ -102,6 +102,12 @@ export default function Home() {
               letterSpacing="tracking-wider"
             />
           }
+          button={
+            <PrimaryButton
+              text="Log In"
+              className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+            />
+          }
           footer={
             <DescriptionText
               text="Don't have an account?"
@@ -112,12 +118,7 @@ export default function Home() {
               <LinkText url="/signup" text="Sign Up" />
             </DescriptionText>
           }
-        >
-          <PrimaryButton
-            text="Log In"
-            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
-          />
-        </PrimaryCard>
+        ></PrimaryCard>
 
         <PrimaryCard
           className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8"
@@ -159,6 +160,12 @@ export default function Home() {
               </div>
             </>
           }
+          button={
+            <PrimaryButton
+              text="Sign Up"
+              className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+            />
+          }
           footer={
             <DescriptionText
               text="Already have an account?"
@@ -169,12 +176,8 @@ export default function Home() {
               <LinkText url="/login" text="Login" />
             </DescriptionText>
           }
-        >
-          <PrimaryButton
-            text="Sign Up"
-            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
-          />
-        </PrimaryCard>
+        ></PrimaryCard>
+
         <SecondaryCard
           className="w-[354px] mx-auto bg-white rounded-2xl shadow-lg"
           header={

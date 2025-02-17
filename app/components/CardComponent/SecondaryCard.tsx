@@ -41,13 +41,6 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
 
       <main className="flex flex-col gap-2 px-5 py-4">{content}</main>
 
-      {/* {footer ? (
-        <footer>{footer}</footer>
-      ) : (
-        <footer className="mt-16 border-t pt-4 text-gray-500">
-          This is the default footer of the card.
-        </footer>
-      )} */}
       {footer && <footer>{footer}</footer>}
     </div>
   );
