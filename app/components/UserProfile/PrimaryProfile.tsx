@@ -26,7 +26,9 @@ const PrimaryProfile: FC<PrimaryProfileProps> = ({
       />
       <div className="flex flex-col items-center gap-2">
         <h1 className="font-medium text-3xl text-deepNavy">{name}</h1>
-        <p className="text-blueHaze font-normal text-xl">{allowedRoles[1]}</p>
+        <p className="text-blueHaze font-normal text-xl">
+          {allowedRoles.student}
+        </p>
       </div>
     </div>
   );
