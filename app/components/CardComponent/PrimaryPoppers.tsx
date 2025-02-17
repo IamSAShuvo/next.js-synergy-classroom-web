@@ -1,4 +1,5 @@
 "use client";
+
 import React, { FC, RefObject } from "react";
 import { ClickAwayListener, Grow, Paper, Popper, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -9,9 +10,9 @@ import PrimaryProfile from "../UserProfile/PrimaryProfile";
 interface PrimaryPoppersProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-
   avatarSrc: string;
   anchorRef: RefObject<HTMLDivElement | null>;
+  userName?: string;
 }
 
 const Arrow = styled("div")(({ theme }) => ({
@@ -30,16 +31,17 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
   open,
   setOpen,
   anchorRef,
+  userName = "User",
 }) => {
   const router = useRouter();
 
-  const handleNavigate = () => router.push("/");
+  const handleNavigate = () => {
+    router.push("/");
+    setOpen(false);
+  };
 
-  const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
+  const handleClose = (event: MouseEvent | TouchEvent) => {
+    if (anchorRef.current?.contains(event.target as Node)) {
       return;
     }
     setOpen(false);
@@ -47,25 +49,25 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
 
   return (
     <Stack direction="row" spacing={2}>
-      <ClickAwayListener onClickAway={handleClose}>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          placement="bottom-start"
-          // placement="bottom-end"
-          transition
-          disablePortal
-          modifiers={[
-            {
-              name: "offset",
-              options: {
-                offset: [0, 20],
-              },
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        placement="bottom-start"
+        // placement="bottom-end"
+        transition
+        disablePortal
+        modifiers={[
+          {
+            name: "offset",
+            options: {
+              offset: [0, 20],
             },
-          ]}
-          sx={{ zIndex: 1200, width: 320 }}
-        >
-          {({ TransitionProps }) => (
+          },
+        ]}
+        sx={{ zIndex: 1200, width: 320 }}
+      >
+        {({ TransitionProps }) => (
+          <ClickAwayListener onClickAway={handleClose}>
             <Grow {...TransitionProps}>
               <Paper
                 sx={{
@@ -83,7 +85,7 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 <div className="w-full">
                   <PrimaryProfile
                     avatarSrc={avatarSrc}
-                    name="Salman Aziz"
+                    name={userName}
                     className="flex flex-col items-center gap-7"
                   />
                   <PrimaryButton
@@ -94,9 +96,9 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 </div>
               </Paper>
             </Grow>
-          )}
-        </Popper>
-      </ClickAwayListener>
+          </ClickAwayListener>
+        )}
+      </Popper>
     </Stack>
   );
 };

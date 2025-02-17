@@ -9,4 +9,7 @@ export const classroomData = {
   ],
 };
 
-export const allowedRoles = ["student", "teacher"];
+export const allowedRoles = {
+  student: "student",
+  teacher: "teacher",
+};

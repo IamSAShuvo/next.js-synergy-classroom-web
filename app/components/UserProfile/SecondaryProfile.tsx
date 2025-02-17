@@ -9,7 +9,7 @@ interface SecondaryProfileProps {
   avatarWidth?: number;
   className?: string;
   flexOrder?: string;
-  shouldOpenModal: true | false;
+  shouldOpenModal: boolean;
 }
 
 const SecondaryProfile: FC<SecondaryProfileProps> = ({
@@ -23,14 +23,14 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-  const anchorRef = useRef(null);
+  const anchorRef = useRef<HTMLDivElement | null>(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
   return (
-    <React.Fragment>
+    <>
       <div ref={anchorRef} onClick={handleToggle} className={className}>
         <Avatar
           alt={name}
@@ -45,10 +45,11 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
           open={open}
           setOpen={setOpen}
           anchorRef={anchorRef}
+          userName={name}
           avatarSrc="/profile_avatar.jpeg"
         />
       )}
-    </React.Fragment>
+    </>
   );
 };
 
