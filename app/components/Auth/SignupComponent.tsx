@@ -46,6 +46,12 @@ const SignupComponent = () => {
             </div>
           </>
         }
+        button={
+          <PrimaryButton
+            text="Sign Up"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+          />
+        }
         footer={
           <DescriptionText
             text="Already have an account?"
@@ -60,12 +66,7 @@ const SignupComponent = () => {
             />
           </DescriptionText>
         }
-      >
-        <PrimaryButton
-          text="Sign Up"
-          className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
-        />
-      </PrimaryCard>
+      />
     </div>
   );
 };

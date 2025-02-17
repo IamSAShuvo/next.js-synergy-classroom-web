@@ -41,6 +41,12 @@ const LoginComponent = () => {
             letterSpacing="tracking-wider"
           />
         }
+        button={
+          <PrimaryButton
+            text="Log In"
+            className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
+          />
+        }
         footer={
           <DescriptionText
             text="Don't have an account?"
@@ -55,12 +61,7 @@ const LoginComponent = () => {
             />
           </DescriptionText>
         }
-      >
-        <PrimaryButton
-          text="Log In"
-          className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6"
-        />
-      </PrimaryCard>
+      />
     </div>
   );
 };
