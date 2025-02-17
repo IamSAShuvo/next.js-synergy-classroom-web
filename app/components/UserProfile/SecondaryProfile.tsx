@@ -45,6 +45,7 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
           open={open}
           setOpen={setOpen}
           anchorRef={anchorRef}
+          userName={name}
           avatarSrc="/profile_avatar.jpeg"
         />
       )}
