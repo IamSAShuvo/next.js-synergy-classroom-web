@@ -1,5 +1,6 @@
+import React, { FC, useRef, useState } from "react";
 import { Avatar } from "@mui/material";
-import React, { FC } from "react";
+import PrimaryPoppers from "../CardComponent/PrimaryPoppers";
 
 interface SecondaryProfileProps {
   name: string;
@@ -8,6 +9,7 @@ interface SecondaryProfileProps {
   avatarWidth?: number;
   className?: string;
   flexOrder?: string;
+  shouldOpenModal: boolean;
 }
 
 const SecondaryProfile: FC<SecondaryProfileProps> = ({
@@ -17,17 +19,37 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
   avatarWidth = 40,
   className = "",
   flexOrder,
+  shouldOpenModal,
 }) => {
+  const [open, setOpen] = useState(false);
+
+  const anchorRef = useRef<HTMLDivElement | null>(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
   return (
-    <div className={className}>
-      <Avatar
-        className={flexOrder}
-        alt={name}
-        src={avatarSrc}
-        sx={{ height: avatarHeight, width: avatarWidth }}
-      />
-      <h1>{name}</h1>
-    </div>
+    <>
+      <div ref={anchorRef} onClick={handleToggle} className={className}>
+        <Avatar
+          alt={name}
+          src={avatarSrc}
+          sx={{ height: avatarHeight, width: avatarWidth }}
+          className={flexOrder}
+        />
+        <h1>{name}</h1>
+      </div>
+      {shouldOpenModal && (
+        <PrimaryPoppers
+          open={open}
+          setOpen={setOpen}
+          anchorRef={anchorRef}
+          userName={name}
+          avatarSrc="/profile_avatar.jpeg"
+        />
+      )}
+    </>
   );
 };
 

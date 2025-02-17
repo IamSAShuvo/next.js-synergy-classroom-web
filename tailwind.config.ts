@@ -11,12 +11,15 @@ export default {
       colors: {
         primaryColor: "var(--primaryColor)",
         secondaryColor: "var(--secondaryColor)",
+        ashGray: "var(--ashGray)",
+        lightGray: "var(--lightGray)",
+        blueHaze: "var(--blueHaze)",
         steelBlue: "var(--steelBlue)",
         skyBlue: "var(--skyBlue)",
+        cosmicBlue: "var(--cosmicBlue)",
+        deepNavy: "var(--deepNavy)",
         leafGreen: "var(--leafGreen)",
         midnightBlack: "var(--midnightBlack)",
-        deepNavy: "var(--deepNavy)",
-        shadowSteel: "var(--shadowSteel)",
       },
       fontSize: {
         ex_sm: "10px",

@@ -1,16 +1,15 @@
 import { Avatar } from "@mui/material";
 import React, { FC } from "react";
+import { allowedRoles } from "@/app/constants/classroomData";
 
 type PrimaryProfileProps = {
   name: string;
-  role: string;
   avatarSrc: string;
   className?: string;
 };
 
 const PrimaryProfile: FC<PrimaryProfileProps> = ({
   name,
-  role,
   avatarSrc,
   className = "",
 }) => {
@@ -27,7 +26,9 @@ const PrimaryProfile: FC<PrimaryProfileProps> = ({
       />
       <div className="flex flex-col items-center gap-2">
         <h1 className="font-medium text-3xl text-deepNavy">{name}</h1>
-        <p className="text-shadowSteel font-normal text-xl">{role}</p>
+        <p className="text-blueHaze font-normal text-xl">
+          {allowedRoles.student}
+        </p>
       </div>
     </div>
   );

@@ -5,15 +5,17 @@ interface SidebarMenuButtonProps {
   icon: ComponentType<SvgIconProps>;
   text: string;
   trailingIcon?: ComponentType<SvgIconProps>;
+  className?: string;
 }
 
 const SidebarMenuButton: FC<SidebarMenuButtonProps> = ({
   icon: Icon,
   text,
   trailingIcon: TrailingIcon,
+  className = "",
 }) => {
   return (
-    <button className="w-1/6 mx-auto bg-skyBlue hover:bg-indigo-600 text-white px-7 py-5 rounded-full font-medium text-sm leading-3 flex justify-between">
+    <button className={className}>
       <div className="flex items-center gap-5">
         {Icon && <Icon />}
         <span className="justify-self-start">{text}</span>

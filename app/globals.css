@@ -5,10 +5,13 @@
 :root {
   --primaryColor: #383839;
   --secondaryColor: #858597;
+  --ashGray: #b1b1b1;
+  --lightGray: #d9d9d9;
+  --blueHaze: #848fac;
   --steelBlue: #1f1f39;
   --skyBlue: #5177ff;
+  --cosmicBlue: #030d25;
+  --deepNavy: #192252;
   --leafGreen: #6bd65a;
   --midnightBlack: #171717;
-  --deepNavy: #192252;
-  --shadowSteel: #848fac;
 }
