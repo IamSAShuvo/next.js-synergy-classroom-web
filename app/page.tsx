@@ -22,7 +22,9 @@ import PrimaryCard from "./components/CardComponent/PrimaryCard";
 import SecondaryCard from "./components/CardComponent/SecondaryCard";
 
 export default function Home() {
-  const [selectedRole, setSelectedRole] = useState<string>(allowedRoles[0]);
+  const [selectedRole, setSelectedRole] = useState<string>(
+    allowedRoles.student
+  );
   const handleRoleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedRole(event.target.value);
   };
@@ -225,13 +227,16 @@ export default function Home() {
               </div>
             </>
           }
-          footer={<NumberBadge count={classroomData.studentCount} />}
-        >
-          <PrimaryButton
-            text="Enroll"
-            className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
-          />
-        </SecondaryCard>
+          footer={
+            <div className="border-t-2 px-5 py-2 text-center flex items-center justify-between">
+              <PrimaryButton
+                text="Enroll"
+                className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
+              />
+              <NumberBadge count={classroomData.studentCount} />
+            </div>
+          }
+        />
       </div>
 
       <div className="flex flex-col border-4 border-gray-800 p-4 w-2/4 space-y-5 mt-4">

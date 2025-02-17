@@ -5,7 +5,7 @@ interface SecondaryCardProps {
   header?: ReactNode;
   content: ReactNode;
   footer?: ReactNode;
-  children?: ReactNode;
+  // children?: ReactNode;
   className?: string;
 }
 
@@ -13,9 +13,17 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
   header,
   content,
   footer,
-  children,
   className = "",
 }) => {
+  const MoreOptionsButton = () => (
+    <button
+      className="absolute top-6 right-4 text-white cursor-pointer"
+      aria-label="More options"
+    >
+      <MoreVertIcon />
+    </button>
+  );
+
   return (
     <div className={className}>
       {header ? (
@@ -23,16 +31,12 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
           className="relative bg-cover bg-center p-5 rounded-t-2xl"
           style={{ backgroundImage: "url(/card_bg.jpeg)" }}
         >
-          <div className="absolute top-6 right-4 text-white cursor-pointer">
-            <MoreVertIcon />
-          </div>
+          <MoreOptionsButton />
           {header}
         </header>
       ) : (
         <div className="relative p-5 bg-gray-200 rounded-t-2xl">
-          <div className="absolute top-4 right-4 text-white cursor-pointer">
-            <MoreVertIcon />
-          </div>
+          <MoreOptionsButton />
           <h2 className="text-xl font-semibold text-gray-800 mb-2">
             Default Header
           </h2>
@@ -47,10 +51,7 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
       )}
 
       {footer ? (
-        <footer className="border-t-2 px-5 py-2 text-center flex items-center justify-between">
-          {children}
-          {footer}
-        </footer>
+        <footer>{footer}</footer>
       ) : (
         <footer className="mt-16 border-t pt-4 text-gray-500">
           This is the default footer of the card.
