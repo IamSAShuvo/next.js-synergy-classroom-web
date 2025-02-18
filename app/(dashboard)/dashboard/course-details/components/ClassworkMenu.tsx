@@ -5,7 +5,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import SectionHeading from "@/app/components/typography/SectionHeading";
 import DescriptionText from "@/app/components/typography/DescriptionText";
-// import CardProfile from "@/app/components/UserProfile/CardProfile";
 import ItemList from "@/app/components/typography/itemsList/ItemList";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { courseList } from "@/app/constants/constantData";
@@ -41,7 +40,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function BasicTabs() {
+export default function ClassworkMenu() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

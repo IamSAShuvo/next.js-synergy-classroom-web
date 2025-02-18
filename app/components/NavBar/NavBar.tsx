@@ -7,12 +7,16 @@ import InputBoxModal from "../CardComponent/InputBoxModal";
 import SecondaryProfile from "../UserProfile/SecondaryProfile";
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
 
   const handleNavigate = () => router.push("/dashboard");
 
-  const toggleOpen = () => setOpen((prev) => !prev);
+  const handleModalToggle = () => setModalOpen((prev) => !prev);
+
+  const handleCreateCourse = (courseName: string, bookName: string) => {
+    console.log(`Course Created: ${courseName}, Book Created: ${bookName}`);
+  };
 
   return (
     <>
@@ -26,7 +30,7 @@ const NavBar = () => {
           height={100}
         />
         <div className="flex items-center gap-5">
-          <AddIcon className="cursor-pointer" onClick={toggleOpen} />
+          <AddIcon className="cursor-pointer" onClick={handleModalToggle} />
           <SecondaryProfile
             shouldOpenModal={true}
             flexOrder="order-1"
@@ -38,7 +42,11 @@ const NavBar = () => {
           />
         </div>
       </nav>
-      <InputBoxModal open={open} onClose={toggleOpen} />
+      <InputBoxModal
+        open={modalOpen}
+        onClose={handleModalToggle}
+        onCreate={handleCreateCourse}
+      />
     </>
   );
 };

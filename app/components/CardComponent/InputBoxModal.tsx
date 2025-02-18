@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Box, IconButton } from "@mui/material";
 import SecondaryHeading from "../typography/SecondaryHeading";
 import PrimaryInputField from "../inputFields/PrimaryInputField";
@@ -9,12 +9,26 @@ import PrimaryButton from "../Buttons/PrimaryButton";
 interface CreateCourseModalProps {
   open: boolean;
   onClose: () => void;
+  onCreate: (courseName: string, bookName: string) => void;
 }
 
 const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
   open,
   onClose,
+  onCreate,
 }) => {
+  const [courseName, setCourseName] = useState<string>("");
+  const [bookName, setBookName] = useState<string>("");
+
+  const handleCreate = () => {
+    if (courseName && bookName) {
+      onCreate(courseName, bookName);
+      onClose();
+    } else {
+      console.error("Course name and book name are required.");
+    }
+  };
+
   return (
     <Modal open={open} onClose={onClose}>
       <Box
@@ -52,11 +66,15 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
             label="Course Name"
             placeholder="Course Name"
             variant="standard"
+            value={courseName}
+            onChange={(e) => setCourseName(e.target.value)}
           />
           <PrimaryInputField
             label="Book Name"
             placeholder="Add your book name"
             variant="standard"
+            value={bookName}
+            onChange={(e) => setBookName(e.target.value)}
             hasExpandableFields
           />
         </div>
@@ -71,6 +89,7 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
           <PrimaryButton
             text="Create"
             className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
+            onClick={handleCreate}
           />
         </div>
       </Box>

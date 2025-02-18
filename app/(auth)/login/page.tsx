@@ -1,4 +1,4 @@
-import LoginComponent from "@/app/components/Auth/LoginComponent";
+import LoginComponent from "@/app/components/Auth/loginComponent/LoginComponent";
 
 import React from "react";
 
