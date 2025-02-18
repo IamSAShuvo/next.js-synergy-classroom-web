@@ -9,11 +9,13 @@ import SecondaryProfile from "../UserProfile/SecondaryProfile";
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+
   const handleNavigate = () => router.push("/dashboard");
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  const toggleOpen = () => setOpen((prev) => !prev);
+
   return (
-    <React.Fragment>
+    <>
       <nav className="flex justify-between items-center p-6">
         <Image
           className="cursor-pointer"
@@ -24,7 +26,7 @@ const NavBar = () => {
           height={100}
         />
         <div className="flex items-center gap-5">
-          <AddIcon className="cursor-pointer" onClick={handleOpen} />
+          <AddIcon className="cursor-pointer" onClick={toggleOpen} />
           <SecondaryProfile
             shouldOpenModal={true}
             flexOrder="order-1"
@@ -36,8 +38,8 @@ const NavBar = () => {
           />
         </div>
       </nav>
-      <InputBoxModal open={open} onClose={handleClose} />
-    </React.Fragment>
+      <InputBoxModal open={open} onClose={toggleOpen} />
+    </>
   );
 };
 

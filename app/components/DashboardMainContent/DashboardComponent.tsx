@@ -2,20 +2,17 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import SecondaryCard from "../CardComponent/SecondaryCard";
-import SectionHeading from "../typography/SectionHeading";
-import DescriptionText from "../typography/DescriptionText";
-import ItemList from "../typography/itemsList/ItemList";
-import NumberBadge from "../typography/NumberBadge";
-import PrimaryButton from "../Buttons/PrimaryButton";
 import { courseList } from "@/app/constants/constantData";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { classroomData } from "@/app/constants/constantData";
+import CardHeaderComponent from "./header/CardHeaderComponent";
+import CardMainContent from "./mainContent/CardMainContent";
+import CardFooterComponent from "./footer/CardFooterComponent";
 
 console.log("courseList from dashboardComponent", courseList);
 
 const DashboardComponent = () => {
   const router = useRouter();
   const [enrolledCourses, setEnrolledCourses] = useState<number[]>([]);
+
   const handleCardClick = (id: number) => {
     router.push(`/dashboard/course-details/${id}`);
   };
@@ -29,85 +26,23 @@ const DashboardComponent = () => {
       {courseList.map((course) => {
         const isEnrolled = enrolledCourses.includes(course.id);
         return (
-          <React.Fragment key={course.id}>
+          <div key={course.id}>
             <SecondaryCard
               onClick={() => {
                 handleCardClick(course.id);
               }}
               className="w-full mx-auto bg-white rounded-2xl shadow-lg"
-              header={
-                <>
-                  <SectionHeading
-                    text="Electrical Circuit 01"
-                    className="font-medium text-2xl leading-9 text-white"
-                  />
-                  <DescriptionText
-                    color="text-white"
-                    fontSize="text-sm"
-                    text={`Section - ${course.section}`}
-                    lineHeight="leading-5"
-                  />
-                  <DescriptionText
-                    color="text-white"
-                    fontSize="text-sm"
-                    text={`Course Teacher - ${course.teacherName}`}
-                    lineHeight="leading-5"
-                  />
-                </>
-              }
-              content={
-                <>
-                  <div className="flex justify-between mt-5">
-                    <DescriptionText
-                      text={`Book List`}
-                      color="text-primaryColor"
-                      fontSize="text-sm"
-                      lineHeight="leading-5"
-                    />
-                    <DescriptionText
-                      text={`Author`}
-                      color="text-primaryColor"
-                      fontSize="text-sm"
-                      lineHeight="leading-5"
-                    />
-                  </div>
-                  <div className="flex justify-between mb-6">
-                    <ItemList
-                      items={course.books.map((book) => book.name)}
-                      className="text-primaryColor font-medium text-ex_sm leading-4"
-                      useNumber={true}
-                    />
-                    <ItemList
-                      items={course.books.map((book) => book.author)}
-                      className="text-secondaryColor font-normal text-ex_sm leading-4"
-                      useNumber={false}
-                    />
-                  </div>
-                </>
-              }
+              header={<CardHeaderComponent course={course} />}
+              content={<CardMainContent books={course.books} />}
               footer={
-                <div className="border-t-2 px-5 py-2 text-center flex items-center justify-between">
-                  {!isEnrolled ? (
-                    <PrimaryButton
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleEnroll(course.id);
-                      }}
-                      text="Enroll"
-                      className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
-                      disabled={isEnrolled}
-                    />
-                  ) : (
-                    <CheckCircleIcon
-                      className="text-green-500"
-                      fontSize="large"
-                    />
-                  )}
-                  <NumberBadge count={classroomData.studentCount} />
-                </div>
+                <CardFooterComponent
+                  isEnrolled={isEnrolled}
+                  onEnroll={() => handleEnroll(course.id)}
+                  studentCount={course.studentCount}
+                />
               }
-            ></SecondaryCard>
-          </React.Fragment>
+            />
+          </div>
         );
       })}
     </div>

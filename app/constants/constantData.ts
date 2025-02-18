@@ -1,4 +1,8 @@
-interface Book {
+export const allowedRoles = {
+  student: "student",
+  teacher: "teacher",
+};
+export interface Book {
   name: string;
   author: string;
 }
@@ -10,6 +14,10 @@ interface ClassroomData {
   books: Book[];
 }
 
+export interface Course extends ClassroomData {
+  id: number;
+}
+
 export const classroomData: ClassroomData = {
   teacherName: "Mr. John Doe",
   section: "A",
@@ -17,15 +25,14 @@ export const classroomData: ClassroomData = {
   books: [{ name: "Book 01", author: "Author 01" }],
 };
 
-export const allowedRoles = {
-  student: "student",
-  teacher: "teacher",
-};
-
-const generateCourseList = (totalItems: number, classroomData: ClassroomData) =>
+const generateCourseList = (
+  totalItems: number,
+  classroomData: ClassroomData
+): Course[] =>
   Array.from({ length: totalItems }, (_, index) => ({
     ...classroomData,
     id: index + 1,
   }));
 
 export const courseList = generateCourseList(10, classroomData);
+export { generateCourseList };
