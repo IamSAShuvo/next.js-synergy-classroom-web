@@ -5,11 +5,12 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import SectionHeading from "@/app/components/typography/SectionHeading";
 import DescriptionText from "@/app/components/typography/DescriptionText";
-import CardProfile from "@/app/components/UserProfile/CardProfile";
+// import CardProfile from "@/app/components/UserProfile/CardProfile";
 import ItemList from "@/app/components/typography/itemsList/ItemList";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { courseList } from "@/app/constants/constantData";
 import { Box } from "@mui/material";
+import SecondaryProfile from "@/app/components/UserProfile/SecondaryProfile";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -84,12 +85,18 @@ export default function BasicTabs() {
             />
           </header>
           <section className="flex flex-col gap-8 p-5 border-2 rounded-md border-gray-300">
-            <CardProfile
+            {/* <CardProfile
               className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
               avatarSrc="/my_profile.jpeg"
               avatarHeight={60}
               avatarWidth={60}
               name={`Professor - ${courseData.teacherName}`}
+            /> */}
+            <SecondaryProfile
+              avatarSrc="my-profile.png"
+              name={courseData.teacherName}
+              shouldOpenModal={false}
+              className="flex items-center gap-3"
             />
             <div className="space-y-5">
               <DescriptionText
@@ -113,7 +120,7 @@ export default function BasicTabs() {
           Students
         </h3>
         <div className="mt-3 p-6 flex flex-col gap-5">
-          <CardProfile
+          {/* <CardProfile
             className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack "
             avatarHeight={40}
             avatarWidth={40}
@@ -133,7 +140,7 @@ export default function BasicTabs() {
             avatarWidth={40}
             avatarSrc="/profile_picture.png"
             name="Could be anyone"
-          />
+          /> */}
         </div>
       </CustomTabPanel>
     </Box>
