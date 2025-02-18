@@ -17,7 +17,7 @@ import PrimaryInputField from "./components/inputFields/PrimaryInputField";
 import SecondaryProfile from "./components/UserProfile/SecondaryProfile";
 import PrimaryProfile from "./components/UserProfile/PrimaryProfile";
 import { ChangeEvent, useState } from "react";
-import { classroomData, allowedRoles } from "./constants/classroomData";
+import { classroomData, allowedRoles } from "./constants/constantData";
 import PrimaryCard from "./components/CardComponent/PrimaryCard";
 import SecondaryCard from "./components/CardComponent/SecondaryCard";
 

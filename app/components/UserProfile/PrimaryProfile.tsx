@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
 import React, { FC } from "react";
-import { allowedRoles } from "@/app/constants/classroomData";
+import { allowedRoles } from "@/app/constants/constantData";
 
 type PrimaryProfileProps = {
   name: string;

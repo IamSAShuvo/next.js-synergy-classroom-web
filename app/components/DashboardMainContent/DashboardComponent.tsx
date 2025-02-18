@@ -7,9 +7,11 @@ import DescriptionText from "../typography/DescriptionText";
 import ItemList from "../typography/itemsList/ItemList";
 import NumberBadge from "../typography/NumberBadge";
 import PrimaryButton from "../Buttons/PrimaryButton";
-import { courseList } from "@/app/constantData/demoData";
+import { courseList } from "@/app/constants/constantData";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { classroomData } from "@/app/constants/classroomData";
+import { classroomData } from "@/app/constants/constantData";
+
+console.log("courseList from dashboardComponent", courseList);
 
 const DashboardComponent = () => {
   const router = useRouter();
@@ -42,7 +44,7 @@ const DashboardComponent = () => {
                   <DescriptionText
                     color="text-white"
                     fontSize="text-sm"
-                    text={`Section - ${course.Section}`}
+                    text={`Section - ${course.section}`}
                     lineHeight="leading-5"
                   />
                   <DescriptionText
@@ -71,12 +73,12 @@ const DashboardComponent = () => {
                   </div>
                   <div className="flex justify-between mb-6">
                     <ItemList
-                      items={course.bookList}
+                      items={course.books.map((book) => book.name)}
                       className="text-primaryColor font-medium text-ex_sm leading-4"
                       useNumber={true}
                     />
                     <ItemList
-                      items={course.authorList}
+                      items={course.books.map((book) => book.author)}
                       className="text-secondaryColor font-normal text-ex_sm leading-4"
                       useNumber={false}
                     />

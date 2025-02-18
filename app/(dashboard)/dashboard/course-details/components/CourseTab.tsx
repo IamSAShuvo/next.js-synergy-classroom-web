@@ -8,10 +8,8 @@ import DescriptionText from "@/app/components/typography/DescriptionText";
 import CardProfile from "@/app/components/UserProfile/CardProfile";
 import ItemList from "@/app/components/typography/itemsList/ItemList";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { courseList } from "@/app/constantData/demoData";
+import { courseList } from "@/app/constants/constantData";
 import { Box } from "@mui/material";
-import PrimaryButton from "@/app/components/Buttons/PrimaryButton";
-import { useState } from "react";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -50,17 +48,8 @@ export default function BasicTabs() {
   };
 
   const params = useParams();
-  const { id } = params;
   const courseIndex = parseInt(params.id as string) - 1;
   const courseData = courseList[courseIndex];
-  const [enrolledCourses, setEnrolledCourses] = useState<number[]>([]);
-
-  // const course = courseList.find((course) => course.id === Number(id));
-  const isEnrolled = enrolledCourses.includes(Number(id));
-
-  const handleEnroll = () => {
-    setEnrolledCourses((prev) => [...prev, Number(id)]);
-  };
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -110,22 +99,15 @@ export default function BasicTabs() {
                 lineHeight="leading-5"
               />
               <ItemList
-                items={courseData.bookList}
+                items={courseData.books.map((book) => book.name)}
                 className="text-secondaryColor font-normal text-base leading-5"
                 useNumber={true}
               />
             </div>
           </section>
-          <PrimaryButton
-            onClick={handleEnroll}
-            text={isEnrolled ? "Already Enrolled" : "Enroll"}
-            className={`${
-              isEnrolled ? "bg-gray-500 cursor-not-allowed" : "bg-skyBlue"
-            } text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5`}
-            disabled={isEnrolled}
-          />
         </div>
       </CustomTabPanel>
+
       <CustomTabPanel value={value} index={1}>
         <h3 className="font-semibold text-3xl text-primaryColor border-b-2 p-6">
           Students
