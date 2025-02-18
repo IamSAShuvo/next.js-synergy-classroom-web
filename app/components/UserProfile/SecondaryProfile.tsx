@@ -53,4 +53,4 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
   );
 };
 
-export default SecondaryProfile;
+export default React.memo(SecondaryProfile);

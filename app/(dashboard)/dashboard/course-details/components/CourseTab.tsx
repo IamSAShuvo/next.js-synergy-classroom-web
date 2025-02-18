@@ -85,18 +85,13 @@ export default function BasicTabs() {
             />
           </header>
           <section className="flex flex-col gap-8 p-5 border-2 rounded-md border-gray-300">
-            {/* <CardProfile
-              className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
-              avatarSrc="/my_profile.jpeg"
+            <SecondaryProfile
+              name={courseData.teacherName}
+              avatarSrc="/profile_avatar.png"
               avatarHeight={60}
               avatarWidth={60}
-              name={`Professor - ${courseData.teacherName}`}
-            /> */}
-            <SecondaryProfile
-              avatarSrc="my-profile.png"
-              name={courseData.teacherName}
               shouldOpenModal={false}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 text-xl font-normal leading-5 text-midnightBlack"
             />
             <div className="space-y-5">
               <DescriptionText
@@ -120,27 +115,24 @@ export default function BasicTabs() {
           Students
         </h3>
         <div className="mt-3 p-6 flex flex-col gap-5">
-          {/* <CardProfile
-            className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack "
-            avatarHeight={40}
-            avatarWidth={40}
-            avatarSrc="/profile_avatar_boy.png"
-            name="Someone unknown"
-          />
-          <CardProfile
+          <SecondaryProfile
+            name="Alexandra Alison"
+            avatarSrc="/femaleAvatars.png"
+            shouldOpenModal={false}
             className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
-            avatarHeight={40}
-            avatarWidth={40}
-            avatarSrc="/my_profile.jpeg"
+          />
+          <SecondaryProfile
             name="Salman Aziz"
-          />
-          <CardProfile
+            avatarSrc="/femaleAvatars.png"
+            shouldOpenModal={false}
             className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
-            avatarHeight={40}
-            avatarWidth={40}
-            avatarSrc="/profile_picture.png"
-            name="Could be anyone"
-          /> */}
+          />
+          <SecondaryProfile
+            name="Synergy Solution"
+            avatarSrc="/femaleAvatars.png"
+            shouldOpenModal={false}
+            className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
+          />
         </div>
       </CustomTabPanel>
     </Box>
