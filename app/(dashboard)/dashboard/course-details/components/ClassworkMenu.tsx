@@ -3,13 +3,11 @@ import { useParams } from "next/navigation";
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import SectionHeading from "@/app/components/typography/SectionHeading";
-import DescriptionText from "@/app/components/typography/DescriptionText";
-import ItemList from "@/app/components/typography/itemsList/ItemList";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { courseList } from "@/app/constants/constantData";
 import { Box } from "@mui/material";
 import SecondaryProfile from "@/app/components/UserProfile/SecondaryProfile";
+import SectionHeader from "./courseDetailsHeader/SectionHeader";
+import CourseDetailsSection from "./courseDetailsSection/CourseDetailsSection";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,25 +63,8 @@ export default function ClassworkMenu() {
       </Box>
       <CustomTabPanel value={value} index={0}>
         <div className="p-6 flex flex-col gap-8">
-          <header
-            className="relative bg-cover bg-center px-8 pt-7 pb-20  rounded-md"
-            style={{ backgroundImage: "url(/card_bg.jpeg)" }}
-          >
-            <div className="absolute top-8 right-4 text-white cursor-pointer">
-              <MoreVertIcon className="hover:bg-gray-200/45 rounded-full" />
-            </div>
-            <SectionHeading
-              text="Electrical Circuit 01"
-              className="font-medium text-4xl leading-9 text-white mb-8"
-            />
-            <DescriptionText
-              text={`Course Teacher - ${courseData.teacherName}`}
-              fontSize="text-2xl"
-              color="text-white"
-              lineHeight="leading-5"
-            />
-          </header>
-          <section className="flex flex-col gap-8 p-5 border-2 rounded-md border-gray-300">
+          <SectionHeader courseData={courseData} />
+          {/* <section className="flex flex-col gap-8 p-5 border-2 rounded-md border-gray-300">
             <SecondaryProfile
               name={courseData.teacherName}
               avatarSrc="/profile_avatar.png"
@@ -105,7 +86,8 @@ export default function ClassworkMenu() {
                 useNumber={true}
               />
             </div>
-          </section>
+          </section> */}
+          <CourseDetailsSection courseData={courseData} />
         </div>
       </CustomTabPanel>
 
