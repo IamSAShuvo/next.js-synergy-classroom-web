@@ -4,7 +4,6 @@ import PrimaryButton from "../../Buttons/PrimaryButton";
 import LoginCardContent from "./content/LoginCardContent";
 import CardHeader from "../primaryCardHeading/CardHeader";
 import CardFooter from "../primaryCardFooter/CardFooter";
-// import Link from "next/link";
 import LinkText from "../../links/LinkText";
 
 const LoginComponent = () => {
