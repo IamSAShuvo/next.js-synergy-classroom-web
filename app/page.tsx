@@ -17,7 +17,7 @@ import PrimaryInputField from "./components/inputFields/PrimaryInputField";
 import SecondaryProfile from "./components/UserProfile/SecondaryProfile";
 import PrimaryProfile from "./components/UserProfile/PrimaryProfile";
 import { ChangeEvent, useState } from "react";
-import { classroomData, allowedRoles } from "./constants/classroomData";
+import { classroomData, allowedRoles } from "./constants/constantData";
 import PrimaryCard from "./components/CardComponent/PrimaryCard";
 import SecondaryCard from "./components/CardComponent/SecondaryCard";
 
@@ -184,7 +184,7 @@ export default function Home() {
             <>
               <SectionHeading
                 text="Electrical Circuit 01"
-                fontSize="text-2xl"
+                className="text-2xl"
               />
               <DescriptionText
                 color="text-white"
@@ -281,7 +281,7 @@ export default function Home() {
 
       <div className="bg-zinc-500 w-96 rounded-lg p-4 mt-4">
         <div>
-          <SectionHeading text="Electrical Circuit 01" fontSize="text-2xl" />
+          <SectionHeading text="Electrical Circuit 01" className="text-2xl" />
           <DescriptionText
             color="text-white"
             fontSize="text-sm"
@@ -329,7 +329,7 @@ export default function Home() {
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
-          <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionHeading text="Electrical Circuit 01" className="text-4xl" />
           <DescriptionText
             text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"
@@ -362,7 +362,7 @@ export default function Home() {
 
       <div className="bg-zinc-500 w-10/12 rounded-lg p-4 mt-4">
         <div className="space-y-3">
-          <SectionHeading text="Electrical Circuit 01" fontSize="text-[40px]" />
+          <SectionHeading text="Electrical Circuit 01" className="text-4xl" />
           <DescriptionText
             text={`Course Teacher - ${classroomData.teacherName}`}
             fontSize="text-2xl"

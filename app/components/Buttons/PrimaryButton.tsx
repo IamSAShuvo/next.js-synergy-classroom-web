@@ -1,10 +1,12 @@
 import React, { FC } from "react";
+import classNames from "classnames";
 
 interface PrimaryButtonProps {
   text: string;
   borderColor?: string;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
 }
 
 const PrimaryButton: FC<PrimaryButtonProps> = ({
@@ -12,14 +14,15 @@ const PrimaryButton: FC<PrimaryButtonProps> = ({
   borderColor,
   className = "",
   onClick,
+  disabled = false,
 }) => {
+  const buttonClasses = classNames(className, {
+    [`${borderColor} border-[3px]`]: borderColor,
+    "bg-gray-500 cursor-not-allowed": disabled,
+  });
+
   return (
-    <button
-      onClick={onClick}
-      className={`${className} ${
-        borderColor ? `${borderColor} border-[3px]` : ""
-      }`}
-    >
+    <button onClick={onClick} className={buttonClasses} disabled={disabled}>
       {text}
     </button>
   );

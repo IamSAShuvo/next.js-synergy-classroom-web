@@ -21,6 +21,7 @@ interface PrimaryInputFieldProps {
   isPassword?: boolean;
   hasExpandableFields?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 }
 
 const inputStyle = {
@@ -55,6 +56,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   isPassword = false,
   hasExpandableFields = false,
   onChange,
+  value,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -113,6 +115,7 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
           placeholder={placeholder}
           endAdornment={endAdornment()}
           onChange={onChange}
+          value={value}
           label={variant === "outlined" ? label : undefined}
           {...props}
         />

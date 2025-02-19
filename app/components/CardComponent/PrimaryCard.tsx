@@ -1,10 +1,9 @@
-import Link from "next/link";
 import React, { FC, ReactNode } from "react";
 
 interface PrimaryCardProps {
   header?: ReactNode;
   content: ReactNode;
-  aside?: ReactNode;
+  forgotPasswordLink?: ReactNode;
   footer?: ReactNode;
   button?: ReactNode;
   className?: string;
@@ -13,7 +12,7 @@ interface PrimaryCardProps {
 const PrimaryCard: FC<PrimaryCardProps> = ({
   header,
   content,
-  aside,
+  forgotPasswordLink,
   footer,
   button,
   className = "",
@@ -30,9 +29,9 @@ const PrimaryCard: FC<PrimaryCardProps> = ({
 
       <main className="mb-8 flex flex-col gap-6">{content}</main>
 
-      <aside className="mb-4 text-right hover:underline">
-        <Link href={""}>{aside}</Link>
-      </aside>
+      <div className="mb-4 text-right hover:underline">
+        {forgotPasswordLink}
+      </div>
 
       {button}
 

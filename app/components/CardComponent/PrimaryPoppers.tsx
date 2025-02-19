@@ -52,7 +52,7 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
       <Popper
         open={open}
         anchorEl={anchorRef.current}
-        placement="bottom-end"
+        placement="bottom-start"
         transition
         disablePortal
         modifiers={[
