@@ -1,10 +1,7 @@
-// CardFooterComponent.tsx
-
 import React from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import PrimaryButton from "../../Buttons/PrimaryButton";
 import NumberBadge from "../../typography/NumberBadge";
-// import { classroomData } from "@/app/constants/constantData";
 
 interface CardFooterProps {
   isEnrolled: boolean;
