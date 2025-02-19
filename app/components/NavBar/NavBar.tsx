@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import NavBarProfile from "../UserProfile/NavBarProfile";
 import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/navigation";
 import InputBoxModal from "../CardComponent/InputBoxModal";
@@ -12,6 +11,7 @@ import Cookies from "js-cookie";
 // const AddIcon = dynamic(() => import("@mui/icons-material/Add"), {
 //   ssr: false,
 // });
+import SecondaryProfile from "../UserProfile/SecondaryProfile";
 
 const NavBar = () => {
   const [isClient, setIsClient] = useState(false);
@@ -19,7 +19,7 @@ const NavBar = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-  const [open, setOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
 
   const role = Cookies.get("role")?.toLowerCase();
@@ -28,7 +28,7 @@ const NavBar = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <React.Fragment>
+    <>
       <nav className="flex justify-between items-center p-6">
         <Image
           className="cursor-pointer"
@@ -48,11 +48,16 @@ const NavBar = () => {
             avatarSrc="/my_profile.jpeg"
             avatarHeight={50}
             avatarWidth={50}
+            className="flex items-center gap-8 cursor-pointer text-lg font-medium leading-5 text-midnightBlack"
           />
         </div>
       </nav>
-      <InputBoxModal open={open} onClose={handleClose} />
-    </React.Fragment>
+      <InputBoxModal
+        open={modalOpen}
+        onClose={handleModalToggle}
+        onCreate={handleCreateCourse}
+      />
+    </>
   );
 };
 

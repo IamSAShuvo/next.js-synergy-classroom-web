@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import classNames from "classnames";
 
 interface PrimaryButtonProps {
   text: string;
@@ -15,14 +16,13 @@ const PrimaryButton: FC<PrimaryButtonProps> = ({
   onClick,
   disabled = false,
 }) => {
+  const buttonClasses = classNames(className, {
+    [`${borderColor} border-[3px]`]: borderColor,
+    "bg-gray-500 cursor-not-allowed": disabled,
+  });
+
   return (
-    <button
-      onClick={onClick}
-      className={`${className} ${
-        borderColor ? `${borderColor} border-[3px]` : ""
-      } ${disabled ? "bg-gray-500 cursor-not-allowed" : ""}`}
-      disabled={disabled}
-    >
+    <button onClick={onClick} className={buttonClasses} disabled={disabled}>
       {text}
     </button>
   );

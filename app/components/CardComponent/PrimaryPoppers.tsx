@@ -2,13 +2,13 @@
 import React, { FC, RefObject } from "react";
 import { ClickAwayListener, Grow, Paper, Popper, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import UserProfile from "../UserProfile/UserProfile";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "@/app/store/slices/authenticationSlice/authActions/authActions";
 import { AppDispatch, RootState } from "@/app/store/store";
 import Cookies from "js-cookie";
+import PrimaryProfile from "../UserProfile/PrimaryProfile";
 
 interface PrimaryPoppersProps {
   open: boolean;
@@ -69,6 +69,7 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
     setOpen(false);
   };
 
+
   return (
     <Stack direction="row" spacing={2}>
       <ClickAwayListener onClickAway={handleClose}>
@@ -89,6 +90,24 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
           sx={{ zIndex: 1200, width: 320 }}
         >
           {({ TransitionProps }) => (
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        placement="bottom-start"
+        transition
+        disablePortal
+        modifiers={[
+          {
+            name: "offset",
+            options: {
+              offset: [0, 20],
+            },
+          },
+        ]}
+        sx={{ zIndex: 1200, width: 320 }}
+      >
+        {({ TransitionProps }) => (
+          <ClickAwayListener onClickAway={handleClose}>
             <Grow {...TransitionProps}>
               <Paper
                 sx={{
@@ -125,36 +144,11 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 </div>
               </Paper>
             </Grow>
-          )}
-        </Popper>
-      </ClickAwayListener>
+          </ClickAwayListener>
+        )}
+      </Popper>
     </Stack>
   );
 };
 
 export default PrimaryPoppers;
-
-{
-  /* <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-  <div className="flex items-center justify-between mt-8">
-    <p>username:</p>
-    <span>{name}</span>
-  </div>
-</Box> */
-}
-
-{
-  /* <ClickAwayListener onClickAway={handleClose}>
-                <div className="w-full">
-                  <UserProfile
-                    avatarSrc={avatarSrc}
-                    name={name}
-                    role={roles[0]}
-                  />
-                  <PrimaryButton
-                    text="Log out"
-                    className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6 mt-16"
-                  />
-                </div>
-              </ClickAwayListener> */
-}

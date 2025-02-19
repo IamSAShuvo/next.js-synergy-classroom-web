@@ -50,6 +50,10 @@ const inputComponents = {
   outlined: OutlinedInput,
 };
 
+const generateId = (label: string) => {
+  return encodeURIComponent(label.toLowerCase().replace(/\s+/g, "-"));
+};
+
 const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   label,
   name,
@@ -65,16 +69,12 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   const [showPassword, setShowPassword] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((prev) => !prev);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleExpandToggle = () => setIsExpanded((prev) => !prev);
 
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => event.preventDefault();
-  const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) =>
-    event.preventDefault();
-
   const InputComponent = inputComponents[variant] || OutlinedInput;
+
+  const inputId = generateId(label);
 
   const endAdornment = () => {
     if (isPassword) {
@@ -83,8 +83,6 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
           <IconButton
             aria-label={showPassword ? "Hide password" : "Show password"}
             onClick={handleClickShowPassword}
-            onMouseDown={handleMouseDownPassword}
-            onMouseUp={handleMouseUpPassword}
           >
             {showPassword ? <Visibility /> : <VisibilityOff />}
           </IconButton>
@@ -116,18 +114,18 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   return (
     <div className="w-full flex flex-col gap-5">
       <StyledFormControl variant={variant}>
-        <InputLabel htmlFor={name || label.toLowerCase().replace(/\s+/g, "-")}>
-          {label}
-        </InputLabel>
+        <InputLabel htmlFor={name || inputId}>{label}</InputLabel>
         <InputComponent
           name={name}
           sx={inputStyle}
-          id={name || label.toLowerCase().replace(/\s+/g, "-")}
+          id={name || inputId}
           type={isPassword && !showPassword ? "password" : "text"}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           endAdornment={endAdornment()}
+          onChange={onChange}
+          value={value}
           label={variant === "outlined" ? label : undefined}
           {...props}
         />

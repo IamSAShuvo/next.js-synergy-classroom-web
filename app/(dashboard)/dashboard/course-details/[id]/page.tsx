@@ -1,5 +1,5 @@
 import React from "react";
-import CourseTabs from "../components/CourseTab";
+import CourseTabs from "../components/ClassworkMenu";
 
 const page = () => {
   return <CourseTabs />;
