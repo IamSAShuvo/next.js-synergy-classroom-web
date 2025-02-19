@@ -1,7 +1,6 @@
-// components/SignupCardContent.tsx
+import React from "react";
 import RadioButtons from "@/app/components/Buttons/RadioButtons";
 import PrimaryInputField from "@/app/components/inputFields/PrimaryInputField";
-import React from "react";
 
 const SignupCardContent = () => (
   <>
