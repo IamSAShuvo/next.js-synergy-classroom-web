@@ -1,10 +1,11 @@
 import React from "react";
 import PrimaryCard from "../../CardComponent/PrimaryCard";
-import DescriptionText from "../../typography/DescriptionText";
 import PrimaryButton from "../../Buttons/PrimaryButton";
 import LoginCardContent from "./content/LoginCardContent";
 import CardHeader from "../primaryCardHeading/CardHeader";
 import CardFooter from "../primaryCardFooter/CardFooter";
+// import Link from "next/link";
+import LinkText from "../../links/LinkText";
 
 const LoginComponent = () => {
   return (
@@ -17,13 +18,11 @@ const LoginComponent = () => {
         />
       }
       content={<LoginCardContent />}
-      aside={
-        <DescriptionText
-          text="Forgot PassWord?"
-          color="text-secondaryColor"
-          fontSize="text-sm"
-          lineHeight="leading-5"
-          letterSpacing="tracking-wider"
+      forgotPasswordLink={
+        <LinkText
+          url="/forgot-password"
+          text="Forgot Password?"
+          className="font-normal text-sm leading-5 text-secondaryColor hover:underline"
         />
       }
       button={
