@@ -27,12 +27,8 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    console.log("Interceptor caught error:", error.response?.status);
-
     if (error.response?.status === 401) {
-      console.log("401 Unauthorized - Refreshing Token...");
       const refreshResponse = await store.dispatch(refreshToken());
-      console.log("Refreshed Token:", refreshResponse);
     }
 
     return Promise.reject(error);

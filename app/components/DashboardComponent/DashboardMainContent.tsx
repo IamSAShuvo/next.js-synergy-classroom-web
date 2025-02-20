@@ -23,7 +23,6 @@ const DashboardMainContent = () => {
     (state: RootState) => state.courses
   );
 
-  console.log("dashboard courses", courses);
 
   const role = Cookies.get("role")?.toLowerCase();
 

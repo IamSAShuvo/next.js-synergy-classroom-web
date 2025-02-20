@@ -7,8 +7,6 @@ import CardHeaderComponent from "./header/CardHeaderComponent";
 import CardMainContent from "./mainContent/CardMainContent";
 import CardFooterComponent from "./footer/CardFooterComponent";
 
-console.log("courseList from dashboardComponent", courseList);
-
 const DashboardComponent = () => {
   const router = useRouter();
   const [enrolledCourses, setEnrolledCourses] = useState<number[]>([]);

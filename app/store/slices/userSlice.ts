@@ -24,7 +24,6 @@ export const fetchUserRole = createAsyncThunk(
       const response = await axios.get("http://localhost:8080/dashboard", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log("dashboard data", response.data);
       return response.data.message;
     } catch (error) {
       console.error("Error fetching user role:", error);

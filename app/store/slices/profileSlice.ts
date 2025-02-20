@@ -92,7 +92,6 @@ const profileSlice = createSlice({
             courses: Course[];
           }>
         ) => {
-          console.log("Fetched Profile:", action.payload);
           state.loading = false;
           state.profile = action.payload.profile;
           state.courses = action.payload.courses;

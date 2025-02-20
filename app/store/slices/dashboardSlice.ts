@@ -60,8 +60,6 @@ export const fetchCourses = createAsyncThunk(
         }
       }
 
-      console.log(response.data);
-      console.log({ teacherName });
       return {
         courses: courseData,
         role,

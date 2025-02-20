@@ -26,7 +26,6 @@ export const createCourse = createAsyncThunk(
         },
       });
 
-      console.log(response);
       return response.data;
     } catch (error) {
       return rejectWithValue(

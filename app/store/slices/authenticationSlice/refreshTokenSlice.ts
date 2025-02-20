@@ -15,7 +15,6 @@ export const refreshToken = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const refreshToken = Cookies.get("refreshToken");
-      console.log("refresh token:", refreshToken);
       if (!refreshToken) {
         return rejectWithValue("No refresh token available");
       }
@@ -31,7 +30,6 @@ export const refreshToken = createAsyncThunk(
       );
 
       if (response.data.success) {
-        console.log("refresh token", response.data.data);
         return response.data.data;
       } else {
         return rejectWithValue(response.data.message);

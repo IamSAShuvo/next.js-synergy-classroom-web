@@ -62,13 +62,11 @@ export const refreshToken = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const refreshToken = Cookies.get("refreshToken");
-      console.log("the refresh token", refreshToken);
       if (!refreshToken) {
         console.error("No refresh token found!");
         return rejectWithValue("No refresh token available");
       }
 
-      console.log("Making API request to refresh token...");
       const response = await api.post(
         "/refresh",
         {},
@@ -79,8 +77,6 @@ export const refreshToken = createAsyncThunk(
           },
         }
       );
-
-      console.log("✅ New token received:", response.data);
 
       return response.data;
     } catch (error) {
