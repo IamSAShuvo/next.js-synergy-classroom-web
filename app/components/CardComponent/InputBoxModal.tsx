@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState }, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Box, IconButton } from "@mui/material";
 import SecondaryHeading from "../typography/SecondaryHeading";
 import PrimaryInputField from "../inputFields/PrimaryInputField";
@@ -12,13 +12,11 @@ import { AppDispatch, RootState } from "@/app/store/store";
 interface CreateCourseModalProps {
   open: boolean;
   onClose: () => void;
-  onCreate: (courseName: string, bookName: string) => void;
 }
 
 const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
   open,
   onClose,
-  onCreate,
 }) => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -31,10 +29,6 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
       },
     ],
   });
-
-  // const [courseTitle, setCourseTitle] = useState("");
-  // const [bookName, setBookName] = useState("");
-  // const [authorName, setAuthorName] = useState("");
 
   const { isLoading, success, error } = useSelector(
     (state: RootState) => state.courseCreate
@@ -49,10 +43,9 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
     }
   }, [success, error]);
 
-  // Step 3: Handle form submission and dispatch action
   const handleCreateCourse = () => {
-    dispatch(createCourse(courseData)); // Dispatch the create course action
-    onClose(); // Close the modal
+    dispatch(createCourse(courseData));
+    onClose();
   };
 
   return (
@@ -154,7 +147,6 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
             onClick={handleCreateCourse}
             text={isLoading ? "Creating..." : "Create"}
             className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
-            onClick={handleCreate}
           />
         </div>
       </Box>

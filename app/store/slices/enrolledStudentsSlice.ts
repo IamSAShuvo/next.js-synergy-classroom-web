@@ -2,13 +2,11 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-// Define the Student interface
 interface Student {
   studentId: number;
   studentName: string;
 }
 
-// Define the slice state interface
 interface EnrolledStudentsState {
   students: Student[] | null;
   message: string | null;
@@ -17,7 +15,6 @@ interface EnrolledStudentsState {
   error: string | null;
 }
 
-// Initial state
 const initialState: EnrolledStudentsState = {
   students: null,
   message: null,
@@ -26,19 +23,17 @@ const initialState: EnrolledStudentsState = {
   error: null,
 };
 
-// Async thunk to fetch enrolled students
 export const fetchEnrolledStudents = createAsyncThunk<
-  { students: Student[]; message: string; success: boolean }, // Return type
-  { id?: string; courseId?: string } // Argument type
+  { students: Student[]; message: string; success: boolean },
+  { id?: string; courseId?: string }
 >("enrolledStudents/fetch", async (courseIdentifier, { rejectWithValue }) => {
   try {
-    const id = courseIdentifier.id || courseIdentifier.courseId; // Ensure correct ID usage
+    const id = courseIdentifier.id || courseIdentifier.courseId;
     if (!id) throw new Error("Course ID is required");
 
     const token = Cookies.get("token");
     if (!token) throw new Error("No authentication token found");
 
-    // Make API request
     const response = await axios.get(
       `http://192.168.0.204:8080/course/enrolled/all-student`,
       {
@@ -50,7 +45,6 @@ export const fetchEnrolledStudents = createAsyncThunk<
       }
     );
 
-    // Extract relevant data from response
     const { data, message, success } = response.data;
 
     return { students: data, message, success };
@@ -65,11 +59,10 @@ export const fetchEnrolledStudents = createAsyncThunk<
   }
 });
 
-// Redux slice
 const enrolledStudentsSlice = createSlice({
   name: "enrolledStudents",
   initialState,
-  reducers: {}, // No manual reducers needed since all logic is in extraReducers
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchEnrolledStudents.pending, (state) => {
@@ -99,5 +92,4 @@ const enrolledStudentsSlice = createSlice({
   },
 });
 
-// Export the reducer for use in store configuration
 export default enrolledStudentsSlice.reducer;

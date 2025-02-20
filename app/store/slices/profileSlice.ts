@@ -35,7 +35,6 @@ export interface ProfileState {
   error: string | null;
 }
 
-// Initial State
 const initialState: ProfileState = {
   profile: null,
   courses: [],
@@ -44,23 +43,12 @@ const initialState: ProfileState = {
   error: null,
 } as ProfileState;
 
-// **Thunk to Fetch Profile Details**
 export const fetchProfile = createAsyncThunk(
   "profile/fetch",
   async (_, { rejectWithValue }) => {
     try {
       const token = Cookies.get("token");
       if (!token) throw new Error("No authentication token found");
-
-      // const response = await axios.get(
-      //   "http://192.168.0.204:8080/profile/details",
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //       "Content-Type": "application/json",
-      //     },
-      //   }
-      // );
 
       const response = await api.get("/profile/details");
 
@@ -84,7 +72,6 @@ export const fetchProfile = createAsyncThunk(
   }
 );
 
-// **Profile Slice**
 const profileSlice = createSlice({
   name: "profile",
   initialState,

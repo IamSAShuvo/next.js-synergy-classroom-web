@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC } from "react";
-import PROFESSION_OPTIONS from "@/app/constantData/userRoleOption";
+import PROFESSION_OPTIONS from "@/app/constants/professionOptions";
 
 interface RadioButtonsProps {
   selectedRole: string;

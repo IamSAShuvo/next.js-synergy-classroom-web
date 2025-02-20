@@ -14,7 +14,6 @@ const initialState: EnrollState = {
   error: null,
 };
 
-// Async Thunk for Enrolling in a Course
 export const enrollInCourse = createAsyncThunk(
   "course/enroll",
   async (courseId: number, { rejectWithValue }) => {
@@ -26,7 +25,6 @@ export const enrollInCourse = createAsyncThunk(
         return rejectWithValue("User is not authenticated");
       }
 
-      // Make API call with Authorization header
       const response = await axios.post(
         "http://192.168.0.204:8080/course/enroll",
         { courseId },
@@ -55,7 +53,12 @@ export const enrollInCourse = createAsyncThunk(
 const courseEnrollSlice = createSlice({
   name: "courseEnroll",
   initialState,
-  reducers: {},
+  reducers: {
+    reset: (state) => {
+      state.success = false;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(enrollInCourse.pending, (state) => {
@@ -75,4 +78,5 @@ const courseEnrollSlice = createSlice({
   },
 });
 
+export const { reset } = courseEnrollSlice.actions;
 export default courseEnrollSlice.reducer;

@@ -3,7 +3,6 @@ import api from "../api";
 import Cookies from "js-cookie";
 import { AxiosError } from "axios";
 
-// 🔹 Signup User Action
 export const signupUser = createAsyncThunk(
   "auth/signup",
   async (
@@ -31,7 +30,6 @@ export const signupUser = createAsyncThunk(
   }
 );
 
-// 🔹 Login User Action
 export const loginUser = createAsyncThunk(
   "auth/login",
   async (
@@ -59,7 +57,6 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-// 🔹 Refresh Token Action
 export const refreshToken = createAsyncThunk(
   "auth/refreshToken",
   async (_, { rejectWithValue }) => {
@@ -85,7 +82,6 @@ export const refreshToken = createAsyncThunk(
 
       console.log("✅ New token received:", response.data);
 
-      // Cookies.set("token", response.data.accessToken);
       return response.data;
     } catch (error) {
       console.error("Refresh token API call failed:", error);
@@ -99,7 +95,6 @@ export const refreshToken = createAsyncThunk(
   }
 );
 
-// 🔹 Logout User Action
 export const logoutUser = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {

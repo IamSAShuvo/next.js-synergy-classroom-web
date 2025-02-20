@@ -11,7 +11,10 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/app/store/store";
 import { fetchCourseDetails } from "@/app/store/slices/courseDetailsSlice";
-import { enrollInCourse } from "@/app/store/slices/courseEnrollmentSlice";
+import {
+  enrollInCourse,
+  reset,
+} from "@/app/store/slices/courseEnrollmentSlice";
 import { seeAllCoursesReducers } from "@/app/store/slices/allCoursesSlice";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
@@ -44,23 +47,32 @@ const DashboardSeeAllCourses = () => {
       setSnackbarSeverity("success");
       setSnackbarMessage(`enrollment successful`);
       setOpenSnackbar(true);
+      setTimeout(() => {
+        dispatch(reset());
+      }, 500);
     }
     if (error) {
       setSnackbarSeverity("error");
       setSnackbarMessage("An unexpected error occurred. Please try again.");
       setOpenSnackbar(true);
+      setTimeout(() => {
+        dispatch(reset());
+      }, 500);
     }
-  }, [success, error]);
+  }, [success, error, dispatch]);
 
   const handleCardClick = (courseId: number) => {
     dispatch(fetchCourseDetails({ courseId: courseId.toString() }));
     router.push(`/dashboard/course-details/${courseId}`);
   };
 
-  const handleEnroll = (courseId: number) => {
+  const handleEnroll = async (courseId: number) => {
     try {
-      const enrolledAction = dispatch(enrollInCourse(courseId));
-      if (enrollInCourse.fulfilled.match(enrolledAction)) {
+      const enrolledAction = await dispatch(enrollInCourse(courseId)).unwrap();
+      if (enrolledAction) {
+        setSnackbarSeverity("success");
+        setSnackbarMessage("Enrollment successful");
+        setOpenSnackbar(true);
         dispatch(seeAllCoursesReducers());
       }
     } catch {
@@ -115,44 +127,43 @@ const DashboardSeeAllCourses = () => {
               </div>
             </>
           }
-          footer={<NumberBadge count={course.numberOfStudentsEnrolled} />}
-        >
-          {course.studentEnrolled ? (
-            <div className="flex items-center space-x-2 text-green-600">
-              <CheckCircleIcon className="w-6 h-6" />
-              <span className="text-sm font-medium">Enrolled</span>
-            </div>
-          ) : (
-            <React.Fragment>
+          enrollment={
+            course.studentEnrolled ? (
+              <div className="flex items-center space-x-2 text-green-600">
+                <CheckCircleIcon className="w-6 h-6" />
+                <span className="text-sm font-medium">Enrolled</span>
+              </div>
+            ) : (
               <PrimaryButton
                 onClick={() => handleEnroll(course.courseId)}
                 text="Enroll"
                 className="bg-skyBlue text-xs hover:bg-indigo-600 text-white px-6 py-3 rounded font-medium leading-5"
               />
-              <Snackbar
-                open={openSnackbar}
-                autoHideDuration={10000}
-                onClose={() => setOpenSnackbar(false)}
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-              >
-                <Alert
-                  onClose={() => setOpenSnackbar(false)}
-                  severity={snackbarSeverity}
-                  variant="filled"
-                  sx={{
-                    mb: 8,
-                    width: "100%",
-                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
-                    borderRadius: "8px",
-                  }}
-                >
-                  {snackbarMessage}
-                </Alert>
-              </Snackbar>
-            </React.Fragment>
-          )}
-        </SecondaryCard>
+            )
+          }
+          footer={<NumberBadge count={course.numberOfStudentsEnrolled} />}
+        />
       ))}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={5000}
+        onClose={() => setOpenSnackbar(false)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <Alert
+          onClose={() => setOpenSnackbar(false)}
+          severity={snackbarSeverity}
+          variant="filled"
+          sx={{
+            mb: 8,
+            width: "100%",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
+            borderRadius: "8px",
+          }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

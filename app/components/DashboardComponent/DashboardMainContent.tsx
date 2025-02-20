@@ -12,11 +12,6 @@ import LinkText from "../links/LinkText";
 import { fetchCourseDetails } from "@/app/store/slices/courseDetailsSlice";
 import Cookies from "js-cookie";
 import { fetchEnrolledStudents } from "@/app/store/slices/enrolledStudentsSlice";
-// import { refreshToken } from "@/app/store/slices/authenticationSlice/authActions/authActions";
-// import {
-//   refreshToken,
-//   logout,
-// } from "@/app/store/slices/authenticationSlice/refreshTokenSlice";
 
 const DashboardMainContent = () => {
   const router = useRouter();
@@ -37,15 +32,6 @@ const DashboardMainContent = () => {
     dispatch(fetchEnrolledStudents({ courseId: courseId.toString() }));
     router.push(`/dashboard/course-details/${courseId}`);
   };
-
-  // // * Refresh token test
-  // const { accessToken, refresh_Token, status } = useSelector(
-  //   (state: RootState) => state.refreshToken
-  // );
-
-  // const handleRefresh = () => {
-  //   dispatch(refreshToken());
-  // };
 
   useEffect(() => {
     dispatch(fetchCourses());
@@ -124,38 +110,6 @@ const DashboardMainContent = () => {
           ></SecondaryCard>
         ))}
       </div>
-
-      {/* Refresh token test */}
-      {/* <div>
-        <h2 className="text-2xl"> Access Token: </h2>
-        <p>
-          {typeof accessToken === "string" ? accessToken : "No token available"}
-        </p>
-
-        <h2 className="text-2xl"> Refresh Token: </h2>
-        <p>
-          {typeof refresh_Token === "string"
-            ? refresh_Token
-            : "No token available"}
-        </p>
-
-        {status === "loading" && <p>Refreshing token...</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button
-          onClick={handleRefresh}
-          disabled={status === "loading"}
-          className="bg-green-500 hover:bg-green-200 p-6 border-2 rounded-lg"
-        >
-          Click to get RefreshToken
-        </button>
-
-        <button
-          className="bg-green-500 hover:bg-green-200 p-6 border-2 rounded-lg"
-          onClick={() => dispatch(logout())}
-        >
-          Logout
-        </button>
-      </div> */}
     </div>
   );
 };

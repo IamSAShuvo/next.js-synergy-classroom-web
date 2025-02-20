@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 
-interface DescriptionWithChildrenProps {
+interface DescriptionTextProps {
   text?: string;
 
   children?: React.ReactNode;
   className?: string;
 }
 
-const DescriptionWithChildren: FC<DescriptionWithChildrenProps> = ({
+const DescriptionText: FC<DescriptionTextProps> = ({
   text,
   children,
   className = "",
@@ -19,4 +19,4 @@ const DescriptionWithChildren: FC<DescriptionWithChildrenProps> = ({
   );
 };
 
-export default DescriptionWithChildren;
+export default DescriptionText;

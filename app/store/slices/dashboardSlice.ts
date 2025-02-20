@@ -42,13 +42,6 @@ export const fetchCourses = createAsyncThunk(
       const token = Cookies.get("token");
       if (!token) throw new Error("No authentication token found");
 
-      // const response = await axios.get("http://192.168.0.204:8080/dashboard", {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //     "Content-Type": "application/json",
-      //   },
-      // });
-
       const response = await api.get("/dashboard");
 
       const courseData: Course[] = response.data.data;
@@ -107,7 +100,7 @@ const dashboardSlice = createSlice({
           state.loading = false;
           state.courses = action.payload.courses;
           state.role = action.payload.role;
-          state.teacherName = action.payload.teacherName; // Now storing teacher names as a string
+          state.teacherName = action.payload.teacherName;
         }
       )
       .addCase(fetchCourses.rejected, (state, action) => {

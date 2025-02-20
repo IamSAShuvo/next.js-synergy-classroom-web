@@ -124,27 +124,13 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
           value={value}
           onChange={onChange}
           endAdornment={endAdornment()}
-          onChange={onChange}
-          value={value}
           label={variant === "outlined" ? label : undefined}
           {...props}
         />
       </StyledFormControl>
 
       {isExpanded && hasExpandableFields && (
-        <div className="w-full flex flex-col gap-5">
-          {children}
-          {/* <PrimaryInputField
-            label="Author Name"
-            variant="standard"
-            placeholder="Book Author"
-          />
-          <PrimaryInputField
-            label="Book Name"
-            variant="standard"
-            placeholder="Add your book name"
-          /> */}
-        </div>
+        <div className="w-full flex flex-col gap-5">{children}</div>
       )}
     </div>
   );

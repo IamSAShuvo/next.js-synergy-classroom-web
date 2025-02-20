@@ -3,7 +3,6 @@ import axios from "axios";
 import { AxiosError } from "axios";
 import Cookies from "js-cookie";
 
-// Initial state
 const initialState = {
   accessToken: Cookies.get("token") || null,
   refresh_Token: localStorage.getItem("refreshToken") || null,
@@ -11,13 +10,10 @@ const initialState = {
   error: null as string | null,
 };
 
-// Async thunk for refreshing the token
 export const refreshToken = createAsyncThunk(
   "auth/refreshToken",
   async (_, { rejectWithValue }) => {
     try {
-      // const token = Cookies.get("token");
-      // if (!token) throw new Error("No authentication token found");
       const refreshToken = Cookies.get("refreshToken");
       console.log("refresh token:", refreshToken);
       if (!refreshToken) {
@@ -28,7 +24,6 @@ export const refreshToken = createAsyncThunk(
         {},
         {
           headers: {
-            // Authorization: `Bearer ${token}`,
             "Refresh-Token": refreshToken,
             "Content-Type": "application/json",
           },
@@ -53,7 +48,6 @@ export const refreshToken = createAsyncThunk(
   }
 );
 
-// Auth slice
 const authSlice = createSlice({
   name: "auth",
   initialState,

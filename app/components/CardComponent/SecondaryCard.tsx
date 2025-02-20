@@ -5,6 +5,7 @@ interface SecondaryCardProps {
   header?: ReactNode;
   content: ReactNode;
   footer?: ReactNode;
+  enrollment?: ReactNode;
   className?: string;
   onClick?: () => void;
 }
@@ -12,6 +13,7 @@ interface SecondaryCardProps {
 const SecondaryCard: FC<SecondaryCardProps> = ({
   header,
   content,
+  enrollment,
   footer,
   className = "",
   onClick,
@@ -45,13 +47,14 @@ const SecondaryCard: FC<SecondaryCardProps> = ({
         <main className="flex flex-col gap-2 px-5 py-4">{content}</main>
       </div>
 
-      {footer && <footer>{footer}</footer>}
+      {footer && (
+        <footer className="border-t-2 px-5 py-2 text-center flex items-center justify-between">
+          {enrollment}
+          {footer}
+        </footer>
+      )}
     </div>
   );
 };
 
 export default SecondaryCard;
-
-{
-  /* <CheckCircleIcon className="text-green-500" fontSize="large" /> */
-}

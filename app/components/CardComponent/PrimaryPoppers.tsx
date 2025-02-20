@@ -13,7 +13,6 @@ import PrimaryProfile from "../UserProfile/PrimaryProfile";
 interface PrimaryPoppersProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-
   avatarSrc: string;
   anchorRef: RefObject<HTMLDivElement | null>;
 }
@@ -41,7 +40,6 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
   const { loading } = useSelector((state: RootState) => state.auth);
   const role = Cookies.get("role")?.toLowerCase();
   const { courses, user } = useSelector((state: RootState) => state.profile);
-  console.log({ courses });
 
   const handleNavigate = async () => {
     try {
@@ -59,37 +57,15 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
     }
   };
 
-  const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (
-      event.target instanceof HTMLElement &&
-      event.target.contains(event.target as HTMLElement)
-    ) {
+  const handleClose = (event: MouseEvent | TouchEvent) => {
+    if (anchorRef.current?.contains(event.target as Node)) {
       return;
     }
     setOpen(false);
   };
 
-
   return (
     <Stack direction="row" spacing={2}>
-      <ClickAwayListener onClickAway={handleClose}>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          placement="bottom-start"
-          transition
-          disablePortal
-          modifiers={[
-            {
-              name: "offset",
-              options: {
-                offset: [0, 20],
-              },
-            },
-          ]}
-          sx={{ zIndex: 1200, width: 320 }}
-        >
-          {({ TransitionProps }) => (
       <Popper
         open={open}
         anchorEl={anchorRef.current}
@@ -123,7 +99,11 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 <Arrow />
 
                 <div className="w-full">
-                  <UserProfile avatarSrc={avatarSrc} />
+                  {/* <UserProfile avatarSrc={avatarSrc} /> */}
+                  <PrimaryProfile
+                    avatarSrc={avatarSrc}
+                    className="flex flex-col items-center gap-7"
+                  />
                   <div className="mt-6 text-gray-400 flex flex-col gap-4">
                     <p className="flex justify-between">
                       username: <span>{user?.username}</span>

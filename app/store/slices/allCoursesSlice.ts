@@ -30,7 +30,6 @@ const initialState: CourseState = {
   error: null,
 };
 
-// Fetch Courses from New API
 export const seeAllCoursesReducers = createAsyncThunk(
   "courses/fetchAll",
   async (_, { rejectWithValue }) => {
@@ -73,7 +72,7 @@ const allCoursesSlice = createSlice({
         seeAllCoursesReducers.fulfilled,
         (state, action: PayloadAction<Course[]>) => {
           state.loading = false;
-          state.seeAllCourses = action.payload; // Correct payload structure
+          state.seeAllCourses = action.payload;
         }
       )
       .addCase(seeAllCoursesReducers.rejected, (state, action) => {

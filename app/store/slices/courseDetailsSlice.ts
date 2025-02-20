@@ -21,7 +21,6 @@ interface CourseState {
   error: string | null;
 }
 
-// Initial state
 const initialState: CourseState = {
   course: null,
   books: null,

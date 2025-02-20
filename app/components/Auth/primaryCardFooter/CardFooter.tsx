@@ -12,9 +12,7 @@ const CardFooter: FC<CardFooterProps> = ({ text, url, urlText }) => {
   return (
     <DescriptionText
       text={text}
-      color="text-secondaryColor"
-      fontSize="text-sm"
-      lineHeight="leading-6"
+      className="text-secondaryColor text-sm leading-6"
     >
       <LinkText
         className="font-normal text-sm leading-5 text-skyBlue hover:underline"
