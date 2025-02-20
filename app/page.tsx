@@ -273,7 +273,6 @@ export default function Home() {
         <hr className="border-slate-800" />
         <PrimaryProfile
           name="Eduardo V. Kozak"
-          // role={allowedRoles[1]}
           avatarSrc="/maleAvatar.png"
           className="flex flex-col items-center gap-7"
         />

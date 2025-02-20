@@ -1,4 +1,5 @@
 "use client";
+import React, { FC, useState } from "react";
 import {
   FilledInput,
   FormControl,
@@ -9,19 +10,20 @@ import {
   OutlinedInput,
   styled,
 } from "@mui/material";
-import React, { FC, useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import IndeterminateCheckBoxOutlinedIcon from "@mui/icons-material/IndeterminateCheckBoxOutlined";
 
 interface PrimaryInputFieldProps {
   label: string;
+  name?: string;
   placeholder?: string;
   variant?: "standard" | "outlined" | "filled";
   isPassword?: boolean;
   hasExpandableFields?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  children?: React.ReactNode;
 }
 
 const inputStyle = {
@@ -36,6 +38,9 @@ const StyledFormControl = styled(FormControl)(({}) => ({
   "& label": {
     fontFamily: "Poppins, sans-serif",
     color: "var(--primaryColor, #1976d2)",
+    "&.Mui-focused": {
+      color: "var(--primaryColor, #1976d2) !important",
+    },
   },
 }));
 
@@ -51,12 +56,14 @@ const generateId = (label: string) => {
 
 const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   label,
+  name,
   placeholder,
   variant = "outlined",
   isPassword = false,
   hasExpandableFields = false,
+  value = "",
   onChange,
-  value,
+  children,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -107,34 +114,23 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   return (
     <div className="w-full flex flex-col gap-5">
       <StyledFormControl variant={variant}>
-        <InputLabel htmlFor={inputId}>{label}</InputLabel>
+        <InputLabel htmlFor={name || inputId}>{label}</InputLabel>
         <InputComponent
+          name={name}
           sx={inputStyle}
-          id={inputId}
+          id={name || inputId}
           type={isPassword && !showPassword ? "password" : "text"}
           placeholder={placeholder}
-          endAdornment={endAdornment()}
-          onChange={onChange}
           value={value}
+          onChange={onChange}
+          endAdornment={endAdornment()}
           label={variant === "outlined" ? label : undefined}
           {...props}
         />
       </StyledFormControl>
 
       {isExpanded && hasExpandableFields && (
-        <>
-          <PrimaryInputField
-            label="Author Name"
-            variant="standard"
-            placeholder="Book Author"
-          />
-          <PrimaryInputField
-            label="Book Name"
-            variant="standard"
-            placeholder="Add your book name"
-            hasExpandableFields
-          />
-        </>
+        <div className="w-full flex flex-col gap-5">{children}</div>
       )}
     </div>
   );

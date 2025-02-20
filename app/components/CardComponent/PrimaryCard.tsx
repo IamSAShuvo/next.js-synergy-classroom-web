@@ -4,8 +4,9 @@ interface PrimaryCardProps {
   header?: ReactNode;
   content: ReactNode;
   forgotPasswordLink?: ReactNode;
-  footer?: ReactNode;
   button?: ReactNode;
+  footer?: ReactNode;
+  snackBar?: ReactNode;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ const PrimaryCard: FC<PrimaryCardProps> = ({
   forgotPasswordLink,
   footer,
   button,
+  snackBar,
   className = "",
 }) => {
   return (
@@ -34,6 +36,8 @@ const PrimaryCard: FC<PrimaryCardProps> = ({
       </div>
 
       {button}
+
+      {snackBar}
 
       {footer ? (
         <footer className="mt-16 text-center">{footer}</footer>

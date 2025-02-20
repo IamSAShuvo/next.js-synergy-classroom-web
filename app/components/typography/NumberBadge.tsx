@@ -7,7 +7,7 @@ interface NumberBadgeProps {
 const NumberBadge: FC<NumberBadgeProps> = ({ count = 0 }) => {
   return (
     <span className="font-medium text-xs leading-5 text-leafGreen">
-      {count} {count === 1 ? "person Enrolled" : "people Enrolled"}
+      {count} {count < 2 ? "person Enrolled" : "people Enrolled"}
     </span>
   );
 };

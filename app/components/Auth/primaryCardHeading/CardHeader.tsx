@@ -13,9 +13,7 @@ const CardHeader: FC<CardHeaderProps> = ({ title, desc }) => {
       <PrimaryHeading text={title} />
       <DescriptionText
         text={desc}
-        color="text-secondaryColor"
-        fontSize="text-sm"
-        lineHeight="leading-6"
+        className="text-secondaryColor text-sm leading-6"
       />
     </>
   );

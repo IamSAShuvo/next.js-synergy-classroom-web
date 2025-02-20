@@ -1,32 +1,51 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Box, IconButton } from "@mui/material";
 import SecondaryHeading from "../typography/SecondaryHeading";
 import PrimaryInputField from "../inputFields/PrimaryInputField";
 import CloseIcon from "@mui/icons-material/Close";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import { useDispatch, useSelector } from "react-redux";
+import { createCourse } from "@/app/store/slices/courseCreateSlice";
+import { AppDispatch, RootState } from "@/app/store/store";
 
 interface CreateCourseModalProps {
   open: boolean;
   onClose: () => void;
-  onCreate: (courseName: string, bookName: string) => void;
 }
 
 const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
   open,
   onClose,
-  onCreate,
 }) => {
-  const [courseName, setCourseName] = useState<string>("");
-  const [bookName, setBookName] = useState<string>("");
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleCreate = () => {
-    if (courseName && bookName) {
-      onCreate(courseName, bookName);
-      onClose();
-    } else {
-      console.error("Course name and book name are required.");
+  const [courseData, setCourseData] = useState({
+    title: "",
+    books: [
+      {
+        name: "",
+        author: "",
+      },
+    ],
+  });
+
+  const { isLoading, success, error } = useSelector(
+    (state: RootState) => state.courseCreate
+  );
+
+  useEffect(() => {
+    if (success) {
+      alert("Course created successfully!");
     }
+    if (error) {
+      alert(`Error: ${error}`);
+    }
+  }, [success, error]);
+
+  const handleCreateCourse = () => {
+    dispatch(createCourse(courseData));
+    onClose();
   };
 
   return (
@@ -66,17 +85,55 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
             label="Course Name"
             placeholder="Course Name"
             variant="standard"
-            value={courseName}
-            onChange={(e) => setCourseName(e.target.value)}
+            value={courseData.title}
+            onChange={(e) =>
+              setCourseData({ ...courseData, title: e.target.value })
+            }
           />
           <PrimaryInputField
             label="Book Name"
             placeholder="Add your book name"
             variant="standard"
-            value={bookName}
-            onChange={(e) => setBookName(e.target.value)}
+            value={courseData.books[0].name}
+            onChange={(e) =>
+              setCourseData({
+                ...courseData,
+                books: [{ ...courseData.books[0], name: e.target.value }],
+              })
+            }
             hasExpandableFields
-          />
+          >
+            <PrimaryInputField
+              label="Author Name"
+              variant="standard"
+              placeholder="Book Author"
+              value={courseData.books[0].author}
+              onChange={(e) =>
+                setCourseData({
+                  ...courseData,
+                  books: [
+                    {
+                      ...courseData.books[0],
+                      author: e.target.value,
+                    },
+                  ],
+                })
+              }
+            />
+            <PrimaryInputField
+              label="Book Name"
+              placeholder="Add your book name"
+              variant="standard"
+              value={courseData.books[0].name}
+              onChange={(e) =>
+                setCourseData({
+                  ...courseData,
+                  books: [{ ...courseData.books[0], name: e.target.value }],
+                })
+              }
+              hasExpandableFields
+            />
+          </PrimaryInputField>
         </div>
 
         <div className="flex justify-end gap-4 mt-12">
@@ -87,9 +144,9 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
             borderColor="border-ashGray"
           />
           <PrimaryButton
-            text="Create"
+            onClick={handleCreateCourse}
+            text={isLoading ? "Creating..." : "Create"}
             className="text-white hover:bg-indigo-600 bg-skyBlue text-xl px-6 py-3 rounded font-medium leading-5"
-            onClick={handleCreate}
           />
         </div>
       </Box>

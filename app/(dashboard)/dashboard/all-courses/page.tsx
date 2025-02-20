@@ -1,12 +1,8 @@
-import DashboardComponent from "@/app/components/DashboardMainContent/DashboardComponent";
 import React from "react";
+import DashboardSeeAllCourses from "@/app/components/DashboardComponent/DashboardSeeAllCourses";
 
 const page = () => {
-  return (
-    <div className="flex flex-col mx-7 my-6 gap-4">
-      <DashboardComponent />
-    </div>
-  );
+  return <DashboardSeeAllCourses />;
 };
 
 export default page;

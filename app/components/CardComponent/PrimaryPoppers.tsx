@@ -1,10 +1,13 @@
 "use client";
-
 import React, { FC, RefObject } from "react";
 import { ClickAwayListener, Grow, Paper, Popper, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "@/app/store/slices/authenticationSlice/authActions/authActions";
+import { AppDispatch, RootState } from "@/app/store/store";
+import Cookies from "js-cookie";
 import PrimaryProfile from "../UserProfile/PrimaryProfile";
 
 interface PrimaryPoppersProps {
@@ -12,7 +15,6 @@ interface PrimaryPoppersProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   avatarSrc: string;
   anchorRef: RefObject<HTMLDivElement | null>;
-  userName?: string;
 }
 
 const Arrow = styled("div")(({ theme }) => ({
@@ -31,13 +33,28 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
   open,
   setOpen,
   anchorRef,
-  userName = "User",
 }) => {
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleNavigate = () => {
-    router.push("/");
-    setOpen(false);
+  const { loading } = useSelector((state: RootState) => state.auth);
+  const role = Cookies.get("role")?.toLowerCase();
+  const { courses, user } = useSelector((state: RootState) => state.profile);
+
+  const handleNavigate = async () => {
+    try {
+      const logoutAction = await dispatch(logoutUser());
+      if (logoutUser.fulfilled.match(logoutAction)) {
+        Cookies.remove("token");
+        Cookies.remove("user");
+        Cookies.remove("role");
+        router.push("/login");
+      } else {
+        console.error("error unknown");
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   const handleClose = (event: MouseEvent | TouchEvent) => {
@@ -82,14 +99,26 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 <Arrow />
 
                 <div className="w-full">
+                  {/* <UserProfile avatarSrc={avatarSrc} /> */}
                   <PrimaryProfile
                     avatarSrc={avatarSrc}
-                    name={userName}
                     className="flex flex-col items-center gap-7"
                   />
+                  <div className="mt-6 text-gray-400 flex flex-col gap-4">
+                    <p className="flex justify-between">
+                      username: <span>{user?.username}</span>
+                    </p>
+                    <p className="flex justify-between">
+                      email: <span>{user?.email}</span>
+                    </p>
+                    <p className="flex justify-between">
+                      {`Course ${role === "student" ? "Enrolled" : "Created"}:`}
+                      <span>{courses.length}</span>
+                    </p>
+                  </div>
                   <PrimaryButton
                     onClick={handleNavigate}
-                    text={"Log out"}
+                    text={loading ? "Log out..." : "Log out"}
                     className="w-full hover:bg-indigo-600 bg-skyBlue px-7 py-3 rounded text-white font-medium text-base leading-6 mt-16"
                   />
                 </div>
