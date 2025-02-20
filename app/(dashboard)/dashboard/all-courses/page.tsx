@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardSeeAllCourses from "@/app/components/DashboardComponent/DashboardSeeAllCourses";
+import DashboardSeeAllCourses from "@/app/components/DashboardComponent/DashboardMainContent/DashboardSeeAllCourses";
 
 const page = () => {
   return <DashboardSeeAllCourses />;

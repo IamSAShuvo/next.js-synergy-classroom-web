@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SecondaryCard from "../CardComponent/SecondaryCard";
-import SectionHeading from "../typography/SectionHeading";
-import DescriptionText from "../typography/DescriptionText";
-import ItemList from "../typography/itemsList/ItemList";
-import NumberBadge from "../typography/NumberBadge";
-import PrimaryButton from "../Buttons/PrimaryButton";
+import SecondaryCard from "../../CardComponent/SecondaryCard";
+import SectionHeading from "../../typography/SectionHeading";
+import DescriptionText from "../../typography/DescriptionText";
+import ItemList from "../../typography/itemsList/ItemList";
+import NumberBadge from "../../typography/NumberBadge";
+import PrimaryButton from "../../Buttons/PrimaryButton";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +18,7 @@ import {
 import { seeAllCoursesReducers } from "@/app/store/slices/allCoursesSlice";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import { fetchEnrolledStudents } from "@/app/store/slices/enrolledStudentsSlice";
 
 const DashboardSeeAllCourses = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -63,6 +64,7 @@ const DashboardSeeAllCourses = () => {
 
   const handleCardClick = (courseId: number) => {
     dispatch(fetchCourseDetails({ courseId: courseId.toString() }));
+    dispatch(fetchEnrolledStudents({ courseId: courseId.toString() }));
     router.push(`/dashboard/course-details/${courseId}`);
   };
 

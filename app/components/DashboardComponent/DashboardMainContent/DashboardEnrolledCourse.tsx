@@ -4,16 +4,15 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/app/store/store";
 import { fetchCourses } from "@/app/store/slices/dashboardSlice";
-import SecondaryCard from "../CardComponent/SecondaryCard";
-import SectionHeading from "../typography/SectionHeading";
-import DescriptionText from "../typography/DescriptionText";
-import ItemList from "../typography/itemsList/ItemList";
-import LinkText from "../links/LinkText";
+import SecondaryCard from "../../CardComponent/SecondaryCard";
+import LinkText from "../../links/LinkText";
 import { fetchCourseDetails } from "@/app/store/slices/courseDetailsSlice";
 import Cookies from "js-cookie";
 import { fetchEnrolledStudents } from "@/app/store/slices/enrolledStudentsSlice";
+import CardHeader from "./header/CardHeader";
+import CardContent from "./content/CardContent";
 
-const DashboardMainContent = () => {
+const DashboardEnrolledCourse = () => {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const [mounted, setMounted] = useState(false);
@@ -22,7 +21,6 @@ const DashboardMainContent = () => {
   const { courses, teacherName, loading, error } = useSelector(
     (state: RootState) => state.courses
   );
-
 
   const role = Cookies.get("role")?.toLowerCase();
 
@@ -63,49 +61,13 @@ const DashboardMainContent = () => {
             onClick={() => handleCardClick(course.courseId || course.id)}
             className="w-full mx-auto bg-white rounded-2xl shadow-lg"
             header={
-              <>
-                <SectionHeading
-                  text={course.title || course.courseTitle}
-                  className="font-medium text-2xl leading-9 text-white"
-                />
-                <DescriptionText
-                  className="text-white text-sm leading-5"
-                  text={`Course Teacher - ${
-                    course.teacherName
-                      ? course.teacherName
-                          .map((teacher) => teacher.name)
-                          .join(", ")
-                      : teacherName || "N/A"
-                  }`}
-                />
-              </>
+              <CardHeader
+                title={course.title || course.courseTitle}
+                teacherName={teacherName}
+                teachers={course.teacherName}
+              />
             }
-            content={
-              <>
-                <div className="flex justify-between mt-5">
-                  <DescriptionText
-                    text="Book List"
-                    className="text-primaryColor text-sm leading-5"
-                  />
-                  <DescriptionText
-                    text="Author"
-                    className="text-primaryColor text-sm leading-5"
-                  />
-                </div>
-                <div className="flex justify-between mb-6">
-                  <ItemList
-                    items={course.books.map((book) => book.name)}
-                    className="text-primaryColor font-medium text-ex_sm leading-4"
-                    useNumber={true}
-                  />
-                  <ItemList
-                    items={course.books.map((book) => book.author)}
-                    className="text-secondaryColor font-normal text-ex_sm leading-4"
-                    useNumber={false}
-                  />
-                </div>
-              </>
-            }
+            content={<CardContent books={course.books} />}
           ></SecondaryCard>
         ))}
       </div>
@@ -113,4 +75,4 @@ const DashboardMainContent = () => {
   );
 };
 
-export default DashboardMainContent;
+export default DashboardEnrolledCourse;

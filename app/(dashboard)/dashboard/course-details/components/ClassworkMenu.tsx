@@ -116,16 +116,22 @@ export default function ClassworkMenu() {
           Students
         </h3>
         <div className="mt-3 p-6 flex flex-col gap-5">
-          {students?.map((student) => (
-            <SecondaryProfile
-              key={student.studentId}
-              avatarSrc="/femaleAvatars.png"
-              className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
-              shouldOpenModal={false}
-              avatarHeight={40}
-              avatarWidth={40}
-            />
-          ))}
+          {Array.isArray(students) && students.length > 0 ? (
+            students.map((student) => (
+              <SecondaryProfile
+                key={student.studentId}
+                avatarSrc="/femaleAvatars.png"
+                className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"
+                shouldOpenModal={false}
+                avatarHeight={40}
+                avatarWidth={40}
+              />
+            ))
+          ) : (
+            <p className="text-gray-500">
+              No students have enrolled in this course.
+            </p>
+          )}
         </div>
       </CustomTabPanel>
     </Box>

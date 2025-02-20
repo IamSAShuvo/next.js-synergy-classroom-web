@@ -3,9 +3,9 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { useRouter } from "next/navigation";
-import InputBoxModal from "../CardComponent/InputBoxModal";
+import InputBoxModal from "../../CardComponent/InputBoxModal";
 import Cookies from "js-cookie";
-import SecondaryProfile from "../UserProfile/SecondaryProfile";
+import SecondaryProfile from "../../UserProfile/SecondaryProfile";
 
 const NavBar = () => {
   const router = useRouter();
