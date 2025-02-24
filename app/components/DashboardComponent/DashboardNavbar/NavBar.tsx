@@ -17,6 +17,13 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   const { profile } = useSelector((state: RootState) => state.profile);
+  const { success } = useSelector((state: RootState) => state.courseCreate);
+
+  useEffect(() => {
+    if (success) {
+      dispatch(fetchProfile());
+    }
+  }, [success, dispatch]);
 
   useEffect(() => {
     dispatch(fetchProfile());

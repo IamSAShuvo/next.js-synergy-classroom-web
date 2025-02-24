@@ -20,12 +20,13 @@ const LoginCardContent: FC<LoginCardContentProps> = ({
         label="Username"
         placeholder="Enter Your Username"
         variant="outlined"
+        isPassword={false}
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
       <PrimaryInputField
         label="Password"
-        isPassword
+        isPassword={true}
         variant="outlined"
         value={password}
         onChange={(e) => setPassword(e.target.value)}

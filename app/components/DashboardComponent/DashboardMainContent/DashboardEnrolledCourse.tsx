@@ -22,6 +22,18 @@ const DashboardEnrolledCourse = () => {
     (state: RootState) => state.courses
   );
 
+  const { success } = useSelector((state: RootState) => state.courseCreate);
+
+  useEffect(() => {
+    if (success) {
+      dispatch(fetchCourses());
+    }
+  }, [success, dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCourses());
+  }, [dispatch]);
+
   const role = Cookies.get("role")?.toLowerCase();
 
   const handleCardClick = (courseId: number) => {

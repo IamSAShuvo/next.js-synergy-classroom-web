@@ -11,8 +11,6 @@ import {
   styled,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import IndeterminateCheckBoxOutlinedIcon from "@mui/icons-material/IndeterminateCheckBoxOutlined";
 
 interface PrimaryInputFieldProps {
   label: string;
@@ -20,10 +18,8 @@ interface PrimaryInputFieldProps {
   placeholder?: string;
   variant?: "standard" | "outlined" | "filled";
   isPassword?: boolean;
-  hasExpandableFields?: boolean;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  children?: React.ReactNode;
 }
 
 const inputStyle = {
@@ -60,17 +56,14 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   placeholder,
   variant = "outlined",
   isPassword = false,
-  hasExpandableFields = false,
+  // hasExpandableFields = false,
   value = "",
   onChange,
-  children,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleExpandToggle = () => setIsExpanded((prev) => !prev);
 
   const InputComponent = inputComponents[variant] || OutlinedInput;
 
@@ -84,30 +77,12 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
             aria-label={showPassword ? "Hide password" : "Show password"}
             onClick={handleClickShowPassword}
           >
-            {showPassword ? <Visibility /> : <VisibilityOff />}
+            {showPassword ? <VisibilityOff /> : <Visibility />}
           </IconButton>
         </InputAdornment>
       );
     }
-    if (hasExpandableFields) {
-      return (
-        <InputAdornment position="end">
-          <IconButton
-            aria-label={
-              isExpanded ? "Hide additional fields" : "Show additional fields"
-            }
-            onClick={handleExpandToggle}
-            edge="end"
-          >
-            {isExpanded ? (
-              <IndeterminateCheckBoxOutlinedIcon />
-            ) : (
-              <AddBoxOutlinedIcon />
-            )}
-          </IconButton>
-        </InputAdornment>
-      );
-    }
+
     return null;
   };
 
@@ -128,10 +103,6 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
           {...props}
         />
       </StyledFormControl>
-
-      {isExpanded && hasExpandableFields && (
-        <div className="w-full flex flex-col gap-5">{children}</div>
-      )}
     </div>
   );
 };
