@@ -56,7 +56,6 @@ const PrimaryInputField: FC<PrimaryInputFieldProps> = ({
   placeholder,
   variant = "outlined",
   isPassword = false,
-  // hasExpandableFields = false,
   value = "",
   onChange,
   ...props

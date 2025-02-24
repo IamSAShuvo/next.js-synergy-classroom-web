@@ -21,16 +21,11 @@ const DashboardSidebarContent = () => {
         Cookies.remove("user");
 
         router.push("/login");
-      } else {
-        console.error("error unknown");
       }
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+    } catch {}
   };
 
   const handleNavigateToDashboard = () => {
-    console.log("Navigating to dashboard");
     router.push("/dashboard");
   };
 

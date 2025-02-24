@@ -60,7 +60,6 @@ export const fetchProfile = createAsyncThunk(
         courses,
       };
     } catch (error) {
-      console.error("Error fetching profile:", error);
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
           error.response?.data || "Failed to fetch profile"

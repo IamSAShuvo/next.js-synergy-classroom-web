@@ -49,8 +49,6 @@ export const fetchEnrolledStudents = createAsyncThunk<
 
     return { students: data, message, success };
   } catch (error) {
-    console.error("Error fetching enrolled students:", error);
-
     return rejectWithValue(
       axios.isAxiosError(error)
         ? error.response?.data || "Failed to fetch enrolled students"

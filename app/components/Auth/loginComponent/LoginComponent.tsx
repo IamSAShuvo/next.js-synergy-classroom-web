@@ -39,8 +39,7 @@ const LoginComponent = () => {
         );
         setOpenSnackbar(true);
       }
-    } catch (err) {
-      console.error("Login failed due to an error:", err);
+    } catch {
       setSnackbarSeverity("error");
       setSnackbarMessage("Login failed due to an error");
       setOpenSnackbar(true);

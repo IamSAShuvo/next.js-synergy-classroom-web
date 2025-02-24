@@ -72,8 +72,7 @@ const SignupComponent = () => {
         );
         setOpenSnackbar(true);
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       setSnackbarSeverity("error");
       setSnackbarMessage("An unexpected error occurred. Please try again.");
       setOpenSnackbar(true);
