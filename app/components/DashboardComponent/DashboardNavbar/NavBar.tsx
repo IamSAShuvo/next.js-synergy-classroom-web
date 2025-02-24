@@ -6,11 +6,21 @@ import { useRouter } from "next/navigation";
 import InputBoxModal from "../../CardComponent/InputBoxModal";
 import Cookies from "js-cookie";
 import SecondaryProfile from "../../UserProfile/SecondaryProfile";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/app/store/store";
+import { fetchProfile } from "@/app/store/slices/profileSlice";
 
 const NavBar = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const { profile } = useSelector((state: RootState) => state.profile);
+
+  useEffect(() => {
+    dispatch(fetchProfile());
+  }, [dispatch]);
 
   useEffect(() => {
     setIsClient(true);
@@ -37,13 +47,8 @@ const NavBar = () => {
           {role === "teacher" && isClient && (
             <AddIcon className="cursor-pointer" onClick={handleOpen} />
           )}
-
-          {/* <NavBarProfile
-            avatarSrc="/my_profile.jpeg"
-            avatarHeight={50}
-            avatarWidth={50}
-          /> */}
           <SecondaryProfile
+            profileName={profile?.name}
             shouldOpenModal={true}
             flexOrder="order-1"
             avatarHeight={50}

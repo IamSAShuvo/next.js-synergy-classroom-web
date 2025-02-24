@@ -85,7 +85,7 @@ export default function ClassworkMenu() {
             />
 
             <DescriptionText
-              text={`Course Teacher - ${teacherName}`}
+              text={`Course Teacher - ${teacherName ? teacherName : "N/A"}`}
               className="text-2xl text-white leading-5"
             />
           </header>
@@ -119,6 +119,7 @@ export default function ClassworkMenu() {
           {Array.isArray(students) && students.length > 0 ? (
             students.map((student) => (
               <SecondaryProfile
+                profileName={student.studentName}
                 key={student.studentId}
                 avatarSrc="/femaleAvatars.png"
                 className="flex items-center gap-3 text-base font-medium leading-5 text-midnightBlack"

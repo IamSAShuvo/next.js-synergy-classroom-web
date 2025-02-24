@@ -1,11 +1,9 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import { Avatar } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/app/store/store";
-import { fetchProfile } from "@/app/store/slices/profileSlice";
 import PrimaryPoppers from "../CardComponent/PrimaryPoppers";
 
 interface SecondaryProfileProps {
+  profileName?: string;
   avatarSrc: string;
   avatarHeight?: number;
   avatarWidth?: number;
@@ -15,6 +13,7 @@ interface SecondaryProfileProps {
 }
 
 const SecondaryProfile: FC<SecondaryProfileProps> = ({
+  profileName,
   avatarSrc,
   avatarHeight = 40,
   avatarWidth = 40,
@@ -22,20 +21,13 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
   flexOrder,
   shouldOpenModal,
 }) => {
-  const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const anchorRef = useRef<HTMLDivElement | null>(null);
 
-  const { profile } = useSelector((state: RootState) => state.profile);
-
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  useEffect(() => {
-    dispatch(fetchProfile());
-  }, [dispatch]);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -47,12 +39,12 @@ const SecondaryProfile: FC<SecondaryProfileProps> = ({
     <>
       <div ref={anchorRef} onClick={handleToggle} className={className}>
         <Avatar
-          alt={profile?.name}
+          alt={profileName}
           src={avatarSrc}
           sx={{ height: avatarHeight, width: avatarWidth }}
           className={flexOrder}
         />
-        <h1>{profile?.name}</h1>
+        <h1>{profileName}</h1>
       </div>
       {shouldOpenModal && (
         <PrimaryPoppers
