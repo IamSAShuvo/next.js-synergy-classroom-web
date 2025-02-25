@@ -29,8 +29,6 @@ const DashboardSeeAllCourses = () => {
     "success"
   );
 
-  const {} = useSelector((state: RootState) => state.auth);
-
   const { seeAllCourses } = useSelector(
     (state: RootState) => state.seeAllCourses
   );

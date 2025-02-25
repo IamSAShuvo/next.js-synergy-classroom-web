@@ -49,12 +49,8 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
         Cookies.remove("user");
         Cookies.remove("role");
         router.push("/login");
-      } else {
-        console.error("error unknown");
       }
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+    } catch {}
   };
 
   const handleClose = (event: MouseEvent | TouchEvent) => {
@@ -99,7 +95,6 @@ const PrimaryPoppers: FC<PrimaryPoppersProps> = ({
                 <Arrow />
 
                 <div className="w-full">
-                  {/* <UserProfile avatarSrc={avatarSrc} /> */}
                   <PrimaryProfile
                     avatarSrc={avatarSrc}
                     className="flex flex-col items-center gap-7"

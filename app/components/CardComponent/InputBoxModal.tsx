@@ -5,19 +5,18 @@ import SecondaryHeading from "../typography/SecondaryHeading";
 import PrimaryInputField from "../inputFields/PrimaryInputField";
 import CloseIcon from "@mui/icons-material/Close";
 import PrimaryButton from "../Buttons/PrimaryButton";
+import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { createCourse } from "@/app/store/slices/courseCreateSlice";
 import { AppDispatch, RootState } from "@/app/store/store";
+import { fetchCourses } from "@/app/store/slices/dashboardSlice";
 
-interface CreateCourseModalProps {
+interface InputBoxModalProps {
   open: boolean;
   onClose: () => void;
 }
 
-const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
-  open,
-  onClose,
-}) => {
+const InputBoxModal: React.FC<InputBoxModalProps> = ({ open, onClose }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [courseData, setCourseData] = useState({
@@ -43,9 +42,39 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
     }
   }, [success, error]);
 
-  const handleCreateCourse = () => {
-    dispatch(createCourse(courseData));
+  const handleCreateCourse = async () => {
+    try {
+      const result = await dispatch(createCourse(courseData)).unwrap();
+
+      if (result) {
+        setCourseData({ title: "", books: [{ name: "", author: "" }] });
+        onClose();
+        dispatch(fetchCourses());
+      }
+    } catch {
+      alert("Failed to create course");
+    }
+  };
+
+  const handleModalClose = () => {
+    setCourseData({
+      title: "",
+      books: [{ name: "", author: "" }],
+    });
     onClose();
+  };
+
+  const addNewBookFields = () => {
+    setCourseData((prev) => ({
+      ...prev,
+      books: [
+        ...prev.books,
+        {
+          name: "",
+          author: "",
+        },
+      ],
+    }));
   };
 
   return (
@@ -68,7 +97,7 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
         }}
       >
         <IconButton
-          onClick={onClose}
+          onClick={handleModalClose}
           sx={{
             position: "absolute",
             top: 8,
@@ -80,9 +109,11 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
         </IconButton>
 
         <SecondaryHeading text="Create Course" />
+
         <div className="bg-white p-5 mt-4 flex flex-col gap-5">
           <PrimaryInputField
             label="Course Name"
+            name="title"
             placeholder="Course Name"
             variant="standard"
             value={courseData.title}
@@ -90,55 +121,49 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
               setCourseData({ ...courseData, title: e.target.value })
             }
           />
-          <PrimaryInputField
-            label="Book Name"
-            placeholder="Add your book name"
-            variant="standard"
-            value={courseData.books[0].name}
-            onChange={(e) =>
-              setCourseData({
-                ...courseData,
-                books: [{ ...courseData.books[0], name: e.target.value }],
-              })
-            }
-            hasExpandableFields
-          >
-            <PrimaryInputField
-              label="Author Name"
-              variant="standard"
-              placeholder="Book Author"
-              value={courseData.books[0].author}
-              onChange={(e) =>
-                setCourseData({
-                  ...courseData,
-                  books: [
-                    {
-                      ...courseData.books[0],
-                      author: e.target.value,
-                    },
-                  ],
-                })
-              }
-            />
-            <PrimaryInputField
-              label="Book Name"
-              placeholder="Add your book name"
-              variant="standard"
-              value={courseData.books[0].name}
-              onChange={(e) =>
-                setCourseData({
-                  ...courseData,
-                  books: [{ ...courseData.books[0], name: e.target.value }],
-                })
-              }
-              hasExpandableFields
-            />
-          </PrimaryInputField>
+
+          {courseData.books.map((book, index) => (
+            <div key={index} className="flex flex-col gap-4 border p-3 rounded">
+              <PrimaryInputField
+                label={`Book Name ${index + 1}`}
+                name={`bookName_${index}`}
+                placeholder="Add your book name"
+                variant="standard"
+                value={book.name}
+                onChange={(e) => {
+                  const updatedBooks = [...courseData.books];
+                  updatedBooks[index].name = e.target.value;
+                  setCourseData({ ...courseData, books: updatedBooks });
+                }}
+              />
+              <PrimaryInputField
+                label={`Author Name ${index + 1}`}
+                name={`author_${index}`}
+                placeholder="Book Author"
+                variant="standard"
+                value={book.author}
+                onChange={(e) => {
+                  const updatedBooks = [...courseData.books];
+                  updatedBooks[index].author = e.target.value;
+                  setCourseData({ ...courseData, books: updatedBooks });
+                }}
+              />
+            </div>
+          ))}
+
+          <div className="flex justify-end">
+            <IconButton
+              aria-label="Add new book fields"
+              onClick={addNewBookFields}
+            >
+              <AddBoxOutlinedIcon />
+            </IconButton>
+          </div>
         </div>
 
         <div className="flex justify-end gap-4 mt-12">
           <PrimaryButton
-            onClick={onClose}
+            onClick={handleModalClose}
             text="Cancel"
             className="text-ashGray hover:bg-slate-200 bg-white/[0.12] text-xl px-6 py-3 rounded font-medium leading-5"
             borderColor="border-ashGray"
@@ -154,4 +179,4 @@ const CreateCourseModal: React.FC<CreateCourseModalProps> = ({
   );
 };
 
-export default CreateCourseModal;
+export default InputBoxModal;

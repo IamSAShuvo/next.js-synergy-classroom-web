@@ -35,8 +35,6 @@ export const refreshToken = createAsyncThunk(
         return rejectWithValue(response.data.message);
       }
     } catch (error) {
-      console.error("Refresh token API call failed:", error);
-
       if (error instanceof AxiosError && error.response) {
         return rejectWithValue(error.response.data || "Unknown error");
       }

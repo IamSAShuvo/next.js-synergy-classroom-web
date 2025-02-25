@@ -19,8 +19,6 @@ export const signupUser = createAsyncThunk(
       const response = await api.post("/signup", userData);
       return response.data;
     } catch (error) {
-      console.error("Signup API call failed:", error);
-
       if (error instanceof AxiosError && error.response) {
         return rejectWithValue(error.response.data || "Unknown error");
       }
@@ -46,8 +44,6 @@ export const loginUser = createAsyncThunk(
 
       return { accessToken, refreshToken, role };
     } catch (error) {
-      console.error("Login API call failed:", error);
-
       if (error instanceof AxiosError && error.response) {
         return rejectWithValue(error.response.data || "Unknown error");
       }
@@ -63,7 +59,6 @@ export const refreshToken = createAsyncThunk(
     try {
       const refreshToken = Cookies.get("refreshToken");
       if (!refreshToken) {
-        console.error("No refresh token found!");
         return rejectWithValue("No refresh token available");
       }
 
@@ -80,8 +75,6 @@ export const refreshToken = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      console.error("Refresh token API call failed:", error);
-
       if (error instanceof AxiosError && error.response) {
         return rejectWithValue(error.response.data || "Unknown error");
       }
@@ -100,8 +93,6 @@ export const logoutUser = createAsyncThunk(
       Cookies.remove("refreshToken");
       return;
     } catch (error) {
-      console.error("Logout API call failed:", error);
-
       if (error instanceof AxiosError && error.response) {
         return rejectWithValue(error.response.data || "Unknown error");
       }

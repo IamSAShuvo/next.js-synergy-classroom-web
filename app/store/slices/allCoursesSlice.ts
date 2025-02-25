@@ -45,7 +45,6 @@ export const seeAllCoursesReducers = createAsyncThunk(
       });
       return response.data.data;
     } catch (error) {
-      console.error("Error fetching courses:", error);
       if (axios.isAxiosError(error)) {
         return rejectWithValue(
           error.response?.data || "Failed to fetch courses"

@@ -38,10 +38,7 @@ export const enrollInCourse = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      console.error("Enrollment API call failed:", error);
-
       if (axios.isAxiosError(error) && error.response) {
-        console.error("API returned error response:", error.response);
         return rejectWithValue(error.response.data || "Unknown error");
       }
 

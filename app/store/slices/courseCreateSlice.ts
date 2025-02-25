@@ -40,6 +40,7 @@ export const createCourse = createAsyncThunk(
 const courseCreateSlice = createSlice({
   name: "courseCreate",
   initialState: {
+    courses: [] as CreateCourseRequest[],
     isLoading: false,
     success: false,
     error: null as string | null,
@@ -56,10 +57,11 @@ const courseCreateSlice = createSlice({
       .addCase(createCourse.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createCourse.fulfilled, (state) => {
+      .addCase(createCourse.fulfilled, (state, action) => {
         state.isLoading = false;
         state.success = true;
         state.error = null;
+        state.courses.push(action.payload);
       })
       .addCase(createCourse.rejected, (state, action) => {
         state.isLoading = false;

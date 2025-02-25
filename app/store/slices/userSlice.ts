@@ -25,8 +25,7 @@ export const fetchUserRole = createAsyncThunk(
         headers: { Authorization: `Bearer ${token}` },
       });
       return response.data.message;
-    } catch (error) {
-      console.error("Error fetching user role:", error);
+    } catch {
       return rejectWithValue("Failed to fetch user role");
     }
   }

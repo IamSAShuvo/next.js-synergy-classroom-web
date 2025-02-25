@@ -54,14 +54,11 @@ export const fetchCourseDetails = createAsyncThunk(
 
       return { course, books };
     } catch (error) {
-      console.error("Error fetching profile:", error);
       if (axios.isAxiosError(error)) {
-        console.error("Error details:", error.response?.data);
         return rejectWithValue(
           error.response?.data || "Failed to fetch course details"
         );
       } else {
-        console.error("Non-Axios error:", error);
         return rejectWithValue("Failed to fetch course details");
       }
     }

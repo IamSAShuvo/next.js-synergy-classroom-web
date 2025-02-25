@@ -1,8 +1,8 @@
 import React from "react";
-import CourseTabs from "../components/ClassworkMenu";
+import ClassworkMenu from "../components/ClassworkMenu";
 
 const page = () => {
-  return <CourseTabs />;
+  return <ClassworkMenu />;
 };
 
 export default page;

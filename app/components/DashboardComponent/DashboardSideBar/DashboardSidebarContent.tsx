@@ -21,12 +21,12 @@ const DashboardSidebarContent = () => {
         Cookies.remove("user");
 
         router.push("/login");
-      } else {
-        console.error("error unknown");
       }
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+    } catch {}
+  };
+
+  const handleNavigateToDashboard = () => {
+    router.push("/dashboard");
   };
 
   return (
@@ -34,6 +34,7 @@ const DashboardSidebarContent = () => {
       <div className="flex-1 overflow-hidden">
         <nav className="mt-6">
           <SidebarMenuButton
+            onClick={handleNavigateToDashboard}
             icon={HomeIcon}
             text="Home"
             trailingIcon={ChevronRightIcon}
