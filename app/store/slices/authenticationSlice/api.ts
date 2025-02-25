@@ -1,9 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import store from "../../store";
-import { refreshToken } from "./authActions/authActions";
-
 const API_BASE_URL = "http://192.168.0.204:8080";
 
 const api = axios.create({
@@ -22,17 +19,6 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
-);
-
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    if (error.response?.status === 401) {
-      const refreshResponse = await store.dispatch(refreshToken());
-    }
-
-    return Promise.reject(error);
-  }
 );
 
 export default api;
